@@ -685,7 +685,7 @@ git commit -m "Day1: 完成环境搭建，llm环境+GPU版PyTorch+核心库，�
 | 第 4 步 安装 GPU 版 PyTorch | ✅ **已完成**（你装的是 2.5.1+cu121，GPU 可用=True）                     |
 | 第 5 步 安装 AI 核心库        | ✅ 至少 transformers 已装好（你才能跑 test_env.py）；其余库请用 `pip list` 自查 |
 | 第 6 步 验收脚本             | 🔄 **正在收尾**（GPU 全通过，模型报错已修好，等你重跑）                           |
-| 第 7 步 配置 VS Code       | ⬜ 还没开始                                                      |
+| 第 7 步 配置 VS Code       | 🔄 终端激活问题已解决（方案 A）；还差"选解释器"这一步                              |
 | 零散时间 + 睡前存档            | ⬜ 还没开始                                                      |
 
 
@@ -724,6 +724,14 @@ git commit -m "Day1: 完成环境搭建，llm环境+GPU版PyTorch+核心库，�
 
 > 补充解释：安全漏洞的**前提是"加载别人给的、可能被篡改的模型文件"**。我们测试用的都是 HuggingFace 官方审核过的迷你模型，风险极低；第 6 天部署 Qwen 时我们会用官方 safetensors 格式，同样不受影响。学安全规范、保持好习惯即可，不必恐慌。
 
+**报错 5：VS Code 终端里** `conda activate llm` **不生效（行首没有** `(llm)`**）**
+
+- 现象：在 VS Code 自带的终端里敲 `conda activate llm`，没有报错，但行首始终不出现 `(llm)`。中途还出现过一次 `^C 终止批处理操作吗(Y/N)? y` 的提示。
+- 原因：VS Code 默认终端是 **PowerShell**，而 conda 安装时只把"激活钩子"装进了开始菜单那个 Anaconda Prompt（cmd），**没有装进 PowerShell 的配置文件**。在 PowerShell 里 `conda activate` 会退化为调用一个批处理文件的方式，它只在一个临时子进程里执行，改不到当前 PowerShell 的环境变量，所以激活不生效。那个 `^C` 提示正是"批处理方式运行"的痕迹。
+- 解决办法（方案 A，已使用）：在 VS Code 的 PowerShell 终端里执行一次 `conda init powershell`（把 conda 钩子正式装进 PowerShell 配置），然后**完全关闭 VS Code 再重新打开**（配置文件是启动时加载的，只关终端不够）。重开后新建终端再 `conda activate llm` 即可。
+- 另一个替代法（方案 B，未使用）：在 VS Code 终端面板右上角 `+` 旁边的下拉箭头里选"命令提示符"，用 cmd 终端操作，效果和 Anaconda Prompt 一样。
+- ✅ 你已用方案 A 解决。验证方法：`python --version` 显示 3.11.15、`$env:CONDA_DEFAULT_ENV` 显示 llm、`where.exe python` 第一行是 `D:\miniconda1\envs\llm\python.exe`，三条全对 = 激活成功。
+
 ---
 
 
@@ -746,12 +754,13 @@ git commit -m "Day1: 完成环境搭建，llm环境+GPU版PyTorch+核心库，�
 
 ### ⏭️ 你接下来该做什么
 
-1. 回到你刚才那个终端（`llm` 环境、day1 文件夹），**重新运行一次**：
+1. **回到第 7 步收尾**：你的终端激活问题已解决，重开 VS Code 后还差最后一步——按第 7 步第 4 点，用 `Ctrl + Shift + P` 调出命令面板，输入 `Python: Select Interpreter`，在列表里选带 `llm` 的那个（`D:\miniconda1\envs\llm\python.exe`）。
+2. **重新运行一次验收**（如果你还没看到 `环境验收通过！🎉`）：
   ```
    python test_env.py
   ```
    看到 `环境验收通过！🎉` = Day 1 主线任务全部完成，**请截图**。
-2. 然后用 `pip list` 自查第 5 步的核心库（transformers / langchain / chromadb / accelerate / datasets / bitsandbytes）是否都在。
-3. 接着做第 7 步 VS Code 配置 → 零散时间刷题 → 睡前 git 存档。
-4. 每做完一步就打勾 ✅ 今日验收清单；卡住了就把终端报错截图发给我，我帮你修报错，但**活还是你自己干**。
+3. 然后用 `pip list` 自查第 5 步的核心库（transformers / langchain / chromadb / accelerate / datasets / bitsandbytes）是否都在。
+4. 接着做零散时间刷题（力扣 1、217）→ 睡前 `pip freeze > requirements.txt` + git 存档。
+5. 每做完一步就打勾 ✅ 今日验收清单；卡住了就把终端报错截图发给我，我帮你修报错，但**活还是你自己干**。
 
