@@ -481,7 +481,7 @@ p_i = exp(z_i / T) / Σ_j exp(z_j / T)
 
 ```
 cd "D:\Lan\研究生\技术学习\大模型算法"
-c
+git add .
 git commit -m "Day6: Qwen2.5-3B 本地部署（4bit 量化加载跑通）+ 显存实测 + temperature/top_p 对比 + 第一周复盘"
 ```
 
