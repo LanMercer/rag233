@@ -586,7 +586,7 @@ for step in range(max_gen):
     dec_ids.append(next_id)
 ```
 
-> 这就是大模型生成文本的**最简版本**：每步从"下一个词的概率分布"里挑最大的，拼上去，再继续。第 6 天调 `temperature` 时，你还会回到这个函数——`argmax` 换成"按概率抽样"就是采样生成。
+> 这就是大模型生成文本的**最简版本**：每步从"下一个词的概率分布"里挑最大的，拼上去，再继续。第 2 周调 `temperature` 时，你还会回到这个函数——`argmax` 换成"按概率抽样"就是采样生成。
 
 
 
@@ -640,7 +640,7 @@ tgt_e = self.pos(self.embed(tgt))   # 改成：tgt_e = self.embed(tgt)
 | ① 一句话总结（面试版） | 多头 = 多组 Q/K/V 并行、多张转移概率矩阵；位置编码 = 用不同频率正弦波编座位号    |
 | ② 多头注意力      | 为什么需要、分头/并头流程、每个头关注不同关系、手写的 2 头矩阵截图              |
 | ③ 位置编码       | 为什么需要、sin/cos 公式长什么样、热力图截图、位置编码在代码里的位置           |
-| ④ 与未来的衔接     | torch.nn.Transformer 结构、第 6 天 temperature、下周 RAG |
+| ④ 与未来的衔接     | torch.nn.Transformer 结构、第 2 周 temperature、下周 RAG |
 
 
 
