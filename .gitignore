@@ -1,0 +1,7 @@
+# 下载的模型权重不纳入版本管理（可从 ModelScope / HuggingFace 重新下载）
+download/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
