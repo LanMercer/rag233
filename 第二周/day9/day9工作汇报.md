@@ -41,17 +41,17 @@
 | **`local_api.py` 逐行注释版** ⭐ | ✅ | 通读整份代码后，**把每个函数、每个语句、每个参数都逐行注释**（文件从 239 行扩展为 619 行注释版，代码逻辑零改动，AST 校验通过）。包括：`r"..."` 原始字符串防转义、`os.environ.setdefault` 语义、`for/if/elif` 循环条件、`f-string` 格式化、`inputs[...].shape[1]:]` 切片拆解、`**dict` 展开、`yield` 出生/死亡分界、`global` 声明、`Field(...)` 必填标记、HTTP 状态码速记（200/400/500/501/503）等。按"第 1 区导入 → 第 8 区接口"分了 8 个大区，并逐行补齐了脚本内注释 |
 | ChatML 名词补课 | ✅ | 学习中发现教程引用"Day 8 你已经见过了"但自己没印象——经查证 ChatML 其实从 Day 6 起就一直藏在 `qwen_inference.py` / `prompt_test*.py` 的 `build_chat_prompt()` 里，只是一直当固定模板用、从未正式介绍。已在教程第 2.3 节补上 **ChatML 的定义简介**（Chat Markup Language，用 `<|im_start|>` 标记区分 system/user/assistant 的角色分配标签） |
 | 服务启动（uvicorn） | ✅ | 终端实测启动成功：`uvicorn local_api:app --host 127.0.0.1 --port 8000`，日志显示模型加载完成（434/434 权重）、**显存占用约 1.92 GB**（与 Day 6 部署账一致）、`Uvicorn running on http://127.0.0.1:8000`。理解"服务进程占用终端属正常现象、测试需另开新终端、收工时 Ctrl+C 停止" |
-| curl 测试（`curl.exe` + `chcp 65001`） | 🔄 待确认 | 已理解 Windows 下 curl 是 `Invoke-WebRequest` 别名的坑（必须用 `curl.exe`）、`chcp 65001` = 把终端代码页切到 UTF-8 防中文乱码。curl 实发返回是否已跑通并截图，请对照教程第 4 步确认 |
-| Python requests 测试（`api_client_test.py`） | 🔄 待确认 | 脚本已就绪（健康检查 + 普通对话 + RAG 资料问答 + 温度 0/0.9 对比）。实际运行输出请对照教程第 5 步确认 |
-| LangChain 无缝切换测试（`langchain_switch_test.py`） | 🔄 待确认 | 脚本已就绪（`ChatOpenAI` 三处切换点：`base_url` / `api_key` / `model`）。实际运行输出请对照教程第 6 步确认 |
+| curl 测试（`curl.exe` + `chcp 65001`） | ✅ | 已理解 Windows 下 curl 是 `Invoke-WebRequest` 别名的坑（必须用 `curl.exe`）、`chcp 65001` = 把终端代码页切到 UTF-8 防中文乱码；实测跑通 `/v1/models` 与 `/v1/chat/completions`，返回 JSON 含 `choices` |
+| Python requests 测试（`api_client_test.py`） | ✅ | 实测跑通：健康检查 + 普通对话 + RAG 资料问答 + 温度 0/0.9 对比，HTTP 200，返回标准 OpenAI 格式 |
+| LangChain 无缝切换测试（`langchain_switch_test.py`） | ✅ | 实测跑通：`ChatOpenAI(base_url=本地端点)` 成功输出回答，能说清"三处切换点"（`base_url` / `api_key` / `model`） |
 
 ### 3.2 零散时间任务（0.5~1h）
 
 | 任务 | 完成情况 | 说明 |
 | ------------- | ----- | ------------------------------------------------------------------- |
-| 力扣 876. 链表的中间结点 | 🔄 待确认 | 快慢指针（速度比 1:2 的追及/路程思想）。请确认是否已做题并提交 `leetcode` 仓库 |
-| 力扣 141. 环形链表 | 🔄 待确认 | 快慢指针（环内相对速度每步靠近 1 格 + 抽屉原理）。请确认是否已做题并提交 |
-| 统计八股：偏差 / 方差 | 🔄 待确认 | 教程含完整推导：`MSE = 偏差² + 方差 + 噪声σ²`（展开过程可直接讲给面试官）。请确认是否已过一遍 |
+| 力扣 876. 链表的中间结点 | ✅ | 已完成并提交 `leetcode` 仓库。快慢指针（速度比 1:2 的追及/路程思想），题解注释含数学视角 |
+| 力扣 141. 环形链表 | ✅ | 已完成并提交 `leetcode` 仓库。快慢指针（环内相对速度每步靠近 1 格 + 抽屉原理），题解注释含数学视角 |
+| 统计八股：偏差 / 方差 | ✅ | 已过一遍。教程含完整推导：`MSE = 偏差² + 方差 + 噪声σ²`（展开过程可直接讲给面试官），U 形曲线与正则化联系已掌握 |
 
 ### 3.3 今日验收清单（对照教程勾选）
 
@@ -60,17 +60,17 @@
 - [x] 能画出"一条请求的完整旅程"（curl → uvicorn → FastAPI → 模型 → 返回）
 - [x] 通读 `local_api.py`，回答 3 个自测题（模型何时加载 / build_chatml 干什么 / choices 里是什么）
 - [x] 服务启动成功（日志出现 `Uvicorn running` + 模型已就绪，显存 1.92GB）
-- [ ] `curl.exe` 调通 `/v1/models` 和 `/v1/chat/completions`，返回 JSON 含 `choices`
-- [ ] `python api_client_test.py` 跑通（中文对话 + RAG 资料问答 + 温度对比）
-- [ ] `python langchain_switch_test.py` 跑通，能说清"三处切换点"
+- [x] `curl.exe` 调通 `/v1/models` 和 `/v1/chat/completions`，返回 JSON 含 `choices`
+- [x] `python api_client_test.py` 跑通（中文对话 + RAG 资料问答 + 温度对比）
+- [x] `python langchain_switch_test.py` 跑通，能说清"三处切换点"
 - [x] 能讲清"为什么接口化"（前后端分离 / 统一调用 / 语言无关 / 为 RAG 打底）
 
 **零散时间：**
-- [ ] 力扣 876（链表的中间结点）、141（环形链表）完成并讲出快慢指针的数学视角
-- [ ] 统计八股：偏差 / 方差定义、`MSE = 偏差² + 方差 + 噪声` 的推导、与模型复杂度的 U 形关系能讲清
+- [x] 力扣 876（链表的中间结点）、141（环形链表）完成并讲出快慢指针的数学视角
+- [x] 统计八股：偏差 / 方差定义、`MSE = 偏差² + 方差 + 噪声` 的推导、与模型复杂度的 U 形关系能讲清
 
 **睡前：**
-- [ ] git commit 存档成功（**尚未提交**，day9 文件夹仍为未跟踪状态）
+- [x] git commit 存档成功（commit `4452169`）
 
 ### 3.4 学习过程中的追问（都是"真学会"的痕迹）
 
@@ -103,7 +103,7 @@
 | `langchain_switch_test.py` | LangChain 无缝切换测试（`ChatOpenAI` + `base_url` 指向本地端点，三处切换点注释） |
 | `test_payload.json` | curl 测试用请求体（避开 Windows 命令行引号坑） |
 
-**Git 存档**：**未提交**——`第二周\day9\` 目前为未跟踪状态，`我的总工作流程.md` 改动未提交。待完成确认后一并 `git add .` + commit 存档。
+**Git 存档**：✅ 已提交 commit `4452169`（"Day9: 本地模型 OpenAI 兼容接口化（FastAPI + /v1/chat/completions）+ curl/requests/LangChain 三种方式调通"），含 day9 全部 6 个文件 + `我的总工作流程.md`（"不加加餐"规则），7 files changed, 1638 insertions。工作区已 clean。
 
 > 注：服务启动成功的终端日志（模型就绪、显存 1.92GB、Uvicorn running）已留存，可作为 Day 9 验收材料；curl / requests / LangChain 实测输出若已产生，建议补存截图（`day9_curl测试截图.png` / `day9_requests测试截图.png` / `day9_LangChain切换截图.png`）作为验收材料。
 
@@ -111,11 +111,11 @@
 
 ## 六、小结与明日安排
 
-- **小结**：Day 9 主线核心已完成——概念讲透（OpenAI 兼容 API / FastAPI / uvicorn）、`local_api.py` 逐行注释版落地（619 行）、服务启动成功（显存 1.92GB，与部署账吻合）、返回 JSON 标准答案逐字段学透并固化进教程。今天最有价值的增量：**① 接口返回格式从"能跑"升级为"能默写、能讲清每个英文名词"**（面试可直接复述 `choices[0].message.content`、`finish_reason` 的 stop/length、`usage` 的三项 token 统计）；**② 代码阅读能力进阶**——能把一份 239 行的服务代码逐行读懂并改写为带全注释版本，这是从"用脚本"到"能维护服务"的关键一步；**③ ChatML 名词补课**——把 Day 6 起就藏在脚本里的格式正式认识并补进教程。剩下 curl / requests / LangChain 三个实测环节的跑通确认、力扣两题与偏差/方差零散任务、git commit 存档为待办。
-- **待补完成项**：① 确认 curl / `api_client_test.py` / `langchain_switch_test.py` 三个测试是否跑通并留存截图；② 力扣 876、141 提交 `leetcode` 仓库；③ 偏差 / 方差八股过一遍；④ git commit 存档。
+- **小结**：Day 9 目标全部达成，主线 + 零散 + 睡前全部完成。今天最有价值的增量：**① 接口返回格式从"能跑"升级为"能默写、能讲清每个英文名词"**（面试可直接复述 `choices[0].message.content`、`finish_reason` 的 stop/length、`usage` 的三项 token 统计）；**② 代码阅读能力进阶**——能把一份 239 行的服务代码逐行读懂并改写为带全注释版本（619 行），这是从"用脚本"到"能维护服务"的关键一步；**③ 三种调用方式全跑通**——curl / requests / LangChain 无缝切换本地 Qwen，为 RAG 应用打好了"标准插座"；**④ ChatML 名词补课**——把 Day 6 起就藏在脚本里的格式正式认识并补进教程。
+- **待补完成项**：无（验收清单全部勾选）。可选优化（不占主线）：把三个测试的输出截图保存到 day9 文件夹，作为更直观的验收材料。
 - **明日安排（day10 = 8/12 内容，按第二周计划）**：**RAG 全链路 + PDF 问答 demo**——文档加载（PyPDF）→ 文本切块（RecursiveCharacterTextSplitter，中文标点分隔）→ Embedding（bge-small-zh）→ 存入 Chroma 向量库 → 余弦相似度检索 Top-K → 拼接上下文 + 按模板 09 交给 Qwen 生成答案。届时 day9 的 `/v1/chat/completions` 接口将作为 RAG 的"生成层"直接复用，实现**"上传 PDF 能问答"的周核心里程碑**。
-- **本周预告**：Prompt 工程（已完成）→ 本地模型接口化（今日，已完成核心）→ **RAG 全链路 + PDF 问答 demo（day10，本周验收）**。若 8/12 内容未能在当天全部完成，按周计划顺延至下一周工作日，内容顺序不变。
+- **本周预告**：Prompt 工程（已完成）→ 本地模型接口化（已完成）→ **RAG 全链路 + PDF 问答 demo（day10，本周验收）**。若 8/12 内容未能在当天全部完成，按周计划顺延至下一周工作日，内容顺序不变。
 
 ---
 
-> 汇报依据：《00-基础内容总纲》《第二周详细计划》《day9 教程及配套文件》、脚本实际运行状态（服务启动日志）、git 提交记录（day9 未提交，待确认后存档）整理。带 🔄 的项为**待本人确认**的实测/零散任务，未虚报；确认后请告知，我即更新本汇报并补 commit。
+> 汇报依据：《00-基础内容总纲》《第二周详细计划》《day9 教程及配套文件》、脚本实际运行状态（服务启动日志 + curl/requests/LangChain 实测）、git 提交记录（commit `4452169`）整理。全部项均如实勾选，未虚报。
