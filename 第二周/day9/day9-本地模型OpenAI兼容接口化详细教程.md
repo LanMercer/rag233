@@ -16,9 +16,9 @@ Day 8 结束时，你的模型是这样用的：**打开 Python 脚本 → 加�
 1. **把模型包成一家"网上商店"**：用 FastAPI 写一个服务，启动后一直在后台跑着，专门接待"对话请求"；
 2. **店里挂一块"统一价目表"**：所有客人（任何程序）都用同一种格式来下单——这就是 **OpenAI 兼容接口**（和 OpenAI 官方 `/v1/chat/completions` 一模一样的格式）；
 3. **三种"客人"来光顾**：
-   - `curl`（命令行直接发请求）——最原始，验证服务真的活着；
-   - Python `requests`（写脚本发请求）——以后你写应用最常用的方式；
-   - LangChain（大模型应用框架）——**只改 3 个参数就把框架接到你的本地模型上**，这就是"无缝切换"。
+  - `curl`（命令行直接发请求）——最原始，验证服务真的活着；
+  - Python `requests`（写脚本发请求）——以后你写应用最常用的方式；
+  - LangChain（大模型应用框架）——**只改 3 个参数就把框架接到你的本地模型上**，这就是"无缝切换"。
 
 **今天结束时的"验收标准"一句话：**
 
@@ -26,41 +26,53 @@ Day 8 结束时，你的模型是这样用的：**打开 Python 脚本 → 加�
 
 **和你的数学背景接上的点（今天会反复出现）：**
 
-- **接口化 = 把模型抽象成一个函数 `f(输入) → 输出`**：调用方根本不关心模型长什么样、显存多大、用什么量化，只关心"输入这个格式，一定能拿到那个格式的输出"——就像数学里你只用 `f(x)` 而不关心 `f` 的表达式；
+- **接口化 = 把模型抽象成一个函数** `f(输入) → 输出`：调用方根本不关心模型长什么样、显存多大、用什么量化，只关心"输入这个格式，一定能拿到那个格式的输出"——就像数学里你只用 `f(x)` 而不关心 `f` 的表达式；
 - **OpenAI 兼容 = 全行业约定同一个"函数签名"**：不同供应商（OpenAI / 本地 Qwen / 别的）都是同一个接口形状。调用方代码零修改，换的只是"函数实现"——这是"抽象与多态"思想在 AI 应用层的体现；
-- **接口里的 `temperature` / `top_p` 参数，就是直接透传给你 Day 6 学的那个生成概率分布**：调用方隔着 HTTP 也能调节"输出分布的熵"——分布参数从"脚本里的常量"变成了"网络上的参数"；
+- **接口里的** `temperature` **/** `top_p` **参数，就是直接透传给你 Day 6 学的那个生成概率分布**：调用方隔着 HTTP 也能调节"输出分布的熵"——分布参数从"脚本里的常量"变成了"网络上的参数"；
 - **format = 压支持集（Day 8 的数学）**：HTTP 的 JSON 请求/响应格式，把"模型和应用之间怎么交流"的不确定性压成了一个标准结构——和"输出格式约束压条件熵"是同一个思想，只是作用在**模型外部**而不是**模型内部**。
 
 ---
 
+
+
 ## 🗺️ 今天的学习路线图（先看这里，心里有个数）
 
-| 步骤 | 内容 | 预计时间 |
-| --- | --- | --- |
-| 第 0 步 | 准备：打开 day9 文件夹、装 3 个包、确认环境 | 15 分钟 |
-| 第 1 步 | 概念先行：OpenAI 兼容 API / FastAPI / uvicorn / ASGI / HTTP + 为什么接口化 | 30~40 分钟 |
-| 第 2 步 | 动手写 `local_api.py`（逐段讲解）⭐ 今日核心 | 50~70 分钟 |
-| 第 3 步 | 启动服务（uvicorn） | 15~20 分钟 |
-| 第 4 步 | curl 测试（命令行直连） | 20~30 分钟 |
-| 第 5 步 | Python requests 测试（`api_client_test.py`） | 15~25 分钟 |
-| 第 6 步 | LangChain 无缝切换测试（`langchain_switch_test.py`）⭐ 核心验收 | 20~30 分钟 |
-| 零散时间 | 力扣 876、141（链表进阶）＋ 统计八股：偏差 / 方差 | 0.5~1 小时 |
-| 睡前 15 分钟 | 收尾 + git commit 存档 + 写明日计划 | 15 分钟 |
+
+| 步骤       | 内容                                                            | 预计时间     |
+| -------- | ------------------------------------------------------------- | -------- |
+| 第 0 步    | 准备：打开 day9 文件夹、装 3 个包、确认环境                                    | 15 分钟    |
+| 第 1 步    | 概念先行：OpenAI 兼容 API / FastAPI / uvicorn / ASGI / HTTP + 为什么接口化 | 30~40 分钟 |
+| 第 2 步    | 动手写 `local_api.py`（逐段讲解）⭐ 今日核心                                | 50~70 分钟 |
+| 第 3 步    | 启动服务（uvicorn）                                                 | 15~20 分钟 |
+| 第 4 步    | curl 测试（命令行直连）                                                | 20~30 分钟 |
+| 第 5 步    | Python requests 测试（`api_client_test.py`）                      | 15~25 分钟 |
+| 第 6 步    | LangChain 无缝切换测试（`langchain_switch_test.py`）⭐ 核心验收            | 20~30 分钟 |
+| 零散时间     | 力扣 876、141（链表进阶）＋ 统计八股：偏差 / 方差                                | 0.5~1 小时 |
+| 睡前 15 分钟 | 收尾 + git commit 存档 + 写明日计划                                    | 15 分钟    |
+
 
 > 主线合计约 3.5~4 小时。6 步主线 + 零散 + 睡前跑完即达标。
 
 ---
 
+
+
 ## 🔧 第 0 步：准备（15 分钟）
+
+
 
 ### 0.1 认识今天的学习素材
 
-| 素材 | 位置 | 用途 |
-| --- | --- | --- |
-| 本文件夹 4 个文件 + 1 个 JSON | `local_api.py` / `api_client_test.py` / `langchain_switch_test.py` / `test_payload.json` / 本教程 | 今天全部主线 |
-| 本地模型 | `download\Qwen2.5-3B-Instruct\`（Day 6 已下载） | 被包装的服务对象 |
-| Day 8 模板库 | `第二周\day8\提示词模板库.md`（模板 09 RAG 标准版） | 今天的测试输入直接复用 |
-| 第二周周计划 | `第二周\01-第二周详细计划.md`（8/11 章节） | 全周对照 |
+
+| 素材                    | 位置                                                                                             | 用途          |
+| --------------------- | ---------------------------------------------------------------------------------------------- | ----------- |
+| 本文件夹 4 个文件 + 1 个 JSON | `local_api.py` / `api_client_test.py` / `langchain_switch_test.py` / `test_payload.json` / 本教程 | 今天全部主线      |
+| 本地模型                  | `download\Qwen2.5-3B-Instruct\`（Day 6 已下载）                                                     | 被包装的服务对象    |
+| Day 8 模板库             | `第二周\day8\提示词模板库.md`（模板 09 RAG 标准版）                                                            | 今天的测试输入直接复用 |
+| 第二周周计划                | `第二周\01-第二周详细计划.md`（8/11 章节）                                                                   | 全周对照        |
+
+
+
 
 ### 0.2 打开今天的文件夹
 
@@ -102,9 +114,13 @@ python -c "import fastapi, uvicorn, openai, langchain_openai, requests; print('�
 
 ---
 
+
+
 ## 🧱 第 1 步：概念先行（30~40 分钟）
 
 > 对应周计划 8/11 第 1 条："概念（新名词必带简介）：OpenAI 兼容 API / FastAPI。"今天先把 4 个词讲透，再动手。
+
+
 
 ### 1.1 三个核心名词（新名词必带简介）
 
@@ -116,6 +132,8 @@ python -c "import fastapi, uvicorn, openai, langchain_openai, requests; print('�
 - **FastAPI** = Python 的一个现代 **Web 框架**（专门用来快速写出"HTTP 服务"的工具包）。你只需要写一个普通 Python 函数，再用 `@app.post("/v1/chat/completions")` 标注一下，它就自动变成接口：收到请求 → 调用你的函数 → 把返回值转成 JSON 发给调用方。**FastAPI = 帮你把"函数"变成"网上服务"的胶水。**
 - **uvicorn** = 跑 FastAPI 服务的**服务器**程序（ASGI 服务器）。FastAPI 本身不会"跑起来"，需要一个服务器在端口上监听；你敲 `uvicorn local_api:app --port 8000`，它就在 8000 端口上守株待兔，来了请求就转给 FastAPI 处理。
   - **ASGI（Asynchronous Server Gateway Interface）** = Python Web 服务的一个行业标准接口，说明 uvicorn 和 FastAPI 是"按同一套标准对接的"，可以随便换（还有 uvicorn 的替代品 hypercorn 等）。
+
+
 
 ### 1.2 一条请求的完整旅程（画出这个图，你就懂了接口）
 
@@ -156,11 +174,15 @@ python -c "import fastapi, uvicorn, openai, langchain_openai, requests; print('�
 
 > **一句话记忆**：接口化 = 给模型装一个"标准插座"，任何插头（curl / requests / LangChain / 前端）插上就能用。
 
+
+
 ### ✅ 第 1 步验收标准
 
 能口头讲清 3 个名词（OpenAI 兼容 API / FastAPI / uvicorn）+ 画出 1.2 的请求旅程图 + 说出"为什么接口化"的 4 个理由 = 完成。
 
 ---
+
+
 
 ## 🚀 第 2 步：动手写 `local_api.py`（50~70 分钟）⭐ 今日核心
 
@@ -193,6 +215,8 @@ DEFAULT_TEMPERATURE = 0.7
 
 - `MODEL_PATH` 就是你 Day 6 下载的模型位置（和 Day 8 的 `prompt_test_v2.py` 同一个路径）；
 - `MODEL_NAME` 是"对外名字"——调用方在请求里写 `"model": "Qwen2.5-3B-Instruct"`，服务就认这个名字。
+
+
 
 ### 2.3 `build_chatml()`：把消息拼成模型的提示词（2 分钟）
 
@@ -246,6 +270,8 @@ class ChatRequest(BaseModel):
 - FastAPI 收到请求后**自动按这个模型校验**：`messages` 缺失 → 直接返回 400 错误；`temperature` 没传 → 用默认 0.7。
 - **数学视角**：`ChatRequest` 就是"接口的函数签名"——调用方必须按这个 schema 传参，服务端保证按这个 schema 接收。这正是"格式约束"（Day 8）在**模型外部**的版本。
 
+
+
 ### 2.6 `lifespan`：启动时加载模型（3 分钟，重点）
 
 ```
@@ -257,18 +283,20 @@ async def lifespan(app: FastAPI):
 ```
 
 - **lifespan（生命周期）** = 服务进程"出生"和"死亡"时自动执行的钩子。出生时加载模型（**只加载一次**，进程活着就一直用），关闭时释放显存；
-- 这解决了 Day 6~8 的老问题：以前每次跑脚本都要重新加载模型（1~3 分钟），现在**加载一次，服务一直跑，所有请求共用这同一个模型实例**——这就是"服务化"的第一个好处；
+- 这解决了 Day 6~~8 的老问题：以前每次跑脚本都要重新加载模型（1~~3 分钟），现在**加载一次，服务一直跑，所有请求共用这同一个模型实例**——这就是"服务化"的第一个好处；
 - 里面用的 `BitsAndBytesConfig(load_in_4bit=True, ...)` 和你 Day 6/8 完全一样，模型加载代码原样复用。
 
 > 如果启动时打印出 `[transformers] torch_dtype is deprecated!` 之类的警告——无害，是新版 transformers 的提示，可以忽略。
 
+
+
 ### 2.7 三个接口（5 分钟，核心）
 
-**① `/health`（健康检查）**：返回 `{"status": "ok", "model_ready": true}`。就像体检中心——先确认"服务活着、模型加载完了"再去消费。
+**①** `/health`**（健康检查）**：返回 `{"status": "ok", "model_ready": true}`。就像体检中心——先确认"服务活着、模型加载完了"再去消费。
 
-**② `/v1/models`（列出模型）**：返回可用模型列表。OpenAI 官方也有这个接口，作用相同。
+**②** `/v1/models`**（列出模型）**：返回可用模型列表。OpenAI 官方也有这个接口，作用相同。
 
-**③ `/v1/chat/completions`（对话补全）★ 核心**：
+**③** `/v1/chat/completions`**（对话补全）★ 核心**：
 
 ```
 @app.post("/v1/chat/completions")
@@ -300,28 +328,32 @@ def chat_completions(request: ChatRequest):
 
 **逐字段解释（所有英文名词都别跳过，每个都能对号入座才叫"默写得了"）：**
 
-| 字段 | 英文名词解释 | 大白话 |
-| --- | --- | --- |
-| `id` | **id = identifier（标识符）**，全称其实是 `chatcmpl-xxx` 里的 **chatcmpl = chat completion（聊天补全）** 的缩写 | 这次请求的"快递单号"，唯一编号，排查问题时用它定位是哪一次响应 |
-| `object` | **object（对象）**，表示"这个返回体的类型" | 类型标签：程序靠它判断"我拿到的是个聊天结果"。值 `chat.completion` = **chat（聊天）+ completion（补全）**，连起来就是"一次聊天补全的结果" |
-| `created` | **created（创建）**，值是 **Unix timestamp（Unix 时间戳）** = 从 1970-01-01 起经过的秒数（`1750000000` ≈ 2025 年），这是计算机世界的通用"时间写法" | 这次响应是什么时候生成的 |
-| `model` | **model（模型）**，回显你请求里填的模型名 | 告诉你"这次到底是哪个模型回答的"，方便核对 |
-| `choices` | **choices = choice 的复数（候选/选择）**，是个数组，OpenAI 支持一次返回多个候选答案（请求里 `n=2` 就给 2 条），我们只生成 1 个 | 一个装"候选回答"的抽屉，里面有几条答案 |
-| `index` | **index（索引/序号）**，数组元素的下标，从 0 开始 | 这是第几个候选（0 = 第一个，也是唯一一个） |
-| `message` | **message（消息）**，装一条完整的对话消息（角色 + 内容） | 回答本体，里面有 role 和 content |
-| `role` | **role（角色）**，消息是谁说的。值是 `assistant` = **assistant（助手）**，另外还有 `user`（用户）、`system`（系统指令） | 这条消息是"助手说的话" |
-| `content` | **content（内容）**，消息的具体文本 | 真正要的答案文字，调用方取 `choices[0].message.content` 就是它 |
-| `finish_reason` | **finish = 结束 + reason = 原因**，生成是怎么停下来的 | 值是 `stop`（自然说完，撞上结束符）或 `length`（被 `max_tokens` 上限截断）——排查"回答不完整"先看它 |
-| `usage` | **usage（用量）**，本次请求的 token 消耗账本 | OpenAI 靠它计费，本地模型靠它做性能统计 |
-| `prompt_tokens` | **prompt（提示词）+ tokens（分词后的最小单位）**，输入消耗的 token 数 | 你发的消息（输入）花了多少 token |
-| `completion_tokens` | **completion（补全）+ tokens**，输出消耗的 token 数 | 模型生成的回答花了多少 token |
-| `total_tokens` | **total（总计）+ tokens** | 输入 + 输出一共花了多少 |
+
+| 字段                  | 英文名词解释                                                                                                        | 大白话                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `id`                | **id = identifier（标识符）**，全称其实是 `chatcmpl-xxx` 里的 **chatcmpl = chat completion（聊天补全）** 的缩写                     | 这次请求的"快递单号"，唯一编号，排查问题时用它定位是哪一次响应                                                            |
+| `object`            | **object（对象）**，表示"这个返回体的类型"                                                                                   | 类型标签：程序靠它判断"我拿到的是个聊天结果"。值 `chat.completion` = **chat（聊天）+ completion（补全）**，连起来就是"一次聊天补全的结果" |
+| `created`           | **created（创建）**，值是 **Unix timestamp（Unix 时间戳）** = 从 1970-01-01 起经过的秒数（`1750000000` ≈ 2025 年），这是计算机世界的通用"时间写法" | 这次响应是什么时候生成的                                                                                |
+| `model`             | **model（模型）**，回显你请求里填的模型名                                                                                     | 告诉你"这次到底是哪个模型回答的"，方便核对                                                                      |
+| `choices`           | **choices = choice 的复数（候选/选择）**，是个数组，OpenAI 支持一次返回多个候选答案（请求里 `n=2` 就给 2 条），我们只生成 1 个                          | 一个装"候选回答"的抽屉，里面有几条答案                                                                        |
+| `index`             | **index（索引/序号）**，数组元素的下标，从 0 开始                                                                               | 这是第几个候选（0 = 第一个，也是唯一一个）                                                                     |
+| `message`           | **message（消息）**，装一条完整的对话消息（角色 + 内容）                                                                           | 回答本体，里面有 role 和 content                                                                     |
+| `role`              | **role（角色）**，消息是谁说的。值是 `assistant` = **assistant（助手）**，另外还有 `user`（用户）、`system`（系统指令）                         | 这条消息是"助手说的话"                                                                                |
+| `content`           | **content（内容）**，消息的具体文本                                                                                       | 真正要的答案文字，调用方取 `choices[0].message.content` 就是它                                              |
+| `finish_reason`     | **finish = 结束 + reason = 原因**，生成是怎么停下来的                                                                       | 值是 `stop`（自然说完，撞上结束符）或 `length`（被 `max_tokens` 上限截断）——排查"回答不完整"先看它                          |
+| `usage`             | **usage（用量）**，本次请求的 token 消耗账本                                                                                | OpenAI 靠它计费，本地模型靠它做性能统计                                                                     |
+| `prompt_tokens`     | **prompt（提示词）+ tokens（分词后的最小单位）**，输入消耗的 token 数                                                               | 你发的消息（输入）花了多少 token                                                                         |
+| `completion_tokens` | **completion（补全）+ tokens**，输出消耗的 token 数                                                                      | 模型生成的回答花了多少 token                                                                           |
+| `total_tokens`      | **total（总计）+ tokens**                                                                                         | 输入 + 输出一共花了多少                                                                               |
+
 
 > **token 是什么**（Day 7 已接触，这里再对齐一次）：模型不按"字"处理文本，而是切成 **token（词元/令牌）** 这种更小的单位——中文里一个字大约 1~2 个 token，一句话就是一堆 token 的序列。所以"用量"按 token 数而不是字数算。
 
-**一句话记忆**（面试默写用）：整个 JSON 的骨架 = **"快递面单"（`id` / `created` / `model`）+ 一个装回答的数组 `choices`（里面第 0 个的 `message.content` 就是要的东西）+ 一张"用量小票" `usage`。**
+**一句话记忆**（面试默写用）：整个 JSON 的骨架 = **"快递面单"（**`id` **/** `created` **/** `model`**）+ 一个装回答的数组** `choices`**（里面第 0 个的** `message.content` **就是要的东西）+ 一张"用量小票"** `usage`**。**
 
 > 注意两个细节：① 接口函数用的是普通 `def` 而不是 `async def`——FastAPI 会自动把这种函数放到**线程池**里跑，不会卡住服务处理其他请求（模型生成是"慢操作"，这样设计更稳）；② 请求里带 `stream: true` 会返回 501"暂未实现"——**流式输出**（一个字一个字往外吐）是进阶功能，今天不实现，不丢人。
+
+
 
 ### 2.8 读完整段代码后，回答 3 个自测问题
 
@@ -329,13 +361,19 @@ def chat_completions(request: ChatRequest):
 2. `build_chatml` 解决什么问题？→（把 OpenAI 的 messages 结构翻译成 Qwen 认识的 ChatML 文本）
 3. 返回的 `choices[0].message.content` 是什么？→（模型生成的回答文本）
 
+
+
 ### ✅ 第 2 步验收标准
 
 通读 `local_api.py` 并能回答上面 3 个自测题 = 完成。**不要求默写代码，但要求"改得动"**：比如把默认温度改成 0.3、把 `max_tokens` 默认改成 300，你都知道改哪一行。
 
 ---
 
+
+
 ## ▶️ 第 3 步：启动服务（15~20 分钟）
+
+
 
 ### 3.1 启动命令
 
@@ -345,15 +383,19 @@ uvicorn local_api:app --host 127.0.0.1 --port 8000
 
 拆解这条命令：
 
-| 部分 | 含义 |
-| --- | --- |
-| `uvicorn` | ASGI 服务器程序 |
-| `local_api:app` | 加载 `local_api.py` 这个文件里的 `app` 对象（`local_api` 是文件名，`app` 是 FastAPI() 实例） |
-| `--host 127.0.0.1` | 只在本机监听（`0.0.0.0` 才是局域网可访问，先别开） |
-| `--port 8000` | 端口号（端口 = 一台机器上区分不同服务的"门牌号"） |
+
+| 部分                 | 含义                                                                       |
+| ------------------ | ------------------------------------------------------------------------ |
+| `uvicorn`          | ASGI 服务器程序                                                               |
+| `local_api:app`    | 加载 `local_api.py` 这个文件里的 `app` 对象（`local_api` 是文件名，`app` 是 FastAPI() 实例） |
+| `--host 127.0.0.1` | 只在本机监听（`0.0.0.0` 才是局域网可访问，先别开）                                           |
+| `--port 8000`      | 端口号（端口 = 一台机器上区分不同服务的"门牌号"）                                              |
+
 
 > 如果提示 `uvicorn` 不是可用的命令，改用：`python -m uvicorn local_api:app --host 127.0.0.1 --port 8000`
 > 如果提示端口被占用，换个端口：`--port 8001`（下面所有测试的 URL 都要跟着改端口）。
+
+
 
 ### 3.2 观察启动日志
 
@@ -369,11 +411,14 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8000
 ```
 
-**看到 `Uvicorn running on http://127.0.0.1:8000` 就说明服务启动了**，它会一直跑着（别关这个终端）。
+**看到** `Uvicorn running on http://127.0.0.1:8000` **就说明服务启动了**，它会一直跑着（别关这个终端）。
 
 > ⚠️ 两个提醒：
-> - **千万别加 `--reload`**：`--reload` 会在你每次保存文件时重启服务，而重启 = 重新加载 3B 模型（1~3 分钟）。调试代码时可以忍，正常使用时不要加；
+>
+> - **千万别加** `--reload`：`--reload` 会在你每次保存文件时重启服务，而重启 = 重新加载 3B 模型（1~3 分钟）。调试代码时可以忍，正常使用时不要加；
 > - 这个终端会被服务"占住"，之后所有测试请在**新开的终端**里做（`conda activate llm` 再进 day9 文件夹）。
+
+
 
 ### ✅ 第 3 步验收标准
 
@@ -381,9 +426,13 @@ INFO:     Uvicorn running on http://127.0.0.1:8000
 
 ---
 
+
+
 ## 🐚 第 4 步：curl 测试（20~30 分钟）
 
 > 对应周计划 8/11 第 4 条："测试：终端 curl 调用接口返回标准 JSON"。curl 是命令行里最原始的 HTTP 工具，它通了，说明"服务本身没问题"——后面所有花哨的测试都建立在它之上。
+
+
 
 ### 4.1 测试前先做一件事：解决 Windows 中文乱码
 
@@ -405,9 +454,11 @@ curl.exe -s http://127.0.0.1:8000/v1/models
 {"object":"list","data":[{"id":"Qwen2.5-3B-Instruct","object":"model","created":1750xxxxxx,"owned_by":"local"}]}
 ```
 
+
+
 ### 4.3 测试 `/v1/chat/completions`（核心）
 
-**关键坑：PowerShell 里 `curl` 是 `Invoke-WebRequest` 的别名**（一个行为完全不同的命令），所以**必须写 `curl.exe`** 才调用真正的 curl。
+**关键坑：PowerShell 里** `curl` **是** `Invoke-WebRequest` **的别名**（一个行为完全不同的命令），所以**必须写** `curl.exe` 才调用真正的 curl。
 
 请求体我们提前写进了 `test_payload.json`（POST 请求的"正文"）：
 
@@ -417,11 +468,13 @@ curl.exe -s http://127.0.0.1:8000/v1/chat/completions -H "Content-Type: applicat
 
 拆解：
 
-| 参数 | 含义 |
-| --- | --- |
-| `-s` | 静默模式（不显示进度条，只显示返回内容） |
-| `-H "Content-Type: application/json"` | 声明发送的是 JSON 数据 |
-| `-d "@test_payload.json"` | 请求正文从文件读取（`@` 表示"读文件"）。**用文件传 JSON 比在命令行里手打长 JSON 可靠得多，Windows 引号坑少** |
+
+| 参数                                    | 含义                                                                    |
+| ------------------------------------- | --------------------------------------------------------------------- |
+| `-s`                                  | 静默模式（不显示进度条，只显示返回内容）                                                  |
+| `-H "Content-Type: application/json"` | 声明发送的是 JSON 数据                                                        |
+| `-d "@test_payload.json"`             | 请求正文从文件读取（`@` 表示"读文件"）。**用文件传 JSON 比在命令行里手打长 JSON 可靠得多，Windows 引号坑少** |
+
 
 预期返回（**以实际跑出为准**，这里是示例）：
 
@@ -429,7 +482,7 @@ curl.exe -s http://127.0.0.1:8000/v1/chat/completions -H "Content-Type: applicat
 {"id":"chatcmpl-9f3a1c2b4d5e6f7a8b9c0d1e","object":"chat.completion","created":1755xxxxxx,"model":"Qwen2.5-3B-Instruct","choices":[{"index":0,"message":{"role":"assistant","content":"大模型的应用方向包括智能客服、内容生成、代码辅助、金融风控、医疗辅助等，覆盖各行各业……"},"finish_reason":"stop"}],"usage":{"prompt_tokens":45,"completion_tokens":66,"total_tokens":111}}
 ```
 
-**看到 `"choices"` 里有 `"message":{"content": ...}` 就说明接口通了。** 这就是周计划验收标准里说的"返回 `{"choices":[...]}` 格式"。
+**看到** `"choices"` **里有** `"message":{"content": ...}` **就说明接口通了。** 这就是周计划验收标准里说的"返回 `{"choices":[...]}` 格式"。
 
 ### 4.4 看懂返回 JSON 的"骨架"
 
@@ -445,9 +498,13 @@ curl.exe -s http://127.0.0.1:8000/v1/chat/completions -H "Content-Type: applicat
 
 ---
 
+
+
 ## 🐍 第 5 步：Python requests 测试（15~25 分钟）
 
 > curl 适合"验活"，但真正写应用时你要用 Python 的 **requests** 库（HTTP 客户端库 = 让 Python 程序发 HTTP 请求的现成工具）。我们准备好了 `api_client_test.py`。
+
+
 
 ### 5.1 运行测试脚本
 
@@ -459,14 +516,18 @@ cd "D:\Lan\研究生\技术学习\大模型算法\第二周\day9"
 python api_client_test.py
 ```
 
+
+
 ### 5.2 这个脚本测了什么（对应输出看）
 
-| 测试 | 测什么 | 对应今天哪件事 |
-| --- | --- | --- |
-| 健康检查 + /v1/models | 服务活着、模型就绪 | 第 3 步 |
-| 普通中文对话 | 最基础的单轮对话 | OpenAI 格式核心 |
+
+| 测试                  | 测什么                                                  | 对应今天哪件事           |
+| ------------------- | ---------------------------------------------------- | ----------------- |
+| 健康检查 + /v1/models   | 服务活着、模型就绪                                            | 第 3 步             |
+| 普通中文对话              | 最基础的单轮对话                                             | OpenAI 格式核心       |
 | RAG 资料问答（system 角色） | `messages` 里带 `system` 指令，**直接复用 Day 8 模板 09 的资料结构** | 接口化与 Prompt 工程的衔接 |
-| 温度 0 vs 0.9 对比 | 同一个问题两种温度各跑一次，观察输出差异 | Day 6 采样知识在接口层的复现 |
+| 温度 0 vs 0.9 对比      | 同一个问题两种温度各跑一次，观察输出差异                                 | Day 6 采样知识在接口层的复现 |
+
 
 预期输出形态（**以实际跑出为准**）：
 
@@ -485,6 +546,8 @@ model / object / id 前缀： Qwen2.5-3B-Instruct / chat.completion / chatcmpl-x
 [token 用量] {'prompt_tokens': 26, 'completion_tokens': 48, 'total_tokens': 74}
 ```
 
+
+
 ### 5.3 温度对比观察点（这是"复习 Day 6"的好机会）
 
 看脚本里"温度=0"和"温度=0.9"两次输出的对比：
@@ -500,15 +563,21 @@ model / object / id 前缀： Qwen2.5-3B-Instruct / chat.completion / chatcmpl-x
 
 ---
 
+
+
 ## 🔄 第 6 步：LangChain 无缝切换测试（20~30 分钟）⭐ 核心验收
 
 > 对应周计划 8/11 第 4 条："把 LangChain 里的模型换成'OpenAI 兼容端点'验证无缝切换。"这一步是"为什么接口化"最有力的实证。
+
+
 
 ### 6.1 先认识 LangChain
 
 - **LangChain** = 大模型应用开发框架（Day 8 模板 01 里你让它总结过"LangChain 是什么"）。它把"调模型、拼提示词、检索、工具调用"封装成标准组件，写 RAG 应用最常用。
 - 今天只用到它两个组件：`ChatOpenAI`（模型封装）和 `ChatPromptTemplate`（提示词模板）。
-- **重点**：LangChain 官方模型对象 `ChatOpenAI` 默认连的是 OpenAI 官方。**它支持传 `base_url` 参数**——指向任意"OpenAI 兼容端点"。我们把它指向本地服务，就成了"无缝切换"。
+- **重点**：LangChain 官方模型对象 `ChatOpenAI` 默认连的是 OpenAI 官方。**它支持传** `base_url` **参数**——指向任意"OpenAI 兼容端点"。我们把它指向本地服务，就成了"无缝切换"。
+
+
 
 ### 6.2 运行切换测试
 
@@ -531,19 +600,25 @@ python langchain_switch_test.py
 [返回对象类型] AIMessage
 ```
 
+
+
 ### 6.3 核心体验：三处切换点
 
 看脚本里的注释——**如果要切回 OpenAI 官方，只需要改三处**：
 
-| 参数 | 本地 Qwen | OpenAI 官方 |
-| --- | --- | --- |
+
+| 参数         | 本地 Qwen                    | OpenAI 官方                   |
+| ---------- | -------------------------- | --------------------------- |
 | `base_url` | `http://127.0.0.1:8000/v1` | `https://api.openai.com/v1` |
-| `api_key` | `"EMPTY"`（本地不校验） | `"sk-你的key"` |
-| `model` | `"Qwen2.5-3B-Instruct"` | `"gpt-4o-mini"` |
+| `api_key`  | `"EMPTY"`（本地不校验）           | `"sk-你的key"`                |
+| `model`    | `"Qwen2.5-3B-Instruct"`    | `"gpt-4o-mini"`             |
+
 
 **其余代码一行不动。** 这就是"OpenAI 兼容接口"的意义：**你的应用代码永远只写一遍，模型供应商随便换。**
 
 > 数学类比：这就像函数接口 `f(x)` ——调用方只依赖"签名"（参数和返回类型），不依赖"实现"。换 `f` 的实现（Qwen / GPT / 别的），调用方无感知。**兼容接口 = 面向接口编程，而不是面向实现编程。**
+
+
 
 ### 6.4 思考题
 
@@ -555,9 +630,13 @@ LangChain 返回的 `AIMessage` 是什么？（→ LangChain 对"模型输出消
 
 ---
 
+
+
 ## 🏃 零散时间任务（0.5~1 小时，穿插在休息时做）
 
 > 按 day8 工作汇报的安排：力扣 **876、141**（链表进阶·快慢指针）＋ 统计八股：**偏差 / 方差**。
+
+
 
 ### A. 力扣刷题 2 道（链表进阶·快慢指针）
 
@@ -569,6 +648,7 @@ LangChain 返回的 `AIMessage` 是什么？（→ LangChain 对"模型输出消
 ### B. 统计八股 10 分钟：偏差 / 方差（Bias–Variance）
 
 > 新名词必带简介：
+>
 > - **偏差（Bias）** = 模型预测的平均值偏离真实值的程度——系统性的"偏"。偏差大 = 欠拟合（连训练数据都学不好）；
 > - **方差（Variance）** = 换一批训练数据，模型的预测值波动多大——"不稳"。方差大 = 过拟合（把训练数据的噪声都背下来了）；
 > - **偏差-方差权衡（Bias–Variance Tradeoff）** = 模型复杂度升高时，偏差下降、方差上升，两者此消彼长，总误差存在一个最优复杂度。
@@ -622,7 +702,11 @@ MSE = 偏差² + 方差 + 噪声σ²
 
 ---
 
+
+
 ## 🌙 睡前 15 分钟：收尾 + 存档（git commit）
+
+
 
 ### 8.1 汇总今天的产出
 
@@ -634,6 +718,8 @@ MSE = 偏差² + 方差 + 噪声σ²
 - `langchain_switch_test.py`（LangChain 无缝切换测试）；
 - `test_payload.json`（curl 测试用请求体）；
 - 运行截图（建议存 `day9_curl测试截图.png` + `day9_requests测试截图.png` + `day9_LangChain切换截图.png` 放本文件夹）。
+
+
 
 ### 8.2 存档到 git
 
@@ -649,49 +735,60 @@ git commit -m "Day9: 本地模型 OpenAI 兼容接口化（FastAPI + /v1/chat/co
 
 ---
 
+
+
 ## 🚧 常见问题速查表（出问题先看这里）
 
-| 现象 | 原因 | 解决办法 |
-| --- | --- | --- |
-| `curl` 命令报错 / 行为奇怪 | PowerShell 里 `curl` 是 `Invoke-WebRequest` 的别名 | 一律用 `curl.exe`；或先 `chcp 65001` 切 UTF-8 |
-| 提示 `uvicorn` 找不到 | 没在 (llm) 环境，或 PATH 没配 | `python -m uvicorn local_api:app --host 127.0.0.1 --port 8000` |
-| 端口被占用 | 8000 被别的程序占了 | 换端口 `--port 8001`，所有测试 URL 同步改 |
-| 请求返回 503 "模型还没加载完成" | 请求发得太早，模型还在加载 | 等日志出现 `Uvicorn running on ...` 和 `模型已就绪` 再发请求 |
-| 请求很慢（20s~1min） | 3B 模型推理本来就要时间，第一次最慢 | 正常现象；把 `max_tokens` 调小可加快 |
-| 中文乱码 | Windows 控制台编码问题 | 先 `chcp 65001` 再测试；或把输出重定向到文件看 |
-| LangChain 报 `langchain_openai` 找不到 | 没装适配包 | `pip install langchain-openai` |
-| LangChain 报 `openai` 相关错误 | openai 版本不对 | `pip install -U "openai>=1.0"` |
-| 改代码后接口没变化 | 服务是旧代码，没重启 | Ctrl+C 停服务重新 `uvicorn`（不要用 --reload，会反复重载模型） |
-| 显存不足 OOM | 开了太多占显存程序 | 关浏览器等；Ctrl+C 停服务释放显存再重启 |
-| 启动报 `torch_dtype is deprecated` | 新版 transformers 提示 | 无害，可忽略（想消除可把 `torch_dtype` 改成 `dtype`） |
-| 返回 JSON 里混着奇怪文字 | 用了 `print()` 往响应里塞东西 | 检查接口函数：返回的必须是 dict，不是 print 的结果 |
-| 局域网其他电脑连不上 | 绑定了 `127.0.0.1`（仅本机） | 需要开放时用 `--host 0.0.0.0`（先别开，注意安全） |
-| 服务一直起不来且报模型路径错 | `MODEL_PATH` 与本地实际路径不符 | 打开 `local_api.py` 确认第 1 个常量，改成你模型的真实路径 |
+
+| 现象                                 | 原因                                            | 解决办法                                                           |
+| ---------------------------------- | --------------------------------------------- | -------------------------------------------------------------- |
+| `curl` 命令报错 / 行为奇怪                 | PowerShell 里 `curl` 是 `Invoke-WebRequest` 的别名 | 一律用 `curl.exe`；或先 `chcp 65001` 切 UTF-8                         |
+| 提示 `uvicorn` 找不到                   | 没在 (llm) 环境，或 PATH 没配                         | `python -m uvicorn local_api:app --host 127.0.0.1 --port 8000` |
+| 端口被占用                              | 8000 被别的程序占了                                  | 换端口 `--port 8001`，所有测试 URL 同步改                                 |
+| 请求返回 503 "模型还没加载完成"                | 请求发得太早，模型还在加载                                 | 等日志出现 `Uvicorn running on ...` 和 `模型已就绪` 再发请求                  |
+| 请求很慢（20s~1min）                     | 3B 模型推理本来就要时间，第一次最慢                           | 正常现象；把 `max_tokens` 调小可加快                                      |
+| 中文乱码                               | Windows 控制台编码问题                               | 先 `chcp 65001` 再测试；或把输出重定向到文件看                                 |
+| LangChain 报 `langchain_openai` 找不到 | 没装适配包                                         | `pip install langchain-openai`                                 |
+| LangChain 报 `openai` 相关错误          | openai 版本不对                                   | `pip install -U "openai>=1.0"`                                 |
+| 改代码后接口没变化                          | 服务是旧代码，没重启                                    | Ctrl+C 停服务重新 `uvicorn`（不要用 --reload，会反复重载模型）                   |
+| 显存不足 OOM                           | 开了太多占显存程序                                     | 关浏览器等；Ctrl+C 停服务释放显存再重启                                        |
+| 启动报 `torch_dtype is deprecated`    | 新版 transformers 提示                            | 无害，可忽略（想消除可把 `torch_dtype` 改成 `dtype`）                         |
+| 返回 JSON 里混着奇怪文字                    | 用了 `print()` 往响应里塞东西                          | 检查接口函数：返回的必须是 dict，不是 print 的结果                                |
+| 局域网其他电脑连不上                         | 绑定了 `127.0.0.1`（仅本机）                          | 需要开放时用 `--host 0.0.0.0`（先别开，注意安全）                              |
+| 服务一直起不来且报模型路径错                     | `MODEL_PATH` 与本地实际路径不符                        | 打开 `local_api.py` 确认第 1 个常量，改成你模型的真实路径                         |
+
 
 ---
+
+
 
 ## ✅ 今日验收清单（完成一项打一个勾）
 
 **主线：**
-- [ ] 能讲清 3 个名词：OpenAI 兼容 API / FastAPI / uvicorn，各配一句大白话
-- [ ] 能画出"一条请求的完整旅程"（curl → uvicorn → FastAPI → 模型 → 返回）
-- [ ] 通读 `local_api.py`，能回答 3 个自测题（模型何时加载 / build_chatml 干什么 / choices 里是什么）
-- [ ] 服务启动成功（日志出现 `Uvicorn running` + 模型已就绪）
-- [ ] `curl.exe` 调通 `/v1/models` 和 `/v1/chat/completions`，返回 JSON 含 `choices`
-- [ ] `python api_client_test.py` 跑通（中文对话 + RAG 资料问答 + 温度对比）
-- [ ] `python langchain_switch_test.py` 跑通，能说清"三处切换点"
-- [ ] 能讲清"为什么接口化"（前后端分离 / 统一调用 / 语言无关 / 为 RAG 打底）
+
+- [x] 能讲清 3 个名词：OpenAI 兼容 API / FastAPI / uvicorn，各配一句大白话
+- [x] 能画出"一条请求的完整旅程"（curl → uvicorn → FastAPI → 模型 → 返回）
+- [x] 通读 `local_api.py`，能回答 3 个自测题（模型何时加载 / build_chatml 干什么 / choices 里是什么）
+- [x] 服务启动成功（日志出现 `Uvicorn running` + 模型已就绪）
+- [x] `curl.exe` 调通 `/v1/models` 和 `/v1/chat/completions`，返回 JSON 含 `choices`
+- [x] `python api_client_test.py` 跑通（中文对话 + RAG 资料问答 + 温度对比）
+- [x] `python langchain_switch_test.py` 跑通，能说清"三处切换点"
+- [x] 能讲清"为什么接口化"（前后端分离 / 统一调用 / 语言无关 / 为 RAG 打底）
 
 **零散时间：**
-- [ ] 力扣 876（链表的中间结点）、141（环形链表）完成并讲出快慢指针的数学视角
-- [ ] 统计八股：偏差 / 方差定义、MSE = 偏差² + 方差 + 噪声的推导、与模型复杂度的 U 形关系能讲清
+
+- [x] 力扣 876（链表的中间结点）、141（环形链表）完成并讲出快慢指针的数学视角
+- [x] 统计八股：偏差 / 方差定义、MSE = 偏差² + 方差 + 噪声的推导、与模型复杂度的 U 形关系能讲清
 
 **睡前：**
-- [ ] git commit 存档成功
+
+- [x] git commit 存档成功
 
 **全部打勾 = Day 9 圆满结束。你现在有一个"对外营业"的本地模型服务：curl / requests / LangChain / OpenAI SDK 四种方式都能调它——这就是 day10 RAG 全链路的"生成层"，也是你简历上"本地大模型部署 + 服务化"最完整的一块拼图。** 🎉
 
 ---
+
+
 
 ## 📎 附录 A：local_api.py 怎么读（给想看懂代码的你）
 
@@ -699,8 +796,8 @@ git commit -m "Day9: 本地模型 OpenAI 兼容接口化（FastAPI + /v1/chat/co
 
 1. **文件头注释**：五件套，说明"这个脚本在机器学习的哪一环"；
 2. **常量区**：`MODEL_PATH`（模型位置）/ `MODEL_NAME`（对外名字）/ 默认生成参数——**日常改代码基本只改这里**；
-3. **`build_chatml()`**：OpenAI 的 messages 结构 → Qwen 的 ChatML 文本（翻译官）；
-4. **`generate()`**：真正的生成函数，返回文本 + 结束原因 + token 用量；
+3. `**build_chatml()**`：OpenAI 的 messages 结构 → Qwen 的 ChatML 文本（翻译官）；
+4. `**generate()**`：真正的生成函数，返回文本 + 结束原因 + token 用量；
 5. **pydantic 模型**（`ChatMessage` / `ChatRequest`）：定义接口的"函数签名"，FastAPI 自动校验；
 6. **lifespan + 三个接口**：生命周期加载模型，`/health`、`/v1/models`、`/v1/chat/completions` 三个入口。
 
@@ -710,11 +807,16 @@ git commit -m "Day9: 本地模型 OpenAI 兼容接口化（FastAPI + /v1/chat/co
 
 ---
 
+
+
 ## 📎 附录 B：三种测试脚本的分工
 
-| 脚本 | 用什么发请求 | 一句话定位 |
-| --- | --- | --- |
-| `api_client_test.py` | requests 库 | 验证接口 + 留 3 组测试样例（对话 / RAG / 温度对比） |
-| `langchain_switch_test.py` | LangChain 框架 | 验证"无缝切换"——框架级对接 |
+
+| 脚本                         | 用什么发请求       | 一句话定位                             |
+| -------------------------- | ------------ | --------------------------------- |
+| `api_client_test.py`       | requests 库   | 验证接口 + 留 3 组测试样例（对话 / RAG / 温度对比） |
+| `langchain_switch_test.py` | LangChain 框架 | 验证"无缝切换"——框架级对接                   |
+
 
 > 提醒：教程里所有"预期输出"都是**示例**，**以你实际跑出的结果为准**——跑出来不一样先别慌，看是不是方向性差异（比如 JSON 结构是否规范、回答是否合理），把截图发我一起看。
+

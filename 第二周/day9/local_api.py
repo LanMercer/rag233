@@ -169,6 +169,8 @@ def build_chatml(messages) -> str:
             # ↑ 拼成"助手发言"的 ChatML 片段。
             #   注意：历史里的 assistant 发言也要拼进去，模型才能"记得"之前聊过什么（多轮对话）。
 
+
+
     # 最后补一个 assistant 开始标记，让模型从这里接下去生成
     parts.append("<|im_start|>assistant\n")
     # ↑ 循环结束后，追加一个"只有开始标记、没有内容"的 assistant 片段。
