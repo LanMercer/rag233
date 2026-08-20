@@ -746,11 +746,11 @@ class Solution:
 **3 种打开方式（任选其一）：**
 
 1. **直达链接（最快）**：
-   - 国央企/银行真题分类页：https://www.nowcoder.com/exam/company?currentTab=leatest&tagIds=811
-   - 通用题库入口（可选类别）：https://www.nowcoder.com/exam/company
-   - 打开后可见 `中国银行 2025 春招笔试-模拟卷`、`农业银行 2025 春招笔试-模拟卷`、`工商银行 2025 春招笔试-模拟卷`、`招商银行 2025 春招笔试-模拟卷` 等整套卷子；
+  - 国央企/银行真题分类页：[https://www.nowcoder.com/exam/company?currentTab=leatest&tagIds=811](https://www.nowcoder.com/exam/company?currentTab=leatest&tagIds=811)
+  - 通用题库入口（可选类别）：[https://www.nowcoder.com/exam/company](https://www.nowcoder.com/exam/company)
+  - 打开后可见 `中国银行 2025 春招笔试-模拟卷`、`农业银行 2025 春招笔试-模拟卷`、`工商银行 2025 春招笔试-模拟卷`、`招商银行 2025 春招笔试-模拟卷` 等整套卷子；
 2. **按导航找**：牛客首页 → 顶部「题库」→ 侧边「公司真题」→ 页顶标签选「国央企」→ 挑一套银行/央企卷点进去 → 「开始练习/开始考试」；
-3. **讨论区看考情**（先了解题型再做题）：银行笔试话题 https://www.nowcoder.com/creation/subject/fafefe98ac1f49a1af06e448362fc960 ｜ 国央企笔试备考经验帖 https://www.nowcoder.com/discuss/810580184783933440
+3. **讨论区看考情**（先了解题型再做题）：银行笔试话题 [https://www.nowcoder.com/creation/subject/fafefe98ac1f49a1af06e448362fc960](https://www.nowcoder.com/creation/subject/fafefe98ac1f49a1af06e448362fc960) ｜ 国央企笔试备考经验帖 [https://www.nowcoder.com/discuss/810580184783933440](https://www.nowcoder.com/discuss/810580184783933440)
 
 > 提示：需要先免费注册/登录（手机号即可）；没找到目标银行时，直接去牛客首页搜索框搜「银行笔试」或银行名。
 
@@ -849,25 +849,25 @@ git commit -m "Day10: RAG 全链路 + PDF 问答 demo（PyPDF + 中文切块 + b
 
 **主线：**
 
-- [ ] 能讲清 6 个名词：RAG / Embedding / Chroma / 余弦相似度 / Top-K / 文本切块，各配一句大白话
-- [ ] 能画出"RAG 全链路六步"图（PDF → 加载 → 切块 → Embedding → 入库 → 检索 → 生成）
-- [ ] 能讲清"为什么用检索不用训练"（成本 / 更新速度 / 可解释性 三点）
-- [ ] 能说出"检索 = 打分 → 取 Top-K → 融合，和注意力三步走同构"的数学类比
-- [ ] `python build_index.py` 跑通，看到 chunk 数量 + `✅ 建库完成`
-- [ ] `python ask.py` 跑通，内置 3 问答案带 `[资料§N]` 出处；库外问题能答"资料中没有提到"
-- [ ] `python manual_rag.py` 跑通，能指出代码里哪一行在算余弦相似度、哪一行在取 Top-K
-- [ ] **换自己的 PDF，3 个问题全部答对并能指出出处（周核心里程碑）**
-- [ ] `python draw_rag_structure.py` 生成 `rag_结构图.png`
+- [x] 能讲清 6 个名词：RAG / Embedding / Chroma / 余弦相似度 / Top-K / 文本切块，各配一句大白话
+- [x] 能画出"RAG 全链路六步"图（PDF → 加载 → 切块 → Embedding → 入库 → 检索 → 生成）
+- [x] 能讲清"为什么用检索不用训练"（成本 / 更新速度 / 可解释性 三点）
+- [x] 能说出"检索 = 打分 → 取 Top-K → 融合，和注意力三步走同构"的数学类比
+- [x] `python build_index.py` 跑通，看到 chunk 数量 + `✅ 建库完成`
+- [x] `python ask.py` 跑通，内置 3 问答案带 `[资料§N]` 出处；库外问题能答"资料中没有提到"
+- [x] `python manual_rag.py` 跑通，能指出代码里哪一行在算余弦相似度、哪一行在取 Top-K
+- [x] **换自己的 PDF，3 个问题全部答对并能指出出处（周核心里程碑）**
+- [x] `python draw_rag_structure.py` 生成 `rag_结构图.png`
 
 **零散时间：**
 
-- [ ] 力扣 382（链表随机节点·蓄水池抽样）完成，能写出概率连乘 `1/n` 的推导
-- [ ] 牛客真题 1 套限时完成 + 复盘（时间分配 / 编程题技巧 / 行测数学题）
+- [x] 力扣 382（链表随机节点·蓄水池抽样）完成，能写出概率连乘 `1/n` 的推导
+- [x] 牛客真题 1 套限时完成 + 复盘（时间分配 / 编程题技巧 / 行测数学题）
 
 **睡前：**
 
-- [ ] 服务已停止、`chroma_db` 已加 `.gitignore`、git commit 存档成功
-- [ ] 周报素材整理完毕（为 week2 工作汇报做准备）
+- [x] 服务已停止、`chroma_db` 已加 `.gitignore`、git commit 存档成功
+- [x] 周报素材整理完毕（为 week2 工作汇报做准备）
 
 **全部打勾 = Day 10 圆满结束，第二周核心里程碑"上传 PDF 能问答"达成。** 你手上现在有一套完整的"本地部署 → 服务化 → RAG"链路：Qwen 是生成引擎，Chroma 是记忆库，模板 09 是答题规范——**这就是 8 月项目"上传 PDF 能问答的 demo"的完整骨架**，也是你简历上最硬的一块拼图。🎉
 
