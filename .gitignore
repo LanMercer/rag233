@@ -8,3 +8,6 @@ download/
 __pycache__/
 *.pyc
 .venv/
+
+# LoRA 微调适配器权重（Day12 训练产物，可重新训练生成，不进 git）
+第三周/day12/lora_adapter/
