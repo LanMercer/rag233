@@ -3,8 +3,8 @@
 > 时间安排：主线 4~~5 小时 + 零散时间 0.5~~1 小时 + 睡前 15 分钟
 > 日期说明：第三周计划按"第 N 个工作日"锚定（第二周 day10 实际 8/20 完成，本周工作日从 8/21 起），**内容顺序不变**——day12 就是原计划 8/16 的内容：LoRA/QLoRA 微调实战（二）。
 > 适用对象：已完成 Day11——手里有 `sft_data.json`（300 条三字段机器人行业数据）、`check_env.py` 五件套全绿（transformers 5.14.1 / peft 0.20.0 / bitsandbytes 0.50.0 / accelerate 1.14.0 / datasets 5.0.1）、本地 `download\Qwen2.5-3B-Instruct\`（Day6 下载，4bit 部署过）、Day9 `local_api.py`（标准生成层）。今天**第一次真正训练模型**。
-> 本教程的目标：① 讲清训练"五件套"每个概念（新名词必带简介）；② 读懂****** `train_lora.py`**（文件头五件套 + LoraConfig / BitsAndBytesConfig / get_peft_model 三件套装配）；③ 跑通 QLoRA 微调训练，用** `torch.cuda.memory_allocated()` **盯显存（6G 预算内）、观察 loss 下降；④ 只存 adapter（几 MB~几十 MB，不存全量模型）；⑤ 微调前后效果对比 →** `微调前后效果对比表.md`**。
-> 本教程的铁律：今天不下载新模型、不改数据；训练产物** `lora_adapter/`**（adapter 权重）不进 git（会在 .gitignore 排除，另行说明）；跑训练前**关掉浏览器/游戏等占显存程序**。教程里的预期输出是"形态示例"，**以你实际跑出的结果为准**（下面写的是形态说明，不是这台机器的实测）。
+> 本教程的目标：① 讲清训练"五件套"每个概念（新名词必带简介）；② 读懂******** `train_lora.py`**（文件头五件套 + LoraConfig / BitsAndBytesConfig / get_peft_model 三件套装配）；③ 跑通 QLoRA 微调训练，用** `torch.cuda.memory_allocated()` **盯显存（6G 预算内）、观察 loss 下降；④ 只存 adapter（几 MB~几十 MB，不存全量模型）；⑤ 微调前后效果对比 →** `微调前后效果对比表.md`**。
+> 本教程的铁律：今天不下载新模型、不改数据；训练产物** `lora_adapter/`（adapter 权重）不进 git（会在 .gitignore 排除，另行说明）；跑训练前**关掉浏览器/游戏等占显存程序**。教程里的预期输出是"形态示例"，**以你实际跑出的结果为准**（下面写的是形态说明，不是这台机器的实测）。
 
 ---
 
@@ -1076,18 +1076,18 @@ git commit -m "Day12: QLoRA 微调训练跑通（Qwen2.5-3B-Instruct + r=8 adapt
 - [x] `python train_lora.py` 跑通：显存 <6GB、train/eval loss 均下降
 - [x] `lora_adapter/` 只有 adapter（adapter_config.json + adapter_model.safetensors，几 MB~几十 MB），**没有**几 GB 的全量模型
 - [x] 能讲清"LoRA 只存 adapter、推理时合入权重 W0+B·A"与本周参数账/显存账
-- [ ] `python compare_lora.py` 跑出对比表，**至少 3 个问题有肉眼可见差异**，能解释差异来源
+- [x] `python compare_lora.py` 跑出对比表，**至少 3 个问题有肉眼可见差异**，能解释差异来源
 
 **零散时间：**
 
-- [ ] 力扣 56（合并区间）完成，能讲"排序让重叠相邻 + 贪心"
-- [ ] 力扣 75（颜色分类）完成，能讲"三指针 + 不变量三段分区"
+- [x] 力扣 56（合并区间）完成，能讲"排序让重叠相邻 + 贪心"
+- [x] 力扣 75（颜色分类）完成，能讲"三指针 + 不变量三段分区"
 - [x] 统计八股：能讲 K 折 / 留一法 / 为什么需要验证集 + 偏差-方差权衡
 
 **睡前：**
 
-- [ ] `.gitignore` 已加 `第三周/day12/lora_adapter/`（adapter 不进 git）
-- [ ] git commit 存档成功
+- [x] `.gitignore` 已加 `第三周/day12/lora_adapter/`（adapter 不进 git）
+- [x] git commit 存档成功
 
 **全部打勾 = Day 12 圆满结束。** 今天你**第一次真正训练了模型**——adapter 就是项目微调层的第一版产物。**Day13 将把它接入 Day9 接口，开始项目定型。** 🎉
 
