@@ -1,0 +1,10 @@
+{
+  "model": "Qwen2.5-3B-Instruct-LoRA",
+  "messages": [
+    {
+      "role": "user",
+      "content": "请用通俗的语言解释什么是运动重定向（Motion Retargeting）？"
+    }
+  ],
+  "max_tokens": 200
+}

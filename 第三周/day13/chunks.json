@@ -1,0 +1,527 @@
+[
+ {
+  "id": 0,
+  "page": 0,
+  "text": "Retargeting Matters: General Motion Retargeting for Humanoid\nMotion Tracking\nJo˜ao Pedro Ara ´ujo† Yanjie Ze† Pei Xu † Jiajun Wu∗ C. Karen Liu∗\nStanford University\nAbstract— Humanoid motion tracking policies are central to\nbuilding teleoperation pipelines and hierarchical controllers,\nyet they face a fundamental challenge: the embodiment gap\nbetween humans and humanoid robots. Current approaches\naddress this gap by retargeting human motion data to hu-"
+ },
+ {
+  "id": 1,
+  "page": 0,
+  "text": "manoid embodiments and then training reinforcement learning\n(RL) policies to imitate these reference trajectories. However,\nartifacts introduced during retargeting, such as foot sliding,\nself-penetration, and physically infeasible motion are often left\nin the reference trajectories for the RL policy to correct.\nWhile prior work has demonstrated motion tracking abilities,\nthey often require extensive reward engineering and domain\nrandomization to succeed. In this paper, we systematically"
+ },
+ {
+  "id": 2,
+  "page": 0,
+  "text": "evaluate how retargeting quality affects policy performance\nwhen excessive reward tuning is suppressed. To address issues\nthat we identify with existing retargeting methods, we propose\na new retargeting method, General Motion Retargeting (GMR).\nWe evaluate GMR alongside two open-source retargeters, PHC\nand ProtoMotions, as well as with a high-quality closed-source\ndataset from Unitree. Using BeyondMimic for policy training,\nwe isolate retargeting effects without reward tuning. Our"
+ },
+ {
+  "id": 3,
+  "page": 0,
+  "text": "experiments on a diverse subset of the LAFAN1 dataset reveal\nthat while most motions can be tracked, artifacts in retargeted\ndata significantly reduce policy robustness, particularly for\ndynamic or long sequences. GMR consistently outperforms\nexisting open-source methods in both tracking performance\nand faithfulness to the source motion, achieving perceptual\nfidelity and policy success rates close to the closed-source base-\nline. Website: jaraujo98.github.io/retargeting matters. Code:"
+ },
+ {
+  "id": 4,
+  "page": 0,
+  "text": "github.com/YanjieZe/GMR.\nI. INTRODUCTION\nDeveloping humanoid policies that truly generalize to\nreal-world environments requires learning from data that\ncaptures physical interaction with the world. Given the\nmorphological similarities between humans and humanoids,\nrecent work [1], [2], [3], [4], [5], [6], [7], [8] has leveraged\n3D human motion data (sourced from motion capture [9]\nor human motion recovery from video [7], [8], [10]) as\ndemonstrations to train humanoids to perform whole-body"
+ },
+ {
+  "id": 5,
+  "page": 0,
+  "text": "movements requiring human-like balance and agility. These\nhumanoid motion tracking policies are a fundamental tool\nfor building teleoperation pipelines or hierarchical control\nsystems. However, significant differences still exist between\nhumans and humanoids in terms of bone length, joint range\nof motion, kinematic structure, body shape, mass distribu-\ntion, and actuation mechanisms. This embodiment gap is\n†Equal contribution. * Equal advising."
+ },
+ {
+  "id": 6,
+  "page": 0,
+  "text": "†Equal contribution. * Equal advising.\n1Jo˜ao Pedro Ara ´ujo, Yanjie Ze, Pei Xu, Jiajun Wu, and C. Karen Liu\nare with Department of Computer Science, School of Engineering, Stanford\nUniversity,353 Jane Stanford Way, Stanford, CA 94305, United States\nSend correspondence to:jparaujo@stanford.edu\nthe first major hurdle that must be overcome for 3D human\nmotion data to be fully useful for humanoid learning.\nThe standard approach for overcoming this embodiment"
+ },
+ {
+  "id": 7,
+  "page": 0,
+  "text": "gap is to use kinematic retargeting from the source hu-\nman motion to the target humanoid embodiment. Given\nthe retargeted data, a popular practice in current robotics\nresearch is to use a reinforcement learning (RL) based\napproach to learn a policy capable of achieving a desired\ntask through reference motion imitation. In most cases (for\nan exception see [11]), this policy is then deployed zero-\nshot into the real world. This practice either overlooks"
+ },
+ {
+  "id": 8,
+  "page": 0,
+  "text": "glaring artifacts introduced by the retargeting process (such\nas foot sliding, ground penetration, and physically impossible\nmotion due to self-penetration), instead forcing the RL policy\nto imitate physically infeasible motions while maintaining\nphysical constraints, or discards the poorly retargeted data\n[7]. Prior work [12], [13], [14], [11] has shown that while\ntraining policies on retargeted data with severe artifacts in\nsimulation is possible, transferring them to the real world"
+ },
+ {
+  "id": 9,
+  "page": 0,
+  "text": "demands extensive trial-and-error, reward shaping, and pa-\nrameter tuning. Considering this practice, our hypothesis is\nthatwith enough engineering in the reward function and\ndomain randomization, the artifacts caused by retargeting\ncan be mostly mitigated or removed. However, without these\nengineering efforts,the quality of retargeting results plays a\nsignificant role.\nIn this paper, we conduct rigorous experiments and anal-\nysis to validate our hypothesis. We compare three methods"
+ },
+ {
+  "id": 10,
+  "page": 0,
+  "text": "for human to humanoid motion retargeting applied to motion\ntracking tasks that do not involve interaction with an object\nor a complex scene:PHC, widely used by recent humanoid\nmotion tracking works [2], [11];ProtoMotions, used for\nretargeting challenging dynamic tasks [8]; andGMR, a\ngeneral motion retargeting method proposed by us to address\nthe problems we find in the other two methods. Specifically,\nwe find that the way in which PHC and ProtoMotions handle"
+ },
+ {
+  "id": 11,
+  "page": 0,
+  "text": "human to robot scaling introduces several motion artifacts\nthat negatively impact performance. GMR addresses this\nby using a simple but flexible non-uniform local scaling\nprocedure, followed by a two-stage optimization to solve\nfor the robot motion that tracks the scaled reference. In\naddition, we compare the three retargeting methods with a\nhigh-quality retargeted motion dataset generated by a closed-\nsource method not available to the public (Unitree)."
+ },
+ {
+  "id": 12,
+  "page": 0,
+  "text": "To isolate the impact of retargeting methods, we use\nBeyondMimic [15] for training and evaluation of RL policies\nthat track given reference motions. BeyondMimic does not\narXiv:2510.02252v1  [cs.RO]  2 Oct 2025"
+ },
+ {
+  "id": 13,
+  "page": 1,
+  "text": "depend on reward tuning and is developed independently\nfrom the retargeting methods we use, making it a fair method\nto evaluate them. We train single-trajectory policies for a\ndiverse subset of the LAFAN1 dataset, excluding motions\nwith contacts other than feet. Our final dataset consists of 21\nsequences with lengths ranging from 5 seconds to 2 minutes.\nFor evaluation, we compare success rates measured using\na very strict success definition that requires the policy to"
+ },
+ {
+  "id": 14,
+  "page": 1,
+  "text": "complete the reference motion in its entirety for the rollout\nto be considered successful. We evaluate each policy a signif-\nicant number of times under conditions that take into account\nobservation noise (both from noisy sensors and from state\nestimation algorithms), errors in model parameter estimation,\nand network latency in the controller. We also conduct a user\nstudy to evaluate the perceptual faithfulness of the retargeted\nmotions to the source human motion. This additionally tells"
+ },
+ {
+  "id": 15,
+  "page": 1,
+  "text": "us if the policies will be learning the motions we intend them\nto learn, or if they are learning a variant (which might be\neasier or harder to track).\nOur end-to-end experiments demonstrate that the choice of\nretargeting method critically impacts humanoid performance.\nWhile policies trained on motions retargeted with different\nmethods are generally capable of tracking a wide range of\nmotions, including both simple and highly dynamic ones"
+ },
+ {
+  "id": 16,
+  "page": 1,
+  "text": "(consistent with results presented in prior work), there are a\nfew exceptions where artifacts introduced during retargeting\nmake it more difficult (and in some cases impossible) for\nthe policy to learn effectively. These cases highlight that\nwithout the extensive reward engineering found in prior\nworks, retargeting artifacts do pose challenges for certain\nmotions and reduce policy performance. We found that foot\npenetration, self-intersection, and abrupt velocity spikes are"
+ },
+ {
+  "id": 17,
+  "page": 1,
+  "text": "all critical artifacts that should be avoided during retargeting.\nAdditionally, we note that the initial frame of the reference\nmotion can greatly impact whether the policy is able to start\ntracking it or if it fails immediately (regardless of retargeting\nmethod used), something that was observed in prior work\n[7]. Finally, our results show that GMR comes very close\nto the Unitree retarget dataset in both faithfulness score and\npolicy success rate, while also having higher success rates"
+ },
+ {
+  "id": 18,
+  "page": 1,
+  "text": "and lower motion tracking errors than the other methods. In\nsummary, the contribution of this work includes:\n•A new general motion retargeting method, GMR, that\naddresses issues found in other retargeters and produces\nhigh-quality retargeted motion from a wide range of\nhuman motion.\n•A comprehensive study on the impact of retargeted ref-\nerence motion quality on the performance of humanoid\nmotion tracking policies.\nII. RELATEDWORK\nMotion retargeting is a common data processing tech-"
+ },
+ {
+  "id": 19,
+  "page": 1,
+  "text": "nique for character animations in computer graphics. Clas-\nsic methods [16], [17], [18], [19] employ optimization-\nbased approaches and rely on heuristically defined kinematic\nconstraints to map motions to articulated characters. With\nthe advancement of deep learning techniques, data-driven\napproaches have drawn lots of attention in recent years.\nThese approaches, however, typically require paired data\nto perform supervised learning [20], [21], need semantic"
+ },
+ {
+  "id": 20,
+  "page": 1,
+  "text": "labels to perform model training in an unsupervised man-\nner [22], [23], [24], or use language models and differentiable\nrendering techniques to perform evaluation visually [25].\nBesides retageting for single, rigid-body characters, previous\nliterature also developed approaches for retargeting multiple\ninteracting characters [26], [27], [28], and characters with\ndeformable shapes [29], [30], [31].\nIn the robotics community, though data-driven approaches"
+ },
+ {
+  "id": 21,
+  "page": 1,
+  "text": "have been widely used for controlling humanoid robots [2],\n[3], [4], [5], [7], [8], [6], [10], [15] to generate human-\nlike motions through imitation learning, the difficulty of\nacquiring paired or semantically labeled motion data on\nreal robots limits the application of data-driven retargeting\napproaches on humanoids. While some works [32], [33], [34]\nexplored learning-based approaches of motion retargeting on\nhumanoids, they focused only on simple arm and upper-body"
+ },
+ {
+  "id": 22,
+  "page": 1,
+  "text": "motions. In this paper, we focus on methods for whole-\nbody motion retargeting involving locomotion and that do\nnot require pre-collecting any data.\nNa¨ıve approaches [3], [5] directly copy the joint rotation\nfrom the source human motions to the joint space of the tar-\nget humanoid. However, the topological and morphological\ndifferences between human subjects and the humanoid often\nlead to artifacts like floating, feet penetrations and sliding,"
+ },
+ {
+  "id": 23,
+  "page": 1,
+  "text": "and the drift of end effectors (feet and hands). Besides,\nadditional processing is needed to convert theSO(3)joint\nspace from humans to humanoids (typically equipped with\nonly revolute joints).\nBy solving the inverse kinematics (IK) problem, ap-\nproaches of whole-body geometric retargeting (WBGR) per-\nform whole-body retargeting while allowing the source and\ntarget joint spaces to be misaligned. The vanilla WBGR [35],\n[1] ignores the size difference in the Cartesian space and"
+ },
+ {
+  "id": 24,
+  "page": 1,
+  "text": "performs IK to only match the orientations of key links.\nHumanMimic [36], on the other hand, solves IK for Cartesian\nposition matching of key points while using manually defined\ncoefficients to scale the source motions.\nTaking advantage of the recent work on human body repre-\nsentation in computer graphics, H2O [2] uses the SMPL [37]\nmodel to fit the robot shape as a human body and then uses\nit to scale the motion before solving the IK problem. A"
+ },
+ {
+  "id": 25,
+  "page": 1,
+  "text": "reference implementation can be found in the PHC [38] code\nbase, and we refer to this method as the PHC retargeting\nmethod throughout this paper. It uses the gradient descent\nmethod to solve the IK problem through forward kinematics,\nwhich is time-consuming and limits its application for real-\ntime scenarios. Although used in many follow-up works [14],\n[13], [39], [11], the PHC method does not take into account\nthe contact state of motions during retargeting, which can"
+ },
+ {
+  "id": 26,
+  "page": 1,
+  "text": "lead to artifacts like floating, foot sliding, and penetrations\nwith the floor. Moreover, SMPL is designed for human-\nbody representation, and cannot cover well robots that have\nrelatively large morphological discrepancies with humans.\nOther works [40], [8], [6] have explored the use of differ-"
+ },
+ {
+  "id": 27,
+  "page": 2,
+  "text": "ential IK solvers [41]. These methods scale the Cartesian\njoint positions of the source motions, and then calculate\ngeneralized velocities that when integrated in-place reduce\nthe Cartesian joint position and orientation error between\nthe scaled source motion and the robot. The method in\nProtoMotions [40] uses global axis-aligned scaling factors\nto scale the Cartesian positions of the joints in the source\nmotion, and then minimizes a weighted sum of the position"
+ },
+ {
+  "id": 28,
+  "page": 2,
+  "text": "and orientation errors of matching key bodies between the\nsource human motion and the robot. KungfuBot [8] uses the\nProtoMotions approach, but with scaling disabled.\nIII. EVALUATIONMETHOD\nThe goal of the evaluation in this paper is to answer the\nfollowing questions.\n•Q1.Does the choice of retargeting method impact the\nperformance of the motion tracking policies?\n•Q2.What retargeting artifacts negatively impact the\npolicy and prevent it from being able to learn?"
+ },
+ {
+  "id": 29,
+  "page": 2,
+  "text": "policy and prevent it from being able to learn?\n•Q3.To what extent do different retargeting methods\npreserve the “look” of the source motion?\nTo answer these questions, we retarget the data using\nthree methods, PHC, ProtoMotions, and GMR (Section IV),\nand use a dataset retargeted with a closed-source method\n(Unitree). We train motion tracking policies using the Be-\nyondMimic [15] pipeline, which has been shown to work for\nall types of reference motions seen in prior work without the"
+ },
+ {
+  "id": 30,
+  "page": 2,
+  "text": "need for reward tuning or extensive domain randomization.\nCrucially, BeyondMimic was developed independently of the\nretargeting methods under study.\nA. Retargeting Methods\nPHC [38], [2], [14], [11].The PHC retargeting method\nis designed for motions in the SMPL [37] format. SMPL\nis a parametric human body modelf SMPL that, given a\nvector of shape parametersβ h and pose parametersθ h,\nreturns the 3D locations of vertices of a posed human body\nmesh,v h =f SMPL\n\u0000\nβ h,θ h\u0001"
+ },
+ {
+  "id": 31,
+  "page": 2,
+  "text": "mesh,v h =f SMPL\n\u0000\nβ h,θ h\u0001\n. Given the vertex coordinates, a\njoint regressorJ∈R (n j×3)×(nv×3) is used to regress the 3D\npositions of the joints,j h =Jv h, which are considered the\norigins of the key bodies. A motion in SMPL format is thus\na file with the shape parameters of the body and a tensor of\npose parameters where one of the dimensions corresponds to\ntime. The first step in this retargeting method is to fit a set\nof shape parametersβ r to the robot skeleton. Then, given"
+ },
+ {
+  "id": 32,
+  "page": 2,
+  "text": "the pose parameters of the human motionθ h\nt , the SMPL\nbody model is used to calculate the target 3D coordinates\nfor the robot joints over time,p target\nt =J f SMPL\n\u0000\nβ r,θ h\nt\n\u0001\n.\nThe second step is to optimize the robot root translation\npt, orientationR t, and joint anglesq t at each time step to\nminimize the position error between the joints of the posed\nrobot (computed through forward kinematics) and the targets\ncomputed from the SMPL robot model,\nminpt ,Rt ,qt\n1\nT ∑T\nt=1∥ptarget"
+ },
+ {
+  "id": 33,
+  "page": 2,
+  "text": "minpt ,Rt ,qt\n1\nT ∑T\nt=1∥ptarget\nt −FK(p t ,R t ,q t)∥ 2\nsubject toq −≤q t≤q + .(1)\nThe PHC implementation uses gradient descent on the L2\nnorm of the error averaged over all frames to solve this\noptimization. The optimizer for the root pose is Adam, and\nthe optimizer for the joint values is Adadelta. The joint\nlimit constraint is enforced through clamping. After the\noptimization is done, forward kinematics is used to compute\nthe height of all robot bodies in the retargeted motion clip,"
+ },
+ {
+  "id": 34,
+  "page": 2,
+  "text": "and the lowest height is subtracted from the root translation.\nProtoMotions [40].The ProtoMotions package is a col-\nlection of standard implementations of popular methods\nfor training motion imitation policies. It comes with an\noptimization-based retargeting algorithm. The source motion\nis scaled using a custom scaling factor for each of the world\nframe axes. It then uses Mink [41] to minimize the joint\nposition and orientation errors between the scaled human and"
+ },
+ {
+  "id": 35,
+  "page": 2,
+  "text": "robot key bodies. Like PHC, there is also a post-processing\nstep to modify the height, but instead of setting the lowest\nheight to 0 it sets it to the lowest height in the source motion.\nGMR.We also evaluate GMR, a retargeting method\nproposed by us. The main motivation for developing GMR\nwas to fix glaring artifacts found in the retargets generated by\nthe other two methods, namely deviation from the source mo-\ntion, foot sliding, ground penetrations, and self-intersections."
+ },
+ {
+  "id": 36,
+  "page": 2,
+  "text": "GMR is described in detail in Sec. IV. The main difference\nfrom the prior two methods is how it handles source motion\nscaling, which we found to be the cause for many of the\nartifacts. This is followed by a two-stage optimization to\nfind the robot motion.\nUnitree.Despite not having access to the retargeting pro-\ncedure, the Unitree retarget of the LAFAN1 dataset has been\nused in recent papers such as BeyondMimic and VideoMimic\n[10]. We include it as a baseline to gauge how the open"
+ },
+ {
+  "id": 37,
+  "page": 2,
+  "text": "retargeting methods compete with proprietary retargeting.\nB. Data Processing\nWe select a diverse sample from the LAFAN1 dataset [42],\nranging from simple motions like walking and turning to\ndynamic and complex motions such as martial arts, kicks,\nand dancing. We do not include motions with complex\ninteraction with the environment, such as crawling or getting\nup from the floor (we exceptionally included a sequence with\na cartwheel since the robot either has the feet or the hands"
+ },
+ {
+  "id": 38,
+  "page": 2,
+  "text": "on the floor, but never both). The full list of motions can be\nfound in Tab. I.\nWe retarget each motion sequence to a Unitree G1 robot.\nLAFAN1 files are provided in the BVH format, which GMR\nis directly compatible with. Both PHC and ProtoMotions\nrequire the source motion data to be in the SMPL format\n(ProtoMotions additionaly supports the SMPL-X [43] for-\nmat). We handle this conversion from BVH to SMLP(-X)\nfollowing a method similar to PHC retargeting. First, we fit"
+ },
+ {
+  "id": 39,
+  "page": 2,
+  "text": "the shape parametersβof the SMPL(-X) body model to\nthe BVH skeleton by minimizing the joint position error\nbetween the two skeletons (we also penalize∥β∥ 2 since\nwe find large values of it lead to large distortions of the\nhuman mesh). Then, we leverage the fact that the LAFAN1\nskeleton has the same kinematic structure of SMPL(-X) and"
+ },
+ {
+  "id": 40,
+  "page": 3,
+  "text": "copy the matching joint 3D rotations. Finally, we calculate\nthe root translation as the offset that minimizes the position\nerror between the posed LAFAN1 skeleton and the posed\nSMPL(-X) skeleton. We then use the PHC and ProtoMotions\nretargeting methods to obtain the final G1 motion. We find\nthat the SMPL-X body model fits the LAFAN1 skeleton\nbetter than SMPL, so we use it as source for ProtoMotions.\nAlthough the PHC retargeting code includes a post-"
+ },
+ {
+  "id": 41,
+  "page": 3,
+  "text": "processing step to fix foot penetrations, we find that for\nsome sequences this yields severe (30cm or higher) floating.\nWe fix this by running forward kinematics on the retargeted\nsequences, storing the minimum body height at each frame,\nand then offsetting the entire motion by the mean minimum\nbody height. The retargets generated by the other methods\ndo not require similar post-processing.\nC. Motion Tracking Evaluation\nWe use BeyondMimic to train individual motion imitation"
+ },
+ {
+  "id": 42,
+  "page": 3,
+  "text": "policies for each retargeted motion in IsaacSim. We measure\nthe policies’ robustness to observation noise and domain\nshift. To this end, we evaluate each policy 100 times with\ndomain randomization disabled (sim), and 4096 times with\ndomain randomization enabled (sim-dr). The robot starts\neach evaluation rollout from its default pose. We run the\npolicy until either the robot falls or the reference ends.\nThe BeyondMimic release comes with a proprietary pack-"
+ },
+ {
+  "id": 43,
+  "page": 3,
+  "text": "age to deploy policies to the Unitree G1 using ROS. This\npackage handles both state estimation and inference. To\nvalidate the robustness of the policy before deployment, this\npackage also comes with a ROS node running MuJoCo. We\nleverage this to thoroughly and safely evaluate our policies\nin a setup mimicking that used in the real world. We refer\nto this condition assim2simevaluation. For each policy, we\nroll it out 100 times in this ROS environment, and record the"
+ },
+ {
+  "id": 44,
+  "page": 3,
+  "text": "robot state in the simulation. As in thesimsetting, the robot\nstarts each episode from the default pose. The sources of\nrandomness in this setup are the timing and synchronization\nconditions associated with ROS, and the noise associated\nwith the state estimation module. There is no tuning of the\nsimulator parameters, and the controller does not have access\nto privileged simulator information such as the ground truth\nglobal root pose.\nD. Metrics"
+ },
+ {
+  "id": 45,
+  "page": 3,
+  "text": "global root pose.\nD. Metrics\nWe evaluate both the ability of the policy to maintain\nbalance, as well as the tracking performance. For each evalu-\nation rollout, we consider it a success if the policy is able to\nreach the end of the episode without the robot anchor body\nheight or orientation deviating from the reference by more\nthan a given threshold (upon which the episode terminates).\nWe report the success rate, defined as the ratio between"
+ },
+ {
+  "id": 46,
+  "page": 3,
+  "text": "the number of successful rollouts and the total number\nof rollouts. Following [8], we also evaluate the tracking\nperformance using the average position error of body parts in\nglobal coordinates (Eg-mpbpe, mm), the average position error\nof body parts relative to the root position (E mpbpe, mm), and\nthe average angular error of joint rotations (Empjpe, 10−3 rad).\n(a) Reference motion (b) Retarget videos\nFig. 1: For the user study, participants were shown videos of"
+ },
+ {
+  "id": 47,
+  "page": 3,
+  "text": "the reference motion (a), and asked to choose which retarget\nvideo (b) was more similar to it.\nGeneral Motion Retargeting (GMR)\nHuman-Robot\nKeyBody Matching\nHuman-Robot\nCartesian Space Alignment\nHuman Data\nNon-Uniform Local Scaling\nSolving Robot IK with\nRotation Constraint\nSolving Robot IK with\nRotation&Translation Constraint\nHuman Body\nTranslation & Rotation\nRobot\nRoot Pose & Joint Position\nStep 1 Step 2 Step 3\nStep 4 Step 5\nFig. 2: General Motion Retargeting (GMR) Pipeline."
+ },
+ {
+  "id": 48,
+  "page": 3,
+  "text": "The tracking errors are computed for all frames that a policy\nis alive.\nE. User Study Evaluation\nTo answerQ3, we conduct a user study where participants\nare shown a 5 second clip of a reference motion rendered\nusing the SMPL-X fit of the LAFAN1 data, as well as two\nretargeted clips, one using GMR, and the other using one of\nUnitree, PHC, or ProtoMotions (Fig. 1). The users aren’t told\nwhich is which and the order in which the retarget videos"
+ },
+ {
+  "id": 49,
+  "page": 3,
+  "text": "are presented is randomized. The users are then asked to\nselect the video they think is closer to the reference, with the\noption of saying they can’t find a difference. The 5 second\nreferences are sampled randomly from 15 of the motions.\nUsers compare all 3 methods to GMR for every motion,\nanswering a total of 45 questions.\nIV. GENERALMOTIONRETARGETING\nIn this section we describe our proposed retargeting\npipeline, General Motion Retargeting (GMR). An overview"
+ },
+ {
+  "id": 50,
+  "page": 3,
+  "text": "can be found in Fig. 2. We describe each step in detail below.\nStep 1: Human-Robot Key Body Matching.Starting from\na list of the bodies in the source human skeleton (which can\ncome from a motion capture system or files in formats such\nas BVH and SMPL) and the target humanoid skeleton (found\nin XML or URDF robot description files), the user first\ndefines the mappingMbetween the human and robot key\nbodies (generally torso, head, legs, feet, arms, and hands)."
+ },
+ {
+  "id": 51,
+  "page": 4,
+  "text": "This information is used to setup the optimization problem\nfor the IK solver. The user can also provide weights for the\nposition and orientation tracking errors of these key bodies.\nStep 2: Human-Robot Cartesian Space Rest Pose Align-\nment.We offset the orientation of the human bodies so that\nthey match the orientations of the robot bodies when both\nare in the rest pose. In some cases, we also add a local offset\nto the position of a body. This helps mitigate artifacts like"
+ },
+ {
+  "id": 52,
+  "page": 4,
+  "text": "the toed-in artifact described in [2].\nStep 3: Human Data Non-Uniform Local Scaling.We find\nthat most artifacts found in the other retargeting methods\nare introduced when scaling the source motion, highlighting\nhow critical correct scaling is. The first step in our scaling\nprocedure is to calculate a general scaling factor based on\nthe height of the source human skeleton. This general factor\nis used to adjust a custom local scale factor defined for each"
+ },
+ {
+  "id": 53,
+  "page": 4,
+  "text": "key body. Having custom scale factors enables us to account\nfor scaling differences between the lower body and the upper\nbody, for example. The target body positions in Cartesian\nspace are given by\nptarget\nb = h\nhref\nsb(psource\nj −p source\nroot ) + h\nhref\nsrootpsource\nroot ,(2)\nwherehis the height of the human source skeleton,h ref is a\nreference height assumed when setting the scaling factors,\npb denotes a body position, ands b is the scaling factor"
+ },
+ {
+  "id": 54,
+  "page": 4,
+  "text": "corresponding to bodyb. Note that, when the body is the\nroot, the scaling equation simplifies to\nptarget\nroot = h\nhref\nsrootpsource\nroot .(3)\nWe find that scaling the root translation by a uniform scaling\nfactor is crucial to avoid introducing foot sliding artifacts.\nStep 4: Solving Robot IK with Rotation Constraints.We\nwish to find robot generalized coordinatesq(root translation,\nroot rotation, and joint values) that minimize the body"
+ },
+ {
+  "id": 55,
+  "page": 4,
+  "text": "position and orientation errors relative to the reference. To\navoid local optimization minima, we adopt a two stage\nprocess. Given a target pose, in the first stage we solve the\nfollowing optimization problem, which considers only body\norientations and positions of the end-effectors,\nminq ∑(i,j)∈M (w1)R\ni,j∥Rh\ni⊖R j(q)∥2\n2\n+ ∑(i,j)∈M ee (w1)p\ni,j∥ptarget\ni −p j(q)∥2\n2\nsubject toq −≤q≤q +\n(4)\nIn the above,R h\ni∈SO(3)is the orientation of the human body"
+ },
+ {
+  "id": 56,
+  "page": 4,
+  "text": "i∈SO(3)is the orientation of the human body\ni,p j(q)andR j(q)∈SO(3)are the Cartesian position and\norientation of the robot bodyj(obtained through forward\nkinematics),R i⊖R j is the exponential map representation\nof the orientation difference betweenR i andR j (Ri⊖R j :=\nexp(R−1\ni R j)inso(3)),M ee is the subset ofMcontaining\nonly the end-effectors (hands and feet), and(w 1)p\ni,j and\n(w1)R\ni,j are position and orientation error weights for this"
+ },
+ {
+  "id": 57,
+  "page": 4,
+  "text": "first optimization stage. The root position and orientation\ncomponents ofqare initialized with the scaled position\nptarget\nroot and yaw component of the orientation of the human\nroot key body. The optimization is subject to to the joint\nminimum and maximum values,q − andq +. We find that\nsometimes this range needs to be tightened to avoid non-\nhuman movements. We solve this problem using Mink, a\ndifferential IK solver. This means that, rather than finding"
+ },
+ {
+  "id": 58,
+  "page": 4,
+  "text": "the values ofqthat minimize our cost function, we compute\ngeneralized velocities ˙qthat when integrated reduce our cost.\nThis is done by solving the following optimization\nmin˙q ∥e(q) +J(q) ˙q∥2\nW\nsubject toq −≤q+ ˙q∆t≤q + (5)\nwheree(q)is the loss function of Eq. 4,J(q) = ∂e\n∂q is the\nJacobian matrix of the loss relative toq, andWis the weight\nmatrix induced by(w ∗)p\ni,j and(w ∗)R\ni,j .∆tis a parameter of\nthe differential IK solver and does not necessarily correspond"
+ },
+ {
+  "id": 59,
+  "page": 4,
+  "text": "to the time difference between the reference motion frames.\nWe run the solver until convergence (the change in the\nvalue function is lower than a given threshold, that we set to\n0.001) or a maximum number of iterations (10) is reached.\nStep 5: Fine Tuning using Rotation & Translation Con-\nstraints.Finally, we take the solution from the previous\nproblem and use it as initial guess to solve\nminq ∑(i,j)∈M (w2)R\ni,j∥Rh\ni⊖R j(q)∥2\n2\n+ (w2)p\ni,j∥ptarget\ni −p j(qr)∥2\n2\nsubject toq −≤q≤q +\n(6)"
+ },
+ {
+  "id": 60,
+  "page": 4,
+  "text": "i −p j(qr)∥2\n2\nsubject toq −≤q≤q +\n(6)\nwhich uses a set of weights(w 2)p\ni,j and(w 2)R\ni,j different from\nthe one used in the first stage, and takes into account the\nposition of all key bodies. The termination conditions from\nthe first optimization stage apply as well.\nApplication to Motion Sequences.The method described\nabove is for retargeting a single pose. For retargeting a\nmotion sequence, the method is applied sequentially to each"
+ },
+ {
+  "id": 61,
+  "page": 4,
+  "text": "frame, using the retarget result from the previous frame as\ninitial guess to the optimization inStep 4. After a full motion\nhas been retargeted, forward kinematics is used to get the\nheight of all robot bodies over time. The minimum height\nis then subtracted from the global translation to fix height\nartifacts (floating or ground penetration).\nV. EVALUATIONRESULTS\nThe success rates in the three evaluation setups (sim,sim-\ndr, andsim2sim) are reported in Tab. I. Statistics of the"
+ },
+ {
+  "id": 62,
+  "page": 4,
+  "text": "tracking error over the 21 motions are reported in Tab. II.\nA. Impact of retargeting method in policy performance\nOut of the 21 motions tested, 11 (“Turn 2”, “Walk (army)”,\n“Walk (knees)”, “Dance 3”, “Dance 4”, “Run (slow)”, “Run”,\n“Hopscoth”, “Jump and rotate”, “Kung fu”, “Various sports”)\nachieve success rates above 98% across all retargeting meth-\nods, and 3 achieve perfect performance (“Walk 1”, “Walk\n(old)”, and “Hop around”). For the remaining 7 motions,"
+ },
+ {
+  "id": 63,
+  "page": 4,
+  "text": "we see a large variation in performance across retargeting\nmethods. Policies trained on the Unitree data achieve near-\nperfect performance on all motions, confirming the results"
+ },
+ {
+  "id": 64,
+  "page": 5,
+  "text": "TABLE I: Evaluation success rates (%) in IsaacSim (training simulator) without domain randomization (sim, 100 trials per\npolicy), with domain randomization (sim-dr, 4096 trials per policy), and MuJoCo/ROS simulator (sim2sim, 100 trials per\npolicy). PM = ProtoMotions, U = Unitree. *See Section V-D\nsim sim-dr sim2sim\nMotion Length (s) PHC GMR PM U PHC GMR PM U PHC GMR PM U\nWalk 1 33 100 100 100 100 100 100 100 100 100 100 100 100\nWalk 2 5.5 23 100 100 100 53.54 100 99.98 100 100* 100* 100* 100*"
+ },
+ {
+  "id": 65,
+  "page": 5,
+  "text": "Turn 1 12.3 93 100 100 100 87.18 99.98 99.95 100 100* 100* 99* 100*\nTurn 2 12.3 100 100 100 100 99.95 99.98 100 99.98 99 100 100 99\nWalk (old) 33 100 100 100 100 100 100 100 100 100 100 100 100\nWalk (army) 13 100 100 100 100 99.85 98.63 99.95 99.95 100 100 99 100\nHop 13 95 100 100 100 92.97 100 100 100 100 100 100 100\nWalk (knees) 19.58 100 100 100 100 99.98 100 100 100 100 100 100 100\nDance 1 118 0 100 100 99 0 99.46 99.24 99.95 0 100 100 100"
+ },
+ {
+  "id": 66,
+  "page": 5,
+  "text": "Dance 2 130.5 0 100 100 100 0.02 99.9 99.88 99.98 0 100 100 100\nDance 3 120 100 100 100 100 100 100 99.95 100 99 100 100 100\nDance 4 20 100 100 100 100 100 100 100 100 99 100 100 100\nDance 5 68.4 100 96 100 100 100 92.75 99.98 100 100 51 100 100\nRun (slow) 50 100 100 100 100 99.19 99.88 99.95 99.98 100 100 100 100\nRun 11 100 100 100 100 99.98 100 99.95 100 100 100 100 100\nRun (stop & go) 37 17 98 20 100 20.46 91.24 40.26 99.83 74 100 26 100"
+ },
+ {
+  "id": 67,
+  "page": 5,
+  "text": "Hop around 18 100 100 100 100 100 100 100 100 100 100 100 100\nHopscotch 10 100 100 100 100 100 100 100 99.98 100 100 100 100\nJump and rotate 21 100 100 100 100 99.98 100 99.9 100 99 100 100 99\nKung fu 8.6 100 100 100 100 100 99.95 100 100 100 100 100 100\nVarious sports 42.58 100 100 100 100 99.98 99.98 99.95 100 100 100 100 99\nTABLE II: Tracking errors for each policy measured over the 100 evaluation rollouts in thesimsetting. Lower values are"
+ },
+ {
+  "id": 68,
+  "page": 5,
+  "text": "better. Best values arebold, second best are underlined .\nEg-mpbpe, mmE mpbpe, mmE mpjpe, 10−3 rad\nStatistics PHC GMR PM U PHC GMR PM U PHC GMR PM U\nMin 71.8 59.9 66.051.120.918.124.1 18.2 569.5 362.0 499.0355.5\nMedian 111.9 91.2 101.973.429.9 27.6 30.423.1739.8 546.0 599.7467.2\nMean 247.8 104.1 139.777.240.2 28.1 33.223.2778.5 561.7 641.8483.0\nMax 1062.3 200.0 915.6131.4134.4 48.0 107.928.91336.1 1044.8 1397.9678.5\nfrom BeyondMimic. These results are closely followed by"
+ },
+ {
+  "id": 69,
+  "page": 5,
+  "text": "the policies trained on data retargeted using the GMR and\nProtoMotions method, with a few exceptions (the “Dance\n5” motion for GMR, and the “Run (stop & go)” motion\nfor ProtoMotions). PHC is the method with the lowest\nperformance. We note that long horizon motions are not\na challenge since the policy trained on the PHC retarget\nof the “Dance 3” motion (two minutes long) is successful\nin all settings. The failure to learn to track successfuly the"
+ },
+ {
+  "id": 70,
+  "page": 5,
+  "text": "“Dance 1” and “Dance 2” motions, as well as the drops in\nperformance for specific GMR and ProtoMotions policies, is\nexplained by artifacts in the retarget, which we describe in\nmore detail in Sec. V-B.\nThe success rates do not paint a full picture, as in order\nto be successful the policy just needs to reach the end of the\nepisode without falling. Tab. II shows that policies trained\non data retargeted using PHC or ProtoMotions can have\nconsiderable tracking errors in both global and local space,"
+ },
+ {
+  "id": 71,
+  "page": 5,
+  "text": "indicating the difficulty in tracking the original reference\nwithout becoming unstable.\nThe results presented in this section show that while it is\npossible to train motion tracking policies to be successful in\ntracking a wide variety of motions, this comes at the expense\nof higher tracking errors, and in some cases it is noticeably\nmore difficult to learn a robust motion tracking policy from\nthe retargeted data. As such, we can answerQ1affirmatively.\nB. Impact of retargeting artifacts"
+ },
+ {
+  "id": 72,
+  "page": 5,
+  "text": "B. Impact of retargeting artifacts\nTo answerQ2, we note that low scores in thesim2sim\nevaluation can be directly connected to artifacts in the\nretargeted motion (Fig. 3).\n•The PHC retarget of the “Dance 1” and “Dance 2”\nmotions have noticeableground penetrationartifacts\n(60 cm in one case).\n•The robot legs in the ProtoMotions retarget of the “Run\n(stop & go)” motionintersectwith each other.\n•The GMR retarget of the “Dance 5” motion has many\nsudden jumpsof the waist roll value."
+ },
+ {
+  "id": 73,
+  "page": 5,
+  "text": "sudden jumpsof the waist roll value.\nWhile their presence does not make a reference motion\nimpossible to track (with the exception of the long dance\nsequences retargeted with the PHC method), these three\nretargeting artifact types (physically inconsistent height, self-\nintersections, and sudden jumps in joint values) should be\navoided to ensure the best chances of success.\nThe sudden jumps in the GMR retargets are a rare\noccurrence (for the subclip of the “Dance 5” motion it"
+ },
+ {
+  "id": 74,
+  "page": 5,
+  "text": "happens on a 10 second segment, less than 2% of our full\nmotion dataset) that is introduced during the optimization\nphase. Since we use the same optimization weights for all\nexperiments, some motions might require further weight\ntuning to achieve optimal results."
+ },
+ {
+  "id": 75,
+  "page": 6,
+  "text": "(a)Ground penetration(PHC,\n“Dance 1”)\n(b)Self-intersection(ProtoMo-\ntions, “Run (stop & go)”)\n(c)Sudden jumpsin the waist roll and pitch values (GMR,\n“Dance 5”)\nFig. 3: Example artifacts found in the retargeted references\nwith low success rates.\nFig. 4: User study (N=20) results for comparing GMR to\nother retargets in terms of faithfulness to the source motion.\nThe bars represent the percentage of responses.\nC. User study\n20 users participated in the user study. The results are"
+ },
+ {
+  "id": 76,
+  "page": 6,
+  "text": "shown in Fig. 4. Users consider GMR to be more faithful to\nthe reference motion than the retargets generated by either\nPHC or ProtoMotions. The Unitree retarget is considered\nmore faithful than the GMR one, but the users also have a\nharder time distinguishing the two. The combination of the\nhigh success rates and the close faithfulness score shows that\nGMR is a viable alternative to the data retargeted by Unitree.\nTABLE III: Evaluation success rates (%) insim2sim(Mu-"
+ },
+ {
+  "id": 77,
+  "page": 6,
+  "text": "JoCo) as a function of the start frame of the reference motion.\nPM = ProtoMotions, U = Unitree.\nMotion Start frame PHC GMR PM U\nWalk 2 0 100 64 100 100\n7 100 100 100 100\nTurn 1 0 14 100 86 47\n49 100 100 99 100\nD. First reference frame\nFinally, we note (as has been done previously by [7])\nthat the starting frame of the reference motion can have\na large impact on the policy performance. In Tab. III we\nshow the success rates in thesim2sim(MuJoCo) setting for"
+ },
+ {
+  "id": 78,
+  "page": 6,
+  "text": "the same policy but different start frames. We recommend\nensuring that the start pose of the reference motion is such\nthat the robot can safely reach it once policy inference starts.\nLikewise, we recommend ending the reference motion on a\nstable pose, to allow safe deactivation of the robot.\nVI. CONCLUSION\nIn this paper we evaluated the impact of motion retar-\ngeting on the performance of motion tracking policies. Our\nanalysis covered GMR, a retargeting method we introduce,"
+ },
+ {
+  "id": 79,
+  "page": 6,
+  "text": "the popular PHC retargeting algorithm, the ProtoMotions\nretargeting algorithm, and the data officially retargeted by\nUnitree. We retargeted a diverse set of motions ranging\nin length and difficulty, and used BeyondMimic to train\nmotion tracking policies for each of the retargeted clips. We\nthoroughly evaluated each policy to measure it’s robustness\nto observation noise, model mismatch, and network latency,\nas well as it’s tracking performance."
+ },
+ {
+  "id": 80,
+  "page": 6,
+  "text": "as well as it’s tracking performance.\nWe find that while it is possible to train successful\npolicies for a wide variety of motions retargeted using all\nthe retargeting methods under study, there are some critical\nartifacts that greatly increase the difficulty in learning a\nmotion tracking policy, namely ground penetrations, self-\nintersections, and sudden jumps in joint values. In addition,\nour user study shows that both the PHC and the ProtoMotions"
+ },
+ {
+  "id": 81,
+  "page": 6,
+  "text": "retargeting methods yield motions that are less faithful to the\nsource material than the ones yielded by GMR. While in rare\noccasions GMR may still require some tuning to eliminate\noptimization artifacts, we find that the default parameters\nwork well for a wide range of motions, yielding both good\nreference motions for training policies while staying faithful\nto the source motion, which cannot be said of the other\nretargeters.\nThere are some limitations to this work. Despite the"
+ },
+ {
+  "id": 82,
+  "page": 6,
+  "text": "variety of motions considered, they all came from a single\nsource (the LAFAN1 dataset). Further study should be done\nwith more data sources, such as the AMASS dataset or\nhuman motion reconstructed from monocular video. Another\nlimitation is that we only consider the Unitree G1. This is a\nlimitation primarily imposed by the BeyondMimic code base,\nas the other retargeting methods are available for the Unitree\nH1 as well. However, both BeyondMimic and retargeting"
+ },
+ {
+  "id": 83,
+  "page": 7,
+  "text": "algorithms benchmarked are general, and so extending this\nanalysis to other humanoid robots should also be considered\nin future work. Finally, another future work direction is\nthe impact of retargeting on motion sequences that involve\ninteractions, for example, with the surrounding environment,\nwith objects, or with other robots.\nACKNOWLEDGMENT\nThis work is in part supported by the Stanford Institute\nfor Human-Centered AI (HAI), the Stanford Wu-Tsai Hu-"
+ },
+ {
+  "id": 84,
+  "page": 7,
+  "text": "man Performance Alliance, ONR MURI N00014-22-1-2740,\nGoogle, and Meta Reality Labs.\nREFERENCES\n[1] K. Darvish, Y . Tirupachuri, G. Romualdi, L. Rapetti, D. Ferigo,\nF. J. A. Chavez, and D. Pucci, “Whole-body geometric retargeting for\nhumanoid robots,” in2019 IEEE-RAS 19th International Conference\non Humanoid Robots (Humanoids). IEEE, 2019, pp. 679–686.\n[2] T. He, Z. Luo, W. Xiao, C. Zhang, K. Kitani, C. Liu, and G. Shi,\n“Learning human-to-humanoid real-time whole-body teleoperation,”"
+ },
+ {
+  "id": 85,
+  "page": 7,
+  "text": "arXiv preprint arXiv:2403.04436, 2024.\n[3] X. Cheng, Y . Ji, J. Chen, R. Yang, G. Yang, and X. Wang, “Ex-\npressive whole-body control for humanoid robots,”arXiv preprint\narXiv:2402.16796, 2024.\n[4] I. Radosavovic, T. Xiao, B. Zhang, T. Darrell, J. Malik, and\nK. Sreenath, “Real-world humanoid locomotion with reinforcement\nlearning,”Science Robotics, vol. 9, no. 89, p. eadi9579, 2024.\n[5] Z. Fu, Q. Zhao, Q. Wu, G. Wetzstein, and C. Finn, “Humanplus:"
+ },
+ {
+  "id": 86,
+  "page": 7,
+  "text": "Humanoid shadowing and imitation from humans,” inConference on\nRobot Learning (CoRL), 2024.\n[6] Y . Ze, Z. Chen, J. P. Ara ´ujo, Z. ang Cao, X. B. Peng, J. Wu, and\nC. K. Liu, “Twist: Teleoperated whole-body imitation system,”arXiv\npreprint arXiv:2505.02833, 2025.\n[7] T. Zhang, B. Zheng, R. Nai, Y . Hu, Y .-J. Wang, G. Chen, F. Lin, J. Li,\nC. Hong, K. Sreenath, and Y . Gao, “Hub: Learning extreme humanoid\nbalance,”arXiv preprint arXiv:2505.07294, 2025."
+ },
+ {
+  "id": 87,
+  "page": 7,
+  "text": "balance,”arXiv preprint arXiv:2505.07294, 2025.\n[8] W. Xie, J. Han, J. Zheng, H. Li, X. Liu, J. Shi, W. Zhang, C. Bai,\nand X. Li, “Kungfubot: Physics-based humanoid whole-body control\nfor learning highly-dynamic skills,”arXiv preprint arXiv:2506.12851,\n2025.\n[9] N. Mahmood, N. Ghorbani, N. F. Troje, G. Pons-Moll, and M. J.\nBlack, “AMASS: Archive of motion capture as surface shapes,” in\nInternational Conference on Computer Vision, Oct. 2019, pp. 5442–\n5451."
+ },
+ {
+  "id": 88,
+  "page": 7,
+  "text": "5451.\n[10] A. Allshire, H. Choi, J. Zhang, D. McAllister, A. Zhang, C. M. Kim,\nT. Darrell, P. Abbeel, J. Malik, and A. Kanazawa, “Visual imitation en-\nables contextual humanoid control,”arXiv preprint arXiv:2505.03729,\n2025.\n[11] T. He, J. Gao, W. Xiao, Y . Zhang, Z. Wang, J. Wang, Z. Luo, G. He,\nN. Sobanbabu, C. Pan, Z. Yi, G. Qu, K. Kitani, J. Hodgins, L. J. Fan,\nY . Zhu, C. Liu, and G. Shi, “Asap: Aligning simulation and real-world"
+ },
+ {
+  "id": 89,
+  "page": 7,
+  "text": "physics for learning agile humanoid whole-body skills,”arXiv preprint\narXiv:2502.01143, 2025.\n[12] X. Gu, Y .-J. Wang, and J. Chen, “Humanoid-gym: Reinforcement\nlearning for humanoid robot with zero-shot sim2real transfer,”arXiv\npreprint arXiv:2404.05695, 2024.\n[13] T. He, W. Xiao, T. Lin, Z. Luo, Z. Xu, Z. Jiang, C. Liu, G. Shi,\nX. Wang, L. Fan, and Y . Zhu, “Hover: Versatile neural whole-body\ncontroller for humanoid robots,”arXiv preprint arXiv:2410.21229,\n2024."
+ },
+ {
+  "id": 90,
+  "page": 7,
+  "text": "2024.\n[14] T. He, Z. Luo, X. He, W. Xiao, C. Zhang, W. Zhang, K. Kitani,\nC. Liu, and G. Shi, “Omnih2o: Universal and dexterous human-\nto-humanoid whole-body teleoperation and learning,”arXiv preprint\narXiv:2406.08858, 2024.\n[15] T. E. Truong, Q. Liao, X. Huang, G. Tevet, C. K. Liu, and K. Sreenath,\n“Beyondmimic: From motion tracking to versatile humanoid control\nvia guided diffusion,”arXiv preprint arXiv:2508.08241, 2025."
+ },
+ {
+  "id": 91,
+  "page": 7,
+  "text": "[16] Z. Popovi ´c and A. Witkin, “Physically based motion transformation,”\ninProceedings of the 26th Annual Conference on Computer Graphics\nand Interactive Techniques, ser. SIGGRAPH ’99. USA: ACM\nPress/Addison-Wesley Publishing Co., 1999, p. 11–20.\n[17] S. Tak and H.-S. Ko, “A physically-based motion retargeting filter,”\nACM Trans. Graph., vol. 24, no. 1, p. 98–117, Jan. 2005.\n[18] E. Lyard and N. Magnenat-Thalmann, “Motion adaptation based on"
+ },
+ {
+  "id": 92,
+  "page": 7,
+  "text": "character shape,”Comput. Animat. Virtual Worlds, vol. 19, no. 3–4, p.\n189–198, Sept. 2008.\n[19] K.-J. Choi and H.-S. Ko, “On-line motion retargetting,” inPro-\nceedings. Seventh Pacific Conference on Computer Graphics and\nApplications (Cat. No.PR00293), 1999, pp. 32–42.\n[20] S. Uk Kim, H. Jang, and J. Kim, “A variational u-net for motion\nretargeting,”Computer Animation and Virtual Worlds, vol. 31, no. 4-\n5, p. e1947, 2020."
+ },
+ {
+  "id": 93,
+  "page": 7,
+  "text": "5, p. e1947, 2020.\n[21] S. Lee, T. Kang, J. Park, J. Lee, and J. Won, “Same: Skeleton-agnostic\nmotion embedding for character animation,” inSIGGRAPH Asia 2023\nConference Papers, 2023, pp. 1–11.\n[22] R. Villegas, J. Yang, D. Ceylan, and H. Lee, “Neural kinematic\nnetworks for unsupervised motion retargetting,” inProceedings of the\nIEEE conference on computer vision and pattern recognition, 2018,\npp. 8639–8648.\n[23] K. Aberman, P. Li, D. Lischinski, O. Sorkine-Hornung, D. Cohen-Or,"
+ },
+ {
+  "id": 94,
+  "page": 7,
+  "text": "and B. Chen, “Skeleton-aware networks for deep motion retargeting,”\nACM Transactions on Graphics (TOG), vol. 39, no. 4, pp. 62–1, 2020.\n[24] L. Hu, Z. Zhang, C. Zhong, B. Jiang, and S. Xia, “Pose-aware\nattention network for flexible motion retargeting by body part,”IEEE\nTransactions on Visualization and Computer Graphics, 2023.\n[25] H. Zhang, Z. Chen, H. Xu, L. Hao, X. Wu, S. Xu, Z. Zhang,\nY . Wang, and R. Xiong, “Semantics-aware motion retargeting with"
+ },
+ {
+  "id": 95,
+  "page": 7,
+  "text": "vision-language models,” inProceedings of the IEEE/CVF Conference\non Computer Vision and Pattern Recognition, 2024, pp. 2155–2164.\n[26] C. K. Liu, A. Hertzmann, and Z. Popovi ´c, “Composition of complex\noptimal multi-character motions,” inProceedings of the 2006 ACM\nSIGGRAPH/Eurographics symposium on Computer animation, 2006,\npp. 215–222.\n[27] Y . Zhang, D. Gopinath, Y . Ye, J. Hodgins, G. Turk, and J. Won,\n“Simulation and retargeting of complex multi-character interactions,”"
+ },
+ {
+  "id": 96,
+  "page": 7,
+  "text": "inACM SIGGRAPH 2023 Conference Proceedings, 2023, pp. 1–11.\n[28] I. Jang, S. Choi, S. Hong, C. Kim, and J. Noh, “Geometry-aware\nretargeting for two-skinned characters interaction,”ACM Transactions\non Graphics (TOG), vol. 43, no. 6, pp. 1–17, 2024.\n[29] Z. Liu, A. Mucherino, L. Hoyet, and F. Multon, “Surface based motion\nretargeting by preserving spatial relationship,” inProceedings of the\n11th ACM SIGGRAPH Conference on Motion, Interaction and Games,\n2018, pp. 1–11."
+ },
+ {
+  "id": 97,
+  "page": 7,
+  "text": "2018, pp. 1–11.\n[30] R. Villegas, D. Ceylan, A. Hertzmann, J. Yang, and J. Saito, “Contact-\naware retargeting of skinned motion,” inProceedings of the IEEE/CVF\nInternational Conference on Computer Vision, 2021, pp. 9720–9729.\n[31] J. Zhang, J. Weng, D. Kang, F. Zhao, S. Huang, X. Zhe, L. Bao,\nY . Shan, J. Wang, and Z. Tu, “Skinned motion retargeting with residual\nperception of motion semantics & geometry,” inProceedings of the\nIEEE/CVF Conference on Computer Vision and Pattern Recognition,"
+ },
+ {
+  "id": 98,
+  "page": 7,
+  "text": "2023, pp. 13 864–13 872.\n[32] M. Stanley, L. Tao, and X. Zhang, “Robust motion mapping between\nhuman and humanoids using cycleautoencoder,” in2021 IEEE Inter-\nnational Conference on Robotics and Biomimetics (ROBIO). IEEE,\n2021, pp. 93–98.\n[33] Y . Yan, E. V . Mascaro, and D. Lee, “Imitationnet: Unsupervised\nhuman-to-robot motion retargeting via shared latent space,” in2023\nIEEE-RAS 22nd International Conference on Humanoid Robots (Hu-\nmanoids). IEEE, 2023, pp. 1–8."
+ },
+ {
+  "id": 99,
+  "page": 7,
+  "text": "manoids). IEEE, 2023, pp. 1–8.\n[34] S. Yagi, M. Tada, E. Uchibe, S. Kanoga, T. Matsubara, and J. Mori-\nmoto, “Unsupervised neural motion retargeting for humanoid teleop-\neration,”arXiv preprint arXiv:2406.00727, 2024.\n[35] L. Penco, B. Cl ´ement, V . Modugno, E. M. Hoffman, G. Nava, D. Pucci,\nN. G. Tsagarakis, J.-B. Mouret, and S. Ivaldi, “Robust real-time whole-\nbody motion retargeting from human to humanoid,” in2018 IEEE-RAS\n18th International Conference on Humanoid Robots (Humanoids)."
+ },
+ {
+  "id": 100,
+  "page": 7,
+  "text": "IEEE, 2018, pp. 425–432.\n[36] A. Tang, T. Hiraoka, N. Hiraoka, F. Shi, K. Kawaharazuka, K. Kojima,\nK. Okada, and M. Inaba, “Humanmimic: Learning natural locomo-\ntion and transitions for humanoid robot via wasserstein adversarial\nimitation,” in2024 IEEE International Conference on Robotics and\nAutomation (ICRA). IEEE, 2024, pp. 13 107–13 114.\n[37] M. Loper, N. Mahmood, J. Romero, G. Pons-Moll, and M. J. Black,\n“SMPL: A skinned multi-person linear model,”ACM Trans. Graphics"
+ },
+ {
+  "id": 101,
+  "page": 7,
+  "text": "(Proc. SIGGRAPH Asia), vol. 34, no. 6, pp. 248:1–248:16, Oct. 2015."
+ },
+ {
+  "id": 102,
+  "page": 8,
+  "text": "[38] Z. Luo, J. Cao, A. W. Winkler, K. Kitani, and W. Xu, “Perpetual\nhumanoid control for real-time simulated avatars,” inInternational\nConference on Computer Vision (ICCV), 2023.\n[39] Z. Jiang, Y . Xie, J. Li, Y . Yuan, Y . Zhu, and Y . Zhu, “Harmon:\nWhole-body motion generation of humanoid robots from language\ndescriptions,”arXiv preprint arXiv:2410.12773, 2024.\n[40] C. Tessler, J. Juravsky, Y . Guo, Y . Jiang, E. Coumans, and X. B."
+ },
+ {
+  "id": 103,
+  "page": 8,
+  "text": "Peng, “Protomotions: Physics-based character animation,” https://\ngithub.com/NVLabs/ProtoMotions/, 2024.\n[41] K. Zakka, “Mink: Python inverse kinematics based on MuJoCo,”\nMay 2025. [Online]. Available: https://github.com/kevinzakka/mink\n[42] F. G. Harvey, M. Yurick, D. Nowrouzezahrai, and C. Pal, “Robust\nmotion in-betweening,” vol. 39, no. 4, 2020.\n[43] G. Pavlakos, V . Choutas, N. Ghorbani, T. Bolkart, A. A. A. Osman,\nD. Tzionas, and M. J. Black, “Expressive body capture: 3d hands,"
+ },
+ {
+  "id": 104,
+  "page": 8,
+  "text": "face, and body from a single image,” inProceedings IEEE Conf. on\nComputer Vision and Pattern Recognition (CVPR), 2019."
+ }
+]

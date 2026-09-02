@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "project": "机器人行业垂直领域 RAG 问答系统",
+    "knowledge_base": "GMR 论文（General Motion Retargeting for Humanoid Motion Tracking）",
+    "total": 20,
+    "in_material": 10,
+    "out_of_material": 10,
+    "version": "v1",
+    "created_date": "第三周 day13"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "type": "in_material",
+      "question": "GMR 的英文全称是什么？",
+      "expected_keywords": ["General Motion Retargeting", "通用运动重定向"],
+      "source_chunk": [2],
+      "note": "摘要第 2 段直接给出全称；答案可能混英文，判定放宽：含 General 或 重定向 即算命中"
+    },
+    {
+      "id": 2,
+      "type": "in_material",
+      "question": "这篇论文主要解决什么问题？",
+      "expected_keywords": ["embodiment gap", "身体差异", "人类与人形机器人", "重定向"],
+      "source_chunk": [0, 5],
+      "note": "摘要与引言开头均提到 embodiment gap；答案说清'人类运动数据难以直接用于人形机器人'即可"
+    },
+    {
+      "id": 3,
+      "type": "in_material",
+      "question": "GMR 论文的作者来自哪所大学？",
+      "expected_keywords": ["斯坦福", "Stanford"],
+      "source_chunk": [0, 6],
+      "note": "作者单位标注 Stanford University；关键词二选一命中即对"
+    },
+    {
+      "id": 4,
+      "type": "in_material",
+      "question": "论文中 GMR 与哪些方法进行了对比？",
+      "expected_keywords": ["PHC", "ProtoMotions", "Unitree"],
+      "source_chunk": [2],
+      "note": "原文：evaluate GMR alongside two open-source retargeters, PHC and ProtoMotions, and a closed-source dataset from Unitree；命中任一关键词即对"
+    },
+    {
+      "id": 5,
+      "type": "in_material",
+      "question": "论文的实验在哪个数据集上进行？",
+      "expected_keywords": ["LAFAN1"],
+      "source_chunk": [3],
+      "note": "原文：a diverse subset of the LAFAN1 dataset；直接事实抽取题"
+    },
+    {
+      "id": 6,
+      "type": "in_material",
+      "question": "论文用什么方法进行策略训练？",
+      "expected_keywords": ["BeyondMimic"],
+      "source_chunk": [2],
+      "note": "原文：Using BeyondMimic for policy training；直接事实抽取题"
+    },
+    {
+      "id": 7,
+      "type": "in_material",
+      "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+      "expected_keywords": ["foot sliding", "脚滑动", "self-penetration", "自穿透", "physically infeasible", "不可行"],
+      "source_chunk": [1],
+      "note": "原文：artifacts introduced during retargeting, such as foot sliding, self-penetration, and physically infeasible motion；命中任一即对"
+    },
+    {
+      "id": 8,
+      "type": "in_material",
+      "question": "GMR 的实验结论是什么？",
+      "expected_keywords": ["优于", "开源", "接近", "闭源", "更鲁棒"],
+      "source_chunk": [3],
+      "note": "综合理解题：需跨 chunk 拼信息——GMR 在跟踪性能与忠实度上优于开源方法、接近闭源基线；答案含'优于开源/接近闭源'方向即算对"
+    },
+    {
+      "id": 9,
+      "type": "in_material",
+      "question": "论文的代码可以在哪里获取？",
+      "expected_keywords": ["github", "GitHub"],
+      "source_chunk": [3],
+      "note": "原文：Code: github.com/YanjieZe/GMR；命中 github 即对"
+    },
+    {
+      "id": 10,
+      "type": "in_material",
+      "question": "论文中的 embodiment gap 具体指什么？",
+      "expected_keywords": ["骨骼长度", "关节", "运动范围", "mass", "身体结构"],
+      "source_chunk": [5],
+      "note": "原文：differences in bone length, joint range of motion, kinematic structure, body shape, mass distribution, and actuation mechanisms；难度分层用（需要理解+复述），命中任一即对"
+    },
+    {
+      "id": 11,
+      "type": "out_of_material",
+      "question": "GMR 方法的缺点有哪些？",
+      "expected_behavior": "资料中没有提到",
+      "note": "day10 实测该题触发防幻觉；论文无'缺点'总结段落，资料内确实没有"
+    },
+    {
+      "id": 12,
+      "type": "out_of_material",
+      "question": "GMR 模型训练用了多少张 GPU？",
+      "expected_behavior": "资料中没有提到",
+      "note": "论文未披露训练资源，资料内没有"
+    },
+    {
+      "id": 13,
+      "type": "out_of_material",
+      "question": "这篇论文发表在哪个期刊上？",
+      "expected_behavior": "资料中没有提到",
+      "note": "预印本论文，材料中无期刊信息；若模型答'arxiv'可放宽算对（常识可接受），但严格判定为资料中没有提到"
+    },
+    {
+      "id": 14,
+      "type": "out_of_material",
+      "question": "GMR 的奖励函数设计有哪些细节？",
+      "expected_behavior": "资料中没有提到",
+      "note": "反事实题：论文特意'抑制奖励调参'（excessive reward tuning is suppressed），资料中没有奖励函数细节"
+    },
+    {
+      "id": 15,
+      "type": "out_of_material",
+      "question": "GMR 模型的参数量是多少？",
+      "expected_behavior": "资料中没有提到",
+      "note": "论文未给参数量（方法非单模型，是重定向算法）；资料内没有"
+    },
+    {
+      "id": 16,
+      "type": "out_of_material",
+      "question": "华为的人形机器人是否采用了 GMR 方法？",
+      "expected_behavior": "资料中没有提到",
+      "note": "反事实题：论文完全未涉及华为；模型若编造'是/否'均判错，答'没有提到'才对"
+    },
+    {
+      "id": 17,
+      "type": "out_of_material",
+      "question": "GMR 与 DeepMind 的机器人策略相比结果如何？",
+      "expected_behavior": "资料中没有提到",
+      "note": "反事实题：论文只对比 PHC/ProtoMotions/Unitree，无 DeepMind 相关内容"
+    },
+    {
+      "id": 18,
+      "type": "out_of_material",
+      "question": "论文作者的总被引次数是多少？",
+      "expected_behavior": "资料中没有提到",
+      "note": "资料内无引用统计信息"
+    },
+    {
+      "id": 19,
+      "type": "out_of_material",
+      "question": "GMR 能否直接用于工业机械臂的轨迹规划？",
+      "expected_behavior": "资料中没有提到",
+      "note": "反事实题：论文针对人形机器人运动跟踪（humanoid motion tracking），未涉及工业机械臂；模型若引申讨论则判错"
+    },
+    {
+      "id": 20,
+      "type": "out_of_material",
+      "question": "GMR 在仿真器中跑了多少步仿真？",
+      "expected_behavior": "资料中没有提到",
+      "note": "论文未披露仿真步数等实验细节，资料内没有"
+    }
+  ]
+}
