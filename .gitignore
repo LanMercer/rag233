@@ -3,6 +3,7 @@ download/
 
 # RAG 向量数据库（派生数据，可重建，体积大不进 git）
 第二周/day10/rag_demo/chroma_db/
+第三周/day13/chroma_db/
 
 # Python
 __pycache__/
