@@ -1,0 +1,28 @@
+{
+  "default_profile": "lora",
+  "demo_questions": [
+    "论文中 GMR 与哪些方法进行了对比？",
+    "论文的实验在哪个数据集上进行？",
+    "华为的人形机器人是否采用了 GMR 方法？"
+  ],
+  "persist_dir": "../day13/chroma_db",
+  "embed_model": "D:/Lan/研究生/技术学习/大模型算法/download/bge-small-zh-v1.5",
+  "profiles": {
+    "original": {
+      "label": "原模型（Qwen2.5-3B-Instruct，未微调）",
+      "api_url": "http://127.0.0.1:8000/v1/chat/completions",
+      "model_name": "Qwen2.5-3B-Instruct",
+      "top_k": 4,
+      "temperature": 0.2,
+      "service_note": "需启动 第二周/day9/local_api.py（原模型服务）"
+    },
+    "lora": {
+      "label": "微调模型（Qwen2.5-3B-Instruct-LoRA）",
+      "api_url": "http://127.0.0.1:8000/v1/chat/completions",
+      "model_name": "Qwen2.5-3B-Instruct-LoRA",
+      "top_k": 4,
+      "temperature": 0.2,
+      "service_note": "需启动 第三周/day13/local_api_lora.py（微调服务，默认）"
+    }
+  }
+}
