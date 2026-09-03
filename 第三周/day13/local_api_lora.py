@@ -227,6 +227,19 @@ def generate(messages, temperature: float, top_p: float, max_tokens: int):
         top_p=top_p,
         # ↑ top_p 参数（控制候选词范围）。
 
+        repetition_penalty=1.15,
+        # ↑ ★ 重复惩罚（防"复读循环"）：对已经生成过的 token 的概率打 1/1.15 折扣。
+        #   低温度（0.2）会把分布压得很尖，模型一旦开始复读同一句就"锁死"出不来，
+        #   一直重复到撞 max_tokens 才停（Q5 就是整段复读模板指令）。加上它，
+        #   重复到第 2~3 轮时该 token 的概率被压低，模型被迫换词，循环被打断。
+        #   数值越大惩罚越狠：1.0 = 不惩罚；1.1~1.2 是文本任务常用区间。
+
+        no_repeat_ngram_size=4,
+        # ↑ ★ 禁止重复 n-gram：任何 4 个连续 token 组成的片段，整段生成里不许出现第二次。
+        #   这是比 repetition_penalty 更"硬"的防线——repetition_penalty 只是降概率（软约束），
+        #   no_repeat_ngram_size 直接从候选里剔除（硬约束），双保险打断复读。
+        #   n=4 是经验值：太小（如 2）会伤正常句子的自然重复，太大（如 8）拦不住短句复读。
+
         pad_token_id=tokenizer.eos_token_id,
         # ↑ pad_token_id = 填充符的 id。这里借用了"结束符"（eos）当填充符，
         #   避免某些张量长度不齐时报错——这是 transformers 的常规做法。
@@ -390,8 +403,14 @@ async def lifespan(app: FastAPI):
         device_map="auto",
         # ↑ 自动分配设备（有 GPU 用 GPU，没有就 CPU）。
 
-        torch_dtype=torch.float16,
+        dtype=torch.float16,
         # ↑ 模型权重用半精度存储。
+        #   注意：transformers 5.x 起参数名从 torch_dtype 改为 dtype（旧名只剩弃用警告）。
+
+        low_cpu_mem_usage=True,
+        # ↑ 低内存加载：按张量流式读入（配合 device_map 逐层送 GPU），
+        #   避免把整个 fp16 shard（3.7GB）先整块塞进系统内存再做 4bit 量化，
+        #   压低加载瞬间的 RAM 峰值（修复 Windows os error 1455：页面文件太小）。
     )
     chat_model.eval()
     # ↑ 把模型切到"评估（推理）模式"：关闭训练相关的随机行为（如 dropout）。
