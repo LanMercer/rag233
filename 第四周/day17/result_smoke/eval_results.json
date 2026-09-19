@@ -1,0 +1,67 @@
+[
+ {
+  "id": 1,
+  "type": "in_material",
+  "question": "GMR 的英文全称是什么？",
+  "note": "摘要第 2 段直接给出全称；答案可能混英文，判定放宽：含 General 或 重定向 即算命中",
+  "top_ids": [
+   36,
+   76,
+   69,
+   35
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "GMR = Ground Motion Retargeting [35]。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 1,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Ground Motion Retargeting [35]。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 2,
+  "type": "in_material",
+  "question": "这篇论文主要解决什么问题？",
+  "note": "摘要与引言开头均提到 embodiment gap；答案说清'人类运动数据难以直接用于人形机器人'即可",
+  "top_ids": [
+   14,
+   22,
+   1,
+   9
+  ],
+  "source_chunk": [
+   0,
+   5
+  ],
+  "answer": "这篇论文通过系统实验和分析验证假设：在足够工程化奖励函数和领域随机化下，可基本消除或去除因重采样引入的艺术品。[资料§9]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 1,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "这篇论文通过系统实验和分析验证假设：在足够工程化奖励函数和领域随机化下，可基本消除或去除因重采样引入的艺术品。[资料§9]"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ }
+]

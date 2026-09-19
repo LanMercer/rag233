@@ -1,0 +1,824 @@
+[
+ {
+  "id": 1,
+  "type": "in_material",
+  "question": "GMR 的英文全称是什么？",
+  "note": "摘要第 2 段直接给出全称；答案可能混英文，判定放宽：含 General 或 重定向 即算命中",
+  "top_ids": [
+   36,
+   76,
+   69,
+   35
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "GMR = Ground Motion Retargeting [36]。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Ground Motion Retargeting [36]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Ground Motion Retargeting [35]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Ground Motion Retargeting [35]。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 2,
+  "type": "in_material",
+  "question": "这篇论文主要解决什么问题？",
+  "note": "摘要与引言开头均提到 embodiment gap；答案说清'人类运动数据难以直接用于人形机器人'即可",
+  "top_ids": [
+   14,
+   22,
+   1,
+   9
+  ],
+  "source_chunk": [
+   0,
+   5
+  ],
+  "answer": "Na¨ı ve方法导致浮髌、脚趾嵌入和滑动等伪像，需要人工干预修正；通过工程化奖励函数和领域随机化可以缓解或去除这些伪像。[资料§9]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "Na¨ı ve方法导致浮髌、脚趾嵌入和滑动等伪像，需要人工干预修正；通过工程化奖励函数和领域随机化可以缓解或去除这些伪像。[资料§9]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "na¨ıve方法引入的误差导致参考轨迹存在脚滑、自穿刺和物理不可行运动等 artifacts [1]; 而retargeting过程中的这些误差往往需要RL政策进行修正 [9]。资料§14;资料§22。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "艺术化(retargeting)引入的滑动(sliding)、自穿刺(self-penetration)和物理上不可行(motion)等导致参考轨迹(reference trajectory)质量下降的问题。[1][9]"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 3,
+  "type": "in_material",
+  "question": "GMR 论文的作者来自哪所大学？",
+  "note": "作者单位标注 Stanford University；关键词二选一命中即对",
+  "top_ids": [
+   100,
+   36,
+   103,
+   97
+  ],
+  "source_chunk": [
+   0,
+   6
+  ],
+  "answer": "GMR 的作者来自佐治亚理工学院 [36]。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR 的作者来自佐治亚理工学院 [36]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR 的作者来自佐治亚理工学院：[36][41] GMR 是佐治亚理工大学的研究成果。 [资料§36] [资料§41]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR 的作者来自佐治亚理工学院 [36]。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 4,
+  "type": "in_material",
+  "question": "论文中 GMR 与哪些方法进行了对比？",
+  "note": "原文：evaluate GMR alongside two open-source retargeters, PHC and ProtoMotions, and a closed-source dataset from Unitree；命中任一关键词即对",
+  "top_ids": [
+   36,
+   76,
+   18,
+   75
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "① PHC;② ProtoMotios;③ Unitree rettarget; [资料§18]",
+  "refused": false,
+  "correct": true,
+  "detail": "命中关键词：PHC、Unitree",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC、Unitree",
+    "answer": "① PHC;② ProtoMotios;③ Unitree rettarget; [资料§18]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC",
+    "answer": "GMR 与 PHC 和 ProtoMotio进行对比；[18]; GMR 与其他方法相比成功率高且接近参考运动忠实度评分高；[19]。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC、Unitree",
+    "answer": "① PHC;② ProtoMotios;③ Unitree rettarget [18]§III-C。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 5,
+  "type": "in_material",
+  "question": "论文的实验在哪个数据集上进行？",
+  "note": "原文：a diverse subset of the LAFAN1 dataset；直接事实抽取题",
+  "top_ids": [
+   103,
+   4,
+   25,
+   3
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "GMR consistently outperform existing open-source methods [3] in both tracking性能和源运动态一致性，实现感知真伪性和政策成功率接近闭源基线。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：LAFAN",
+    "answer": "GMR consistently outperform existing open-source methods在 LAFAN [3] 数据集上。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR consistently outperform existing open-source methods [3] in both tracking性能和源运动态一致性，实现感知真伪性和政策成功率接近闭源基线。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR consistently outperform existing open-source methods [3] in both tracking性能和源运动态一致性, 实现感知真伪性和政策成功率接近闭源基线。"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": false
+ },
+ {
+  "id": 6,
+  "type": "in_material",
+  "question": "论文用什么方法进行策略训练？",
+  "note": "原文：Using BeyondMimic for policy training；直接事实抽取题",
+  "top_ids": [
+   1,
+   16,
+   78,
+   80
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "manoid embodiments and training reinforcement learning (RL) policies to imitation这些参考轨迹。[1]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments and training reinforcement learning (RL) policies to imitation这些参考轨迹。[1]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments and training reinforcement learning (RL) policies to imitation这些参考轨迹。[1]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments and [1] then training reinforcement学习[RL] policies to imitating这些参考轨迹。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 7,
+  "type": "in_material",
+  "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+  "note": "原文：artifacts introduced during retargeting, such as foot sliding, self-penetration, and physically infeasible motion；命中任一即对",
+  "top_ids": [
+   20,
+   104,
+   95,
+   19
+  ],
+  "source_chunk": [
+   1
+  ],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": false,
+  "detail": "该答未答（资料里有答案却拒答）",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "该答未答（资料里有答案却拒答）",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "[资料§20] arti-facts: pairs data to perform supervised learning。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "[资料§26] Composition of complex optimal multi-character motions：重定向数据可能引入姿态和体态从单图像中。[资料§95] simulation和body from a single iamge：“vision-language models”：重定向模拟和重定向复杂多角色交互时。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 8,
+  "type": "in_material",
+  "question": "GMR 的实验结论是什么？",
+  "note": "综合理解题：需跨 chunk 拼信息——GMR 在跟踪性能与忠实度上优于开源方法、接近闭源基线；答案含'优于开源/接近闭源'方向即算对",
+  "top_ids": [
+   36,
+   76,
+   4,
+   97
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "GMR 是更忠实参考运动：① 用户认为 GMR 更忠实参考运动;② 虽然 Unitree 更忠实参考,但用户也很难区分;③ 成功率高且相似性评分接近显示 GMR 是数据重定向替代方案。 [4]",
+  "refused": false,
+  "correct": true,
+  "detail": "命中关键词：接近",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR 更加忠实于参考运动：① 用户认为 GMR 比 PHC 和 ProtoMotions 更忠实于参考动;② 单从成功率和相似性得分来看,GMR 是一个可行的选择。[4]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：接近",
+    "answer": "GMR 是更忠实参考运动：① 用户认为 GMR 更忠实参考运动;② 虽然 Unitree 更忠实参考,但用户也很难区分;③ 成功率高且相似性评分接近显示 GMR 是数据重定向替代方案。 [4]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：接近",
+    "answer": "GMR 更为忠实参考运动：① 用户认为 GMR 比 PHC 和 ProtoMotions 更忠实参考运动;② 单纯成功率高且相似度评分接近: 资料§76。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 9,
+  "type": "in_material",
+  "question": "论文的代码可以在哪里获取？",
+  "note": "原文：Code: github.com/YanjieZe/GMR；命中 github 即对",
+  "top_ids": [
+   103,
+   52,
+   25,
+   3
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "资料§25: the toed-out artifact described in Step 3可以找到参考实现，并且PHC方法使用梯度下降法通过前向运动学求解IK问题。网站：jaraujo99.github.io/rettariting matters。代码：https://github.com/jaraubjo98/retarget_matters。",
+  "refused": false,
+  "correct": false,
+  "detail": "答的是 ProtoMotions 的仓库（NVLabs/ProtoMotions），不是 GMR 论文代码（YanjieZe/GMR），github 关键词碰巧命中，人工改判错",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "资料§25: the toed-out artifact described in Step 3可以找到参考实现，并且PHC方法使用梯度下降法通过前向运动学求解IK问题。网站：jaraujo99.github.io/rettariting matters。代码：https://github.com/jaraubjo98/retarget_matters。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "资料§25：https://jaraujo99.github.io/rettariting-matters/"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "资料§103: GitHub (https://github.com/NVLab/ProtoMotsions/)。"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": true
+ },
+ {
+  "id": 10,
+  "type": "in_material",
+  "question": "论文中的 embodiment gap 具体指什么？",
+  "note": "原文：differences in bone length, joint range of motion, kinematic structure, body shape, mass distribution, and actuation mechanisms；难度分层用（需要理解+复述），命中任一即对",
+  "top_ids": [
+   7,
+   1,
+   9,
+   74
+  ],
+  "source_chunk": [
+   5
+  ],
+  "answer": "gap 是到使用源人体动作为目标人形仿生学模型进行运动校正。[7]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "gap 是到使用源人体动作为目标人形仿生学模型进行运动校正。[7]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "gap 是到使用源人体运动进行目标人形仿生学映射。[7]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "gap 是 to use kinematics retargeting从源人类运动到目标人形仿生学。[7]"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 11,
+  "type": "out_of_material",
+  "question": "GMR 方法的缺点有哪些？",
+  "note": "day10 实测该题触发防幻觉；论文无'缺点'总结段落，资料内确实没有",
+  "top_ids": [
+   36,
+   18,
+   76,
+   9
+  ],
+  "source_chunk": [],
+  "answer": "GMR 是更忠实参考运动而不是 PHC 或 ProtoMotions 生成的参考运动。[36§]",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 是更忠实参考运动而不是 PHC 或 ProtoMotions 生成的参考运动。[36§]"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 是更忠实于参考运动且成功率更高，但单位树的回放更忠实一些，区分难度更大。[资料§18]"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 12,
+  "type": "out_of_material",
+  "question": "GMR 模型训练用了多少张 GPU？",
+  "note": "论文未披露训练资源，资料内没有",
+  "top_ids": [
+   36,
+   100,
+   104,
+   4
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 13,
+  "type": "out_of_material",
+  "question": "这篇论文发表在哪个期刊上？",
+  "note": "预印本论文，材料中无期刊信息；若模型答'arxiv'可放宽算对（常识可接受），但严格判定为资料中没有提到",
+  "top_ids": [
+   103,
+   100,
+   101,
+   91
+  ],
+  "source_chunk": [],
+  "answer": "[资料§101]: SMPL: A skined multi-person linear modeLCG(Proc.SIGGRAPHAsia), vol.34,no.6,p.248-1-248∶16,Oct.2016.",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§101]: SMPL: A skined multi-person linear modeLCG(Proc.SIGGRAPHAsia), vol.34,no.6,p.248-1-248∶16,Oct.2016."
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§101]: SMPL: A skined multi-person linear modeL, ACM Trans. Graphics [Proc. SIG- GRAPH Asia], vol. 44, no 6,pp. 250:1– 258:17,Oct. 215."
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§101]: SMPL: A skined multi-person linear modeL,ACM Trans.Graphics [Proc.SIGGRAPHAsia],vol.34,no.6,p.248-1-248∶16,Oct.2014."
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 14,
+  "type": "out_of_material",
+  "question": "GMR 的奖励函数设计有哪些细节？",
+  "note": "反事实题：论文特意'抑制奖励调参'（excessive reward tuning is suppressed），资料中没有奖励函数细节",
+  "top_ids": [
+   76,
+   36,
+   77,
+   69
+  ],
+  "source_chunk": [],
+  "answer": "GMR 主要如何处理源运动态缩放：通过两阶段优化找到机器人动作。[资料§76]",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 主要如何处理源运动态缩放：通过两阶段优化找到机器人动作。[资料§76]"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§76] GMr 考虑到源运动态缩放处理方法的不同而有所差异，这是通过两阶段优化找到机器人动作实现的。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 主要通过两阶段优化找到机器人运动：[76§]"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 15,
+  "type": "out_of_material",
+  "question": "GMR 模型的参数量是多少？",
+  "note": "论文未给参数量（方法非单模型，是重定向算法）；资料内没有",
+  "top_ids": [
+   36,
+   76,
+   100,
+   99
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 16,
+  "type": "out_of_material",
+  "question": "华为的人形机器人是否采用了 GMR 方法？",
+  "note": "反事实题：论文完全未涉及华为；模型若编造'是/否'均判错，答'没有提到'才对",
+  "top_ids": [
+   36,
+   99,
+   4,
+   21
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 17,
+  "type": "out_of_material",
+  "question": "GMR 与 DeepMind 的机器人策略相比结果如何？",
+  "note": "反事实题：论文只对比 PHC/ProtoMotions/Unitree，无 DeepMind 相关内容",
+  "top_ids": [
+   36,
+   4,
+   83,
+   21
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 18,
+  "type": "out_of_material",
+  "question": "论文作者的总被引次数是多少？",
+  "note": "资料内无引用统计信息",
+  "top_ids": [
+   100,
+   103,
+   84,
+   101
+  ],
+  "source_chunk": [],
+  "answer": "[36][37] A. Tan等人的总被引 = 42 + 10 = 52次 [资料§1]; [41] 约 m+1 次 [资料§2]; 资料中没有提到。",
+  "refused": true,
+  "correct": false,
+  "detail": "先编造一串引用统计数字（425/679/248 等），末尾才补「资料中没有提到」——拒答词命中但内容已编造，属规则漏网，人工改判错",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "[36][37] A. Tan等人的总被引 = 42 + 10 = 52次 [资料§1]; [41] 约 m+1 次 [资料§2]; 资料中没有提到。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "[36][37] A. Tan等人的总被引 = 1 + 1 = 2次 [资料§1]; [100][41][42][43] IEEE的总被引用 = 100 + 103 + 1 + (1+1) = 225次 [资料 §1, §4, §5, §6]; 资料中没有提到Darvish等人的总引用。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "[36][37] A. 王 42+ [资料§101]; [100][101][102] IEEE 100+ [资料©101]. 资料中没有提到。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": true
+ },
+ {
+  "id": 19,
+  "type": "out_of_material",
+  "question": "GMR 能否直接用于工业机械臂的轨迹规划？",
+  "note": "反事实题：论文针对人形机器人运动跟踪（humanoid motion tracking），未涉及工业机械臂；模型若引申讨论则判错",
+  "top_ids": [
+   36,
+   32,
+   98,
+   47
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ },
+ {
+  "id": 20,
+  "type": "out_of_material",
+  "question": "GMR 在仿真器中跑了多少步仿真？",
+  "note": "论文未披露仿真步数等实验细节，资料内没有",
+  "top_ids": [
+   36,
+   65,
+   62,
+   32
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false
+ }
+]
