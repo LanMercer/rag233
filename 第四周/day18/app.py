@@ -305,6 +305,16 @@ def server_model_name(profile):
     return r.json()["data"][0]["id"]
 
 
+def resolve_store(store):
+    """
+    解析用哪个知识库：页面里建的库优先，没有就回落到**默认 GMR 库**。
+    这样"什么都不上传、直接提问"也能用——默认库是开箱即用的。
+    """
+    if store is not None:
+        return store
+    return get_default_store()
+
+
 def ask(store, profile_name, question, top_k):
     """
     一次完整问答，返回 (答案 markdown, 召回片段 markdown)。
@@ -314,8 +324,12 @@ def ask(store, profile_name, question, top_k):
     question = (question or "").strip()
     if not question:
         return "请先输入问题。", ""
-    if store is None:
-        return "请先上传 PDF 并点「建立知识库」，或确认默认知识库已就绪。", ""
+    # 没上传、没点建库也没关系 → 自动用默认 GMR 论文库
+    try:
+        store = resolve_store(store)
+    except Exception as e:
+        return (f"⚠ **默认知识库加载失败**：{e}\n\n"
+                f"请确认 `{PERSIST_DIR}` 存在（第三周 day13 建的 chroma_db）。"), ""
 
     # ① 服务身份检查（防跑错模型；Day14 踩过的坑）
     try:
@@ -364,10 +378,10 @@ def _on_build(pdf, progress=gr.Progress()):
     if pdf is None:
         logs = "未上传 PDF → 使用**默认知识库**（GMR 论文，第三周 day13 建的 chroma_db）。"
         try:
-            get_default_store()
-            return logs + "\n\n✅ 默认知识库就绪，可以直接提问。", ""
+            store = get_default_store()
+            return (logs + "\n\n✅ 默认知识库就绪，可以直接提问。", "", store)
         except Exception as e:
-            return f"⚠ 默认知识库加载失败：{e}", ""
+            return f"⚠ 默认知识库加载失败：{e}", "", None
 
     src = pdf.name if hasattr(pdf, "name") else pdf
     # 复制到固定临时文件（上传文件名可能含中文/空格，Day16 踩过）
@@ -376,7 +390,7 @@ def _on_build(pdf, progress=gr.Progress()):
 
     store, logs = build_store_from_pdf(str(tmp), progress)
     _STORE = store
-    return logs, ""
+    return logs, "", store
 
 
 def build_ui():
@@ -394,9 +408,13 @@ def build_ui():
         with gr.Row():
             with gr.Column(scale=1):
                 gr.Markdown("### ① 知识库")
+                gr.Markdown(
+                    "**不选文件也能直接用**：右下角「提问」会自动用默认 GMR 论文库。\n"
+                    "想换成自己的资料，再上传 PDF 并点下面的建库按钮。"
+                )
                 pdf_file = gr.File(label="上传领域 PDF（论文/研报/技术文档）", file_types=[".pdf"])
                 build_btn = gr.Button("建立知识库", variant="primary")
-                build_log = gr.Markdown("_点上面的按钮：上传了 PDF 就现场建库；没上传就用默认 GMR 论文库。_")
+                build_log = gr.Markdown("_当前状态：未建库 → 提问时自动使用默认 GMR 论文库。_")
             with gr.Column(scale=2):
                 gr.Markdown("### ② 提问")
                 with gr.Row():
@@ -420,7 +438,7 @@ def build_ui():
         gr.Examples(examples=[[q] for q in CFG.get("demo_questions", [])],
                     inputs=[question_tb], label="示例问题（点一下自动填入）")
 
-        build_btn.click(_on_build, inputs=[pdf_file], outputs=[build_log, answer_md])
+        build_btn.click(_on_build, inputs=[pdf_file], outputs=[build_log, answer_md, store_state])
         ask_btn.click(ask, inputs=[store_state, profile_dd, question_tb, top_k_sl],
                       outputs=[answer_md, chunks_md])
         question_tb.submit(ask, inputs=[store_state, profile_dd, question_tb, top_k_sl],
