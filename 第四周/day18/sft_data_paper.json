@@ -1,0 +1,992 @@
+[
+  {
+    "instruction": "GMR 出自哪篇论文（论文标题是什么）？",
+    "input": "依据论文标题",
+    "output": "论文标题是《Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking》。",
+    "source": {
+      "page": 0,
+      "chunk_id": 0,
+      "quote": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文的通讯作者联系邮箱是什么？",
+    "input": "依据论文作者信息",
+    "output": "通讯作者的联系邮箱是 jparaujo@stanford.edu。",
+    "source": {
+      "page": 0,
+      "chunk_id": 6,
+      "quote": "Send correspondence to:jparaujo@stanford.edu"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "重定向数据中的伪影对哪一类动作的策略鲁棒性影响最大？",
+    "input": "依据论文摘要",
+    "output": "伪影会显著降低策略鲁棒性，对动态或长序列（dynamic or long sequences）的影响尤其明显。",
+    "source": {
+      "page": 0,
+      "chunk_id": 3,
+      "quote": "particularly for dynamic or long sequences"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "GMR 在评估重定向质量对策略性能的影响时，抑制了什么？",
+    "input": "依据论文贡献部分",
+    "output": "GMR 在评估重定向质量如何影响策略性能时，抑制了过度的奖励调参（excessive reward tuning）。",
+    "source": {
+      "page": 0,
+      "chunk_id": 2,
+      "quote": "when excessive reward tuning is suppressed"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "人形运动跟踪策略是构建哪些系统的基础工具？",
+    "input": "依据论文引言",
+    "output": "人形运动跟踪策略是构建遥操作管线（teleoperation pipelines）与分层控制器（hierarchical controllers）的基础工具。",
+    "source": {
+      "page": 0,
+      "chunk_id": 0,
+      "quote": "central to building teleoperation pipelines and hierarchical controllers"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文作者信息里的星号与剑号标记分别代表什么？",
+    "input": "依据论文首页脚注",
+    "output": "剑号（†）代表同等贡献（Equal contribution），星号（*）代表同等指导（Equal advising）。",
+    "source": {
+      "page": 0,
+      "chunk_id": 5,
+      "quote": "Equal contribution. * Equal advising"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "这篇论文的 arXiv 编号是多少？",
+    "input": "依据论文首页页脚",
+    "output": "arXiv:2510.02252v1，学科分类为 cs.RO，日期是 2025 年 10 月 2 日。",
+    "source": {
+      "page": 0,
+      "chunk_id": 12,
+      "quote": "arXiv:2510.02252v1"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "SMPL 是什么模型？它的输入与输出分别是什么？",
+    "input": "依据论文第 III-A 节",
+    "output": "SMPL 是一个参数化人体模型：给定形状参数 β 与姿态参数 θ，它会返回摆好姿态的人体网格的 3D 顶点位置。",
+    "source": {
+      "page": 2,
+      "chunk_id": 30,
+      "quote": "SMPL is a parametric human body model"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文用什么从人体网格顶点得到关节的三维位置？",
+    "input": "依据论文第 III-A 节",
+    "output": "用一个关节回归器（joint regressor）从顶点坐标回归出关节的 3D 位置，这些关节位置被当作各关键体的原点。",
+    "source": {
+      "page": 2,
+      "chunk_id": 31,
+      "quote": "is used to regress the 3D positions of the joints"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "为什么把人体运动直接搬到机器人关节空间时，还需要额外处理 SO(3) 关节空间？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "因为人形机器人通常只配备旋转关节（revolute joints），所以需要额外处理，才能把人类的 SO(3) 关节空间转换到机器人的关节空间。",
+    "source": {
+      "page": 1,
+      "chunk_id": 23,
+      "quote": "space from humans to humanoids (typically equipped with only revolute joints)"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "什么是全身几何重定向（WBGR）？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "通过求解逆运动学（IK）问题完成全身重定向，它允许源关节空间与目标关节空间不对齐（即在关节空间不匹配的情况下做匹配）。",
+    "source": {
+      "page": 1,
+      "chunk_id": 23,
+      "quote": "form whole-body retargeting while allowing the source and target joint spaces to be misaligned"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "HumanMimic 是怎么做人体到机器人重定向的？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "HumanMimic 求解 IK 来匹配关键点的笛卡尔位置，同时用人工定义的系数对源运动进行缩放。",
+    "source": {
+      "page": 1,
+      "chunk_id": 24,
+      "quote": "solves IK for Cartesian position matching of key points while using manually defined coefficients to scale the source motions"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "H2O 是怎么利用 SMPL 的？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "H2O 用 SMPL 模型把机器人形状拟合成人体，再用它先对动作做缩放，然后才求解 IK 问题。",
+    "source": {
+      "page": 1,
+      "chunk_id": 24,
+      "quote": "uses the SMPL [37] model to fit the robot shape as a human body and then uses it to scale the motion before solving the IK problem"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文认为 PHC 所基于的 SMPL 模型有什么适用性局限？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "SMPL 是为人体表示而设计的，无法很好地覆盖那些与人类形态差异较大的机器人。",
+    "source": {
+      "page": 1,
+      "chunk_id": 26,
+      "quote": "SMPL is designed for human-body representation, and cannot cover well robots that have relatively large morphological discrepancies with humans"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文里的 sim2sim 评估指的是什么设置？",
+    "input": "依据论文第 III-C 节",
+    "output": "指的是用 BeyondMimic 随附的 ROS 包中那个运行 MuJoCo 的 ROS 节点来做评估，用来模拟真实世界部署时的设置。",
+    "source": {
+      "page": 3,
+      "chunk_id": 43,
+      "quote": "We refer to this condition as sim2sim evaluation"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "GMR 使用 Mink 求解 IK，这里的「微分 IK」意味着什么？",
+    "input": "依据论文第 IV 节第 4 步",
+    "output": "意味着不是直接去求让代价函数最小的广义坐标 q，而是计算广义速度，让它积分后降低代价。",
+    "source": {
+      "page": 4,
+      "chunk_id": [57, 58],
+      "quote": "rather than finding the values ofqthat minimize our cost function, we compute generalized velocities"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "把人体关节旋转直接复制到机器人关节空间这种做法，会导致哪些问题？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "由于人体对象与人形机器人在拓扑结构与形态上的差异，会产生漂浮、穿脚、滑动等伪影，以及末端执行器（脚和手）的漂移。",
+    "source": {
+      "page": 1,
+      "chunk_id": 22,
+      "quote": "the topological and morphological differences between human subjects and the humanoid often lead to artifacts like floating, feet penetrations and sliding"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "为什么数据驱动的重定向方法很难直接用在人形机器人上？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "因为要在真实机器人上获得成对数据或带语义标注的运动数据非常困难，这限制了数据驱动重定向方法在人形机器人上的应用。",
+    "source": {
+      "page": 1,
+      "chunk_id": 21,
+      "quote": "the difficulty of acquiring paired or semantically labeled motion data on real robots limits the application of data-driven retargeting approaches on humanoids"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文关注的重定向方法范围是什么？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "关注涉及移动（locomotion）的全身运动重定向方法，并且要求这些方法不需要预先采集任何数据。",
+    "source": {
+      "page": 1,
+      "chunk_id": 22,
+      "quote": "we focus on methods for whole-body motion retargeting involving locomotion and that do not require pre-collecting any data"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "BeyondMimic 的部署包负责哪两件事？",
+    "input": "依据论文第 III-C 节",
+    "output": "该部署包同时负责状态估计（state estimation）与推理（inference）。",
+    "source": {
+      "page": 3,
+      "chunk_id": 43,
+      "quote": "This package handles both state estimation and inference"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "GMR 的整个流程一共分为几个步骤？",
+    "input": "依据论文图 2 与第 IV 节",
+    "output": "一共五个步骤（Step 1 至 Step 5）：关键体匹配、静止姿态对齐、非均匀局部缩放、带旋转约束的 IK 求解、带旋转与平移约束的微调。",
+    "source": {
+      "page": 3,
+      "chunk_id": 47,
+      "quote": "Step 1 Step 2 Step 3 Step 4 Step 5"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "在 GMR 的第 1 步中，用户除了定义关键体映射还能提供什么？",
+    "input": "依据论文第 IV 节第 1 步",
+    "output": "用户还可以为这些关键体的位置误差与姿态误差提供权重。",
+    "source": {
+      "page": 4,
+      "chunk_id": 51,
+      "quote": "The user can also provide weights for the position and orientation tracking errors of these key bodies"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 的第 2 步做了什么？这样能缓解哪种伪影？",
+    "input": "依据论文第 IV 节第 2 步",
+    "output": "第 2 步把人体各体的朝向偏移到与机器人处于静止姿态时的朝向一致（某些情况下还给某个体加局部位置偏移），这有助于缓解 toed-in（内八字）伪影。",
+    "source": {
+      "page": 4,
+      "chunk_id": [51, 52],
+      "quote": "This helps mitigate artifacts like the toed-in artifact described in"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 的缩放过程中，那个通用缩放因子是根据什么算出来的？",
+    "input": "依据论文第 IV 节第 3 步",
+    "output": "根据源人体骨架的高度算出一个通用缩放因子，再用它去调整每个关键体各自的自定义局部缩放因子。",
+    "source": {
+      "page": 4,
+      "chunk_id": 52,
+      "quote": "The first step in our scaling procedure is to calculate a general scaling factor based on the height of the source human skeleton"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "为每个关键体单独设置自定义缩放因子有什么好处？",
+    "input": "依据论文第 IV 节第 3 步",
+    "output": "可以把下半身与上半身之间的缩放差异分别考虑进去。",
+    "source": {
+      "page": 4,
+      "chunk_id": 53,
+      "quote": "Having custom scale factors enables us to account for scaling differences between the lower body and the upper body"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 为什么强调要用统一缩放因子来缩放根节点平移？",
+    "input": "依据论文第 IV 节第 3 步",
+    "output": "因为用统一缩放因子缩放根平移，对避免引入脚滑动伪影至关重要。",
+    "source": {
+      "page": 4,
+      "chunk_id": 54,
+      "quote": "We find that scaling the root translation by a uniform scaling factor is crucial to avoid introducing foot sliding artifacts"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 为什么要采用两阶段的优化过程？",
+    "input": "依据论文第 IV 节第 4 步",
+    "output": "为了避免陷入局部最优（local optimization minima）。",
+    "source": {
+      "page": 4,
+      "chunk_id": 55,
+      "quote": "To avoid local optimization minima, we adopt a two stage process"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 第一阶段优化只考虑哪些量？",
+    "input": "依据论文第 IV 节第 4 步",
+    "output": "第一阶段只考虑各体的姿态，以及末端执行器（手和脚）的位置。",
+    "source": {
+      "page": 4,
+      "chunk_id": 55,
+      "quote": "which considers only body orientations and positions of the end-effectors"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 的 IK 求解器在什么条件下停止迭代？",
+    "input": "依据论文第 IV 节第 4 步",
+    "output": "直到收敛（值函数的变化低于给定阈值，论文设为 0.001）或达到最大迭代次数 10 次为止。",
+    "source": {
+      "page": 4,
+      "chunk_id": 59,
+      "quote": "until convergence (the change in the value function is lower than a given threshold, that we set to 0.001) or a maximum number of iterations (10) is reached"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 的第二阶段（微调）与第一阶段有什么不同？",
+    "input": "依据论文第 IV 节第 5 步",
+    "output": "第二阶段使用一套与第一阶段不同的权重，并且把全部关键体的位置都纳入考虑。",
+    "source": {
+      "page": 4,
+      "chunk_id": 60,
+      "quote": "different from the one used in the first stage, and takes into account the position of all key bodies"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "GMR 对整段运动序列做重定向时，每一帧的初始猜测从哪里来？",
+    "input": "依据论文第 IV 节",
+    "output": "方法对每一帧依次执行，并用前一帧的重定向结果作为第 4 步优化的初始猜测。",
+    "source": {
+      "page": 4,
+      "chunk_id": 61,
+      "quote": "using the retarget result from the previous frame as initial guess to the optimization"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "整段运动重定向完成之后，GMR 怎么修正高度方向上的伪影？",
+    "input": "依据论文第 IV 节",
+    "output": "用前向运动学求出所有机器人体的高度随时间的变化，再从全局平移中减去最小高度。",
+    "source": {
+      "page": 4,
+      "chunk_id": 61,
+      "quote": "forward kinematics is used to get the height of all robot bodies over time. The minimum height is then subtracted from the global translation"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "PHC 的实现分别用什么优化器来优化根姿态和关节值？关节限位怎么保证？",
+    "input": "依据论文第 III-A 节",
+    "output": "根姿态用 Adam，关节值用 Adadelta；关节限位约束通过截断（clamping）来强制执行。",
+    "source": {
+      "page": 2,
+      "chunk_id": 33,
+      "quote": "The optimizer for the root pose is Adam, and the optimizer for the joint values is Adadelta. The joint limit constraint is enforced through clamping"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "ProtoMotions 怎么缩放源运动？用什么求解？",
+    "input": "依据论文第 III-A 节",
+    "output": "它用针对世界坐标系各个轴的自定义缩放因子来缩放源运动，然后用 Mink 去最小化缩放后人体与机器人关键体之间的位置误差与姿态误差。",
+    "source": {
+      "page": 2,
+      "chunk_id": 34,
+      "quote": "is scaled using a custom scaling factor for each of the world frame axes. It then uses Mink"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "ProtoMotions 的高度后处理与 PHC 有什么不同？",
+    "input": "依据论文第 III-A 节",
+    "output": "两者都有修改高度的后处理步骤，但 ProtoMotions 不是把最低高度设成 0，而是设成源运动中的最低高度。",
+    "source": {
+      "page": 2,
+      "chunk_id": 35,
+      "quote": "instead of setting the lowest height to 0 it sets it to the lowest height in the source motion"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "KungfuBot 是怎么沿用 ProtoMotions 做法的？",
+    "input": "依据论文第 II 节相关工作",
+    "output": "KungfuBot 沿用了 ProtoMotions 的做法，但把缩放关掉了。",
+    "source": {
+      "page": 2,
+      "chunk_id": 28,
+      "quote": "uses the ProtoMotions approach, but with scaling disabled"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "LAFAN1 的动作数据是什么格式？哪个重定向方法可以直接兼容？",
+    "input": "依据论文第 III-B 节",
+    "output": "LAFAN1 提供的是 BVH 格式，GMR 可以直接兼容；而 PHC 与 ProtoMotions 需要先把数据转成 SMPL 格式。",
+    "source": {
+      "page": 2,
+      "chunk_id": 38,
+      "quote": "LAFAN1 files are provided in the BVH format, which GMR is directly compatible with"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "把 BVH 转成 SMPL 时，为什么还要惩罚形状参数的 L2 范数？",
+    "input": "依据论文第 III-B 节",
+    "output": "因为论文发现形状参数取值过大时会导致人体网格发生较大变形。",
+    "source": {
+      "page": 2,
+      "chunk_id": 39,
+      "quote": "since we find large values of it lead to large distortions of the human mesh"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "论文为什么选 SMPL-X 而不是 SMPL 作为 ProtoMotions 的源？",
+    "input": "依据论文第 III-B 节",
+    "output": "因为论文发现 SMPL-X 人体模型比 SMPL 更适合拟合 LAFAN1 骨架。",
+    "source": {
+      "page": 3,
+      "chunk_id": 40,
+      "quote": "The SMPL-X body model fits the LAFAN1 skeleton better than SMPL"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "论文发现 PHC 自带的脚部穿透后处理会带来什么新问题？怎么修的？",
+    "input": "依据论文第 III-B 节",
+    "output": "论文发现对某些序列该后处理会产生严重（30cm 及以上）的漂浮；修法是对重定向序列跑前向运动学、记录每帧最低体高，再用平均最低体高把整段运动偏移回去。",
+    "source": {
+      "page": 3,
+      "chunk_id": 41,
+      "quote": "we find that for some sequences this yields severe (30cm or higher) floating"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "论文从 LAFAN1 中筛动作时排除了哪类动作？又为什么破例保留了一个序列？",
+    "input": "依据论文第 III-B 节",
+    "output": "排除了与环境有复杂交互的动作（例如爬行、从地面起身）；破例保留了一个侧手翻序列，因为机器人始终只有脚或手接触地面、不会同时接触。",
+    "source": {
+      "page": 2,
+      "chunk_id": [37, 38],
+      "quote": "we exceptionally included a sequence with a cartwheel since the robot either has the feet or the hands on the floor, but never both"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "论文把每一段动作序列重定向到哪个机器人上？",
+    "input": "依据论文第 III-B 节",
+    "output": "重定向到 Unitree G1 机器人上。",
+    "source": {
+      "page": 2,
+      "chunk_id": 38,
+      "quote": "We retarget each motion sequence to a Unitree G1 robot"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文最终用的数据集包含多少个运动序列？长度范围是多少？",
+    "input": "依据论文第 I 节",
+    "output": "最终数据集包含 21 个序列，长度从 5 秒到 2 分钟不等。",
+    "source": {
+      "page": 1,
+      "chunk_id": 13,
+      "quote": "Our final dataset consists of 21 sequences with lengths ranging from 5 seconds to 2 minutes"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文所说的「非常严格」的成功定义是什么？",
+    "input": "依据论文第 I 节",
+    "output": "要求策略把整段参考动作完整走完，这次 rollout 才会被算作成功。",
+    "source": {
+      "page": 1,
+      "chunk_id": [13, 14],
+      "quote": "a very strict success definition that requires the policy to complete the reference motion in its entirety for the rollout to be considered successful"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文在评估策略时考虑了哪些干扰条件？",
+    "input": "依据论文第 I 节",
+    "output": "考虑了观测噪声（既有传感器噪声也有状态估计算法带来的噪声）、模型参数估计误差，以及控制器中的网络延迟。",
+    "source": {
+      "page": 1,
+      "chunk_id": 14,
+      "quote": "observation noise (both from noisy sensors and from state estimation algorithms), errors in model parameter estimation, and network latency in the controller"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "sim 与 sim-dr 两种设置下，每个策略分别评估多少次？",
+    "input": "依据论文第 III-C 节",
+    "output": "sim 设置（关闭域随机化）每个策略评估 100 次；sim-dr 设置（开启域随机化）每个策略评估 4096 次。",
+    "source": {
+      "page": 3,
+      "chunk_id": 42,
+      "quote": "evaluate each policy 100 times with domain randomization disabled"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "每次评估 rollout 时机器人从什么姿态开始？什么时候结束？",
+    "input": "依据论文第 III-C 节",
+    "output": "机器人每次评估都从默认姿态（default pose）开始；一直运行到机器人摔倒或参考动作结束为止。",
+    "source": {
+      "page": 3,
+      "chunk_id": 42,
+      "quote": "The robot starts each evaluation rollout from its default pose. We run the policy until either the robot falls or the reference ends"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文在哪个仿真器里为每个重定向动作训练单独的运动模仿策略？",
+    "input": "依据论文第 III-C 节",
+    "output": "在 IsaacSim 里训练（用 BeyondMimic 训练）。",
+    "source": {
+      "page": 3,
+      "chunk_id": [41, 42],
+      "quote": "We use BeyondMimic to train individual motion imitation policies for each retargeted motion in IsaacSim"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "BeyondMimic 随附的 ROS 包里带了什么节点？用来做什么？",
+    "input": "依据论文第 III-C 节",
+    "output": "带了一个运行 MuJoCo 的 ROS 节点，用来在模仿真实世界的环境中充分且安全地评估策略。",
+    "source": {
+      "page": 3,
+      "chunk_id": 43,
+      "quote": "this package also comes with a ROS node running MuJoCo"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "在 sim2sim 评估中，控制器能拿到仿真器的特权信息吗？",
+    "input": "依据论文第 III-C 节",
+    "output": "不能。控制器无法访问真值全局根位姿这类特权仿真信息，并且仿真器参数也没有做任何调参。",
+    "source": {
+      "page": 3,
+      "chunk_id": 44,
+      "quote": "the controller does not have access to privileged simulator information such as the ground truth global root pose"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文判定一次 rollout 成功的具体条件是什么？",
+    "input": "依据论文第 III-D 节",
+    "output": "策略能在机器人锚定体的高度或姿态偏离参考超过给定阈值（一旦超过该回合就终止）之前走到该回合结束。",
+    "source": {
+      "page": 3,
+      "chunk_id": 45,
+      "quote": "without the robot anchor body height or orientation deviating from the reference by more than a given threshold"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "论文用哪个指标衡量全局坐标下的身体部位位置误差？",
+    "input": "依据论文第 III-D 节",
+    "output": "用全局坐标下身体部位的平均位置误差（Eg-mpbpe，单位 mm）。",
+    "source": {
+      "page": 3,
+      "chunk_id": 46,
+      "quote": "the average position error of body parts in global coordinates"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "用户研究中参与者看到的参考动作片段有多长？是用什么渲染的？",
+    "input": "依据论文第 III-E 节",
+    "output": "是 5 秒的片段，用 LAFAN1 数据的 SMPL-X 拟合来渲染。",
+    "source": {
+      "page": 3,
+      "chunk_id": 48,
+      "quote": "participants are shown a 5 second clip of a reference motion rendered using the SMPL-X fit of the LAFAN1 data"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "用户研究是怎么避免参与者产生偏向的？",
+    "input": "依据论文第 III-E 节",
+    "output": "参与者不知道哪个视频对应哪种方法，而且重定向视频的呈现顺序是随机的。",
+    "source": {
+      "page": 3,
+      "chunk_id": [48, 49],
+      "quote": "and the order in which the retarget videos are presented is randomized"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "用户研究的参考片段从多少个动作里采样？用户总共要回答多少个问题？",
+    "input": "依据论文第 III-E 节",
+    "output": "参考片段从 15 个动作中随机采样；用户对每个动作都要把 3 种方法与 GMR 比较，总共回答 45 个问题。",
+    "source": {
+      "page": 3,
+      "chunk_id": 49,
+      "quote": "The 5 second references are sampled randomly from 15 of the motions"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "参与论文用户研究的用户有多少人？",
+    "input": "依据论文第 V-C 节",
+    "output": "有 20 位用户参加（N=20）。",
+    "source": {
+      "page": 6,
+      "chunk_id": 75,
+      "quote": "20 users participated in the user study"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "sim2sim 评估中的随机性来自哪里？",
+    "input": "依据论文第 III-C 节",
+    "output": "来自与 ROS 相关的时序和同步条件，以及状态估计模块带来的噪声。",
+    "source": {
+      "page": 3,
+      "chunk_id": 44,
+      "quote": "The sources of randomness in this setup are the timing and synchronization conditions associated with ROS, and the noise associated with the state estimation module"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "表 I 中 sim 设置的具体评估条件是怎样的？",
+    "input": "依据论文表 I 表题",
+    "output": "sim 是在训练用的仿真器 IsaacSim 中、关闭域随机化的设置，每个策略评估 100 次。",
+    "source": {
+      "page": 5,
+      "chunk_id": 64,
+      "quote": "without domain randomization (sim, 100 trials per policy)"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "在 21 个测试动作中，有多少个动作的成功率在所有重定向方法下都超过 98%？",
+    "input": "依据论文第 V-A 节",
+    "output": "有 11 个动作（含 Turn 2、Walk (army)、Walk (knees)、Dance 3、Dance 4、Run (slow)、Run、Hopscoth、Jump and rotate、Kung fu、Various sports）在所有重定向方法下成功率均超过 98%。",
+    "source": {
+      "page": 4,
+      "chunk_id": 62,
+      "quote": "achieve success rates above 98% across all retargeting"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "哪 3 个动作在所有重定向方法下都达到了完美表现？",
+    "input": "依据论文第 V-A 节",
+    "output": "Walk 1、Walk (old) 和 Hop around 这 3 个动作达到了完美表现。",
+    "source": {
+      "page": 4,
+      "chunk_id": 62,
+      "quote": "and 3 achieve perfect performance"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "除上述动作之外剩余 7 个动作的表现有什么特点？",
+    "input": "依据论文第 V-A 节",
+    "output": "在这 7 个动作上，不同重定向方法之间的表现差异很大。",
+    "source": {
+      "page": 4,
+      "chunk_id": [62, 63],
+      "quote": "For the remaining 7 motions, we see a large variation in performance across retargeting methods"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "用 Unitree 数据训练出来的策略表现如何？",
+    "input": "依据论文第 V-A 节",
+    "output": "用 Unitree 数据训练的策略在几乎所有动作上都达到近乎完美的表现，这也印证了 BeyondMimic 论文中的结果。",
+    "source": {
+      "page": 4,
+      "chunk_id": 63,
+      "quote": "Policies trained on the Unitree data achieve near-perfect performance on all motions"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "三种开源重定向方法里，哪个方法训练出的策略表现最低？",
+    "input": "依据论文第 V-A 节",
+    "output": "PHC 是表现最低的方法。",
+    "source": {
+      "page": 5,
+      "chunk_id": 69,
+      "quote": "PHC is the method with the lowest performance"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文为什么说长时长的动作并不是一个挑战？",
+    "input": "依据论文第 V-A 节",
+    "output": "因为用 PHC 重定向的 Dance 3 动作（长达两分钟）训练出的策略在所有设置下都成功了。",
+    "source": {
+      "page": 5,
+      "chunk_id": 69,
+      "quote": "We note that long horizon motions are not a challenge since the policy trained on the PHC retarget of the"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "Dance 1 与 Dance 2 学不会跟踪、以及个别 GMR 与 ProtoMotions 策略掉分，论文把原因归结为什么？",
+    "input": "依据论文第 V-A 节",
+    "output": "归结为（重定向结果里的）伪影，论文在第 V-B 节对此做了更详细的描述。",
+    "source": {
+      "page": 5,
+      "chunk_id": 70,
+      "quote": "is explained by artifacts in the retarget, which we describe in more detail in"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文为什么说成功率并不能反映全貌？",
+    "input": "依据论文第 V-A 节",
+    "output": "因为只要走完整个回合不摔倒就算成功；而表 II 显示用 PHC 或 ProtoMotions 的重定向数据训练的策略，在全局和局部空间都可能存在相当大的跟踪误差。",
+    "source": {
+      "page": 5,
+      "chunk_id": 70,
+      "quote": "The success rates do not paint a full picture, as in order to be successful the policy just needs to reach the end of the episode without falling"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文对研究问题 Q1（重定向方法的选择是否影响跟踪策略性能）给出的结论是什么？",
+    "input": "依据论文第 V-A 节",
+    "output": "结论是肯定的：重定向方法的选择会显著影响人形机器人的性能，因此 Q1 得到肯定回答。",
+    "source": {
+      "page": 5,
+      "chunk_id": 71,
+      "quote": "As such, we can answerQ1affirmatively"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "PHC 重定向的 Dance 1 与 Dance 2 上出现的具体伪影有多严重？",
+    "input": "依据论文第 V-B 节",
+    "output": "有明显的地面穿透伪影，其中一个案例达到 60 cm。",
+    "source": {
+      "page": 5,
+      "chunk_id": 72,
+      "quote": "60 cm in one case"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文指出哪三类重定向伪影属于应该避免的关键问题？",
+    "input": "依据论文第 V-B 节",
+    "output": "物理上不一致的高度、自相交，以及关节值上的突然跳变。",
+    "source": {
+      "page": 5,
+      "chunk_id": 73,
+      "quote": "these three retargeting artifact types (physically inconsistent height, self-intersections, and sudden jumps in joint values) should be avoided"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "这些伪影的存在是否会让参考动作完全无法被跟踪？",
+    "input": "依据论文第 V-B 节",
+    "output": "一般不会，例外的是用 PHC 方法重定向的那些长舞蹈序列。",
+    "source": {
+      "page": 5,
+      "chunk_id": 73,
+      "quote": "does not make a reference motion impossible to track (with the exception of the long dance sequences retargeted with the PHC method)"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "GMR 出现的关节值突然跳变占整个动作数据集的比例大约是多少？",
+    "input": "依据论文第 V-B 节",
+    "output": "只出现在 Dance 5 的一个 10 秒片段上，不到整个动作数据集的 2%。",
+    "source": {
+      "page": 5,
+      "chunk_id": 74,
+      "quote": "happens on a 10 second segment, less than 2% of our full motion dataset"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "参考动作的起始帧对策略性能有什么影响？",
+    "input": "依据论文第 V-D 节",
+    "output": "起始帧可能对策略性能产生很大影响——同一个策略换用不同起始帧后，成功率会明显不同。",
+    "source": {
+      "page": 6,
+      "chunk_id": 77,
+      "quote": "the starting frame of the reference motion can have a large impact on the policy performance"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文对参考动作的起始姿态给出了什么建议？",
+    "input": "依据论文第 V-D 节",
+    "output": "建议确保参考动作的起始姿态是策略开始推理后机器人能够安全到达的姿态。",
+    "source": {
+      "page": 6,
+      "chunk_id": 78,
+      "quote": "We recommend ensuring that the start pose of the reference motion is such that the robot can safely reach it once policy inference starts"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文评估部分围绕哪三个研究问题展开？",
+    "input": "依据论文第 III 节",
+    "output": "Q1 重定向方法的选择是否影响运动跟踪策略的性能；Q2 哪些重定向伪影会负面影响策略、使其无法学习；Q3 不同重定向方法在多大程度上保留了源动作的「外观」。",
+    "source": {
+      "page": 2,
+      "chunk_id": 29,
+      "quote": "To what extent do different retargeting methods preserve the"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文观察到参考动作的初始帧会造成什么现象？",
+    "input": "依据论文第 I 节",
+    "output": "不论用哪种重定向方法，参考动作的初始帧都会极大影响策略是能开始跟踪、还是一开始就失败。",
+    "source": {
+      "page": 1,
+      "chunk_id": 17,
+      "quote": "the initial frame of the reference motion can greatly impact whether the policy is able to start tracking it or if it fails immediately"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "GMR 与 Unitree 的重定向数据集相比，结果如何？",
+    "input": "依据论文第 I 节",
+    "output": "GMR 在忠实度分数与策略成功率两方面都非常接近 Unitree 的重定向数据集。",
+    "source": {
+      "page": 1,
+      "chunk_id": 17,
+      "quote": "GMR comes very close to the Unitree retarget dataset in both faithfulness score and policy success rate"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文列出的第一项主要贡献是什么？",
+    "input": "依据论文第 I 节",
+    "output": "提出了一种新的通用运动重定向方法 GMR——它解决了其他重定向器中存在的问题，能从各种人体动作中产出高质量的重定向动作。",
+    "source": {
+      "page": 1,
+      "chunk_id": 18,
+      "quote": "A new general motion retargeting method, GMR, that addresses issues found in other retargeters and produces high-quality retargeted motion from a wide range of human motion"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文承认 GMR 是否还需要人工调参？",
+    "input": "依据论文第 VI 节",
+    "output": "论文承认在少数情况下 GMR 仍需要一些调参来消除优化伪影；但默认参数在很广的动作范围内都工作良好。",
+    "source": {
+      "page": 6,
+      "chunk_id": 81,
+      "quote": "While in rare occasions GMR may still require some tuning to eliminate optimization artifacts"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文结论部分再次强调哪几个伪影会大幅增加学习运动跟踪策略的难度？",
+    "input": "依据论文第 VI 节",
+    "output": "地面穿透、自相交，以及关节值上的突然跳变。",
+    "source": {
+      "page": 6,
+      "chunk_id": 80,
+      "quote": "namely ground penetrations, self-intersections, and sudden jumps in joint values"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文的端到端实验表明重定向方法的选择对性能有什么影响？",
+    "input": "依据论文第 I 节",
+    "output": "实验表明重定向方法的选择会关键性地影响人形机器人的性能。",
+    "source": {
+      "page": 1,
+      "chunk_id": 15,
+      "quote": "the choice of retargeting method critically impacts humanoid performance"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "用户研究对 GMR 的动作与 PHC、ProtoMotions 的结果得出了什么比较结论？",
+    "input": "依据论文第 V-C 节",
+    "output": "用户认为 GMR 比 PHC 或 ProtoMotions 生成的重定向动作更忠实于参考动作。",
+    "source": {
+      "page": 6,
+      "chunk_id": 76,
+      "quote": "Users consider GMR to be more faithful to the reference motion than the retargets generated by either"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "在忠实度上，Unitree 的重定向数据与 GMR 相比如何？",
+    "input": "依据论文第 V-C 节",
+    "output": "Unitree 的重定向被认为比 GMR 的更忠实，但用户也更难把两者区分开来。",
+    "source": {
+      "page": 6,
+      "chunk_id": 76,
+      "quote": "The Unitree retarget is considered more faithful than the GMR one, but the users also have a harder time distinguishing the two"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文认为 GMR 能否作为 Unitree 重定向数据的替代？依据是什么？",
+    "input": "依据论文第 V-C 节",
+    "output": "可以。高成功率与接近的忠实度分数结合起来，说明 GMR 是 Unitree 重定向数据的一个可行替代方案。",
+    "source": {
+      "page": 6,
+      "chunk_id": 76,
+      "quote": "shows that GMR is a viable alternative to the data retargeted by Unitree"
+    },
+    "category": "结论"
+  },
+  {
+    "instruction": "论文自述的数据来源局限性是什么？",
+    "input": "依据论文第 VI 节",
+    "output": "尽管考虑的动作种类很多，但它们全部来自单一来源，即 LAFAN1 数据集。",
+    "source": {
+      "page": 6,
+      "chunk_id": 82,
+      "quote": "they all came from a single source (the LAFAN1 dataset)"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文建议后续研究补充哪些其他数据源？",
+    "input": "依据论文第 VI 节",
+    "output": "建议使用更多数据源，例如 AMASS 数据集，或者从单目视频中重建出来的人体动作。",
+    "source": {
+      "page": 6,
+      "chunk_id": 82,
+      "quote": "such as the AMASS dataset or human motion reconstructed from monocular video"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文在机器人平台上的局限性是什么？原因何在？",
+    "input": "依据论文第 VI 节",
+    "output": "论文只考虑了 Unitree G1；这主要是 BeyondMimic 代码库带来的限制，因为其他重定向方法其实也支持 Unitree H1。",
+    "source": {
+      "page": 6,
+      "chunk_id": 82,
+      "quote": "Another limitation is that we only consider the Unitree G1"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文建议把这项分析扩展到什么对象上作为未来工作？",
+    "input": "依据论文第 VI 节",
+    "output": "建议在后续工作中把这项分析扩展到其他型号的人形机器人上。",
+    "source": {
+      "page": 7,
+      "chunk_id": 83,
+      "quote": "extending this analysis to other humanoid robots should also be considered in future work"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文提出的另一个未来工作方向是什么？",
+    "input": "依据论文第 VI 节",
+    "output": "研究重定向对涉及交互的运动序列的影响，例如与周围环境、与物体或与其他机器人之间的交互。",
+    "source": {
+      "page": 7,
+      "chunk_id": 83,
+      "quote": "the impact of retargeting on motion sequences that involve interactions, for example, with the surrounding environment, with objects, or with other robots"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文研究的运动跟踪任务在范围上有什么限定？",
+    "input": "依据论文第 I 节",
+    "output": "限定在不涉及与物体交互、也不涉及复杂场景的运动跟踪任务上。",
+    "source": {
+      "page": 0,
+      "chunk_id": 10,
+      "quote": "motion tracking tasks that do not involve interaction with an object or a complex scene"
+    },
+    "category": "局限"
+  },
+  {
+    "instruction": "论文的资助来源包括哪些机构？",
+    "input": "依据论文致谢",
+    "output": "本研究部分得到斯坦福以人为本人工智能研究院（Stanford HAI）的资助。",
+    "source": {
+      "page": 7,
+      "chunk_id": 83,
+      "quote": "This work is in part supported by the Stanford Institute for Human-Centered AI (HAI)"
+    },
+    "category": "局限"
+  }
+]

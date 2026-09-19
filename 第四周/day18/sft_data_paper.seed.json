@@ -1,0 +1,57 @@
+[
+  {
+    "instruction": "GMR 出自哪篇论文（论文标题是什么）？",
+    "input": "依据论文标题",
+    "output": "论文标题是《Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking》。",
+    "source": {
+      "page": 0,
+      "chunk_id": 0,
+      "quote": "Retargeting Matters: General Motion Retargeting for Humanoid Motion Tracking"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "论文的通讯作者联系邮箱是什么？",
+    "input": "依据论文作者信息",
+    "output": "通讯作者的联系邮箱是 jparaujo@stanford.edu。",
+    "source": {
+      "page": 0,
+      "chunk_id": 6,
+      "quote": "Send correspondence to:jparaujo@stanford.edu"
+    },
+    "category": "术语定义"
+  },
+  {
+    "instruction": "重定向数据中的伪影对哪一类动作的策略鲁棒性影响最大？",
+    "input": "依据论文实验部分",
+    "output": "伪影会显著降低策略鲁棒性，对动态或长序列（dynamic or long sequences）的影响尤其明显。",
+    "source": {
+      "page": 0,
+      "chunk_id": 3,
+      "quote": "particularly for dynamic or long sequences"
+    },
+    "category": "实验设置"
+  },
+  {
+    "instruction": "GMR 在评估重定向质量对策略性能的影响时，抑制了什么？",
+    "input": "依据论文贡献部分",
+    "output": "GMR 在评估重定向质量如何影响策略性能时，抑制了过度的奖励调参（excessive reward tuning）。",
+    "source": {
+      "page": 0,
+      "chunk_id": 2,
+      "quote": "when excessive reward tuning is suppressed"
+    },
+    "category": "方法步骤"
+  },
+  {
+    "instruction": "人形运动跟踪策略是构建哪些系统的基础工具？",
+    "input": "依据论文引言",
+    "output": "人形运动跟踪策略是构建遥操作管线（teleoperation pipelines）与分层控制器（hierarchical controllers）的基础工具。",
+    "source": {
+      "page": 0,
+      "chunk_id": 0,
+      "quote": "central to building teleoperation pipelines and hierarchical controllers"
+    },
+    "category": "方法步骤"
+  }
+]
