@@ -1,0 +1,67 @@
+[
+ {
+  "id": 1,
+  "type": "in_material",
+  "question": "GMR 的英文全称是什么？",
+  "note": "摘要第 2 段直接给出全称；答案可能混英文，判定放宽：含 General 或 重定向 即算命中",
+  "top_ids": [
+   36,
+   76,
+   69,
+   35
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "【dry-run 桩答案】资料中没有提到。",
+  "refused": true,
+  "correct": false,
+  "detail": "该答未答（资料里有答案却拒答）",
+  "runs": 1,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "该答未答（资料里有答案却拒答）",
+    "answer": "【dry-run 桩答案】资料中没有提到。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ },
+ {
+  "id": 2,
+  "type": "in_material",
+  "question": "这篇论文主要解决什么问题？",
+  "note": "摘要与引言开头均提到 embodiment gap；答案说清'人类运动数据难以直接用于人形机器人'即可",
+  "top_ids": [
+   14,
+   22,
+   1,
+   9
+  ],
+  "source_chunk": [
+   0,
+   5
+  ],
+  "answer": "【dry-run 桩答案】资料中没有提到。",
+  "refused": true,
+  "correct": false,
+  "detail": "该答未答（资料里有答案却拒答）",
+  "runs": 1,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "该答未答（资料里有答案却拒答）",
+    "answer": "【dry-run 桩答案】资料中没有提到。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false
+ }
+]

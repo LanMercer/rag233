@@ -1,0 +1,17 @@
+# HuggingFace Spaces 在线 Demo 依赖（CPU basic 免费层）
+# 说明：检索层（bge + Chroma）在 CPU 上运行；生成层调用 DeepSeek API（OpenAI 兼容），故不需要 GPU/大模型权重。
+
+gradio==4.44.0
+
+# RAG 检索链路（与本地项目保持一致：bge-small-zh 向量化 + Chroma 余弦检索）
+langchain==0.3.7
+langchain-community==0.3.5
+langchain-chroma==0.1.4
+langchain-huggingface==0.1.2
+langchain-text-splitters==0.3.2
+chromadb==0.5.15
+sentence-transformers==3.2.1
+
+# PDF 读取 + HTTP 调用云端生成接口
+pypdf==5.1.0
+requests==2.32.3
