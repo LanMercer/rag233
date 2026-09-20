@@ -1373,7 +1373,7 @@ git commit -m "Day18: O1-R8 数据自检（9/10 标注自洽，瓶颈锁定检�
 | `app.py` 页面提示"服务端模型 = X，但 profile 要求 = Y"                 | 端口上跑的是另一个模型（"服务在跑 ≠ 服务正确"）                      | 换匹配的服务；6G 一次只能跑一个 3B                                                                         |
 | 起服务时报 `No module named uvicorn` | **用了 base 环境**（`uvicorn` 只装在 `llm` 环境里） | 先 `conda activate llm`，**行首看到 `(llm)` 再起服务**；见本节末「❗ 起服务必看」 |
 | 跑 `eval_v2.py` 时报 `ParserError: "<"运算符是为将来使用而保留的` | 命令里**照抄了带尖括号的占位符**（如 `--date <你的实际日期>`）——PowerShell 把 `<` 当保留运算符，**python 根本没启动** | 把占位符换成真值：`--date 9/20`。**判据**：报错里出现 `CategoryInfo: ParserError` 就是 shell 层，不是脚本问题 |
-| `pip install -r requirements.txt` 之后 `app.py` 起不来 / 页面 500，报 `TypeError: argument of type 'bool' is not iterable` | **把"给 HF Spaces 用的清单"装进了共享的 `llm` 环境**：gradio 被降到 4.44.0，而 `pydantic 2.11+` 把 `dict` 的 JSON Schema 从 `additionalProperties: {}` 改成了 `true`，`gradio_client 1.3.0` 的 `get_type()` 里 `"const" in True` 直接抛错 → **每个请求都 500**（首页也打不开） | ① 恢复环境（见本节末「❗ 装依赖必看」）；② 以后 ② 要跑在**独立环境**里；③ `requirements.txt` 要 pin `pydantic==2.10.6` |
+| `pip install -r requirements.txt` 之后 `app.py` 起不来 / 页面 500，报 `TypeError: argument of type 'bool' is not iterable` | **把"给 HF Spaces 用的清单"装进了共享的 `llm` 环境**：gradio 被降到 4.44.0，而 `pydantic 2.11+` 把 `dict` 的 JSON Schema 从 `additionalProperties: {}` 改成了 `true`，`gradio_client 1.3.0` 的 `get_type()` 里 `"const" in True` 直接抛错 → **每个请求都 500**（首页也打不开） | ① 恢复环境（见本节末「❗ 装依赖必看」）；② 以后 ② 要跑在**独立环境**里；③ `requirements.txt` 要 pin `pydantic==2.10.6`（**已实测复现并实测修复**，见该小节） |
 | 紧接着报 `ValueError: When localhost is not accessible, a shareable link must be created` | **这是上一个错的连锁反应，不是独立问题**：`launch()` 会探测 `127.0.0.1:7860/` 确认服务起来了，而首页正被上面那个 `TypeError` 打成 500 → 探测失败 → gradio **误判"本机不通"** | 修好上一个即可，**不要**去开 `share=True`、也不用改代理 |
 | `pip install` 报 `No matching distribution found for X==Y`，但去 PyPI 查这个版本**确实存在** | **不是版本不存在，是 pip 读不到索引页**。报错前几行一定有 `Could not fetch URL https://pypi.org/simple/... - skipping`；`pip` 在放弃该索引后就会说"没有匹配的发行版"（且**不会**列 `from versions:`） | 配国内镜像：`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`；慢/偶发 SSL 断连再加 `--timeout 60 --retries 10` |
 | **`conda create -n demo ...` 报 `CondaSSLError` / `SSLEOFError` / `ReadTimeoutError`** ⭐ | **连不上 `repo.anaconda.com`**（TLS 被重置），**不是命令写错**；conda 默认读超时只有 `5s` 更容易误判。**随后 `conda activate demo` 报 `EnvironmentNameNotFound`、还带一个 `Invoke-Expression ... 空字符串` —— 都是这一个错的连锁反应**（环境压根没建出来） | 见本节末「❗ 建环境连不上（换清华镜像）」 |
@@ -1496,6 +1496,31 @@ conda info --envs                       # 应能看到  demo  D:\miniconda1\envs
 pydantic==2.10.6
 ```
 
+#### ✅ 这个结论已经**实测复现 + 实测修复**（不是推断）
+
+在**干净的新环境 `demo`** 里做了受控实验（同一份 `space_demo\app.py`、同一条命令，只改 `pydantic` 一个变量）：
+
+| 步骤 | 命令 | 结果 |
+|---|---|---|
+| ① 故意升到没 pin 的情形 | `pip install pydantic==2.12.0` | `当前 pydantic = 2.12.0` |
+| ② 跑冒烟 | `python -B -c "import app; d=app.build_ui(); print(len(d.get_api_info()))"` | ❌ **复现**：`File "...\gradio_client\utils.py", line 863, in get_type` / `if "const" in schema:` / **`TypeError: argument of type 'bool' is not iterable`** —— **报错文件、行号、那一行代码，全部与预测一致** |
+| ③ 装回 pin | `pip install pydantic==2.10.6` | `当前 pydantic = 2.10.6` |
+| ④ 跑**同一条**命令 | 同上 | ✅ **`OK, 接口数 = 2`** |
+
+→ **一个变量、前后对照、同一命令**：**pin 不是"试试看"，是实证过的修复**。（第 ④ 步日志里夹了一条 `httpx.ConnectTimeout`，那是 gradio 的版本检查/遥测连外网超时，**与功能无关**——看最后一行 `OK` 即可。）
+
+**新环境 `demo` 建好后的"金标准版本"**（HF Spaces 就用这一套）：
+
+| 包 | 版本 | 包 | 版本 |
+|---|---|---|---|
+| `pydantic` | **2.10.6** ⭐ | `gradio` | 4.44.0 |
+| `gradio_client` | 1.3.0 | `langchain` | 0.3.7 |
+| `langchain-core` | 0.3.63 | `chromadb` | 0.5.15 |
+| `numpy` | 1.26.4 | `sentence-transformers` | 3.2.1 |
+| `transformers` | 4.57.6 | `torch` | 2.14.0**+cpu** |
+
+> 💡 `torch` 是 **`+cpu`** 版本 —— 这对 **HF Spaces 免费 CPU basic 层**正是**对的**（不需要 CUDA，装上去只是白白把镜像撑大几 GB）。
+
 **正确姿势（② 要跑就开独立环境）**：
 
 ```powershell
@@ -1509,9 +1534,9 @@ pip install -r requirements.txt
 1. `pip list` 里 `gradio` 变成 4.x、`langchain` 变成 0.3.x —— 就是它干的；
 2. 真冒烟（**不是 `--check`**）：
    ```powershell
-   cd "D:\Lan\研究生\技术学习\大模型算法\第四周\day18"
-   python -B -c "import app; d=app.build_ui(); print(len(d.get_api_info()))"
-   #   期望打印一个数字；抛 TypeError 就是中了
+   cd "D:\Lan\研究生\技术学习\大模型算法\第四周\发布包\space_demo"
+   python -B -c "import app; d=app.build_ui(); print('OK, 接口数 =', len(d.get_api_info()))"
+   #   期望打印 OK, 接口数 = 2；抛 TypeError 就是中了
    ```
 
 **恢复办法**（版本号取自 pip 的卸载日志，是"降级前快照"；先配镜像再装）：

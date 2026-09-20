@@ -67,7 +67,7 @@
 | **⚠ 证据链自查：查出并修正 day17 报告的一处 F1 数据错误** ⭐⭐ 本日最该被记住的一件事 | ✅ | 核对数字时发现：`实验日志.md` 与 `day17工作汇报.md` 里 R1R2 的 **F1 写作 0.889，但 0.889 是「精确率 P」，真值是 0.842**。已修正 **4 个文档**（日志 / day17 汇报 / day17 教程 / day18 教程）+ 清理日志中一行重复的占位行；`app.py` 的指标表**读日志、自动跟随**（实测已显示 `F1 0.706 → 0.842 (+0.136)`） |
 | **R3 确认跑（`eval_v2.py --top-k 8 --runs 3`）** ⭐⭐ 收尾阶段的"闭环" | ✅ | **day17 的推测 → 实测**：strict **4/10**、loose 5/10、生成 4/10、防幻觉 7/10、**F1 0.824**、总 **11/20 = 55%**、一致率 0.950，已 `--append-log` 入表。**回归的正是 Q3**（前缀曾把它的期望段 chunk 6 挤出前 8；关掉后回到第 6 名）→ **"前缀的伤害是排名位移"这一机制判断成立**。**顺带白捡一条复现证据**：`day16\result_lora_k8`（同配置 runs=1）用同一脚本重算 = **六项汇总逐项相同、逐题 Top-8 与 20 条判定全部一致** → **day16 R2 的 4/10 不是抽样的运气** |
 | **⚠ 自伤式环境事故与恢复** ⭐ 本日代价最大、教训最值钱的一次 | ✅ | **事故**：在共享的 `llm` 环境里跑了 `发布包\space_demo\requirements.txt` → **41 个包被降级**（gradio 6.27→4.44、langchain 1.3.14→0.3.7、chromadb 1.5.9→0.5.15、transformers 5.14.1→4.57.6、numpy 2.4.4→1.26.4 …）→ `day18\app.py` **起不来**。**定位**：`launch(theme=...)` 报 `unexpected keyword argument 'theme'`（4.44 的 `launch()` 没有该参数）；更隐蔽的是 **`TypeError: argument of type 'bool' is not iterable` 让"服务能起、每个请求都 500"**——根因是 **pydantic ≥2.11 把 `dict` 的 JSON Schema 从 `additionalProperties: {}` 改成 `true`**，而 `gradio_client 1.3.0` 的 `get_type()` 写的是 `if "const" in schema:`（拿布尔做 `in`）→ 首页与 `/api/info` 全会走它。**⚠ 为什么 gradio 自己没拦住**：`gradio 4.44.0` 只写 `pydantic>=2.0`（**无上界**），pip 认为满足、**连冲突警告都不给**。**恢复**：先配国内镜像（pypi.org 当时 `SSLEOFError`），再**按 pip 卸载日志里的旧版本号逐包装回**；**复验**：`get_api_info()` 能返回数字 + `python app.py` 浏览器点开首页 ✅ |
-| **把事故固化成防线** ⭐ | ✅ | ① `发布包\space_demo\requirements.txt` **补 `pydantic==2.10.6`**（否则 **D5 上线时 HF Spaces 全新容器装最新 pydantic，同一个崩会原样复现**）；② day18 教程补「**❗ 装依赖必看：别把 `requirements.txt` 跑进 `llm`**」整节（含正确姿势 `conda create -n demo`、真冒烟命令、恢复命令清单）；③ FAQ 新增 4 条（pip 污染 / 连锁的 `localhost not accessible` / `No matching distribution` 其实是**读不到索引页**而非版本不存在 / PowerShell 的 `ParserError`） |
+| **把事故固化成防线** ⭐ | ✅ | ① `发布包\space_demo\requirements.txt` **补 `pydantic==2.10.6`**（否则 **D5 上线时 HF Spaces 全新容器装最新 pydantic，同一个崩会原样复现**）；② **在干净环境 `demo` 里做了单变量对照实验，把它从"推断"升级成"实测复现 + 实测修复"**（`2.12.0` 复现 → `2.10.6` 通过）；③ day18 教程补「**❗ 装依赖必看：别把 `requirements.txt` 跑进 `llm`**」与「**❗ 建环境连不上（换清华镜像）**」两整节（含金标准版本表、真冒烟命令、恢复命令清单）；④ FAQ 新增 6 条 |
 | **`start.py` 指向 day18 完成版**（day17 待办④ / 教程 5.4） ⭐ | ✅ | `day17\start.py` 第 52 行 `..\day16\app.py` → **`..\day18\app.py`**，并同步更新文件头注释与 docstring。**已验证**：`python start.py --check` 打印 `[OK] Web 界面：…\day18\app.py` |
 | **git 存档** | ✅ | **已按"分两笔"完成主体**：① `2660b33` **Day18 主体**（day18 教程 + day18 工作汇报 + `实验日志.md`，3 files / +365 / −20）；② `6aa8cd7` **F1 更正独立一笔**（day17 教程 + day17 工作汇报，2 files / +577 / −259）。后经 `27bd6e2` / `01f2d97` / `e703713` / `6ac1de9` 四笔收尾（回填 hash、日期口径、日志 Day18 小节、**R3 结果目录入库**），本次再补一笔 R3 解读与防线。⚠ 遗留：`171bca3` 与 `62a582b` 两条**同 message** 的旧提交仍在外层历史里，**建议 squash 但未做**（见第六节待补项 6） |
 
@@ -214,7 +214,7 @@
 
 - [x] **6.3 静态核对通过**（不花额度也能做，已实跑留下一串可核验输出）：`Select-String -Path app.py,README.md -Pattern "sk-","api_key"` **只在注释与 README 的占位符里命中，代码里无硬编码 key**；密钥全部走 `os.environ.get("API_KEY")`；三处标注（页面 `DEMO_NOTE` / `README.md` / `..\blog\项目展示页.md`）齐备；端点 `api.deepseek.com/v1/chat/completions` 与 `MODEL_NAME=deepseek-chat` 正确；发布包体积 **13,130 B ≈ 12.8 KB < 20 MB**（无权重 / adapter / 大向量库）
 - [ ] ⚠ **6.2「真冒烟」未做**（不上线、但要花 DeepSeek 额度）→ **如实记为未跑**。已做的是：`pip install -r requirements.txt` **在 `llm` 环境里被误执行**（就是第 12 条事故的起点），**正确做法（独立环境 `demo`）已写进教程 6.2 的红字前置警告**，正在按它重来
-- [x] **D5 上线前必补项已提前做掉**：`发布包\space_demo\requirements.txt` **补 `pydantic==2.10.6`**（否则 HF Spaces 全新容器装最新 pydantic，同一个 `TypeError` 会原样复现）
+- [x] **D5 上线前必补项已提前做掉并验证**：`发布包\space_demo\requirements.txt` **补 `pydantic==2.10.6`**；并在干净环境 `demo` 里**单变量对照验证**（`pydantic 2.12.0` → 复现 `TypeError`；`2.10.6` → `OK, 接口数 = 2`）——**不是"应该能修好"，是"实测修好了"**
 
 **睡前：**
 
@@ -235,6 +235,8 @@
 - **"R3 的 strict 和 `retrieval_lab` 的 4/10 一样，那 `retrieval_lab` 是不是就够了、不用跑 `eval_v2`？"** → **不够，但两者互补**。`retrieval_lab.py` **只做检索、不做生成**，它能证明"**检索这一项**回到了 4/10"，却**给不出生成 / 防幻觉 / F1**——而《优化成果报告》要的是**完整对比行**。→ **R3 是"正式一行"，`retrieval_lab` 是"便宜的诊断证据"，两者数字吻合（4/10 ↔ 4/10）反而互相印证了对方的可靠性。**
 - **"R3 的 F1（0.824）比 R1R2（0.842）低，那你为什么还选 `qi=off`？"** → 因为差的**不是"前缀有用"，而是 2 个格子**：**Q5**（in）R1R2 拒答 → R3 作答（**R3 修掉了 1 个 FP**）、**Q11**（out）R1R2 拒答 → R3 编造（**R3 多了 1 个 FN**）；**且 R3 是唯一 `FP=0` 的一轮**。Q11 在 R3 里三次一致（**稳定编造、不是抖动**），它是 out 题、上下文同样随检索变动 → **这 1 题的差异不足以支撑"前缀有助于防幻觉"**；而前缀有害在**检索层有明确机制**（Q3 的 chunk 6 被挤出前 8，关掉即回归）。→ **选 `qi=off`，同时如实报出"总分与 F1 各低 1 题"**，不挑好看的讲。
 - **"为什么要把'我把自己的环境搞坏了'写进报告？"** → 因为这次事故的根因不是"手滑"，而是两条**可复用的判据**：① **`pip install -r` 会改环境**——跑之前先问"这份清单是给谁的环境用的"；② **"服务能起" ≠ "服务能用"**——`--check` 只构建界面、不碰请求路径，必须用 `.get_api_info()` 真冒烟。→ **把判据写下来，比"我以后小心点"有用得多**；顺带也解释清了**为什么 `requirements.txt` 必须 pin `pydantic==2.10.6`**（否则 D5 上线时 HF Spaces 全新容器会原样复现）。
+- **"你怎么确定是 pydantic 的问题，而不是 gradio / 别的包？"** → **不靠猜，靠单变量对照**：在干净的新环境 `demo` 里，**同一份 `space_demo\app.py`、同一条命令，只改 `pydantic`**——`2.12.0` 准点复现 `TypeError`（栈帧精确落在 `gradio_client\utils.py:863  if "const" in schema:`，**和事故现场一模一样**），换回 `2.10.6` 同一命令立刻 `OK, 接口数 = 2`。→ **根因不是我根据报错推断的，是被复现出来的**；这也顺带证明了那个 `pin` 是真修复、不是碰巧。
+- **"独立环境跑通了，说明什么？"** → 说明**"环境隔离"这个纪律是有具体收益的、可度量的**：同一个 `pip install -r requirements.txt`，**在 `llm` 里跑 = 41 个包降级 + 服务 500 + 半天恢复**；**在 `demo` 里跑 = 一次干净的成功**（`llm` 侧的 `gradio 6.27 / pydantic 2.13.4` **事后复查一字未动**）。→ **结论不是"以后小心点"，而是"用一次 `conda create` 买断这类风险"**。
 
 ---
 
@@ -256,11 +258,12 @@
 | 12 | **收尾时 `eval_v2.py` 命令直接报 `ParserError: "<"运算符是为将来使用而保留的`** ⭐ | 教程里的占位符 `--date <你的实际日期>` 被**原样粘进 PowerShell**——`<` 是 PowerShell 的保留运算符，**python 根本没启动**。→ 换成 `--date 9/20` 即可。**判据：报错里有 `CategoryInfo: ParserError` 就是 shell 层，别去改脚本** |
 | 13 | **`pip install -r requirements.txt` 把共享的 `llm` 环境打坏（41 个包降级）** ⭐⭐ 今天代价最大 | **这不是代码错，是环境错**：那份清单是给 **HF Spaces 全新容器**用的，会主动降级 `gradio / langchain / chromadb / transformers / numpy`。→ **正确姿势**：`conda create -n demo python=3.11 -y` 后在里面装；**教训**：`pip install -r` 是"会改环境的写操作"，跑之前先问"这份清单是给谁的环境用的" |
 | 14 | **降级后 `app.py` 起不来：`TypeError: got an unexpected keyword argument 'theme'`** | `app.py` 的 `launch(theme=gr.themes.Soft())` 是给 **gradio 6.x** 写的；4.44.0 的 `launch()` 没这个参数（必须放 `Blocks(theme=...)`）→ 靠**恢复环境**解决，而不是改代码迁就旧版 |
-| 15 | **降级后"服务能起、但每个请求都 500"，日志刷 `TypeError: argument of type 'bool' is not iterable`** ⭐ 最隐蔽的一个 | **根因是 `pydantic ≥2.11` 的 Schema 变更**：`dict` 字段的 JSON Schema 由 `additionalProperties: {}` 变成 `true`（布尔），而 `gradio_client 1.3.0` 的 `get_type()` 写的是 `if "const" in schema:` → **拿布尔值做 `in` 直接抛错**；首页与 `/api/info` 都要走它。**⚠ 关键认知**：`gradio 4.44.0` 只写 `pydantic>=2.0`（**无上界**），**pip 不会报任何冲突** → 这类"依赖声明过松"的坑，只能靠 `.get_api_info()` 真冒烟来抓（`--check` 查不出来，因为它不碰请求路径） |
+| 15 | **降级后"服务能起、但每个请求都 500"，日志刷 `TypeError: argument of type 'bool' is not iterable`** ⭐ 最隐蔽的一个 | **根因是 `pydantic ≥2.11` 的 Schema 变更**：`dict` 字段的 JSON Schema 由 `additionalProperties: {}` 变成 `true`（布尔），而 `gradio_client 1.3.0` 的 `get_type()` 写的是 `if "const" in schema:` → **拿布尔值做 `in` 直接抛错**；首页与 `/api/info` 都要走它。**⚠ 关键认知**：`gradio 4.44.0` 只写 `pydantic>=2.0`（**无上界**），**pip 不会报任何冲突** → 这类"依赖声明过松"的坑，只能靠 `.get_api_info()` 真冒烟来抓（`--check` 查不出来，因为它不碰请求路径）。**✅ 收尾时在干净环境里做了受控实验把它"实测复现 + 实测修复"**（见 #20） |
 | 16 | **恢复时又撞 `ERROR: No matching distribution found for langchain-community==0.4.2`** ⭐ 容易误判 | **不是版本不存在**（清华镜像上 24 个版本实测 24/24 全在）——是 **pip 读不到 `pypi.org` 的索引页**（`SSLEOFError`，报错前有 `Could not fetch URL ... - skipping`）。→ `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple` 后同一命令即成功。**判据：pip 说"没有匹配的发行版"但没列 `from versions:`，八成是网络/索引问题** |
 | 17 | **`localhost is not accessible` / `share=True` 的误导** | 这是 15 的**连锁反应**：`launch()` 会探 `127.0.0.1:7860/` 确认服务起来，而首页正被那个 `TypeError` 打成 500 → 探测失败 → gradio **误判"本机不通"**。→ **修 15 即可**，不要去开 `share=True`、也不用查代理 |
 | 18 | **按正确姿势开独立环境时，第一步 `conda create -n demo python=3.11 -y` 又挂了**：`CondaSSLError` / `SSLEOFError` / `read timeout=5` ⭐ | **不是命令错，是连不上 `repo.anaconda.com`**。⚠ 关键在于**别被后面两条报错带偏**：环境没建出来 → `conda activate demo` 报 `EnvironmentNameNotFound`，紧跟的 `Invoke-Expression ... 参数为空字符串` 只是 conda 的 PowerShell 钩子在激活失败时的连带报错 —— **三个报错 = 一件事**。→ 让 conda 也走清华镜像（改 `D:\miniconda1\.condarc`，并把读超时 5s → 120s、关掉 notices 噪音），`conda create` 约 1 分钟建成（`demo = D:\miniconda1\envs\demo`，Python 3.11.16） |
 | 19 | **改完 `.condarc` 后 conda 全线炸：`UnicodeDecodeError: 'gbk' codec can't decode byte 0x8e`** ⭐⭐ 这个坑是我自己造的 | **`.condarc` 必须纯 ASCII**：中文 Windows 上 conda 用 **GBK** 读它，**我在里面写了中文注释**→ 整份配置读不动，连 `conda --version` 都报错，还伪装成"conda 坏了"。→ 改成**英文注释**即恢复；**自查一行**：非 ASCII 字节数必须为 0。**教训：给"配置文件"写注释前，先确认解析它的人用什么编码。** |
+| 20 | **受控实验：把"pydantic 根因"从推断做成实测复现 + 实测修复** ⭐⭐ 今天证据链上最干净的一对 before/after | 在**干净的新环境 `demo`** 里，同一份 `space_demo\app.py`、同一条命令，**只改 `pydantic` 一个变量**：<br>① `pydantic==2.12.0` → **复现** `TypeError: argument of type 'bool' is not iterable`，且栈帧精确落在预测位置：`gradio_client\utils.py:863  if "const" in schema:`；<br>② `pydantic==2.10.6` → **`OK, 接口数 = 2`**。<br>→ **pin 不是"试试看"，是实证过的修复**；也直接证明 #15 的机制判断（`additionalProperties` 由 `{}` 变 `true`）**是对的**，而不是我根据报错猜的 |
 
 ---
 
@@ -317,7 +320,7 @@
   1. **✅ 日期口径已统一**（day17 待办①，**本报告初稿后补做**）：口径选定 **「日期 = 实际执行日」**，`实验日志.md` 中 day17 三行 `9/21` → `9/19`（`run_log.txt` 时间戳 15:17 / 15:31 / 16:28 为依据），表头补写口径说明。→ **本条已关闭。**
   2. **✅ R3 确认跑已完成**（`eval_v2.py --top-k 8 --runs 3 --exp-id R3`）：**strict 4/10、loose 5/10、生成 4/10、防幻觉 7/10、F1 0.824、总 11/20、一致率 0.950**，结果目录 `day17\result_lora_k8_runs3\`，已入「一、实验记录表」并回填结论列。**回归的正是 Q3**（前缀曾把它的 chunk 6 挤出前 8）→ **day17 的机制推断被实测验证**。→ **本条已关闭。** ⚠ 注意：**R3 的总分/F1 比带前缀的 R1R2 各低 1 题**（Q5 少一个 FP、Q11 多一个 FN），报告按此口径如实写，**不写成"R3 最好"**。
   3. **✅ 教程 5.4 已完成**：`day17\start.py` 第 52 行已改为 `..\day18\app.py`，注释同步；`python start.py --check` 打印 `[OK] Web 界面：…\day18\app.py`。→ **本条已关闭。**
-  4. **6.3 静态核对 ✅ 通过**；**6.2 真冒烟 ⚠ 未做**（不花 DeepSeek 额度）：`pip install -r requirements.txt` 曾在 `llm` 里被误执行（引发第 12~17 条事故，已恢复并复验），**独立环境 `demo` 的正确姿势已写进教程 6.2 红字警告**。**收尾时又发现连"开独立环境"这第一步都过不去**（`conda create` 连不上 `repo.anaconda.com`，见第 18 条）→ **已修好 conda 镜像源并建成 `demo`（Python 3.11.16），依赖正在装**。→ **按纪律挂账：等 `demo` 里依赖装完、`app.py` 真跑起来，才算完成；今天只到"环境已就绪、装依赖中"。**
+  4. **6.3 静态核对 ✅ 通过**；**6.2 真冒烟 ⚠ 未做**（不花 DeepSeek 额度）：`pip install -r requirements.txt` 曾在 `llm` 里被误执行（引发第 12~17 条事故，已恢复并复验），**独立环境 `demo` 的正确姿势已写进教程 6.2 红字警告**。**收尾时又发现连"开独立环境"这第一步都过不去**（`conda create` 连不上 `repo.anaconda.com`，见第 18 条）→ **已修好 conda 镜像源并建成 `demo`（Python 3.11.16）**，`pip install -r requirements.txt` **一次干净跑通**（`pydantic 2.10.6` / `gradio 4.44.0` / `torch 2.14.0+cpu`，与清单完全一致；**`llm` 侧事后复查一字未动**：`gradio 6.27.0` / `pydantic 2.13.4`）。**并已用 `demo` 跑通 UI 冒烟**：`get_api_info()` 返回 **2**（这条正是抓 #15 那个 bug 的命令）。→ **本条按纪律挂账的方式更精确了**：**"环境已就绪 + UI 冒烟已过"✅，"DeepSeek 端到端问答（真实起页面、真实调 API）"⚠ 仍待做**（要 key、花额度）。
   5. **⚠ 零散时间三项（力扣 198 / 统计八股串线① / 牛客 0.5 套）无可核验产物** → 不代填，待自行补记。
   6. **✅ Git 收尾已完成**（Day18 相关共 7 笔，最新一笔含 R3 结果目录与本次收尾），工作区已干净。→ **本条已关闭**。**遗留**：`171bca3` / `62a582b` 两条同 message 的旧提交**建议 squash 但未做**（需 rebase，非交互环境下风险高于收益）。
   7. **✅ `实验日志.md`「一、实验记录表」今日已新增 R3 行**——含**结论列实测回填**与五条说明（含"不要写成 R3 最好"的边界、与 day16 R2 的逐题一致复现证据）。`retrieval_lab` 仍**不进正式成绩表**（诊断口径），这点没变。→ **本条已关闭。**
@@ -327,7 +330,7 @@
   3. **拿 R3 当新的对照基线**（待补项 2 已关闭）：day19 的改写实验**一律与 R3 比**（同 k=8、同 qi=off、同 runs=3），**别再去和 runs=1 的 day16 R2 相减**；
   4. **O2-G2 模板 09 v2 + 消融**：打生成层的老靶子（**Q14/Q18 在三组里始终 FN 编造**，R3 里 FN = Q11/Q14/Q18）→ 加"**不得编造数字与引用**"硬约束，**把"检索层问题"和"生成层问题"分开报**（注意：**Q11 在 R3 里三次都编造、一致率 1.00**，是一个稳定的生成层靶子，比 Q18 更适合做消融的观察点）；
   5. **F 线推进**：F2 真实行业数据收集 / F3 真实 vs 合成对比微调（把"数据没意义"这条意见彻底闭环）；
-  6. **收尾**：⚠ **唯一仍未关闭的是待补项 4 的后半**（`space_demo` 真冒烟，要花额度，可选）与**5 的零散时间补记**；`171bca3` / `62a582b` 的 squash 若时间允许再做。**务必记得：`llm` 环境里不要再跑 `pip install -r`，要用 `conda activate demo`。**
+  6. **收尾**：⚠ **唯一仍未关闭的是待补项 4 的后半**（`space_demo` 的 **DeepSeek 端到端**问答——要 key、花额度；**环境与 UI 冒烟已就绪**）与**5 的零散时间补记**；`171bca3` / `62a582b` 的 squash 若时间允许再做。**务必记得：`llm` 环境里不要再跑 `pip install -r`，要用 `conda activate demo`；conda 已换清华镜像（见教程「❗ 建环境连不上」）。**
   7. 零散：力扣 198 补做 + 统计八股串线② + 牛客真题。
 
 ---
