@@ -259,6 +259,8 @@
 | 15 | **降级后"服务能起、但每个请求都 500"，日志刷 `TypeError: argument of type 'bool' is not iterable`** ⭐ 最隐蔽的一个 | **根因是 `pydantic ≥2.11` 的 Schema 变更**：`dict` 字段的 JSON Schema 由 `additionalProperties: {}` 变成 `true`（布尔），而 `gradio_client 1.3.0` 的 `get_type()` 写的是 `if "const" in schema:` → **拿布尔值做 `in` 直接抛错**；首页与 `/api/info` 都要走它。**⚠ 关键认知**：`gradio 4.44.0` 只写 `pydantic>=2.0`（**无上界**），**pip 不会报任何冲突** → 这类"依赖声明过松"的坑，只能靠 `.get_api_info()` 真冒烟来抓（`--check` 查不出来，因为它不碰请求路径） |
 | 16 | **恢复时又撞 `ERROR: No matching distribution found for langchain-community==0.4.2`** ⭐ 容易误判 | **不是版本不存在**（清华镜像上 24 个版本实测 24/24 全在）——是 **pip 读不到 `pypi.org` 的索引页**（`SSLEOFError`，报错前有 `Could not fetch URL ... - skipping`）。→ `pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple` 后同一命令即成功。**判据：pip 说"没有匹配的发行版"但没列 `from versions:`，八成是网络/索引问题** |
 | 17 | **`localhost is not accessible` / `share=True` 的误导** | 这是 15 的**连锁反应**：`launch()` 会探 `127.0.0.1:7860/` 确认服务起来，而首页正被那个 `TypeError` 打成 500 → 探测失败 → gradio **误判"本机不通"**。→ **修 15 即可**，不要去开 `share=True`、也不用查代理 |
+| 18 | **按正确姿势开独立环境时，第一步 `conda create -n demo python=3.11 -y` 又挂了**：`CondaSSLError` / `SSLEOFError` / `read timeout=5` ⭐ | **不是命令错，是连不上 `repo.anaconda.com`**。⚠ 关键在于**别被后面两条报错带偏**：环境没建出来 → `conda activate demo` 报 `EnvironmentNameNotFound`，紧跟的 `Invoke-Expression ... 参数为空字符串` 只是 conda 的 PowerShell 钩子在激活失败时的连带报错 —— **三个报错 = 一件事**。→ 让 conda 也走清华镜像（改 `D:\miniconda1\.condarc`，并把读超时 5s → 120s、关掉 notices 噪音），`conda create` 约 1 分钟建成（`demo = D:\miniconda1\envs\demo`，Python 3.11.16） |
+| 19 | **改完 `.condarc` 后 conda 全线炸：`UnicodeDecodeError: 'gbk' codec can't decode byte 0x8e`** ⭐⭐ 这个坑是我自己造的 | **`.condarc` 必须纯 ASCII**：中文 Windows 上 conda 用 **GBK** 读它，**我在里面写了中文注释**→ 整份配置读不动，连 `conda --version` 都报错，还伪装成"conda 坏了"。→ 改成**英文注释**即恢复；**自查一行**：非 ASCII 字节数必须为 0。**教训：给"配置文件"写注释前，先确认解析它的人用什么编码。** |
 
 ---
 
@@ -315,7 +317,7 @@
   1. **✅ 日期口径已统一**（day17 待办①，**本报告初稿后补做**）：口径选定 **「日期 = 实际执行日」**，`实验日志.md` 中 day17 三行 `9/21` → `9/19`（`run_log.txt` 时间戳 15:17 / 15:31 / 16:28 为依据），表头补写口径说明。→ **本条已关闭。**
   2. **✅ R3 确认跑已完成**（`eval_v2.py --top-k 8 --runs 3 --exp-id R3`）：**strict 4/10、loose 5/10、生成 4/10、防幻觉 7/10、F1 0.824、总 11/20、一致率 0.950**，结果目录 `day17\result_lora_k8_runs3\`，已入「一、实验记录表」并回填结论列。**回归的正是 Q3**（前缀曾把它的 chunk 6 挤出前 8）→ **day17 的机制推断被实测验证**。→ **本条已关闭。** ⚠ 注意：**R3 的总分/F1 比带前缀的 R1R2 各低 1 题**（Q5 少一个 FP、Q11 多一个 FN），报告按此口径如实写，**不写成"R3 最好"**。
   3. **✅ 教程 5.4 已完成**：`day17\start.py` 第 52 行已改为 `..\day18\app.py`，注释同步；`python start.py --check` 打印 `[OK] Web 界面：…\day18\app.py`。→ **本条已关闭。**
-  4. **6.3 静态核对 ✅ 通过**；**6.2 真冒烟 ⚠ 未做**（不花 DeepSeek 额度）：`pip install -r requirements.txt` 曾在 `llm` 里被误执行（引发第 12~17 条事故，已恢复并复验），**独立环境 `demo` 的正确姿势已写进教程 6.2 红字警告**，待按该步骤重来。→ **按纪律如实挂账（只记未完成的那一半）。**
+  4. **6.3 静态核对 ✅ 通过**；**6.2 真冒烟 ⚠ 未做**（不花 DeepSeek 额度）：`pip install -r requirements.txt` 曾在 `llm` 里被误执行（引发第 12~17 条事故，已恢复并复验），**独立环境 `demo` 的正确姿势已写进教程 6.2 红字警告**。**收尾时又发现连"开独立环境"这第一步都过不去**（`conda create` 连不上 `repo.anaconda.com`，见第 18 条）→ **已修好 conda 镜像源并建成 `demo`（Python 3.11.16），依赖正在装**。→ **按纪律挂账：等 `demo` 里依赖装完、`app.py` 真跑起来，才算完成；今天只到"环境已就绪、装依赖中"。**
   5. **⚠ 零散时间三项（力扣 198 / 统计八股串线① / 牛客 0.5 套）无可核验产物** → 不代填，待自行补记。
   6. **✅ Git 收尾已完成**（Day18 相关共 7 笔，最新一笔含 R3 结果目录与本次收尾），工作区已干净。→ **本条已关闭**。**遗留**：`171bca3` / `62a582b` 两条同 message 的旧提交**建议 squash 但未做**（需 rebase，非交互环境下风险高于收益）。
   7. **✅ `实验日志.md`「一、实验记录表」今日已新增 R3 行**——含**结论列实测回填**与五条说明（含"不要写成 R3 最好"的边界、与 day16 R2 的逐题一致复现证据）。`retrieval_lab` 仍**不进正式成绩表**（诊断口径），这点没变。→ **本条已关闭。**

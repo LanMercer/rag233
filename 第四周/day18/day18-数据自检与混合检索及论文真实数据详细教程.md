@@ -1151,6 +1151,7 @@ python app.py
 > cd "D:\Lan\研究生\技术学习\大模型算法\第四周\发布包\space_demo"
 > pip install -r requirements.txt
 > ```
+> ⚠ **如果第 1 条 `conda create` 就报 `CondaSSLError` / `SSLEOFError` / `ReadTimeoutError`**：那是连不上 `repo.anaconda.com`，**不是命令写错**。先配清华镜像（见「❗ 建环境连不上」小节）再重跑。
 > 详见「常见问题速查表」末尾的「❗ 装依赖必看」。
 
 ```
@@ -1375,6 +1376,8 @@ git commit -m "Day18: O1-R8 数据自检（9/10 标注自洽，瓶颈锁定检�
 | `pip install -r requirements.txt` 之后 `app.py` 起不来 / 页面 500，报 `TypeError: argument of type 'bool' is not iterable` | **把"给 HF Spaces 用的清单"装进了共享的 `llm` 环境**：gradio 被降到 4.44.0，而 `pydantic 2.11+` 把 `dict` 的 JSON Schema 从 `additionalProperties: {}` 改成了 `true`，`gradio_client 1.3.0` 的 `get_type()` 里 `"const" in True` 直接抛错 → **每个请求都 500**（首页也打不开） | ① 恢复环境（见本节末「❗ 装依赖必看」）；② 以后 ② 要跑在**独立环境**里；③ `requirements.txt` 要 pin `pydantic==2.10.6` |
 | 紧接着报 `ValueError: When localhost is not accessible, a shareable link must be created` | **这是上一个错的连锁反应，不是独立问题**：`launch()` 会探测 `127.0.0.1:7860/` 确认服务起来了，而首页正被上面那个 `TypeError` 打成 500 → 探测失败 → gradio **误判"本机不通"** | 修好上一个即可，**不要**去开 `share=True`、也不用改代理 |
 | `pip install` 报 `No matching distribution found for X==Y`，但去 PyPI 查这个版本**确实存在** | **不是版本不存在，是 pip 读不到索引页**。报错前几行一定有 `Could not fetch URL https://pypi.org/simple/... - skipping`；`pip` 在放弃该索引后就会说"没有匹配的发行版"（且**不会**列 `from versions:`） | 配国内镜像：`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`；慢/偶发 SSL 断连再加 `--timeout 60 --retries 10` |
+| **`conda create -n demo ...` 报 `CondaSSLError` / `SSLEOFError` / `ReadTimeoutError`** ⭐ | **连不上 `repo.anaconda.com`**（TLS 被重置），**不是命令写错**；conda 默认读超时只有 `5s` 更容易误判。**随后 `conda activate demo` 报 `EnvironmentNameNotFound`、还带一个 `Invoke-Expression ... 空字符串` —— 都是这一个错的连锁反应**（环境压根没建出来） | 见本节末「❗ 建环境连不上（换清华镜像）」 |
+| **改完 `.condarc` 后 conda 全线报 `UnicodeDecodeError: 'gbk' codec can't decode byte ...`** ⭐ 反直觉 | **`.condarc` 必须纯 ASCII**：中文 Windows 上 conda 用 **GBK** 去读它，**你在里面写中文注释就会把整份配置读崩** | 用**英文注释**（或干脆不写注释）；自查：非 ASCII 字节数应为 **0** |
 | 不建库直接提问，却被要求「先上传 PDF」 | 早期 `app.py` 的 bug：`store_state` 没接上建库按钮 | 已修（`resolve_store` 自动回落默认库）。更新代码后**重启页面**即可 |
 | 想问默认库，不确定要不要先点「建立知识库」 | 不必 | 默认库**开箱即用**：直接提问就会走默认 GMR 论文库 |
 | 上传 PDF 建库卡住/报错                                            | PDF 太大、或扫描版 PDF（无文本层）                           | 换小一点的/有文本层的 PDF；看页面建库日志定位                                                                    |
@@ -1406,6 +1409,68 @@ conda activate llm
 **正常启动的标志**：日志出现 `模型已就绪` 和 `LoRA adapter 已加载：...`，且 `/v1/models` 返回 `Qwen2.5-3B-Instruct-LoRA`。
 
 > **不建议**用 `& "D:\miniconda1\envs\llm\python.exe" -m uvicorn ...` 绕过激活：模型加载要 1~3 分钟，激活一次比每次抄长路径省事，也能避免"以为在 llm 环境、其实在 base"这类误判。
+
+---
+
+### ❗ 建环境连不上（换清华镜像）
+
+> `conda create -n demo python=3.11 -y` 报下面这类错，**命令本身没问题**，是**连不上 `repo.anaconda.com`**：
+>
+> ```text
+> Retrying ... SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] ...')': /pkgs/main/notices.json
+> Retrying ... ReadTimeoutError("... read timeout=5")': /pkgs/main/notices.json
+> CondaSSLError: Encountered an SSL error. Most likely a certificate verification issue.
+> ```
+>
+> **⚠ 别被后面两条报错带偏**：环境没建出来 → `conda activate demo` 自然报 `EnvironmentNameNotFound: Could not find conda environment: demo`，紧跟的 `Invoke-Expression : 无法将参数绑定到参数"Command"，因为该参数为空字符串` 只是 **conda 的 PowerShell 钩子在激活失败时的连带报错**。**三个报错 = 一件事。**
+
+**解决：让 conda 也走国内镜像**。改 `D:\miniconda1\.condarc`（先备份）：
+
+```powershell
+Copy-Item "D:\miniconda1\.condarc" "D:\miniconda1\.condarc.bak" -Force
+```
+
+写入下面内容（**⚠ 只能用英文注释，见下一条**）：
+
+```yaml
+channels:
+  - defaults
+show_channel_urls: true
+
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  nvidia: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+# Default 5s read timeout is too short for a flaky connection
+remote_connect_timeout_secs: 30.0
+remote_read_timeout_secs: 120.0
+remote_max_retries: 5
+
+# Skip "new version available" / "channel notices" network noise
+notify_outdated_conda: false
+number_channel_notices: 0
+```
+
+**验证 + 重跑**：
+
+```powershell
+conda config --show default_channels    # 应打印 mirrors.tuna.tsinghua.edu.cn 三条
+conda create -n demo python=3.11 -y     # 这次约 1 分钟
+conda info --envs                       # 应能看到  demo  D:\miniconda1\envs\demo
+```
+
+> 🔴 **改 `.condarc` 必须用纯 ASCII（英文注释）**：中文 Windows 上 conda 用 **GBK** 读这个文件，你若在里面写中文，会直接把整份配置读崩，报
+> `UnicodeDecodeError: 'gbk' codec can't decode byte 0x8e in position 62: illegal multibyte sequence`，
+> 然后 `conda` 全线不可用（连 `conda --version` 都会炸）。**自查一行**：
+> ```powershell
+> $b = [System.IO.File]::ReadAllBytes("D:\miniconda1\.condarc"); ($b | Where-Object { $_ -gt 127 }).Count   # 必须是 0
+> ```
 
 ---
 
