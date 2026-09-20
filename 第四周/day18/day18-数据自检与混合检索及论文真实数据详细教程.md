@@ -28,7 +28,7 @@
 **Day17 报告里明确留下的 5 条待办 → 今天的处理：**
 
 1. `**实验日志.md` 日期口径待统一**（现为计划日 9/21，实际 9/19）→ **✅ 今天已完成**：口径定为「日期 = 实际执行日」，day17 三行已改为 `9/19`，表头补写口径说明（做法见本教程 0.4 节）。
-2. **"关前缀 + 保留 k=8"是否能回到 strict 4/10**（day17 是**推测**：前缀在 k=8 下净丢 Q3）→ **今天跑第 3 步的检索实验时，顺手用同一判据确认**（`retrieval_lab.py` 的 vector 通道就是"无前缀 + k=8"，实测 **4/10**，与 day16 R2 完全一致 → 推测被证实，见 3.5 节）；若要进《优化成果报告》的**正式数字**，仍需用 `eval_v2.py --top-k 8 --runs 3` 补跑一轮（含生成与判分）。
+2. **"关前缀 + 保留 k=8"是否能回到 strict 4/10**（day17 是**推测**：前缀在 k=8 下净丢 Q3）→ **✅ 已完成，双证据**：① 第 3 步的 `retrieval_lab.py` vector 通道（无前缀 + k=8 + 同判据）实测 **4/10**，与 day16 R2 完全一致；② 1.3 节补跑的 `eval_v2.py --top-k 8 --runs 3 --exp-id R3` 给出**完整成绩行**（strict 4/10、loose 5/10、F1 0.824、总 11/20）→ **推测变实测，见 1.3 节**。
 3. `**app.py` 完成版**（上传 PDF → 建库 → 提问 → 指标对比）→ **今天第 5 步做完**（`第四周\day18\app.py`）。
 4. `**start.py` 未覆盖"上传 PDF → 自动建库"** → 今天的完成版 `app.py` 把这个能力放进界面内部（页面按钮建库），启动器不再需要管它。
 5. **混合检索 O1-R5 仅列为候选、尚未实现** → **今天第 3 步实现并给出裁决**（负结果也要如实记）。
@@ -255,42 +255,60 @@ day17 实测：**检索 strict 3/10（未达 ≥4/10 线）｜ 前缀有害（�
 
 > **"关掉前缀"落地在哪**：`eval_v2.py` 的 `--query-instruction` 默认就是 `off`，所以**不用改代码**；要做的是**在日志/报告/UI 上明确写出"前缀已证伪、已回退"**——否则半年后你自己都会疑惑"到底开没开"。
 
-### 1.3 补跑确认项 R3（可选，但建议做）
+### 1.3 补跑确认项 R3（✅ 已完成 · 9/20）
 
 **背景**：day17 的结论"关掉前缀 + k=8 大概率回到 strict 4/10"是**推测**（依据：R1R2 的 strict 3/10 比 day16 R2 的 4/10 低，因为前缀在 k=8 下仍净丢 Q3）。**按纪律，推测不等于实测。**
 
 **今天第 3 步会先给出一个强证据**（见 3.5 节）：`retrieval_lab.py` 的 vector 通道 = **无前缀 + k=8 + 同一套 strict 判据**，实测 **strict 4/10** —— 与 day16 R2 完全一致。**这已经证实了"检索命中"这一项**。
 
-**但**：`retrieval_lab.py` **只做检索、不做生成**，所以 strict 之外的三项（生成/防幻觉/F1）它给不了。要进《优化成果报告》的**完整对比行**，仍需补跑一轮：
+**但**：`retrieval_lab.py` **只做检索、不做生成**，所以 strict 之外的三项（生成/防幻觉/F1）它给不了。要进《优化成果报告》的**完整对比行**，就得补跑下面这一轮（**已于 9/20 跑完，实测见本节表格**）：
 
 ```
-python ..\day17\eval_v2.py --top-k 8 --runs 3 --note "R3: 关前缀保留 k=8（确认项）" --exp-id R3 --date <你的实际日期> --conclusion "确认：前缀回退后 strict 回到 4/10" --append-log
+python ..\day17\eval_v2.py --top-k 8 --runs 3 --note "R3: 关前缀保留 k=8（确认项）" --exp-id R3 --date 9/20 --append-log
 ```
 
-**预期**（**这是预测，不是结果，跑完请按实际数字改写**）：
+> ⚠️ **不要照抄带尖括号的占位符**：原教程这里写的是 `--date <你的实际日期>`，而 PowerShell 把 `<` 当保留运算符 → **命令会在启动 python 之前就报 `ParserError: "<"运算符是为将来使用而保留的`**（本次实测踩到，见「常见问题速查表」）。
+> ⚠️ **也不要在命令里预填 `--conclusion "确认：strict 回到 4/10"`** —— 那是"还没测就先写结论"。省略它，日志里会写 `（待填）`，跑完按实测回填（本教程下面就是回填后的样子）。
 
+**预测 vs 实测对照（✅ 9/20 跑完，预测全中）**：
 
-| 指标        | 预测（关前缀 + k=8）  | 依据                                                                      |
-| --------- | -------------- | ----------------------------------------------------------------------- |
-| 检索 strict | **4/10 = 40%** | `retrieval_lab.py` 同判据实测 4/10；day16 R2 也是 4/10                          |
-| 检索 loose  | 5/10（大概率）      | day16 R2 为 5/10；`retrieval_lab.py` 实测 5/10                              |
-| 生成/防幻觉/F1 | 待测             | 检索层给了更多正确段落 → 生成与防幻觉**倾向于**不低于 R1R2（80%）；**但生成层有自己的问题（Q14/Q18 编造），不保证** |
+| 指标 | 预测（关前缀 + k=8） | **实测** | 判定 |
+| --- | --- | --- | --- |
+| 检索 strict | **4/10 = 40%** | **4/10 = 40.0%** | ✅ **命中预测** |
+| 检索 loose | 5/10（大概率） | **5/10 = 50.0%** | ✅ **命中预测** |
+| 生成正确率（in） | 待测 | **4/10 = 40.0%** | — |
+| 防幻觉正确率（out） | 待测 | **7/10 = 70.0%** | — |
+| 防幻觉 F1 | 待测 | **0.824**（TP7 **FP0** FN3 TN10） | — |
+| 总正确率 | 待测 | **11/20 = 55.0%** | — |
+| 生成一致率 | —— | **0.950**（Q2/Q4/Q18 为 0.67） | — |
 
+**实测的三条要点**（**必须按这个口径讲，别只说"4/10 回来了"**）：
 
-> ⚠ **前置条件**：跑之前微调模型服务必须在 8000 端口且身份正确。用 `python ..\day17\start.py --check` 先体检，或 `--start-service` 自动起。
-> ⚠ `**--runs 3` 会让时间 ×3**（20 题 × 3 次生成）。时间紧就先 `--runs 1` 看方向，**定稿数字再补 3**。
+1. **推断闭环、回归的正是 Q3**：`top_ids=[100,36,103,97,101,6,98,91]`，**chunk 6 回到第 6 名**——前缀当初就是把它挤出前 8 的。→ **"前缀的伤害是排名位移"这个机制判断成立。**
+2. **两条独立证据互相印证**：`retrieval_lab.py`（只测检索、无生成）测出 strict 4/10，R3（含生成的全量行）也是 4/10 → **一条是诊断证据，一条是完整成绩行，同判据同结果**。
+3. **⚠ 不要写成"R3 是最好成绩"**：R3 总分 55% / F1 0.824，**低于**带前缀的 R1R2（60% / 0.842）。差异**只来自 2 个格子**：
+   - Q5（in）：R1R2 拒答 → R3 作答 → **R3 修掉了那个 FP**；
+   - Q11（out）：R1R2 拒答 → R3 编造 → **R3 多了这个 FN**。
+   而且 **R3 是唯一 `FP=0` 的一轮**（没有"该答却拒答"）。Q11 在 R3 里三次一致（一致率 1.00，**稳定编造、不是抖动**），它是 out 题、拼进来的上下文同样随检索变化 → **这 1 题的摆动不足以支撑"前缀有助于防幻觉"**。**工程结论不变：`qi=off + k=8`**（检索层机制明确，外加 FP=0）。
 
-**跑完要做的**：把「一、实验记录表」里 R3 那一行的"结论"列改成**实际结果**；如果 strict 真的是 4/10，就在报告里写"**前缀回退后检索命中从 3/10 回升到 4/10，验证了 day17 的机制推断（前缀把 Q3 的 chunk 6 挤出前 8）**"——**这是"用后续实验验证前面的归因"的漂亮闭环**。
+**顺带拿到的白捡证据**：`day16\result_lora_k8`（同配置、runs=1）用同一脚本重算 = **TP7 FP0 FN3 TN10、F1 0.824、六项汇总与 R3 逐项相同**，且**逐题 Top-8 序列与 20 条判定全部一致** → **day16 R2 的 4/10 不是抽样的运气**。
+> 📌 **引用口径**：对外引用"k=8 无前缀"的**正式一行就用 R3（runs=3）**；day16 R2 是它的 runs=1 版本，数字相同但**别拿来引用**。
+
+**跑完要做的**（✅ 已完成）：
+1. 把「一、实验记录表」里 R3 那一行的"结论"列从 `（待填）` 改成**实际结果** —— ✅ 已回填（含与 R1R2 的差异归因）。
+2. 报告里写"**前缀回退后检索命中从 3/10 回升到 4/10，验证了 day17 的机制推断（前缀把 Q3 的 chunk 6 挤出前 8）**" —— ✅ **这是"用后续实验验证前面的归因"的闭环**。
+3. 本节的预测表改成实测值 —— ✅ 就是上面那张表。
 
 ### 1.4 今天还要在账本上做的事（先记着，做完再写）
 
 1. **「三、失败尝试记录」补一条 RRF 负结果**（第 3 步会拿到数字）。
 2. **「二、决策门」补今天的裁决**（第 3 步的结论：瓶颈锁定为语义错位，方向转为"查询侧改写"）。
 3. **修日期口径**（0.4 节已做）。
+4. **「一、实验记录表」补 R3 行**（1.3 节已做，`--append-log` 自动插入）。
 
 ### ✅ 第 1 步验收标准
 
-能说出"默认配置 = 关前缀 + k=8 + patch on"以及**为什么**；知道 R3 是"确认项"而非"新实验"；知道 `retrieval_lab.py` 已经证实了 strict 那一项、但**不能替代** `eval_v2.py` 的完整对比。
+能说出"默认配置 = 关前缀 + k=8 + patch on"以及**为什么**；知道 R3 是"确认项"而非"新实验"；知道 `retrieval_lab.py` 已经证实了 strict 那一项、但**不能替代** `eval_v2.py` 的完整对比；**知道 R3 的 F1（0.824）低于 R1R2（0.842）时该怎么解释**（2 个格子：Q5 的 FP 被修掉、Q11 多一个 FN；不可归因给前缀）。
 
 ---
 
@@ -603,7 +621,7 @@ python retrieval_lab.py --top-k 8 --query-mode hyde --show-q 3
 > **假设②（中文问句 ↔ 英文段落的语义错位）成立，并且是当前检索的主要瓶颈。**
 > 证据：① 同一套库、同一套判据，**只把查询从中文换成英文术语，strict 从 40% 涨到 100%**（三通道一致）；② BM25 在中文查询下大面积 `top=[]`，说明**查询与语料的"词面交集"几乎为零**；③ 20 题的关键词中，英文专名（LAFAN1/Stanford/BeyondMimic/github）**在库里全部存在**（见第 2 步自检），**信息在库里，是查询端对不上**。
 
-**同时把"取几条"这条腿也彻底关掉**：`k=8` 的 vector 就是 **4/10**（与 day16 R2 完全一致）——**day17 的"关前缀 + k=8 回到 4/10"的推测，在此被同一判据证实**（正式的完整对比行仍由 1.3 节的 `eval_v2.py` 出）。
+**同时把"取几条"这条腿也彻底关掉**：`k=8` 的 vector 就是 **4/10**（与 day16 R2 完全一致）——**day17 的"关前缀 + k=8 回到 4/10"的推测，在此被同一判据证实**（正式的完整对比行已由 1.3 节的 `eval_v2.py` 出：**strict 4/10、loose 5/10、F1 0.824、总 11/20**，两条证据逐项吻合；⚠ 引用时**用 R3 那一行**，`retrieval_lab` 是诊断口径不进成绩表）。
 
 ### 3.6 读 hybrid 的负结果：RRF 为什么帮了倒忙（写进失败尝试记录）
 
@@ -1125,7 +1143,18 @@ python app.py
 
 ### 6.2 本地跑通 space_demo（关键：**不硬编码密钥**）
 
+> 🔴 **先看这条再动手**：`llm` 是你**全项目的共享环境**，**绝对不要**在里面跑 `pip install -r requirements.txt`——这份清单会主动把 gradio / langchain / chromadb / transformers 等 **41 个包降级**，装完 `day18\app.py` 和 `eval_v2.py` 都可能起不来（今天真实踩到，代价很大）。**正确做法是开独立环境**：
+>
+> ```powershell
+> conda create -n demo python=3.11 -y     # 一次性，之后都用 demo
+> conda activate demo
+> cd "D:\Lan\研究生\技术学习\大模型算法\第四周\发布包\space_demo"
+> pip install -r requirements.txt
+> ```
+> 详见「常见问题速查表」末尾的「❗ 装依赖必看」。
+
 ```
+# （在 demo 环境里，不是 llm）
 cd "D:\Lan\研究生\技术学习\大模型算法\第四周\发布包\space_demo"
 pip install -r requirements.txt          # 首次
 $env:API_BASE_URL='https://api.deepseek.com/v1/chat/completions'
@@ -1136,7 +1165,15 @@ python app.py
 
 **验收**：能上传 PDF、能建库、能提问、能拿到 DeepSeek 的回答。`**app.py` 里绝不能有 key**。
 
-> ⚠ `**python app.py` 前请先确认**：你真的要现在花 DeepSeek 的额度吗？今天只需要**跑到"能检索 + 能调通"**即可；如果 key 还没配，**就只做静态核对**（下面 6.3），**别为了跑通去申请/充值**。
+> ⚠ **`$env:API_KEY='sk-你的key'` 里的 `sk-你的key` 是占位符**，直接粘会得到一个"假 key"——这**不算跑通**，页面会如实提示"[未配置 DeepSeek API]"。**要真跑通就必须换成真 key**；不想花钱就只做 6.3 静态核对。
+> ⚠ **`python app.py` 前请先确认**：你真的要现在花 DeepSeek 的额度吗？今天只需要**跑到"能检索 + 能调通"**即可；如果 key 还没配，**就只做静态核对**（下面 6.3），**别为了跑通去申请/充值**。
+
+**D5 上线前必须补的一条**（今天的坑就是它埋的）：`requirements.txt` **没有 pin `pydantic`**，而 HF Spaces 是全新容器、会装最新的 pydantic → **同一个 `TypeError: argument of type 'bool' is not iterable` 会在线上复现**。补上：
+
+```
+pydantic==2.10.6        # gradio 4.44 / gradio_client 1.3.0 需要 pydantic < 2.11
+```
+
 
 ### 6.3 静态核对（不花额度也能做，**必做**）
 
@@ -1334,6 +1371,10 @@ git commit -m "Day18: O1-R8 数据自检（9/10 标注自洽，瓶颈锁定检�
 | `app.py` 顶部对比表显示"未能解析"                                    | `实验日志.md` 结构被改（少了 `## 一、实验记录表` 标题或表格式变了）        | 恢复标题与表结构；**页面不硬编码数字**，解析不到就如实显示（这是设计，不是 bug）                                                 |
 | `app.py` 页面提示"服务端模型 = X，但 profile 要求 = Y"                 | 端口上跑的是另一个模型（"服务在跑 ≠ 服务正确"）                      | 换匹配的服务；6G 一次只能跑一个 3B                                                                         |
 | 起服务时报 `No module named uvicorn` | **用了 base 环境**（`uvicorn` 只装在 `llm` 环境里） | 先 `conda activate llm`，**行首看到 `(llm)` 再起服务**；见本节末「❗ 起服务必看」 |
+| 跑 `eval_v2.py` 时报 `ParserError: "<"运算符是为将来使用而保留的` | 命令里**照抄了带尖括号的占位符**（如 `--date <你的实际日期>`）——PowerShell 把 `<` 当保留运算符，**python 根本没启动** | 把占位符换成真值：`--date 9/20`。**判据**：报错里出现 `CategoryInfo: ParserError` 就是 shell 层，不是脚本问题 |
+| `pip install -r requirements.txt` 之后 `app.py` 起不来 / 页面 500，报 `TypeError: argument of type 'bool' is not iterable` | **把"给 HF Spaces 用的清单"装进了共享的 `llm` 环境**：gradio 被降到 4.44.0，而 `pydantic 2.11+` 把 `dict` 的 JSON Schema 从 `additionalProperties: {}` 改成了 `true`，`gradio_client 1.3.0` 的 `get_type()` 里 `"const" in True` 直接抛错 → **每个请求都 500**（首页也打不开） | ① 恢复环境（见本节末「❗ 装依赖必看」）；② 以后 ② 要跑在**独立环境**里；③ `requirements.txt` 要 pin `pydantic==2.10.6` |
+| 紧接着报 `ValueError: When localhost is not accessible, a shareable link must be created` | **这是上一个错的连锁反应，不是独立问题**：`launch()` 会探测 `127.0.0.1:7860/` 确认服务起来了，而首页正被上面那个 `TypeError` 打成 500 → 探测失败 → gradio **误判"本机不通"** | 修好上一个即可，**不要**去开 `share=True`、也不用改代理 |
+| `pip install` 报 `No matching distribution found for X==Y`，但去 PyPI 查这个版本**确实存在** | **不是版本不存在，是 pip 读不到索引页**。报错前几行一定有 `Could not fetch URL https://pypi.org/simple/... - skipping`；`pip` 在放弃该索引后就会说"没有匹配的发行版"（且**不会**列 `from versions:`） | 配国内镜像：`pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple`；慢/偶发 SSL 断连再加 `--timeout 60 --retries 10` |
 | 不建库直接提问，却被要求「先上传 PDF」 | 早期 `app.py` 的 bug：`store_state` 没接上建库按钮 | 已修（`resolve_store` 自动回落默认库）。更新代码后**重启页面**即可 |
 | 想问默认库，不确定要不要先点「建立知识库」 | 不必 | 默认库**开箱即用**：直接提问就会走默认 GMR 论文库 |
 | 上传 PDF 建库卡住/报错                                            | PDF 太大、或扫描版 PDF（无文本层）                           | 换小一点的/有文本层的 PDF；看页面建库日志定位                                                                    |
@@ -1368,14 +1409,75 @@ conda activate llm
 
 ---
 
+### ❗ 装依赖必看：**别把 `pip install -r requirements.txt` 跑进 `llm`**
+
+> 这是今天真实踩到的一个大坑，**代价是共享环境里 41 个包被降级**。写在这里当警戒线。
+
+**为什么不能跑**：`第四周\发布包\space_demo\requirements.txt` 是给 **HuggingFace Spaces 的全新独立容器**用的清单。它会**主动降级**：
+`gradio 6.27.0 → 4.44.0`、`langchain 1.3.14 → 0.3.7`、`langchain-core 1.5.4 → 0.3.63`、`chromadb 1.5.9 → 0.5.15`、`transformers 5.14.1 → 4.57.6`、`numpy 2.4.4 → 1.26.4`……
+而 `llm` 是你**全项目的共享环境**（`eval_v2.py` / `day18\app.py` / `retrieval_lab.py` / LoRA 服务全在里面）。
+
+**降级后立刻出现的两个故障**（都在 `launch()` 之后，所以 `--check` 查不出来）：
+
+| # | 现象 | 根因 |
+|---|---|---|
+| 1 | `python app.py` 立刻 `TypeError: got an unexpected keyword argument 'theme'` | `app.py` 的 `launch(theme=gr.themes.Soft())` 是**给 gradio 6.x 写的**；4.44.0 的 `launch()` 没有 `theme` 参数（它必须放 `Blocks(theme=...)`） |
+| 2 | 服务能起但**每个请求都 500**（首页也打不开），日志刷 `TypeError: argument of type 'bool' is not iterable` | `pydantic ≥ 2.11` 把 `dict` 字段的 Schema 从 `additionalProperties: {}` 改成 `additionalProperties: true`（布尔值）；而 `gradio_client 1.3.0` 的 `get_type()` 里写的是 `if "const" in schema:` → **拿布尔值做 `in` 直接抛错**。`get_api_info()` 遍历全部组件，首页与 `/api/info` 都会走它 |
+
+**⚠ 为什么 gradio 自己没拦住**：`gradio 4.44.0` 的依赖只写 `pydantic>=2.0`（**没有上界**），所以 pip 认为 `pydantic 2.13.4` 满足条件、**连冲突警告都不会给**。这也是 D5 上线会原样复现的原因 —— `requirements.txt` 里**没有 pin `pydantic`**：
+
+```text
+# 必须加这一行，否则 HF Spaces 用最新 pydantic 会重演同一个崩
+pydantic==2.10.6
+```
+
+**正确姿势（② 要跑就开独立环境）**：
+
+```powershell
+conda create -n demo python=3.11 -y      # 一次性
+conda activate demo
+cd "D:\Lan\研究生\技术学习\大模型算法\第四周\发布包\space_demo"
+pip install -r requirements.txt
+```
+
+**怎么知道自己中招了**：
+1. `pip list` 里 `gradio` 变成 4.x、`langchain` 变成 0.3.x —— 就是它干的；
+2. 真冒烟（**不是 `--check`**）：
+   ```powershell
+   cd "D:\Lan\研究生\技术学习\大模型算法\第四周\day18"
+   python -B -c "import app; d=app.build_ui(); print(len(d.get_api_info()))"
+   #   期望打印一个数字；抛 TypeError 就是中了
+   ```
+
+**恢复办法**（版本号取自 pip 的卸载日志，是"降级前快照"；先配镜像再装）：
+
+```powershell
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+pip install --timeout 60 --retries 10 ^
+  "gradio==6.27.0" "gradio-client==2.7.0" ^
+  "langchain==1.3.14" "langchain-core==1.5.4" "langchain-community==0.4.2" ^
+  "langchain-chroma==1.1.0" "langchain-huggingface==1.2.2" "langchain-text-splitters==1.1.2" ^
+  "chromadb==1.5.9" "transformers==5.14.1" "sentence-transformers==6.0.0" ^
+  "huggingface_hub==1.26.0" "numpy==2.4.4" "pandas==3.0.5" "pillow==12.2.0" ^
+  "uvicorn==0.52.1" "requests==2.34.2" "pypdf==6.16.1" "packaging==26.0" ^
+  "markupsafe==3.0.3" "SQLAlchemy==2.0.52" "tomlkit==0.12.0" "websockets==15.0.1"
+```
+
+装完**必须复验**（`--check` 不算）：上面那条 `get_api_info()` 命令要能打印数字，然后 `python app.py` 用浏览器点开首页。
+
+> 💡 **教训（可写进报告）**：**`pip install -r requirements.txt` 是一条会改环境的写操作，不是"下载一下"**。跑之前先问自己两句：① 这份清单是给谁的环境用的？② 报错里出现 `ParserError` / `Could not fetch URL` 时，**先判断是 shell 层还是网络层，别急着怀疑自己的代码**。
+
+---
+
 ## ✅ 今日验收清单（完成一项打一个勾）
 
 **第 1 步（决策门落地）：**
 
-- [ ] 能说出默认检索配置 = **关前缀 + k=8 + patch on + runs 3（对外时）**，以及每条的原因
-- [ ] `实验日志.md` 的**日期口径已统一**（改成实际执行日，或表头标注口径）
-- [ ] 知道 R3 是"确认项"：`retrieval_lab.py` 已证实 strict=4/10，但完整对比行仍需 `eval_v2.py`
-- [ ] （可选）已跑 `eval_v2.py --top-k 8 --runs 3 --append-log` 并把结论列改成实际值
+- [x] 能说出默认检索配置 = **关前缀 + k=8 + patch on + runs 3（对外时）**，以及每条的原因
+- [x] `实验日志.md` 的**日期口径已统一**（改成实际执行日，或表头标注口径）
+- [x] 知道 R3 是"确认项"：`retrieval_lab.py` 已证实 strict=4/10，**且完整对比行已由 `eval_v2.py` 出全**
+- [x] **已跑** `eval_v2.py --top-k 8 --runs 3 --exp-id R3 --append-log`，结论列已回填实测值（strict 4/10、F1 0.824、唯一 FP=0）
+- [x] 能解释 R3 的 F1（0.824）**为何低于** R1R2（0.842）却仍选 `qi=off`（2 个格子：Q5 的 FP 被修掉、Q11 多 1 个 FN；不可归因给前缀）
 
 **第 2 步（O1-R8 数据自检）：**
 
@@ -1415,10 +1517,11 @@ conda activate llm
 
 **第 6 步（发布包骨架）：**
 
-- [ ] 静态核对 6 项全过（**尤其无硬编码 key**）
-- [ ] 能背出"三处标注"的内容
-- [ ] 发布包体积 < 20 MB
-- [ ] 清楚"今天不上线，D5 上线"
+- [x] 静态核对 6 项全过（**尤其无硬编码 key**）
+- [x] 能背出"三处标注"的内容
+- [x] 发布包体积 < 20 MB
+- [x] 清楚"今天不上线，D5 上线"
+- [ ] ⚠ **D5 上线前必补**：`requirements.txt` 加 `pydantic==2.10.6`（否则线上会复现 `TypeError: argument of type 'bool' is not iterable`）
 
 **零散时间：**
 

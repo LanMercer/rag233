@@ -3,6 +3,13 @@
 
 gradio==4.44.0
 
+# ⚠️ 必须 pin pydantic 的上界：gradio 4.44.0 只写 pydantic>=2.0（无上界），
+# 而 pydantic>=2.11 把 dict 字段的 JSON Schema 从 additionalProperties:{} 改成 true（布尔），
+# gradio_client 1.3.0 的 get_type() 里 `if "const" in schema` 拿布尔做 in → TypeError，
+# 表现为【服务能起，但首页与每个请求都 500】。
+# 本地实测踩过（2026-09-20），HF Spaces 全新容器会装最新 pydantic → 不加这行线上必崩。
+pydantic==2.10.6
+
 # RAG 检索链路（与本地项目保持一致：bge-small-zh 向量化 + Chroma 余弦检索）
 langchain==0.3.7
 langchain-community==0.3.5

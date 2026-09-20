@@ -5,7 +5,7 @@ r"""
 五件套说明（这个脚本在机器学习的哪一环）：
 - 模型   ：**本脚本自己不加载任何模型**。它只是"启动器"——按需拉起
              ① 模型服务（8000 端口，local_api_lora.py / local_api.py）
-             ② Web 界面（7860 端口，第四周\day16\app.py）
+             ② Web 界面（7860 端口，**第四周\day18\app.py**，Day18 完成版）
            为什么要拆成两个进程？本机 6G 显存一次只能跑一个 3B（约 1.9~2.0GB），
            界面必须是"纯 HTTP 客户端"才腾得出显存；想换模型只换服务、界面不用重启。
 - 数据   ：第三周\day13\chroma_db（向量库）、第三周\day15\config.json（profile/embed/persist）
@@ -17,6 +17,7 @@ r"""
            ③ 拉起 Web 界面（app.py）
     ↑ 对应《第四周详细计划》D2（day17）第 5 条："`start.bat` / `start.py` 雏形"。
       Day18 会把它接到"上传 PDF → 建库 → 提问"的完整界面上，这里先做最小可用版。
+      ✅ Day18 已接上：`APP_PATH` 现指向 `第四周\day18\app.py`（完成版；默认库开箱即用）。
 
 用法（llm 环境；本文件所在目录下执行）：
     python start.py --check              # 只体检，不启动任何东西（最快，建议先跑这个）
@@ -49,7 +50,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))              # 第四周
 REPO_DIR = os.path.normpath(os.path.join(SCRIPT_DIR, "..", ".."))    # 仓库根
 
 CONFIG_PATH = os.path.join(REPO_DIR, "第三周", "day15", "config.json")
-APP_PATH = os.path.normpath(os.path.join(SCRIPT_DIR, "..", "day16", "app.py"))   # 本地版界面（Day16 产出）
+APP_PATH = os.path.normpath(os.path.join(SCRIPT_DIR, "..", "day18", "app.py"))   # 本地版界面（Day18 完成版；Day16 骨架已由它取代）
 SERVICE_SCRIPTS = {
     "lora": os.path.join(REPO_DIR, "第三周", "day13", "local_api_lora.py"),
     "original": os.path.join(REPO_DIR, "第二周", "day9", "local_api.py"),
