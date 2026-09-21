@@ -1411,11 +1411,11 @@ python backfill_citation_fields.py
 
 ### ✅ 第 3 步验收标准
 
-- [ ] **对账过 R3 的** `run_log.txt`，能说出靶子是 Q11/Q14/Q18（且 Q18 是"先编后拒答"的形态）
-- [ ] `v2 / v2a / v2b` 三档都跑完（至少 v2 一档），对比表填齐、`检索 strict` 四轮一致
-- [ ] 能把结论写成"**检索层 vs 生成层分开报**"的一段话（含"精度-召回权衡"的判断）
-- [ ] （加分）引文兜底跑通：`--citation-policy strip` 至少一轮，**交付口径非法 = 0 处**且**判定/拒答都未翻转**，`实验日志.md` 有一行 R6
-- [ ] 能说清**坑A/坑B**（F1 按 `refused` 记账；"非法 0 处"≠"答案干净"）
+- [x] **对账过 R3 的** `run_log.txt`，能说出靶子是 Q11/Q14/Q18（且 Q18 是"先编后拒答"的形态）
+- [x] `v2 / v2a / v2b` 三档都跑完（至少 v2 一档），对比表填齐、`检索 strict` 四轮一致
+- [x] 能把结论写成"**检索层 vs 生成层分开报**"的一段话（含"精度-召回权衡"的判断）
+- [x] （加分）引文兜底跑通：`--citation-policy strip` 至少一轮，**交付口径非法 = 0 处**且**判定/拒答都未翻转**，`实验日志.md` 有一行 R6
+- [x] 能说清**坑A/坑B**（F1 按 `refused` 记账；"非法 0 处"≠"答案干净"）
 
 ---
 
@@ -1793,10 +1793,10 @@ python build_real_qa.py --min 100 --show-categories
 
 ### ✅ 第 4 步验收标准
 
-- [ ] `build_real_qa.py --min 100` **全绿**（或如实报告当前条数与补齐计划）
-- [ ] `sft_data_real.json` 每条含 `source{org,title,url,date,quote}`；能随机抽 3 条打开 URL 复核（**抽查动作要做**）
-- [ ] 类目/机构分布合理，能在报告里写出分布数字
-- [ ] 已如实标注"行业数据无法逐字回查、靠来源字段 + 人工复核"
+- [x] `build_real_qa.py --min 100` **全绿**（或如实报告当前条数与补齐计划）
+- [x] `sft_data_real.json` 每条含 `source{org,title,url,date,quote}`；能随机抽 3 条打开 URL 复核（**抽查动作要做**）
+- [x] 类目/机构分布合理，能在报告里写出分布数字
+- [x] 已如实标注"行业数据无法逐字回查、靠来源字段 + 人工复核"
 
 ---
 
@@ -1977,11 +1977,11 @@ python "..\..\第三周\day15\ask.py" "Walker S 的负载能力大概是多少�
 
 ### ✅ 第 5 步验收标准
 
-- [ ] 训练前**服务已停**、`nvidia-smi` 确认显存已释放；训练全程峰值 **<6G**
-- [ ] `lora_adapter_v2/` 产出成功（`adapter_config.json` + `adapter_model.safetensors`）
-- [ ] `local_api_lora_v2.py` 起服务成功，`/v1/models` 返回 `Qwen2.5-3B-Instruct-LoRA-v2`，`eval_v2.py --profile lora_v2` 的**服务身份检查通过**
-- [ ] v1 vs v2 对照表填齐（**检索两列相同**）；结论如实写（升/平/降都写）
-- [ ] 训练日志（`train_v2_console.log`）留存；能说出"我这次只改了哪 3 个常量"
+- [x] 训练前**服务已停**、`nvidia-smi` 确认显存已释放；训练全程峰值 **<6G**
+- [x] `lora_adapter_v2/` 产出成功（`adapter_config.json` + `adapter_model.safetensors`）
+- [x] `local_api_lora_v2.py` 起服务成功，`/v1/models` 返回 `Qwen2.5-3B-Instruct-LoRA-v2`，`eval_v2.py --profile lora_v2` 的**服务身份检查通过**
+- [x] v1 vs v2 对照表填齐（**检索两列相同**）；结论如实写（升/平/降都写）
+- [x] 训练日志（`train_v2_console.log`）留存；能说出"我这次只改了哪 3 个常量"
 
 ---
 
@@ -2260,6 +2260,90 @@ git commit -m "Day19: O1-R4 查询改写落地（R4 三档 strict 4/6/5，均未
 
 > **commit 信息里带数字**（本周纪律）。**数字没跑出来就留** `__`**，别编**。
 
+#### 7.3.1 ⚠ `git push` 推不上去？三层坑，一层层过（9/21 实测，45 分钟踩完）
+
+**症状**：`fatal: unable to access 'https://github.com/...': Failed to connect to github.com port 443 after 23146 ms`。
+**先分清是"网络"还是"git"**——本例是**三层独立的坑叠在一起**，修掉一层马上露出下一层，**别以为修完一层还没好就是修错了**。
+
+**第 0 步：先判断"能不能出去"**
+
+```powershell
+git remote -v                      # 确认推的是 https 还是 ssh
+Test-NetConnection github.com -Port 443 -WarningAction SilentlyContinue | Select-Object TcpTestSucceeded
+```
+
+| 结果 | 含义 | 下一步 |
+|---|---|---|
+| `TcpTestSucceeded: False` | **连不出去**（国内直连 GitHub 常态） | 走第 1 层：挂代理 |
+| `True` 但 push 仍报 443 | 能连但 TLS/认证有问题 | 跳到第 2 层 |
+
+**第 1 层：git 没走你的代理**（最常见的根因）
+
+代理软件（Clash 等）**开着 ≠ git 会用它**。先确认本地代理端口在不在听（Clash Verge 默认 **7897**，老版本 7890）：
+
+```powershell
+foreach ($p in 7890,7897,10809,1080) { "$p -> " + (Test-NetConnection 127.0.0.1 -Port $p -WarningAction SilentlyContinue).TcpTestSucceeded }
+curl.exe -x http://127.0.0.1:7897 -sS -o NUL -w "HTTP %{http_code}`n" --max-time 25 https://github.com   # 200 = 代理通
+```
+
+代理通、直连不通 → **给 git 挂上代理**。**推荐只在本次命令里加**（代理一关 git 就不至于全废）：
+
+```powershell
+git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 push
+```
+
+> **为什么不写进全局配置**：写进 `--global` 后，**代理一关，所有仓库的 git 操作全部报错**。要持久化就写**仓库级**（`git config --local`），或者干脆每次带 `-c`。
+
+**第 2 层：Git LFS 的"锁校验"把 push 打断**
+
+挂上代理后如果报 `Post ".../info/lfs/locks/verify": EOF`、`Remote "origin" does not support the Git LFS locking API`：
+
+**根因**：git-lfs 的 `pre-push` 钩子在推之前会调一个"文件锁校验"API，这个调用在代理下容易断。
+**关键判断**：**本仓库并没有 `.gitattributes`、没有任何 LFS 文件**（`git lfs ls-files` 空）——所以这个校验对本项目**毫无意义**，关掉它不损失任何东西。
+
+```powershell
+# 只关"锁校验"这一项，且只对本仓库生效（.git/config 里，不进 git、不影响别的仓库）
+git config "lfs.$(git remote get-url origin)/info/lfs.locksverify" false
+```
+
+> **⚠ 别用 `GIT_LFS_SKIP_PUSH=1` 一把梭**：那会把**整个 LFS pre-push 钩子**跳过（含真实对象上传）。本例没有 LFS 文件所以无害，但**换到真有 LFS 的仓库就会静默漏传权重**。只关 `locksverify` 是**范围最小**的修法。
+
+**第 3 层：Windows 的 `schannel` TLS 后端扛不住代理**
+
+再推如果报 `error: RPC failed; curl 35 schannel: failed to receive handshake, SSL/TLS connection failed` + `send-pack: unexpected disconnect while reading sideband packet`：
+
+**根因**：Git for Windows 默认用**系统自带 TLS 后端 `schannel`**，经代理时握手不稳（`git config --get http.sslBackend` 返回 `schannel` 就是它）。
+**修法**：换 git 自带的 `openssl` 后端 + 退回 HTTP/1.1（HTTP/2 在代理下的多路复用也常引发 sideband 断开）：
+
+```powershell
+git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 -c http.sslBackend=openssl -c http.version=HTTP/1.1 push
+```
+
+**✅ 一次成功的完整命令**（三层一起带，实测 20 秒推完 21 个提交）：
+
+```powershell
+cd "D:\Lan\研究生\技术学习\大模型算法"
+git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 `
+    -c http.sslBackend=openssl -c http.version=HTTP/1.1 push
+# 成功标志：d9b0fd0..de5e153  main -> main
+```
+
+**推完自检**（**`ahead` 消失 = 真的推上去了**）：
+
+```powershell
+git status -sb            # 应只剩 "## main...origin/main"（没有 [ahead N]）
+git log --oneline -1 origin/main   # 应等于你本地最新提交
+```
+
+**翻坑要点（可迁移到任何项目）**：
+
+| 现象 | 别急着做 | 该做 |
+|---|---|---|
+| 连不上 | 以为是仓库/权限问题 | `Test-NetConnection` 分清"网络"还是"git"；**代理开着 ≠ git 在用** |
+| 修好一层又报新的 | 以为修错了、开始乱改配置 | **这是正常的**：三层是串联的，**逐层推进**，每层都有独立的自检命令 |
+| 想一步到位 | 直接改 `--global` / 关 `sslVerify` | **优先用 `-c` 一次性参数**，确认有效再决定要不要持久化；**`sslVerify=false` 是关安全检查，别碰** |
+| LFS 报错 | 直接 `GIT_LFS_SKIP_PUSH=1` | 先 `git lfs ls-files` 看**到底有没有 LFS 文件**，再选**范围最小**的修法 |
+
 ### 7.4 写明日计划（Day20 = D5，本周收口）
 
 **Day20 主线（照《第四周详细计划》D5 与路线图第五节）**：
@@ -2337,47 +2421,47 @@ curl http://127.0.0.1:8000/v1/models
 
 **第 1 步 · 查询改写落地（O1-R4）⭐⭐：**
 
-- [ ] `rewrite_queries.py` 跑通，`queries_rewritten.json` 含 `_meta`（模型 / 时间 / 提示词版本）
-- [ ] **人工抽查 ≥3 条**（Q1/Q3/Q5），能说出"实体保住没有、有没有幻觉术语"
-- [ ] `eval_v2.py --rewrite-cache` 接线生效（打印 `[改写] 已加载` + `rw=<档位>`，结果里有 `retrieval_query`；**且** `⑦ 改写生效` **不为 0**）
-- [ ] R4 全量（`--runs 3`）跑完并入表；**能说出"改写让 strict 从 40% 变成 __%"**
-- [ ] 报告/日志里写明"**上界 100% ≠ 成绩**"，以及真实现与上界的差距与原因
+- [x] `rewrite_queries.py` 跑通，`queries_rewritten.json` 含 `_meta`（模型 / 时间 / 提示词版本）
+- [x] **人工抽查 ≥3 条**（Q1/Q3/Q5），能说出"实体保住没有、有没有幻觉术语"
+- [x] `eval_v2.py --rewrite-cache` 接线生效（打印 `[改写] 已加载` + `rw=<档位>`，结果里有 `retrieval_query`；**且** `⑦ 改写生效` **不为 0**）
+- [x] R4 全量（`--runs 3`）跑完并入表；**能说出"改写让 strict 从 40% 变成 __%"**
+- [x] 报告/日志里写明"**上界 100% ≠ 成绩**"，以及真实现与上界的差距与原因
 
 **第 2 步 · 改写后融合 / Rerank：**
 
-- [ ] `retrieval_lab.py --query-mode file` 跑通，得到真实改写后的三通道并集
-- [ ] 试过 `rrf_k=10/20` 至少两档，能说清"融合何时翻正"
-- [ ] 日志新增「Day19 诊断结论」（**标注诊断口径，不进成绩表**）
+- [x] `retrieval_lab.py --query-mode file` 跑通，得到真实改写后的三通道并集
+- [x] 试过 `rrf_k=10/20` 至少两档，能说清"融合何时翻正"
+- [x] 日志新增「Day19 诊断结论」（**标注诊断口径，不进成绩表**）
 
 **第 3 步 · 模板 09 v2 + 消融：**
 
-- [ ] 从 R3 的 `run_log.txt` 对账出靶子 = **Q11/Q14/Q18**（且说得出 Q18 的"先编后拒答"形态）
-- [ ] `v2`（至少）跑完；有时间则 `v2a` / `v2b` 各跑一轮
-- [ ] 对照表填齐，**检索 strict 各轮一致**（自检信号）；结论按"检索层 vs 生成层分开报"
-- [ ] （加分）`citation_bad` 引文合法性后处理跑通
+- [x] 从 R3 的 `run_log.txt` 对账出靶子 = **Q11/Q14/Q18**（且说得出 Q18 的"先编后拒答"形态）
+- [x] `v2`（至少）跑完；有时间则 `v2a` / `v2b` 各跑一轮
+- [x] 对照表填齐，**检索 strict 各轮一致**（自检信号）；结论按"检索层 vs 生成层分开报"
+- [x] （加分）`citation_bad` 引文合法性后处理跑通
 
 **第 4 步 · F2 真实行业数据：**
 
-- [ ] `build_real_qa.py --min 100` 全绿（或如实报告当前条数 + 补齐计划）
-- [ ] 随机抽 3 条**打开 URL 复核**（抽查动作真的做了）
-- [ ] 类目/机构分布合理，数字写进报告
-- [ ] 如实标注"行业数据无法逐字回查、靠来源字段 + 人工复核"
+- [x] `build_real_qa.py --min 100` 全绿（或如实报告当前条数 + 补齐计划）
+- [x] 随机抽 3 条**打开 URL 复核**（抽查动作真的做了）
+- [x] 类目/机构分布合理，数字写进报告
+- [x] 如实标注"行业数据无法逐字回查、靠来源字段 + 人工复核"
 
 **第 5 步 · F3 对照微调：**
 
-- [ ] 训练前**服务已停**、`nvidia-smi` 确认显存释放；峰值 **<6G**
-- [ ] `lora_adapter_v2/` 产出成功；`train_v2_console.log` 留存
-- [ ] `local_api_lora_v2.py` 服务身份检查通过（`/v1/models` = `...-LoRA-v2`）
-- [ ] v1 vs v2 对照表填齐（**检索两列相同**），结论如实写
+- [x] 训练前**服务已停**、`nvidia-smi` 确认显存释放；峰值 **<6G**
+- [x] `lora_adapter_v2/` 产出成功；`train_v2_console.log` 留存
+- [x] `local_api_lora_v2.py` 服务身份检查通过（`/v1/models` = `...-LoRA-v2`）
+- [x] v1 vs v2 对照表填齐（**检索两列相同**），结论如实写
 
 **第 6 步 · 成果报告初稿：**
 
-- [ ] `优化成果报告.md` 四张表骨架成型 + 失败尝试 ≥4 条
-- [ ] 已跑出的数字**全部回填**，未跑的留 `__`（**一个都没预填**）
+- [x] `优化成果报告.md` 四张表骨架成型 + 失败尝试 ≥4 条
+- [x] 已跑出的数字**全部回填**，未跑的留 `__`（**一个都没预填**）
 
 **收尾：**
 
-- [ ] `第四周\实验日志.md` 新增 R4/R5/F3 行 + Day19 诊断结论 + 新失败尝试
+- [x] `第四周\实验日志.md` 新增 R4/R5/F3 行 + Day19 诊断结论 + 新失败尝试
 - [x] `git check-ignore` 四条有输出（含 `lora_adapter_v2`）—— **首次检查没过**（权重已进提交），已按 §7.2「实测记录」修复：加规则 + `rm --cached` + 改写未 push 的提交 → 四条全绿 ✅
 - [x] 训练/服务进程已停干净（`:8000` 已释放 ✅；训练结束后显存回落到无占用）
 - [x] Day19 全部产出 git commit 成功（**两个提交**：`0faea36` 主体 + `06dc641` 收尾，commit 信息均含数字；`main` 仍 ahead、未 push）
