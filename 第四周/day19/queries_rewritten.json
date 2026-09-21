@@ -1,0 +1,134 @@
+{
+  "1": {
+    "plain": "GMR 的英文全称是什么？",
+    "term": "GMR: Generalized Mean Regression, generalized mean regression",
+    "hyde": "GMR stands for Ground Motion Reconstructions Project.可能出现的表述：GMR = Ground Motion ReconSTRUCTIONS Project.",
+    "both": "GMR: Generalized Mean Regression, generalized mean regression | GMR stands for Ground Motion Reconstructions Project.可能出现的表述：GMR = Ground Motion ReconSTRUCTIONS Project."
+  },
+  "2": {
+    "plain": "这篇论文主要解决什么问题？",
+    "term": "paper: what problem does this paper mainly address?",
+    "hyde": "本文研究解决了目标检测中尺度不变性的问题。",
+    "both": "paper: what problem does this paper mainly address? | 本文研究解决了目标检测中尺度不变性的问题。"
+  },
+  "3": {
+    "plain": "GMR 论文的作者来自哪所大学？",
+    "term": "GMR, authors, university",
+    "hyde": "The authors are from University of Science and Technology of China.可能出现的表述：The authors are affiliated with University of Science &amp; Technology of China (USTC).",
+    "both": "GMR, authors, university | The authors are from University of Science and Technology of China.可能出现的表述：The authors are affiliated with University of Science &amp; Technology of China (USTC)."
+  },
+  "4": {
+    "plain": "论文中 GMR 与哪些方法进行了对比？",
+    "term": "GMR comparative study, methods, approaches, techniques, literature review",
+    "hyde": "We compare our method with several state-of-the-art methods: GMR, DGM, and MCMC.",
+    "both": "GMR comparative study, methods, approaches, techniques, literature review | We compare our method with several state-of-the-art methods: GMR, DGM, and MCMC."
+  },
+  "5": {
+    "plain": "论文的实验在哪个数据集上进行？",
+    "term": "data set, experiment, dataset",
+    "hyde": "We evaluate on LAFAN-1 dataset.",
+    "both": "data set, experiment, dataset | We evaluate on LAFAN-1 dataset."
+  },
+  "6": {
+    "plain": "论文用什么方法进行策略训练？",
+    "term": "paper: 方法, 策略训练, 方法研究",
+    "hyde": "We train policies using a policy gradient method with baseline correction and entropy regularization.",
+    "both": "paper: 方法, 策略训练, 方法研究 | We train policies using a policy gradient method with baseline correction and entropy regularization."
+  },
+  "7": {
+    "plain": "重定向数据中可能引入哪些伪影（artifacts）？",
+    "term": "redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测",
+    "hyde": "Appearance of artifacts in redirected data: We evaluate on the FERET and CASIA datasets.",
+    "both": "redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测 | Appearance of artifacts in redirected data: We evaluate on the FERET and CASIA datasets."
+  },
+  "8": {
+    "plain": "GMR 的实验结论是什么？",
+    "term": "GMR 结论 实验 数据:实验结论",
+    "hyde": "We evaluate on a new benchmark, LAFAN-1, and show that GMR outperforms other methods by 4% in terms of F-measure.",
+    "both": "GMR 结论 实验 数据:实验结论 | We evaluate on a new benchmark, LAFAN-1, and show that GMR outperforms other methods by 4% in terms of F-measure."
+  },
+  "9": {
+    "plain": "论文的代码可以在哪里获取？",
+    "term": "code: available: where",
+    "hyde": "The code is available at https://github.com/username/reponame.可能出现的表述",
+    "both": "code: available: where | The code is available at https://github.com/username/reponame.可能出现的表述"
+  },
+  "10": {
+    "plain": "论文中的 embodiment gap 具体指什么？",
+    "term": "embodiment gap, definition, literature review",
+    "hyde": "Embodiment gap: The difference between human and robot performance in a task.",
+    "both": "embodiment gap, definition, literature review | Embodiment gap: The difference between human and robot performance in a task."
+  },
+  "11": {
+    "plain": "GMR 方法的缺点有哪些？",
+    "term": "GMR method disadvantages,benefits,Gains,losses,Costs,benefits,tradeoffs,issues",
+    "hyde": "It is not clear whether GMR methods are affected by outliers or noise in data.可能出现的表述。",
+    "both": "GMR method disadvantages,benefits,Gains,losses,Costs,benefits,tradeoffs,issues | It is not clear whether GMR methods are affected by outliers or noise in data.可能出现的表述。"
+  },
+  "12": {
+    "plain": "GMR 模型训练用了多少张 GPU？",
+    "term": "GMR, GPU: number of GPUs used for training",
+    "hyde": "We train GMR model using 8 GPUs.",
+    "both": "GMR, GPU: number of GPUs used for training | We train GMR model using 8 GPUs."
+  },
+  "13": {
+    "plain": "这篇论文发表在哪个期刊上？",
+    "term": "paper:journal,publication venue",
+    "hyde": "It is published in IEEE Transactions on Image Processing.",
+    "both": "paper:journal,publication venue | It is published in IEEE Transactions on Image Processing."
+  },
+  "14": {
+    "plain": "GMR 的奖励函数设计有哪些细节？",
+    "term": "reward, function, design, detail, GMR",
+    "hyde": "We design a reward function for GMR, which is based on the distance between predicted and ground truth trajectories.",
+    "both": "reward, function, design, detail, GMR | We design a reward function for GMR, which is based on the distance between predicted and ground truth trajectories."
+  },
+  "15": {
+    "plain": "GMR 模型的参数量是多少？",
+    "term": "GMR model parameters,数量,大小",
+    "hyde": "The GMR model has 4,096 parameters.可能出现的表述：The GMR network has 4096 trainable parameters.",
+    "both": "GMR model parameters,数量,大小 | The GMR model has 4,096 parameters.可能出现的表述：The GMR network has 4096 trainable parameters."
+  },
+  "16": {
+    "plain": "华为的人形机器人是否采用了 GMR 方法？",
+    "term": "Huawei humanoid robot GMRES method",
+    "hyde": "It adopts the GMR method: Huawei's humanoid robot uses the GMR approach.",
+    "both": "Huawei humanoid robot GMRES method | It adopts the GMR method: Huawei's humanoid robot uses the GMR approach."
+  },
+  "17": {
+    "plain": "GMR 与 DeepMind 的机器人策略相比结果如何？",
+    "term": "GMR vs DeepMind robot strategy results",
+    "hyde": "We evaluate GMR against DeepMind's robot policy and find that it performs slightly better in terms of reward.可能出现的表述：We compare GMR with DeepMind's policy, achieving a higher reward than its competitor.",
+    "both": "GMR vs DeepMind robot strategy results | We evaluate GMR against DeepMind's robot policy and find that it performs slightly better in terms of reward.可能出现的表述：We compare GMR with DeepMind's policy, achieving a higher reward than its competitor."
+  },
+  "18": {
+    "plain": "论文作者的总被引次数是多少？",
+    "term": "author,Citedby,SCIE,Total:Citations:Authors:Articles",
+    "hyde": "The author's total citation count is 4085.可能出现的表述：The author's H index is 27, and his total citation count (h-index) is 469.",
+    "both": "author,Citedby,SCIE,Total:Citations:Authors:Articles | The author's total citation count is 4085.可能出现的表述：The author's H index is 27, and his total citation count (h-index) is 469."
+  },
+  "19": {
+    "plain": "GMR 能否直接用于工业机械臂的轨迹规划？",
+    "term": "GMR industrial arm trajectory planning",
+    "hyde": "We evaluate on a modified version of the LAFan1 dataset and show that GMR can be directly used for industrial robot trajectory planning.",
+    "both": "GMR industrial arm trajectory planning | We evaluate on a modified version of the LAFan1 dataset and show that GMR can be directly used for industrial robot trajectory planning."
+  },
+  "20": {
+    "plain": "GMR 在仿真器中跑了多少步仿真？",
+    "term": "GMR, simulation, step, simulator",
+    "hyde": "We evaluate on 50,000 steps of simulation in GMR.",
+    "both": "GMR, simulation, step, simulator | We evaluate on 50,000 steps of simulation in GMR."
+  },
+  "_meta": {
+    "time": "2026-09-20 19:24:44",
+    "model": "Qwen2.5-3B-Instruct-LoRA",
+    "modes": [
+      "term",
+      "hyde",
+      "both"
+    ],
+    "api_url": "http://127.0.0.1:8000/v1/chat/completions",
+    "prompt_version": "day19-v1",
+    "elapsed_sec": 249.1
+  }
+}

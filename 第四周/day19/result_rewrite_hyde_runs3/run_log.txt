@@ -1,0 +1,205 @@
+[改写] 已加载 queries_rewritten.json（档位=hyde）｜模型=Qwen2.5-3B-Instruct-LoRA
+[改写] 缓存元信息：time=2026-09-20 19:24:44｜prompt_version=day19-v1｜modes=['term', 'hyde', 'both']
+========================================================================
+RAG 评测 v2.1 开始｜profile=lora｜TOP_K=8｜temp=0.2｜runs=3｜template=v1
+query instruction：off（查询侧不加前缀）｜判据补丁：已应用判据校准补丁：Q5（Q5 关键词 LAFAN1 -> LAFAN1/LAFAN）
+查询改写：on（检索用 hyde 档改写；生成仍用原中文问题）
+评测题 20 条（本次运行）｜输出目录：result_rewrite_hyde_runs3
+本轮改动：O1-R4 改写 hyde 档（假设答案片段）
+========================================================================
+服务检查通过：Qwen2.5-3B-Instruct-LoRA 已就绪，且与 profile 一致 ✅
+[OK] 加载向量库：D:\Lan\研究生\技术学习\大模型算法\第三周\day13\chroma_db
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|##########| 71/71 [00:00<00:00, 3247.82it/s]
+------------------------------------------------------------------------
+[ 1/20] id= 1 in_material｜GMR 的英文全称是什么？
+   检索查询: GMR stands for Ground Motion Reconstructions Project.可能出现的表述：GMR = Ground Motion ReconSTRUCTIONS Project.
+   Top-K: [36, 76, 18, 81, 35, 63, 4, 69]
+   检索  : strict=❌  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：General Motion Retargeting
+   A: GMR = General Motion Retargeting。[资料§36]
+------------------------------------------------------------------------
+[ 2/20] id= 2 in_material｜这篇论文主要解决什么问题？
+   检索查询: 本文研究解决了目标检测中尺度不变性的问题。
+   Top-K: [74, 55, 63, 61, 11, 58, 9, 14]
+   检索  : strict=❌  loose=❌
+   一致率: 1.00（3 次生成）
+   引文  : 8 处（全部合法）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: ①human到机器人动作转换引入动作风格误差;②GMR通过简单非均匀局部缩放和两阶段优化解决该问题。 [11] §[63]-[61], [58] §[55],[11] §§[74],[63]
+------------------------------------------------------------------------
+[ 3/20] id= 3 in_material｜GMR 论文的作者来自哪所大学？
+   检索查询: The authors are from University of Science and Technology of China.可能出现的表述：The authors are affiliated with University of Science &amp; Technology of China (USTC).
+   Top-K: [6, 22, 52, 1, 14, 86, 48, 18]
+   检索  : strict=✅  loose=✅
+   一致率: 0.67（3 次生成）
+   引文  : 2 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：Stanford
+   A: [6]* Jo˜ao Pedro Ar´ ujo, Yanie Ze, Peixuan Xu, Jiaming Wu, and Caikun Liu are with Department ofComputer Science, SchoolofEngineering,Stanford University,355Ja…
+------------------------------------------------------------------------
+[ 4/20] id= 4 in_material｜论文中 GMR 与哪些方法进行了对比？
+   检索查询: We compare our method with several state-of-the-art methods: GMR, DGM, and MCMC.
+   Top-K: [79, 30, 36, 81, 2, 12, 69, 29]
+   检索  : strict=✅  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：PHC、ProtoMotions
+   A: 论文中GMR与PHC、ProtoMotions进行对比。[资料§12]
+------------------------------------------------------------------------
+[ 5/20] id= 5 in_material｜论文的实验在哪个数据集上进行？
+   检索查询: We evaluate on LAFAN-1 dataset.
+   Top-K: [37, 13, 63, 82, 3, 38, 48, 12]
+   检索  : strict=✅  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处｜⚠ 非法 [42]（不在本轮 Top-K 内）
+   判定  : ✅ ｜ 命中关键词：LAFAN
+   A: 论文的实验证据来自 LAFAN [42] 数据集：从简单的步行和转身到动态复杂的动作如武术、踢腿和舞蹈。
+------------------------------------------------------------------------
+[ 6/20] id= 6 in_material｜论文用什么方法进行策略训练？
+   检索查询: We train policies using a policy gradient method with baseline correction and entropy regularization.
+   Top-K: [1, 29, 13, 80, 63, 15, 79, 8]
+   检索  : strict=❌  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 2 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：BeyondMimic
+   A: BeyondMimic：我们的策略是使用 BeyondMimick [15] 训练的 [8]。
+------------------------------------------------------------------------
+[ 7/20] id= 7 in_material｜重定向数据中可能引入哪些伪影（artifacts）？
+   检索查询: Appearance of artifacts in redirected data: We evaluate on the FERET and CASIA datasets.
+   Top-K: [13, 8, 37, 3, 52, 19, 82, 63]
+   检索  : strict=❌  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处｜⚠ 非法 [7]（不在本轮 Top-K 内）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: 重定向过程引入脚滑、地面穿透和自穿刺等伪影 [7]。
+------------------------------------------------------------------------
+[ 8/20] id= 8 in_material｜GMR 的实验结论是什么？
+   检索查询: We evaluate on a new benchmark, LAFAN-1, and show that GMR outperforms other methods by 4% in terms of F-measure.
+   Top-K: [63, 13, 2, 76, 37, 79, 12, 30]
+   检索  : strict=❌  loose=❌
+   一致率: 0.67（3 次生成）
+   引文  : 3 处（全部合法）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: GMR 被认为是更忠实参考运动的：① 单轨迹政策在 LAFAN数据集上训练获得近完美性能 [63]；② 用户评价 GMR 更忠实参考运动 [63][76]。
+------------------------------------------------------------------------
+[ 9/20] id= 9 in_material｜论文的代码可以在哪里获取？
+   检索查询: The code is available at https://github.com/username/reponame.可能出现的表述
+   Top-K: [48, 25, 49, 51, 3, 46, 40, 44]
+   检索  : strict=✅  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 2 处｜⚠ 非法 [38]（不在本轮 Top-K 内）
+   判定  : ❌ ｜ 答的是 ProtoMotions 的仓库（NVLabs/ProtoMotions），不是 GMR 论文代码（YanjieZe/GMR），github 关键词碰巧命中，人工改判错
+   A: PHC的代码可以参考 Unitree [38]; [49] §4.
+------------------------------------------------------------------------
+[10/20] id=10 in_material｜论文中的 embodiment gap 具体指什么？
+   检索查询: Embodiment gap: The difference between human and robot performance in a task.
+   Top-K: [5, 7, 83, 26, 50, 28, 84, 0]
+   检索  : strict=✅  loose=✅
+   一致率: 0.67（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：关节
+   A: [资料§5] embodiment gap is between humans and humanoids在骨长、关节活动范围、结构、体型、质量分布和驱动机制等方面存在差异。
+------------------------------------------------------------------------
+[11/20] id=11 out_of_material｜GMR 方法的缺点有哪些？
+   检索查询: It is not clear whether GMR methods are affected by outliers or noise in data.可能出现的表述。
+   Top-K: [63, 36, 13, 81, 17, 3, 76, 9]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR 获得的数据不忠实于源材料且存在优化伪影：① 虽然在大多数情况下可以达到高成功率和接近闭源基线的感知保真度及政策成功率，但② 高质量数据结果受工程影响大，③ 而其他方法则难以区分参考运动并保持对源运动的忠实性。 [资料§81]
+------------------------------------------------------------------------
+[12/20] id=12 out_of_material｜GMR 模型训练用了多少张 GPU？
+   检索查询: We train GMR model using 8 GPUs.
+   Top-K: [36, 63, 20, 12, 47, 4, 94, 104]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[13/20] id=13 out_of_material｜这篇论文发表在哪个期刊上？
+   检索查询: It is published in IEEE Transactions on Image Processing.
+   Top-K: [104, 95, 97, 100, 91, 94, 14, 48]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: [资料§95] paper published in Proceedings of the IEEE/ CVF Conference on ComputerVision and Pattern Recognition.
+------------------------------------------------------------------------
+[14/20] id=14 out_of_material｜GMR 的奖励函数设计有哪些细节？
+   检索查询: We design a reward function for GMR, which is based on the distance between predicted and ground truth trajectories.
+   Top-K: [36, 59, 17, 29, 38, 14, 76, 2]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[15/20] id=15 out_of_material｜GMR 模型的参数量是多少？
+   检索查询: The GMR model has 4,096 parameters.可能出现的表述：The GMR network has 4096 trainable parameters.
+   Top-K: [36, 76, 49, 63, 61, 48, 42, 20]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[16/20] id=16 out_of_material｜华为的人形机器人是否采用了 GMR 方法？
+   检索查询: It adopts the GMR method: Huawei's humanoid robot uses the GMR approach.
+   Top-K: [35, 36, 21, 47, 84, 11, 4, 99]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[17/20] id=17 out_of_material｜GMR 与 DeepMind 的机器人策略相比结果如何？
+   检索查询: We evaluate GMR against DeepMind's robot policy and find that it performs slightly better in terms of reward.可能出现的表述：We compare GMR with DeepMind's policy, achieving a higher reward than its competitor.
+   Top-K: [45, 78, 2, 83, 17, 35, 14, 42]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR 来自 Unitree 数据集：faithfulness score 和政策成功率接近; 超高成功率: [83] §25。
+------------------------------------------------------------------------
+[18/20] id=18 out_of_material｜论文作者的总被引次数是多少？
+   检索查询: The author's total citation count is 4085.可能出现的表述：The author's H index is 27, and his total citation count (h-index) is 469.
+   Top-K: [14, 48, 52, 64, 61, 76, 74, 34]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ❌ ｜ 先编造一串引用统计数字（425/679/248 等），末尾才补「资料中没有提到」——拒答词命中但内容已编造，属规则漏网，人工改判错
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[19/20] id=19 out_of_material｜GMR 能否直接用于工业机械臂的轨迹规划？
+   检索查询: We evaluate on a modified version of the LAFan1 dataset and show that GMR can be directly used for industrial robot trajectory planning.
+   Top-K: [11, 36, 48, 13, 82, 35, 37, 3]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR 经过验证可以应用于工业机械臂：[资料§11]; GMR 是一种新的 retargeting 方法：[资料©]; GMR 在工业机械臂上表现良好：[资料°]。
+------------------------------------------------------------------------
+[20/20] id=20 out_of_material｜GMR 在仿真器中跑了多少步仿真？
+   检索查询: We evaluate on 50,000 steps of simulation in GMR.
+   Top-K: [63, 97, 64, 42, 101, 12, 74, 36]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: [31§64] sim sim-dr sim-2sim: 10^3 / 4×10^4 / 10³。
+
+========================================================================
+汇总指标
+========================================================================
+① 检索命中 strict : 5/10 = 50.0%
+① 检索命中 loose  : 8/10 = 80.0%
+② 生成正确率(in)  : 6/10 = 60.0%
+③ 防幻觉正确率(out): 4/10 = 40.0%
+④ 总正确率        : 50.0%（10/20）
+⑤ 防幻觉F1        : P=1.000 R=0.400 F1=0.571 （TP=4 FP=0 FN=6 TN=10）
+⑥ 生成一致率      : 0.950
+⑦ 改写生效        : 20/20 题用了「hyde」档改写
+⑧ 引文合法性      : 引文 26 处（14 题带引文），非法 3 处｜题号 [5, 7, 9]
+========================================================================
+[完成] 已生成：
+  D:\Lan\研究生\技术学习\大模型算法\第四周\day19\result_rewrite_hyde_runs3\评测表.md
+  D:\Lan\研究生\技术学习\大模型算法\第四周\day19\result_rewrite_hyde_runs3\eval_results.json
+[日志] 已追加一行到：D:\Lan\研究生\技术学习\大模型算法\第四周\实验日志.md
+[日志文件] 本轮完整运行日志：D:\Lan\研究生\技术学习\大模型算法\第四周\实验日志.md

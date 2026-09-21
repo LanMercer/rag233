@@ -1,0 +1,1556 @@
+[
+  {
+    "id": 1,
+    "instruction": "优必选 2024 年的总收入是多少？同比变化如何？",
+    "input": "",
+    "output": "依据公司 2024 年年度报告，收入由截至 2023 年 12 月 31 日止年度的人民币 1,055.7 百万元（10.557 亿元）增加 23.7%，至 2024 年同期的人民币 1,305.4 百万元（13.054 亿元）。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "我們的收入由截至2023年12月31日止年度的人民幣1,055.7百萬元增加至截至2024年12月31日止年度的人民幣1,305.4百萬元"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 2,
+    "instruction": "优必选 2024 年的研发费用是多少？占收入的比例是多少？",
+    "input": "",
+    "output": "研发费用由 2023 年的人民币 490.5 百万元（4.905 亿元）减少人民币 12.4 百万元，至 2024 年的人民币 478.1 百万元（4.781 亿元）；占收入的百分比由 2023 年的 46.5% 减少至 2024 年的 36.6%。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "研發費用由2023年的人民幣490.5百萬元減少人民幣12.4百萬元至2024年的人民幣478.1百萬元，佔我們收入的百分比由2023年的46.5%減少至2024年的36.6%"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 3,
+    "instruction": "优必选 2024 年的研发费用主要由哪几部分构成？",
+    "input": "",
+    "output": "2024 年研发费用主要包括：雇员薪酬人民币 406.3 百万元、耗用材料人民币 23.4 百万元，以及软件工具及消耗品人民币 15.3 百万元。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "於2024年，我們的研發費用主要包括僱員薪酬人民幣406.3百萬元、耗用材料人民幣23.4百萬元及軟件工具及消耗品人民幣15.3百萬元"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 4,
+    "instruction": "优必选 2024 年的毛利是多少？与 2023 年相比变化如何？",
+    "input": "",
+    "output": "毛利由截至 2023 年 12 月 31 日止年度的人民币 332.8 百万元（3.328 亿元）增加至 2024 年同期的人民币 374.0 百万元（3.740 亿元）。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "我們的毛利由截至2023年12月31日止年度的人民幣332.8百萬元增加至截至2024年12月31日止年度的人民幣374.0百萬元"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 5,
+    "instruction": "优必选 2024 年的亏损是多少？与 2023 年相比是扩大还是收窄？",
+    "input": "",
+    "output": "2024 年亏损为人民币 1,159.9 百万元（11.599 亿元），2023 年亏损为人民币 1,264.6 百万元（12.646 亿元），亏损同比收窄。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "截至2024年12月31日止年度的虧損為人民幣1,159.9百萬元，而截至2023年12月31日止年度的虧損為人民幣1,264.6百萬元"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 6,
+    "instruction": "优必选的收入主要来自哪几块业务？",
+    "input": "",
+    "output": "依据年报，收入主要来自销售四类业务：教育智能机器人及智能机器人解决方案、物流智能机器人及智能机器人解决方案、其他行业定制智能机器人及智能机器人解决方案、消费级机器人及其他硬件设备。",
+    "source": {
+      "org": "优必选科技（港交所披露）",
+      "title": "2024 年年度报告",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0330/2025033000190_c.pdf",
+      "date": "2025-03",
+      "quote": "我們的收入主要來自銷售(i)教育智能機器人及智能機器人解決方案；(ii)物流智能機器人及智能機器人解決方案；(iii)其他行業定製智能機器人及智能機器人解決方案；及(iv)消費級機器人及其他硬件設備"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 7,
+    "instruction": "截至 2024 年底，优必选持有多少项授权专利？",
+    "input": "",
+    "output": "截至 2024 年 12 月 31 日，优必选共持有 2680 项授权专利，比前一年新增超 500 件，其中发明专利占比为 57.87%。",
+    "source": {
+      "org": "界面新闻",
+      "title": "优必选公布2024年报，全年总收入同比增长23.7%",
+      "url": "https://www.jiemian.com/article/12542440.html",
+      "date": "2025-03",
+      "quote": "截至2024年12月31日，优必选共持有2680项授权专利，比前一年新增超500件，发明专利占比为57.87%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 8,
+    "instruction": "宇树 G1 人形机器人的整机总自由度是多少？",
+    "input": "",
+    "output": "G1 基础版为 23 个自由度；G1-EDU 可选 23~43 个自由度。",
+    "source": {
+      "org": "宇树科技",
+      "title": "宇树科技文档中心 · G1 developer · about G1",
+      "url": "https://support.unitree.com/home/zh/G1_developer/about_G1",
+      "date": "2026-09",
+      "quote": "整机根据版本不同，可以分为 G1 基础版本 23 自由度，G1-EDU可选23~43 自由度"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 9,
+    "instruction": "宇树 G1 的单腿有几个自由度？分别对应哪些关节？",
+    "input": "",
+    "output": "单腿拥有 6 个自由度，包括胯关节、腿关节、髋关节、膝关节和踝关节。",
+    "source": {
+      "org": "宇树科技",
+      "title": "宇树科技文档中心 · G1 developer · about G1",
+      "url": "https://support.unitree.com/home/zh/G1_developer/about_G1",
+      "date": "2026-09",
+      "quote": "单腿拥有 6 个自由度，包括胯关节、腿关节、髋关节、膝关节和踝关节"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 10,
+    "instruction": "宇树 G1 的腰部自由度是多少？",
+    "input": "",
+    "output": "官方说明为腰部具备 1 自由度和 3 自由度两个版本，即腰关节；产品参数表中 G1 基础版为 1，G1-EDU 为 1+（可加选 2 个腰部自由度）。",
+    "source": {
+      "org": "宇树科技",
+      "title": "宇树科技文档中心 · G1 developer · about G1",
+      "url": "https://support.unitree.com/home/zh/G1_developer/about_G1",
+      "date": "2026-09",
+      "quote": "腰部具备 1自由度和3自由度两个版本，即腰关节"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 11,
+    "instruction": "宇树 G1 的单手臂自由度是多少？",
+    "input": "",
+    "output": "单手臂拥有 5 个自由度和 7 个自由度两个版本，包括肩身关节、上臂关节、手肘关节和腕关节（腕关节为选配）。",
+    "source": {
+      "org": "宇树科技",
+      "title": "宇树科技文档中心 · G1 developer · about G1",
+      "url": "https://support.unitree.com/home/zh/G1_developer/about_G1",
+      "date": "2026-09",
+      "quote": "单手臂拥有 5 个自由度和 7 个自由度两个版本，包括肩身关节、上臂关节、手肘关节和腕关节（选配）"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 12,
+    "instruction": "宇树 G1-EDU 可选的灵巧手配置是什么？",
+    "input": "",
+    "output": "G1-EDU 单手可选 7 自由度力控 3 指灵巧手 Dex3-1，另可加选 2 个手腕自由度；附带说明称 Dex3-1 可加选安装多点触觉阵列。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "7（可加选力控3指灵巧手Dex3-1）+ 2（可加选2个手腕自由度）"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 13,
+    "instruction": "宇树 Dex3-1 三指灵巧手的三个手指各有多少主动自由度？",
+    "input": "",
+    "output": "大拇指 3 个主动自由度，食指 2 个主动自由度，中指 2 个主动自由度。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "3指灵巧手Dex3-1参数：大拇指3个主动自由度；食指2个主动自由度；中指2个主动自由度"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 14,
+    "instruction": "宇树 G1 站立与折叠时的外形尺寸、带电池重量分别是多少？",
+    "input": "",
+    "output": "站立时高宽厚为 1320x450x200mm，折叠时为 690x450x300mm；带电池重量约 35kg。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "高宽厚（站立） 1320x450x200mm；高宽厚（折叠） 690x450x300mm；带电池重量 约35kg"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 15,
+    "instruction": "宇树 G1 与 G1-EDU 的膝关节最大扭矩分别是多少？",
+    "input": "",
+    "output": "G1 膝关节最大扭矩为 90N.m，G1-EDU 为 120N.m。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "膝关节最大扭矩【1】 90N.m 120N.m"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 16,
+    "instruction": "宇树 G1 与 G1-EDU 的手臂最大负载分别是多少？",
+    "input": "",
+    "output": "G1 手臂最大负载约 2Kg，G1-EDU 约 3Kg。官方注明不同手臂伸展姿态下负载差异很大。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "手臂最大负载【2】 约2Kg 约3Kg"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 17,
+    "instruction": "宇树 G1 使用什么类型的电池、续航时间多久？",
+    "input": "",
+    "output": "供电方式为 13 串锂电池，智能电池容量 9000mAh（可快拆），充电器为 54V 5A；续航时间约 2 小时。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "供电方式 13串锂电池；续航时间 约2h；智能电池（快拆） 9000mAh；充电器 54V 5A"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 18,
+    "instruction": "宇树 G1 标配哪些感知传感器？",
+    "input": "",
+    "output": "感知传感器为深度相机加 3D 激光雷达，另配 4 麦克风阵列、5W 扬声器，并支持 WiFi6 与蓝牙 5.2。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "感知传感器 深度相机+3D激光雷达；4麦克风阵列 有；5w扬声器 有；WiFi6、蓝牙5.2 有"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 19,
+    "instruction": "宇树 G1 官网标价是多少？",
+    "input": "",
+    "output": "官网页面显示 G1 售价（含税）为 ¥8.5万元起，页面顶部同样标注“¥8.5万元起”；G1-EDU 则需联系销售。",
+    "source": {
+      "org": "宇树科技",
+      "title": "Unitree G1 产品参数（官网）",
+      "url": "https://www.unitree.com/cn/g1/",
+      "date": "2026-09",
+      "quote": "售价（含税） ¥8.5万元 / 联系销售"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 20,
+    "instruction": "2024 年宇树科技推出的 G1 人形机器人定价是多少起？",
+    "input": "",
+    "output": "据 2024 世界机器人大会期间报道，Unitree 宇树科技今年 5 月推出 G1 人形机器人，定价 9.9 万元起；大会上宇树带来了 G1 的量产版本。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "比如Unitree宇树科技今年5月推出G1人形机器人，定价9.9万元起。而在2024世界机器人大会上，宇树科技带来了G1机器人迎来量产版本，设计升级更符合量产要求。"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 21,
+    "instruction": "“天工1.2 MAX”人形机器人的身高、体重和自由度分别是多少？",
+    "input": "",
+    "output": "身高 1.73 米、体重 60 公斤；相比 4 个月前发布的“天工”，自由度已从过去的 28 个增加到 42 个。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "这个身高1.73米、体重60公斤的机器人在现场所有人的见证下，双手环抱着大会徽章。此次大会上亮相的“天工1.2 MAX”自由度已经从过去的28个增加到42个。"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 22,
+    "instruction": "优必选 Walker S 在汽车产线做轮胎检测需要多长时间？",
+    "input": "",
+    "output": "据 2024 世界机器人大会现场介绍，Walker S“走”到汽车旁、转动手中检测仪检测轮胎制造是否达标，仅 60-80 秒即可完成检查流程；它还能将零部件箱从传送带搬运到指定地点。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "只见它“走”到一辆汽车旁，转动“手中”的检测仪，检测汽车轮胎制造是否达标，仅60-80秒即可完成检查流程。此外，它还能将零部件箱从传送带搬运到指定地点。"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 23,
+    "instruction": "天工 Ultra 的行走速度和攀爬能力如何？",
+    "input": "",
+    "output": "据新华社报道，来自北京的天工 Ultra 能以每小时 12 公里的速度行走，还能攀爬 35 厘米高的台阶，当时正备战当年 4 月在京举行的人形机器人半程马拉松比赛。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "来自北京的天工Ultra能以每小时12公里的速度行走，还能攀爬35厘米高的台阶，目前正备战今年4月在京举行的人形机器人半程马拉松比赛"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 24,
+    "instruction": "优必选 Walker S1 在奥迪一汽生产基地承担什么工作？",
+    "input": "",
+    "output": "据新华社报道，优必选人形机器人 Walker S1 已进入奥迪一汽生产基地“打工”，承担空调泄漏检测工作。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "优必选人形机器人Walker S1已进入奥迪一汽生产基地“打工”，承担空调泄漏检测工作"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 25,
+    "instruction": "乐聚“夸父”人形机器人的身高、已应用场景和一季度的交付订单量如何？",
+    "input": "",
+    "output": "“夸父”身高近 1.7 米，可进行人机交互、还能干活，目前已应用于高校教学、展厅讲解、汽车工厂等场景；据其董事长冷晓琨介绍，全尺寸人形机器人“夸父”一季度的交付订单已达 250 台左右。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "全尺寸人形机器人“夸父”一季度的交付订单已达250台左右，这是我们之前定的今年上半年的指标。"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 26,
+    "instruction": "现行国家标准 GB/T 12643-2025 的中英文名称、状态和发布实施日期是什么？",
+    "input": "",
+    "output": "中文标准名称为“机器人 词汇”，英文名称为 Robotics—Vocabulary，标准状态为现行，发布日期 2025-02-28，实施日期 2025-09-01。",
+    "source": {
+      "org": "国家市场监督管理总局 / 国家标准化管理委员会（国家标准全文公开系统）",
+      "title": "国家标准 | GB/T 12643-2025 机器人 词汇",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=6515A793917569A6E97A26DB4E5BB578",
+      "date": "2025-02-28",
+      "quote": "中文标准名称：机器人 词汇；英文标准名称：Robotics—Vocabulary；标准状态：现行；发布日期 2025-02-28 实施日期 2025-09-01"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 27,
+    "instruction": "GB/T 12643-2025 的归口单位、主管部门和发布单位分别是谁？",
+    "input": "",
+    "output": "主管部门为中国机械工业联合会，归口部门为中国机械工业联合会，发布单位是国家市场监督管理总局、国家标准化管理委员会。",
+    "source": {
+      "org": "国家市场监督管理总局 / 国家标准化管理委员会（国家标准全文公开系统）",
+      "title": "国家标准 | GB/T 12643-2025 机器人 词汇",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=6515A793917569A6E97A26DB4E5BB578",
+      "date": "2025-02-28",
+      "quote": "主管部门 中国机械工业联合会 归口部门 中国机械工业联合会；发布单位 国家市场监督管理总局、国家标准化管理委员会"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 28,
+    "instruction": "GB/T 12643-2025 采用了哪个国际标准？为什么在国家标准全文公开系统上看不到全文？",
+    "input": "",
+    "output": "该标准等同采用 ISO 8373:2021（标准号后标注“采”）。国家标准全文公开系统说明：该标准采用了 ISO、IEC 等国际国外组织的标准，由于涉及版权保护问题，本系统不提供文本阅读服务。",
+    "source": {
+      "org": "国家市场监督管理总局 / 国家标准化管理委员会（国家标准全文公开系统）",
+      "title": "国家标准 | GB/T 12643-2025 机器人 词汇",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=6515A793917569A6E97A26DB4E5BB578",
+      "date": "2025-02-28",
+      "quote": "该标准采用了ISO、IEC等国际国外组织的标准，由于涉及版权保护问题，本系统不提供文本阅读服务"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 29,
+    "instruction": "人形机器人国家标准计划《人形机器人技术要求 第1部分：总则》的计划号、下达日期和归口单位是什么？",
+    "input": "",
+    "output": "计划号为 20251070-T-604，下达日期为 2025-04-30，归口单位为全国机器人标准化技术委员会，发布单位或类别为“中国-国家标准计划”。",
+    "source": {
+      "org": "国家标准馆 · 国家数字标准馆",
+      "title": "20251070-T-604 人形机器人技术要求 第1部分：总则",
+      "url": "https://www.ndls.org.cn/standard/detail/f8db95fe3b987f2f6ff0b8311125acff",
+      "date": "2025-04-30",
+      "quote": "下达日期： 2025-04-30；发布单位或类别： 中国-国家标准计划；归口单位： 全国机器人标准化技术委员会"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 30,
+    "instruction": "《人形机器人技术要求 第1部分：总则》的起草单位中有哪些企业？",
+    "input": "",
+    "output": "起草单位包括北京机械工业自动化研究所有限公司、宇树科技股份有限公司、人形机器人（上海）有限公司、浙江人形机器人创新中心有限公司、中国软件评测中心、深圳市优必选科技股份有限公司、北京人形机器人创新中心有限公司、云深处科技股份有限公司、深圳市众擎机器人科技有限公司、科沃斯机器人股份有限公司、海信集团控股股份有限公司等多家单位。",
+    "source": {
+      "org": "国家标准馆 · 国家数字标准馆",
+      "title": "20251070-T-604 人形机器人技术要求 第1部分：总则",
+      "url": "https://www.ndls.org.cn/standard/detail/f8db95fe3b987f2f6ff0b8311125acff",
+      "date": "2025-04-30",
+      "quote": "起草单位： 北京机械工业自动化研究所有限公司、 宇树科技股份有限公司、 人形机器人（上海）有限公司、 浙江人形机器人创新中心有限公司、 中国软件评测中心"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 31,
+    "instruction": "《人形机器人与具身智能标准体系（2026版）》是什么时候发布的？由谁组织编制？",
+    "input": "",
+    "output": "据新华社报道，2026 年 2 月 28 日在北京召开的人形机器人与具身智能标准化年会上发布了该标准体系；它由工业和信息化部人形机器人与具身智能标准化技术委员会组织领域内 120 余家科研院所、企业和行业用户单位研究编制。",
+    "source": {
+      "org": "新华社（北京市科委网站转载）",
+      "title": "我国首个人形机器人与具身智能标准体系发布",
+      "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202603/t20260302_239474.html",
+      "date": "2026-03-02",
+      "quote": "标准体系由工业和信息化部人形机器人与具身智能标准化技术委员会组织领域内120余家科研院所、企业和行业用户单位研究编制"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 32,
+    "instruction": "《人形机器人与具身智能标准体系（2026版）》包括哪几个部分？",
+    "input": "",
+    "output": "包括基础共性、类脑与智算、肢体与部组件、整机与系统、应用、安全伦理等 6 个部分。",
+    "source": {
+      "org": "新华社（北京市科委网站转载）",
+      "title": "我国首个人形机器人与具身智能标准体系发布",
+      "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202603/t20260302_239474.html",
+      "date": "2026-03-02",
+      "quote": "包括基础共性、类脑与智算、肢体与部组件、整机与系统、应用、安全伦理等6个部分"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 33,
+    "instruction": "国际机器人协会预测 2021 年到 2030 年全球人形机器人市场规模的年复合增长率是多少？",
+    "input": "",
+    "output": "据国际机器人协会预测，2021 年到 2030 年，全球人形机器人市场规模年复合增长率将高达 71%。",
+    "source": {
+      "org": "人民日报",
+      "title": "从赛场到市场，人形机器人蓄势待发（经济时评）",
+      "url": "https://paper.people.com.cn/rmrb/pc/content/202508/21/content_30098064.html",
+      "date": "2025-08-21",
+      "quote": "据国际机器人协会预测，2021年到2030年，全球人形机器人市场规模年复合增长率将高达71%。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 34,
+    "instruction": "中国电子学会预测到 2030 年我国人形机器人市场规模有多大？",
+    "input": "",
+    "output": "中国电子学会预测，到 2030 年，我国的人形机器人市场规模有望达到约 8700 亿元。",
+    "source": {
+      "org": "人民日报",
+      "title": "从赛场到市场，人形机器人蓄势待发（经济时评）",
+      "url": "https://paper.people.com.cn/rmrb/pc/content/202508/21/content_30098064.html",
+      "date": "2025-08-21",
+      "quote": "中国电子学会预测，到2030年，我国的人形机器人市场规模有望达到约8700亿元。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 35,
+    "instruction": "人民日报经济时评指出人形机器人规模化应用面临哪些难题？",
+    "input": "",
+    "output": "四点：技术上看，“大脑”的通用智能尚未成熟、跨场景任务泛化能力不足；硬件上看，芯片、高精度传感器等核心部件仍部分依赖进口，量产工艺和可靠性有待提升；成本上看，动辄几万十几万元的单机价格制约了商业化推广；伦理与社会层面，数据隐私、人机边界、责任认定等问题亟待规范。",
+    "source": {
+      "org": "人民日报",
+      "title": "从赛场到市场，人形机器人蓄势待发（经济时评）",
+      "url": "https://paper.people.com.cn/rmrb/pc/content/202508/21/content_30098064.html",
+      "date": "2025-08-21",
+      "quote": "看技术，“大脑”的通用智能尚未成熟，跨场景任务泛化能力不足；看硬件，芯片、高精度传感器等核心部件仍部分依赖进口，量产工艺和可靠性有待提升；看成本，动辄几万十几万元的单机价格，制约了商业化推广"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 36,
+    "instruction": "我国在 2023 年出台了哪份与人形机器人相关的指导文件？“具身智能”何时被写入政府工作报告？",
+    "input": "",
+    "output": "据人民日报报道，我国将人形机器人纳入未来产业布局，2023 年出台《人形机器人创新发展指导意见》，2025 年“具身智能”被写入《政府工作报告》。",
+    "source": {
+      "org": "人民日报",
+      "title": "从赛场到市场，人形机器人蓄势待发（经济时评）",
+      "url": "https://paper.people.com.cn/rmrb/pc/content/202508/21/content_30098064.html",
+      "date": "2025-08-21",
+      "quote": "我国将其纳入未来产业布局，2023年出台《人形机器人创新发展指导意见》，今年“具身智能”被写入《政府工作报告》"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 37,
+    "instruction": "高工机器人产业研究所（GGII）预测 2024 年中国人形机器人市场规模和 2030 年目标分别是多少？",
+    "input": "",
+    "output": "据 GGII 预测，2024 年中国人形机器人市场规模将为 21.58 亿元，到 2030 年达到近 380 亿元，2024 年至 2030 年复合增长率将超过 61%。",
+    "source": {
+      "org": "上海证券报（财联社转载）",
+      "title": "人形机器人产业热度超乎想象 商业化与降本难题亟待破解",
+      "url": "https://www.cls.cn/detail/1651393",
+      "date": "2024-04-19",
+      "quote": "据高工机器人产业研究所（GGII）预测，中国在人形机器人赛道的年均增速将高于全球平均水平：2024年中国人形机器人市场规模将为21.58亿元，到2030年达到近380亿元，2024年至2030年复合增长率将超过61%"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 38,
+    "instruction": "GGII 预测中国人形机器人销量将从多少台增长到多少台？",
+    "input": "",
+    "output": "据 GGII 预测，中国人形机器人销量将从 0.40 万台左右增长至 27.12 万台。",
+    "source": {
+      "org": "上海证券报（财联社转载）",
+      "title": "人形机器人产业热度超乎想象 商业化与降本难题亟待破解",
+      "url": "https://www.cls.cn/detail/1651393",
+      "date": "2024-04-19",
+      "quote": "中国人形机器人销量将从0.40万台左右增长至27.12万台。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 39,
+    "instruction": "高工机器人产业研究所所长如何看待人形机器人商业化落地的时间点？",
+    "input": "",
+    "output": "高工机器人产业研究所所长卢瀚宸表示，2030 年会是人形机器人商业化落地的重要拐点。",
+    "source": {
+      "org": "上海证券报（财联社转载）",
+      "title": "人形机器人产业热度超乎想象 商业化与降本难题亟待破解",
+      "url": "https://www.cls.cn/detail/1651393",
+      "date": "2024-04-19",
+      "quote": "高工机器人产业研究所所长卢瀚宸表示，2030年会是人形机器人商业化落地的重要拐点。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 40,
+    "instruction": "TrendForce 集邦咨询对 2026 年全球人形机器人出货量的预估是多少？",
+    "input": "",
+    "output": "TrendForce 集邦咨询预估，2026 年将是人形机器人迈向商用化的关键年，全球出货量可望突破 5 万台，年增逾 700%。",
+    "source": {
+      "org": "TrendForce 集邦咨询",
+      "title": "TrendForce集邦咨询：2026年人形机器人将迈向商用化的关键年，全球出货量可望突破5万台",
+      "url": "https://www.trendforce.cn/presscenter/news/20251209-12826.html",
+      "date": "2025-12-09",
+      "quote": "TrendForce集邦咨询预估，2026年将是人形机器人迈向商用化的关键年，全球出货量可望突破5万台，年增逾700%。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 41,
+    "instruction": "TrendForce 认为中国人形机器人 2026 年的关键挑战是什么？",
+    "input": "",
+    "output": "TrendForce 集邦咨询分析，中国人形机器人 2026 年关键在于如何平衡“低价普及化”与“高阶差异化”两条路径，并逐步累积能支撑长期竞争的数据与应用经验。",
+    "source": {
+      "org": "TrendForce 集邦咨询",
+      "title": "TrendForce集邦咨询：2026年人形机器人将迈向商用化的关键年，全球出货量可望突破5万台",
+      "url": "https://www.trendforce.cn/presscenter/news/20251209-12826.html",
+      "date": "2025-12-09",
+      "quote": "TrendForce集邦咨询分析，中国人形机器人2026年关键在于如何平衡“低价普及化”与“高阶差异化”两条路径，并逐步累积能支撑长期竞争的数据与应用经验。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 42,
+    "instruction": "TrendForce 预期人形机器人需求最强的日本应用场域是哪里？",
+    "input": "",
+    "output": "由于日本长期照顾人力缺口扩大、照护设施密度高，TrendForce 预期照护将成为日本对人形机器人需求最强的场域，Kawasaki 的 Nyokkey、Fourier 的 GR-3 皆以此为设计重点。",
+    "source": {
+      "org": "TrendForce 集邦咨询",
+      "title": "TrendForce集邦咨询：2026年人形机器人将迈向商用化的关键年，全球出货量可望突破5万台",
+      "url": "https://www.trendforce.cn/presscenter/news/20251209-12826.html",
+      "date": "2025-12-09",
+      "quote": "预期照护将成为日本对人形机器人需求最强的场域，Kawasaki的Nyokkey、Fourier的GR-3皆以此为设计重点。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 43,
+    "instruction": "TrendForce 认为美系人形机器人产业的核心竞争点发生了怎样的转移？",
+    "input": "",
+    "output": "TrendForce 指出，目前美系人形机器人产业已由“技术展示”走向“实务验证”，核心竞争点从单纯的运动能力转移至系统整合、场景落地。",
+    "source": {
+      "org": "TrendForce 集邦咨询",
+      "title": "TrendForce集邦咨询：2026年人形机器人将迈向商用化的关键年，全球出货量可望突破5万台",
+      "url": "https://www.trendforce.cn/presscenter/news/20251209-12826.html",
+      "date": "2025-12-09",
+      "quote": "目前美系人形机器人产业已由“技术展示”走向“实务验证”，核心竞争点从单纯的运动能力转移至系统整合、场景落地。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 44,
+    "instruction": "截至 2024 年 7 月，中国持有的机器人相关有效专利有多少？占全球比重多少？",
+    "input": "",
+    "output": "中国工业和信息化部数据显示，截至 2024 年 7 月，中国持有的机器人相关有效专利超过 19 万项，占全球比重约三分之二。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "中国工业和信息化部数据显示，截至2024年7月，中国持有的机器人相关有效专利超过19万项，占全球比重约三分之二。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 45,
+    "instruction": "《具身智能发展报告（2024年）》是哪两家机构发布的？核心观点是什么？",
+    "input": "",
+    "output": "由中国信息通信研究院和北京人形机器人创新中心有限公司发布。报告认为，具身智能通过模拟人类大脑的“智能”和不同形态的机器人“身体”，将在多个领域释放出巨大的应用潜力，成为迈向通用人工智能的重要一步。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "中国信息通信研究院和北京人形机器人创新中心有限公司发布的《具身智能发展报告（2024年）》认为，具身智能通过模拟人类大脑的“智能”和不同形态的机器人“身体”，将在多个领域释放出巨大的应用潜力，成为迈向通用人工智能的重要一步。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 46,
+    "instruction": "北京为支持具身智能等未来产业设立了多大规模的政府投资基金？",
+    "input": "",
+    "output": "据新华社报道，北京发布《北京具身智能科技创新与产业培育行动计划（2025—2027年）》，力图培育千亿级产业集群，设立了总规模 1000 亿元、存续期 15 年的政府投资基金，重点支持人工智能、机器人等未来产业领域。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "力图培育千亿级产业集群，设立了总规模1000亿元、存续期15年的政府投资基金，重点支持人工智能、机器人等未来产业领域"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 47,
+    "instruction": "据 GGII 不完全统计，2024 年 1 月至 10 月全球人形机器人行业发生了多少起融资？总金额多少？",
+    "input": "",
+    "output": "据高工机器人产业研究所（GGII）不完全统计，2024 年 1 月份至 10 月份全球人形机器人行业共发生 69 起融资事件，公布的融资事件总金额折合人民币超过 110 亿元。",
+    "source": {
+      "org": "证券日报（新华网转载）",
+      "title": "人形机器人赛道火热 大额融资频现",
+      "url": "http://www.xinhuanet.com/finance/20241111/ded9b1c92545488096d0a2af495d15cf/c.html",
+      "date": "2024-11-11",
+      "quote": "据高工机器人产业研究所（GGII）不完全统计，2024年1月份至10月份全球人形机器人行业共发生69起融资事件，公布的融资事件总金额折合人民币超过110亿元"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 48,
+    "instruction": "2024 年 1 至 10 月，中国的人形机器人融资事件有多少起？金额多少？",
+    "input": "",
+    "output": "上述 69 起融资事件中，有 56 起发生在中国的人形机器人行业，总金额超过 50 亿元。",
+    "source": {
+      "org": "证券日报（新华网转载）",
+      "title": "人形机器人赛道火热 大额融资频现",
+      "url": "http://www.xinhuanet.com/finance/20241111/ded9b1c92545488096d0a2af495d15cf/c.html",
+      "date": "2024-11-11",
+      "quote": "上述69起融资事件中，有56起发生在中国的人形机器人行业，总金额超过50亿元。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 49,
+    "instruction": "2024 年全球融资额最高的人形机器人公司是哪家？金额多少？",
+    "input": "",
+    "output": "是美国的人形机器人公司 Figure AI，该公司在 2024 年 2 月份完成了高达 6.75 亿美元（约合人民币 48.1 亿元）的 B 轮融资，约占全球融资额的 43.7%。",
+    "source": {
+      "org": "证券日报（新华网转载）",
+      "title": "人形机器人赛道火热 大额融资频现",
+      "url": "http://www.xinhuanet.com/finance/20241111/ded9b1c92545488096d0a2af495d15cf/c.html",
+      "date": "2024-11-11",
+      "quote": "2024以来，全球范围内得到最高融资额的人形机器人公司，是美国的人形机器人公司Figure AI，该公司在今年2月份完成了高达6.75亿美元（约合人民币48.1亿元）的B轮融资，约占全球融资额的43.7%。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 50,
+    "instruction": "2024 年以来全球人形机器人领域的融资轮次主要集中在哪个阶段？占比多少？",
+    "input": "",
+    "output": "据 GGII 了解，2024 年以来全球人形机器人领域的融资轮次主要集中在 A 轮之前，占融资事件总数的 72.46%。",
+    "source": {
+      "org": "证券日报（新华网转载）",
+      "title": "人形机器人赛道火热 大额融资频现",
+      "url": "http://www.xinhuanet.com/finance/20241111/ded9b1c92545488096d0a2af495d15cf/c.html",
+      "date": "2024-11-11",
+      "quote": "2024年以来全球人形机器人领域的融资轮次主要集中在A轮之前，占融资事件总数的72.46%。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 51,
+    "instruction": "参考工业机器人成本构成，执行器（减速器）、伺服控制系统、控制器的成本占比分别是多少？",
+    "input": "",
+    "output": "参考工业机器人成本构成，执行器（减速器）成本占比 35%，伺服控制系统占比 25%（伺服电机+驱动器），控制器占比 10%。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "参考工业机器人成本构成，执行器（减速器）成本占比35%，伺服控制系统占比25%（伺服电机+驱动器），控制器占比10%。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 52,
+    "instruction": "人形机器人对执行器的需求弹性排序是怎样的？",
+    "input": "",
+    "output": "研报预计人形机器人对执行器的需求弹性排序为：行星滚柱丝杠 > 谐波减速器 > 行星滚珠丝杠 > 滑动丝杠 > 轴承。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "预计人形机器人对执行器的需求弹性排序为：行星滚柱丝杠>谐波减速器>行星滚珠丝杠>滑动丝杠>轴承。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 53,
+    "instruction": "特斯拉 Optimus 旋转执行器和直线执行器预计分别采用什么方案？",
+    "input": "",
+    "output": "研报预计旋转执行器方案为：永磁无刷电机+谐波减速器+抱闸+双编码器+力矩传感器+轴承；直线执行器方案为：永磁无刷电机+行星滚柱丝杠+位置编码器+力传感器+轴承。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "预计Tesla Optimus旋转执行器方案为：永磁无刷电机+谐波减速器+抱闸+双编码器+力矩传感器+轴承。预计直线执行器方案为：永磁无刷电机+行星滚柱丝杠+位置编码器+力传感器+轴承"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 54,
+    "instruction": "研报估计特斯拉 Optimus 的身体关节共有多少个？",
+    "input": "",
+    "output": "研报预计特斯拉 Optimus 身体关节共有 28 个，对微特电机及执行器的需求将大幅增加。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "我们预计特斯拉Optimus身体关节共有28个，对微特电机及执行器的需求将大幅增加。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 55,
+    "instruction": "研报指出谐波减速器的技术壁垒体现在哪四个方面？",
+    "input": "",
+    "output": "主要体现在设计、材料、工艺和加工精度上，在产品性能上表现为精度保持度、寿命、故障率等。具体到谐波减速器：设计上齿形专利难避开；材料上柔轮材料长期依赖进口；工艺上柔轮热处理、慢走丝、连续切割等需经验积累；精加工上热处理、磨齿机、三坐标等关键设备依赖进口。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "技术壁垒：主要体现在设计、材料、工艺和加工精度上，在产品性能上表现为精度保持度、寿命、故障率等。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 56,
+    "instruction": "研报提到行星滚柱丝杠目前处于什么阶段？有哪些企业具备小批量生产能力？",
+    "input": "",
+    "output": "研报指出行星滚柱丝杠处于起步阶段，博特精工、思科瑞、南京工艺具备小批量生产能力。",
+    "source": {
+      "org": "国泰君安（财联社转载）",
+      "title": "机器人的关节——精密执行器",
+      "url": "https://www.cls.cn/detail/1388876",
+      "date": "2023-06-28",
+      "quote": "行星滚柱丝杠处于起步阶段，博特精工、思科瑞、南京工艺备小批量生产能力。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 57,
+    "instruction": "GGII《2025年人形机器人产业发展蓝皮书》对 2025、2030、2035 年全球人形机器人销量和市场规模做了怎样的预测？",
+    "input": "",
+    "output": "蓝皮书显示：2025 年全球人形机器人市场销量有望达到 1.24 万台，市场规模 63.39 亿元人民币；到 2030 年销量将接近 34 万台，市场规模将超过 640 亿元人民币；到 2035 年销量将超过 500 万台，市场规模将超过 4000 亿元人民币。",
+    "source": {
+      "org": "观点网",
+      "title": "GGII：到2035年全球人形机器人市场规模将超过4000亿元",
+      "url": "https://www.guandian.cn/m/show/479334",
+      "date": "2025-04-10",
+      "quote": "《蓝皮书》显示，2025年全球人形机器人市场销量有望达到1.24万台，市场规模63.39亿元人民币；到2030年，销量将接近34万台，市场规模将超过640亿元人民币；到2035年，销量将超过500万台，市场规模将超过4000亿元人民币。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 58,
+    "instruction": "GGII《2025年人形机器人产业发展蓝皮书》是什么时候发布的？",
+    "input": "",
+    "output": "据观点网报道，高工机器人产业研究所（GGII）于 2025 年 4 月 10 日发布《2025年人形机器人产业发展蓝皮书》，预测到 2035 年全球市场规模将超过 4000 亿元人民币。",
+    "source": {
+      "org": "观点网",
+      "title": "GGII：到2035年全球人形机器人市场规模将超过4000亿元",
+      "url": "https://www.guandian.cn/m/show/479334",
+      "date": "2025-04-10",
+      "quote": "4月10日，高工机器人产业研究所（GGII）发布《2025年人形机器人产业发展蓝皮书》，预测到2035年全球市场规模将超4000亿元人民币。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 59,
+    "instruction": "2024 世界机器人大会上展出的整机人形机器人有多少款？创了什么纪录？",
+    "input": "",
+    "output": "据中国电子学会网站转载报道，今年大会上展出的整机达到 27 款，为历届之最；今年以来具有通用功能的人形机器人不断涌现，多家人形机器人企业已步入小规模量产阶段。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "今年大会上，人形机器人可以说是绝对的主角，展出的整机达到27款，为历届之最。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 60,
+    "instruction": "优必选工业版人形机器人获得了多少台的意向订单？",
+    "input": "",
+    "output": "据 2024 世界机器人大会期间报道，目前优必选工业版人形机器人已经进入多家车厂实训，获得超过 500 台的意向订单。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "目前，优必选工业版人形机器人已经进入多家车厂实训，获得超过500台的意向订单。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 61,
+    "instruction": "智元机器人 2024 年预计的双足和轮式人形机器人发货量分别是多少？",
+    "input": "",
+    "output": "智元机器人合伙人兼营销服副总裁姜青松接受采访时表示，预估公司双足人形机器人今年发货量约 200 台，轮式人形机器人则在 100 台左右。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "智元机器人合伙人兼营销服副总裁姜青松接受采访时表示，预估公司双足人形机器人今年发货量约200台，轮式人形机器人则在100台左右。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 62,
+    "instruction": "特斯拉计划何时开始小批量生产人形机器人？计划在工厂部署多少台？",
+    "input": "",
+    "output": "据 2024 世界机器人大会现场特斯拉负责人透露，公司计划从明年开始小批量生产人形机器人，预计特斯拉工厂在明年部署超过 1000 个人形机器人协助人类工作。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "现场的特斯拉负责人透露，公司计划从明年开始小批量生产人形机器人，预计特斯拉工厂在明年部署超过1000个人形机器人协助人类工作。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 63,
+    "instruction": "业内认为人形机器人 5 年内的两大挑战是什么？",
+    "input": "",
+    "output": "一是算法和硬件问题：需实现物体、场景和运动轨迹三个维度的泛化，且目前尚无真正通用的灵巧手；二是多模态融合下的具身技能作业：传感器装得足够多，但没能真正融会贯通，大量数据如何进行快速的学习发育并未真正打通。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "如果时间限定在5年内，对于人形机器人最重要的两个挑战是什么？00后耶鲁大学博士、UniX AI创始人兼首席执行官杨丰瑜认为主要集中在算法和硬件问题上。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 64,
+    "instruction": "人形机器人的关节驱动能力目前还存在哪些短板？",
+    "input": "",
+    "output": "浙江人形机器人创新中心首席科学家熊蓉认为，在整个关节驱动能力上，高爆发的电机、高精度的减速器、高爆发的驱动器目前性能还需要进一步提升，真正做到类人尺寸下灵活的运动需要这些核心零部件进一步攻关解决。",
+    "source": {
+      "org": "中国电子学会（来源：红星新闻）",
+      "title": "【2024 WRC】人形机器人步入小规模量产，业内：5年内行业发展仍有两大挑战",
+      "url": "https://www.cie.org.cn/list_42/13432.html",
+      "date": "2024-09-25",
+      "quote": "在整个关节驱动能力上，高爆发的电机、高精度的减速器高爆发的驱动器，目前性能还需要进一步提升，真正做到类人尺寸下灵活的运动是需要这些核心零部件进一步的进行攻关和解决的。"
+    },
+    "category": "市场与产业链"
+  },
+  {
+    "id": 65,
+    "instruction": "《具身智能发展报告》认为具身智能为什么被视为迈向通用人工智能的重要一步？",
+    "input": "",
+    "output": "报告认为，具身智能通过模拟人类大脑的“智能”和不同形态的机器人“身体”，将在多个领域释放出巨大的应用潜力，成为迈向通用人工智能的重要一步。",
+    "source": {
+      "org": "新华网",
+      "title": "规模化应用提速：中国人形机器人产业“加速跑”",
+      "url": "http://www.news.cn/tech/20250330/970585b32fa34c0c820c5db986a21054/c.html",
+      "date": "2025-03-30",
+      "quote": "认为，具身智能通过模拟人类大脑的“智能”和不同形态的机器人“身体”，将在多个领域释放出巨大的应用潜力，成为迈向通用人工智能的重要一步"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 66,
+    "instruction": "《人形机器人技术要求》系列国标为什么需要制定？行业存在什么痛点？",
+    "input": "",
+    "output": "标准立项说明指出：人形机器人需求和技术呈现爆发式增长，亟需标准化规范行业的持续稳定发展；本标准为了解决人形机器人技术要求方面的行业认知不统一、缺乏人形机器人结构功能和性能要求、对人形机器人产业和市场发展造成限制的问题而制定。",
+    "source": {
+      "org": "全国机器人标准化技术委员会（中国职业技术教育网转载）",
+      "title": "关于征集高等院校机器人领域国家标准起草单位的通知",
+      "url": "https://www.tech.net.cn/news/show-106316.html",
+      "date": "2025-04",
+      "quote": "本标准为了解决人形机器人技术要求方面的行业认知不统一，缺乏人形机器人结构功能和性能要求，对人形机器人产业和市场发展造成的限制，满足对人形机器人研发、设计、制造和应用的需要而制定。"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 67,
+    "instruction": "《人形机器人技术要求 第1部分：总则》主要规定了哪些技术内容？",
+    "input": "",
+    "output": "该标准规定了人形机器人总体技术架构和要求，适用于人形机器人的研发、设计、制造和应用。主要技术内容包括：人形机器人总体技术架构图，以及环节感知、决策规划、运动控制、作业操作、定位导航和人机交互相关技术要求。",
+    "source": {
+      "org": "全国机器人标准化技术委员会（中国职业技术教育网转载）",
+      "title": "关于征集高等院校机器人领域国家标准起草单位的通知",
+      "url": "https://www.tech.net.cn/news/show-106316.html",
+      "date": "2025-04",
+      "quote": "规定了人形机器人总体技术架构和要求，适用于人形机器人的研发、设计、制造和应用。 主要技术内容： 人形机器人总体技术架构图以及环节感知、决策规划、运动控制、作业操作、定位导航和人机交互相关技术要求。"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 68,
+    "instruction": "《人形机器人与具身智能标准体系（2026版）》中的类脑与智算标准主要规范什么？",
+    "input": "",
+    "output": "类脑与智算标准覆盖具身智能“大小脑”与智能计算等关键标准，规范数据全生命周期、模型训推部署全链路技术。",
+    "source": {
+      "org": "新华社（北京市科委网站转载）",
+      "title": "我国首个人形机器人与具身智能标准体系发布",
+      "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202603/t20260302_239474.html",
+      "date": "2026-03-02",
+      "quote": "类脑与智算标准覆盖具身智能“大小脑”与智能计算等关键标准，规范数据全生命周期、模型训推部署全链路技术"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 69,
+    "instruction": "论文指出人形机器人全身控制（WBC）面临的根本挑战是什么？",
+    "input": "",
+    "output": "论文摘要指出，尽管人形机器人作为复杂运动控制、人机交互和通用物理智能的多功能平台受到显著关注，但在人形机器人上实现高效的全身控制（WBC）仍是一项根本挑战，原因是复杂的动力学、欠驱动以及多样的任务需求。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots",
+      "url": "https://arxiv.org/html/2506.20487v5",
+      "date": "2025-06",
+      "quote": "achieving efficient whole-body control (WBC) in humanoids remains a fundamental challenge"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 70,
+    "instruction": "什么是行为基础模型（BFM）？",
+    "input": "",
+    "output": "行为基础模型（BFMs）是一种新范式，借助大规模预训练学习可复用的基础技能和广泛的行为先验，从而实现对大量下游任务的零样本或快速适配。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots",
+      "url": "https://arxiv.org/html/2506.20487v5",
+      "date": "2025-06",
+      "quote": "behavior(al) foundation models (BFMs) have emerged as a new paradigm that leverages large-scale pre-training"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 71,
+    "instruction": "行为基础模型（BFM）面临哪些主要挑战？",
+    "input": "",
+    "output": "论文结论指出，尽管能力前所未有，BFM 仍面临显著挑战，包括 Sim2Real 差距、具身依赖（embodiment dependence）和数据稀缺。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots",
+      "url": "https://arxiv.org/html/2506.20487v5",
+      "date": "2025-06",
+      "quote": "BFMs face significant challenges, including the Sim2Real gap, embodiment dependence, and data scarcity."
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 72,
+    "instruction": "这篇行为基础模型综述提出了哪些未来研究方向？",
+    "input": "",
+    "output": "论文强调的未来研究机会包括：多模态 BFM、高层机器学习系统集成，以及后训练优化。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots",
+      "url": "https://arxiv.org/html/2506.20487v5",
+      "date": "2025-06",
+      "quote": "future research opportunities in multimodal BFMs, high-level ML system integration, post-training optimization"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 73,
+    "instruction": "造成双足机器人 sim-to-real 差距的主要来源有哪几类？",
+    "input": "",
+    "output": "论文指出，主要来源包括机器人动力学（robot dynamics）、接触建模（contact modeling）、状态估计（state estimation）和数值求解器（numerical solvers）。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Sim-to-Real Transfer in Deep Reinforcement Learning for Bipedal Locomotion",
+      "url": "https://arxiv.org/html/2511.06465v1",
+      "date": "2025-11",
+      "quote": "the primary sources of sim-to-real gap: robot dynamics, contact modeling, state estimation, and numerical solvers"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 74,
+    "instruction": "这篇 sim-to-real 论文如何概括双足运动控制中缩小仿真与现实差距的思路？",
+    "input": "",
+    "output": "论文认为，sim-to-real 不是一堆小技巧（not a bag of tricks），而是一套关于建模、学习与自适应的原则性方法（a principled approach to modeling, learning, and adaptation）。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Sim-to-Real Transfer in Deep Reinforcement Learning for Bipedal Locomotion",
+      "url": "https://arxiv.org/html/2511.06465v1",
+      "date": "2025-11",
+      "quote": "Sim-to-real for bipedal locomotion is not a bag of tricks but a principled approach to modeling"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 75,
+    "instruction": "双足运动控制领域的深度强化学习综述认为当前框架存在哪些关键局限？",
+    "input": "",
+    "output": "综述结论认为，当前框架面临的关键局限包括：多技能泛化与任务专用精度之间的张力（the tension between multi-skill generalisation and task-specific precision），以及持续的 sim-to-real 差距（the persistent sim-to-real gap）。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Deep Reinforcement Learning for Robotic Bipedal Locomotion: A Brief Survey",
+      "url": "https://arxiv.org/html/2404.17070v5",
+      "date": "2024-04",
+      "quote": "current frameworks confront key limitations, including the tension between multi-skill generalisation"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 76,
+    "instruction": "最早把 sim-to-real 端到端学习框架用在实际双足机器人上的公司是哪家？机器人叫什么？",
+    "input": "",
+    "output": "据该综述，Agility Robotics 于 2019 年提出了首个 sim-to-real 端到端学习框架，并应用在 3D 力矩控制的双足机器人 Cassie 上。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Deep Reinforcement Learning for Robotic Bipedal Locomotion: A Brief Survey",
+      "url": "https://arxiv.org/html/2404.17070v5",
+      "date": "2024-04",
+      "quote": "Agility Robotics introduced the first sim-to-real end-to-end learning framework in 2019"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 77,
+    "instruction": "PolySim 论文认为仿真中训练的人形全身控制策略为什么会出现 sim-to-real 差距？",
+    "input": "",
+    "output": "论文认为，该差距根本上源于“仿真器归纳偏置”（simulator inductive bias），即任何单一仿真器固有的假设与局限；这些偏置导致仿真器之间以及仿真与现实之间出现非平凡差异。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "PolySim: Bridging the Sim-to-Real Gap for Humanoid Control via Multi-Simulator Dynamics Randomization",
+      "url": "https://doi.org/10.48550/arxiv.2510.01708",
+      "date": "2025-10",
+      "quote": "which fundamentally arises from simulator inductive bias"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 78,
+    "instruction": "PolySim 的最终验证结果是什么？",
+    "input": "",
+    "output": "论文报告称，最终成功将一个策略零样本部署（zero-shot deployment）到 Unitree G1 人形机器人上。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "PolySim: Bridging the Sim-to-Real Gap for Humanoid Control via Multi-Simulator Dynamics Randomization",
+      "url": "https://doi.org/10.48550/arxiv.2510.01708",
+      "date": "2025-10",
+      "quote": "successful zero-shot deployment of a policy onto the Unitree G1 humanoid robot"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 79,
+    "instruction": "那篇主张“15 分钟学会 sim-to-real 人形运动”的工作用了什么算法和硬件？",
+    "input": "",
+    "output": "该工作提出了一套基于离策略强化学习算法（off-policy RL）的简单实用配方，即 FastSAC 与 FastTD3，仅用一块 RTX 4090 GPU，就能在 15 分钟内训练出人形运动策略。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "url": "https://arxiv.org/html/2512.01996v1",
+      "date": "2025-12",
+      "quote": "that enables rapid training of humanoid locomotion policies in just 15 minutes with a single RTX 4090 GPU"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 80,
+    "instruction": "FastSAC/FastTD3 那套配方是在哪些机器人、什么条件下验证的？",
+    "input": "",
+    "output": "论文在 Unitree G1 与 Booster T1 两台机器人上验证，且处于强域随机化条件下，例如随机化动力学、崎岖地形以及推力扰动。",
+    "source": {
+      "org": "arXiv（预印本）",
+      "title": "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes",
+      "url": "https://arxiv.org/html/2512.01996v1",
+      "date": "2025-12",
+      "quote": "on Unitree G1 and Booster T1 robots under strong domain randomization"
+    },
+    "category": "论文/研报结论"
+  },
+  {
+    "id": 81,
+    "instruction": "越疆科技 2024 年的收入是多少？同比增长多少？",
+    "input": "",
+    "output": "据年度业绩公告，越疆 2024 年收入为人民币 373.7 百万元（3.737 亿元），较 2023 年的人民币 286.7 百万元增加 30.3%。",
+    "source": {
+      "org": "深圳市越疆科技股份有限公司（港交所披露）",
+      "title": "截至2024年12月31日止年度年度業績公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0324/2025032400375_c.pdf",
+      "date": "2025-03-24",
+      "quote": "收入為人民幣373.7百萬元，較2023年的人民幣286.7百萬元增加30.3%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 82,
+    "instruction": "越疆科技 2024 年的亏损是多少？同比是扩大还是收窄？",
+    "input": "",
+    "output": "本公司权益股东应佔年内亏损为人民币 95.4 百万元，较 2023 年的人民币 103.3 百万元减少 7.6%。",
+    "source": {
+      "org": "深圳市越疆科技股份有限公司（港交所披露）",
+      "title": "截至2024年12月31日止年度年度業績公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0324/2025032400375_c.pdf",
+      "date": "2025-03-24",
+      "quote": "本公司權益股東應佔年內虧損為人民幣95.4百萬元，較2023年的人民幣103.3百萬元減少7.6%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 83,
+    "instruction": "越疆科技 2024 年经调整净亏损是多少？同比变化如何？",
+    "input": "",
+    "output": "本公司权益股东应佔年内经调整亏损净额（非国际财务报告准则计量）为人民币 36.5 百万元，较 2023 年的人民币 81.8 百万元减少 55.4%。",
+    "source": {
+      "org": "深圳市越疆科技股份有限公司（港交所披露）",
+      "title": "截至2024年12月31日止年度年度業績公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0324/2025032400375_c.pdf",
+      "date": "2025-03-24",
+      "quote": "本公司權益股東應佔年內經調整虧損淨額（非國際財務報告準則計量）為人民幣36.5百萬元，較2023年的人民幣81.8百萬元減少55.4%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 84,
+    "instruction": "越疆科技 2024 年的毛利率是多少？剔除存货减值影响后是多少？",
+    "input": "",
+    "output": "毛利率为 46.6%，较 2023 年的 43.5% 增加 3.1 个百分点；不考虑计入销售成本的存货减值影响，2024 年的毛利率维持稳定于 49.5%。",
+    "source": {
+      "org": "深圳市越疆科技股份有限公司（港交所披露）",
+      "title": "截至2024年12月31日止年度年度業績公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0324/2025032400375_c.pdf",
+      "date": "2025-03-24",
+      "quote": "毛利率為46.6%，較2023年的43.5%增加3.1個百分點。不考慮計入銷售成本的存貨減值影響，2024年的毛利率維持穩定於49.5%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 85,
+    "instruction": "越疆科技 2024 年的研发开支是多少？同比变化如何？",
+    "input": "",
+    "output": "本集团于本年度的研发开支约为人民币 71.8 百万元（2023 年为人民币 70.5 百万元），较去年增加约 1.8%。",
+    "source": {
+      "org": "深圳市越疆科技股份有限公司（港交所披露）",
+      "title": "截至2024年12月31日止年度年度業績公告",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2025/0324/2025032400375_c.pdf",
+      "date": "2025-03-24",
+      "quote": "本集團於本年度的研發開支約為人民幣71.8百萬元（2023年：人民幣70.5百萬元），較去年增加約1.8%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 86,
+    "instruction": "绿的谐波 2024 年的营业收入和归母净利润分别是多少？",
+    "input": "",
+    "output": "据 2024 年年度报告，报告期内公司实现营业收入 387,411,303.84 元，归属于上市公司股东的净利润 56,168,149.88 元。",
+    "source": {
+      "org": "苏州绿的谐波传动科技股份有限公司",
+      "title": "2024 年年度报告（同花顺公告 PDF 镜像）",
+      "url": "http://notice.10jqka.com.cn/api/pdf/1cc466d5d5fc5918.pdf",
+      "date": "2025-04",
+      "quote": "报告期内，公司实现营业收入387,411,303.84元，归属于上市公司股东的净利润56,168,149.88元。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 87,
+    "instruction": "绿的谐波针对人形机器人做了哪些谐波减速器方面的技术突破？",
+    "input": "",
+    "output": "年报称：针对人形机器人等行业的新兴需求，聚焦谐波减速器的轻量小型化技术突破，同等出力情况下减重 30% 以上；同时开发出灵巧手适用微型谐波减速器，颠覆了传统谐波的加工工艺路线。",
+    "source": {
+      "org": "苏州绿的谐波传动科技股份有限公司",
+      "title": "2024 年年度报告（同花顺公告 PDF 镜像）",
+      "url": "http://notice.10jqka.com.cn/api/pdf/1cc466d5d5fc5918.pdf",
+      "date": "2025-04",
+      "quote": "针对人形机器人等行业的新兴需求，聚焦谐波减速器的轻量小型化技术突破，同等出力情况下减重30%以上。同时开发出灵巧手适用微型谐波减速器，颠覆了传统谐波的加工工艺路线。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 88,
+    "instruction": "绿的谐波的电液伺服、行星滚柱丝杠目前处于什么供货阶段？",
+    "input": "",
+    "output": "年报称，电液伺服、行星滚柱丝杠等直线传动机构实现了重点行业的小批量供应。",
+    "source": {
+      "org": "苏州绿的谐波传动科技股份有限公司",
+      "title": "2024 年年度报告（同花顺公告 PDF 镜像）",
+      "url": "http://notice.10jqka.com.cn/api/pdf/1cc466d5d5fc5918.pdf",
+      "date": "2025-04",
+      "quote": "电液伺服、行星滚柱丝杠等直线传动机构实现了重点行业的小批量供应。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 89,
+    "instruction": "绿的谐波在精密减速器领域的国家标准制定中扮演什么角色？",
+    "input": "",
+    "output": "年报称，公司已通过 ISO9001 及 ISO14001 国际质量体系认证，并且为我国多项精密减速器领域国家标准主要起草单位。",
+    "source": {
+      "org": "苏州绿的谐波传动科技股份有限公司",
+      "title": "2024 年年度报告（同花顺公告 PDF 镜像）",
+      "url": "http://notice.10jqka.com.cn/api/pdf/1cc466d5d5fc5918.pdf",
+      "date": "2025-04",
+      "quote": "公司已通过ISO9001及ISO14001国际质量体系认证，并且为我国多项精密减速器领域国家标准主要起草单位。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 90,
+    "instruction": "三花智控 2024 年的营业收入、营业利润和归母净利润分别是多少？",
+    "input": "",
+    "output": "报告期内，公司实现营业收入 279.47 亿元，同比上升 13.80%；实现营业利润 37.10 亿元，同比上升 4.42%；归属于上市公司股东的净利润 30.99 亿元，同比上升 6.10%。",
+    "source": {
+      "org": "浙江三花智能控制股份有限公司",
+      "title": "2024 年年度报告",
+      "url": "http://static.cninfo.com.cn/finalpage/2025-03-27/1222913178.PDF",
+      "date": "2025-03-27",
+      "quote": "报告期内，公司实现营业收入279.47亿元，同比上升13.80%；实现营业利润37.10亿元，同比上升4.42%；归属于上市公司股东的净利润30.99亿元，同比上升6.10%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 91,
+    "instruction": "三花智控 2024 年制冷空调电器零部件和汽车零部件两块业务的收入分别是多少？",
+    "input": "",
+    "output": "按照产品划分，制冷空调电器零部件业务营业收入为 165.61 亿元，同比上升 13.09%；汽车零部件业务营业收入为 113.86 亿元，同比上升 14.86%。",
+    "source": {
+      "org": "浙江三花智能控制股份有限公司",
+      "title": "2024 年年度报告",
+      "url": "http://static.cninfo.com.cn/finalpage/2025-03-27/1222913178.PDF",
+      "date": "2025-03-27",
+      "quote": "按照产品划分，制冷空调电器零部件业务营业收入为165.61亿元，同比上升13.09%；汽车零部件业务营业收入为113.86亿元，同比上升14.86%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 92,
+    "instruction": "三花智控年报中如何描述仿生机器人业务？",
+    "input": "",
+    "output": "年报称，仿生机器人业务方面，公司紧密配合客户、满足客户需求；产品关键性能指标持续自主优化，并围绕自研产品方案构筑工艺和专利技术护城河。",
+    "source": {
+      "org": "浙江三花智能控制股份有限公司",
+      "title": "2024 年年度报告",
+      "url": "http://static.cninfo.com.cn/finalpage/2025-03-27/1222913178.PDF",
+      "date": "2025-03-27",
+      "quote": "仿生机器人业务方面，公司紧密配合客户，满足客户需求；产品关键性能指标持续自主优化，并围绕自研产品方案构筑工艺和专利技术护城河。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 93,
+    "instruction": "三花智控的机器人机电执行器项目目前有量产订单或收入吗？",
+    "input": "",
+    "output": "据公司就全球存托凭证申请的回复：机器人项目作为研发项目，不产生直接经济效益；截至该回复出具日，尚未有相关定点客户，亦尚未形成量产订单或收入。",
+    "source": {
+      "org": "浙江三花智能控制股份有限公司（全球存托凭证申请文件回复）",
+      "title": "关于浙江三花智能控制股份有限公司申请全球存托凭证境内新增基础股票",
+      "url": "http://file.finance.sina.com.cn/211.154.219.97:9494/MRGG/CNSESZ_STOCK/2024/2024-5/2024-05-24/10236704.PDF",
+      "date": "2024-05-24",
+      "quote": "机器人项目作为研发项目，本项目不产生直接经济效益，截至本回复出具日，尚未有相关定点客户，亦尚未形成量产订单或收入。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 94,
+    "instruction": "兆威机电 2024 年的营业收入和归母净利润分别是多少？",
+    "input": "",
+    "output": "据 2024 年年度报告，报告期内公司实现营业收入 15.25 亿元，同比增长 26.42%；实现归母净利润 2.25 亿元，增长 25.11%。",
+    "source": {
+      "org": "证券时报网",
+      "title": "2024年营收净利润双高增长，兆威机电加速推进灵巧手产品商业化进程",
+      "url": "https://www.stcn.com/article/detail/1734057.html",
+      "date": "2025-04-29",
+      "quote": "报告期内，公司实现营业收入15.25亿元，同比增长26.42%；实现归母净利润2.25亿元，增长25.11%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 95,
+    "instruction": "兆威机电 2024 年的研发投入是多少？占营业收入比重多少？",
+    "input": "",
+    "output": "公司研发投入 1.55 亿元，同比增长 20.53%，占营业收入的比重为 10.18%。",
+    "source": {
+      "org": "证券时报网",
+      "title": "2024年营收净利润双高增长，兆威机电加速推进灵巧手产品商业化进程",
+      "url": "https://www.stcn.com/article/detail/1734057.html",
+      "date": "2025-04-29",
+      "quote": "公司研发投入1.55亿元，同比增长20.53%，占营业收入的比重为10.18%。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 96,
+    "instruction": "兆威机电的灵巧手产品是什么时候发布的？有什么特点？",
+    "input": "",
+    "output": "2024 年 11 月，公司在深圳高交会上首次发布了全球首创的指关节内置全驱动力单元的灵巧手产品，集成了微型减速器、电机、控制单元及电子皮肤传感器等。",
+    "source": {
+      "org": "深圳市兆威机电股份有限公司",
+      "title": "2024 年年度报告（公司官网 PDF）",
+      "url": "https://www.szzhaowei.net/pdf/2024nb.pdf",
+      "date": "2025-04",
+      "quote": "2024年11月，公司在深圳高交会上首次发布了全球首创的指关节内置全驱动力单元的灵巧手产品，集成了微型减速器、电机、控制单元及电子皮肤传感器等。"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 97,
+    "instruction": "兆威机电灵巧手的主动自由度是多少？每个指关节如何驱动？",
+    "input": "",
+    "output": "该产品具有 17 个主动自由度，并可继续拓展自由度配置；每个指关节均配备独立高功率密度微电机模组，可实现独立控制。",
+    "source": {
+      "org": "深圳市兆威机电股份有限公司",
+      "title": "2024 年年度报告（公司官网 PDF）",
+      "url": "https://www.szzhaowei.net/pdf/2024nb.pdf",
+      "date": "2025-04",
+      "quote": "该产品具有17个主动自由度，并可继续拓展自由度配置，每个指关节均配备独立高功率密度微电机模组，可实现独立控制"
+    },
+    "category": "公司经营"
+  },
+  {
+    "id": 98,
+    "instruction": "傅利叶 GR-3 的身高、体重、全身自由度和单手负载分别是多少？",
+    "input": "",
+    "output": "GR-3 身高 165cm，体重 71kg，全身覆盖 55 个自由度，单手负载可达 3 公斤。",
+    "source": {
+      "org": "傅利叶（Fourier）文档中心",
+      "title": "机器人概览 | Fourier",
+      "url": "https://support.fftai.com/getting-started/general-information",
+      "date": "2026-09",
+      "quote": "GR-3 身高 165cm，体重 71kg，全身覆盖 55 个自由度，单手负载可达 3 公斤，支持更拟人化的肢体表达。"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 99,
+    "instruction": "傅利叶 GR-3 各部位的关节自由度分别是多少？",
+    "input": "",
+    "output": "头部自由度 2、单臂自由度 7、腰部自由度 3、单腿自由度 6、单手基础自由度 6；单手高自由度可选装 12 自由度灵巧手。",
+    "source": {
+      "org": "傅利叶（Fourier）文档中心",
+      "title": "机器人概览 | Fourier",
+      "url": "https://support.fftai.com/getting-started/general-information",
+      "date": "2026-09",
+      "quote": "头部自由度 2；单臂自由度 7；腰部自由度 3；单腿自由度 6；单手基础自由度 6；单手高自由度 可选装 12 自由度灵巧手"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 100,
+    "instruction": "傅利叶 GR-3 的最大关节峰值扭矩是多少？总执行器数量是多少？",
+    "input": "",
+    "output": "最大关节峰值扭矩为 440 N·m；总执行器数量最高可达 55（选装 12 自由度灵巧手）。",
+    "source": {
+      "org": "傅利叶（Fourier）文档中心",
+      "title": "机器人概览 | Fourier",
+      "url": "https://support.fftai.com/getting-started/general-information",
+      "date": "2026-09",
+      "quote": "总执行器数量 最高可达 55（选装 12 自由度灵巧手）；最大关节峰值扭矩 440 N·m"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 101,
+    "instruction": "傅利叶 GR-3 的电池容量、续航时间和充电时长分别是多少？是否支持换电？",
+    "input": "",
+    "output": "电池容量为 702 Wh + 234 Wh，续航时间约 3 小时，单次充电时长约 1.5 小时；支持热插拔换电。",
+    "source": {
+      "org": "傅利叶（Fourier）文档中心",
+      "title": "机器人概览 | Fourier",
+      "url": "https://support.fftai.com/getting-started/general-information",
+      "date": "2026-09",
+      "quote": "电池容量 702 Wh + 234 Wh；续航时间 ≈3 h；单次充电时长 ≈1.5 h；热插拔 支持热插拔换电"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 102,
+    "instruction": "傅利叶 GR-3 的行走速度、单手荷载和基础算力配置如何？",
+    "input": "",
+    "output": "行走速度 6.1 km/h，单手荷载约 3 kg，基础算力为 8 核 16 线程高性能 CPU。",
+    "source": {
+      "org": "傅利叶（Fourier）文档中心",
+      "title": "机器人概览 | Fourier",
+      "url": "https://support.fftai.com/getting-started/general-information",
+      "date": "2026-09",
+      "quote": "行走速度 6.1 km/h；单手荷载 ≈3 kg；基础算力 8 核 16 线程高性能 CPU"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 103,
+    "instruction": "智元远征 A2 旗舰版和青春版的身高、重量、主动自由度分别是多少？",
+    "input": "",
+    "output": "两版身高均为 169cm；旗舰版重量 69kg、主动自由度 40，青春版重量 64kg、主动自由度 23。",
+    "source": {
+      "org": "智元机器人（AgiBot）官网",
+      "title": "远征A2 旗舰版 · 产品参数",
+      "url": "https://www.agibot.com.cn/products/A2_Ultra",
+      "date": "2026-09",
+      "quote": "身高 169cm；重量 69kg（旗舰版）／64kg（青春版）；主动自由度 40（旗舰版）／23（青春版）"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 104,
+    "instruction": "智元远征 A2 的膝关节峰值扭矩和最大速度分别是多少？",
+    "input": "",
+    "output": "膝关节峰值扭矩 270N·m；旗舰版最大速度 1.2m/s，青春版最大速度 0.8m/s。",
+    "source": {
+      "org": "智元机器人（AgiBot）官网",
+      "title": "远征A2 旗舰版 · 产品参数",
+      "url": "https://www.agibot.com.cn/products/A2_Ultra",
+      "date": "2026-09",
+      "quote": "膝关节峰值扭矩 270N·m；速度 最大速度1.2m/s（旗舰版）／最大速度0.8m/s（青春版）"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 105,
+    "instruction": "智元远征 A2 旗舰版的电池容量和续航时间是多少？",
+    "input": "",
+    "output": "电池容量 14.4Ah；旗舰版站立工作续航 3 小时、连续行走续航 1.5 小时以上，支持直充与换电。",
+    "source": {
+      "org": "智元机器人（AgiBot）官网",
+      "title": "远征A2 旗舰版 · 产品参数",
+      "url": "https://www.agibot.com.cn/products/A2_Ultra",
+      "date": "2026-09",
+      "quote": "电池容量 14.4Ah；续航时间 站立工作续航 3h 连续行走续航 1.5h+"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 106,
+    "instruction": "智元远征 A2 创下了什么吉尼斯世界纪录？",
+    "input": "",
+    "output": "智元远征 A2 以 106.286 公里跨省行走创下“人形机器人行走最远距离”吉尼斯世界纪录。",
+    "source": {
+      "org": "智元机器人（AgiBot）官网",
+      "title": "远征A2 旗舰版",
+      "url": "https://www.agibot.com.cn/products/A2_Ultra",
+      "date": "2026-09",
+      "quote": "智元远征A2以106.286公里跨省行走创下“人形机器人行走最远距离”吉尼斯世界纪录"
+    },
+    "category": "产品技术"
+  },
+  {
+    "id": 107,
+    "instruction": "《人形机器人创新发展指导意见》的发文字号、成文日期和发布日期分别是什么？",
+    "input": "",
+    "output": "发文字号为工信部科〔2023〕193号，成文日期为 2023-10-20，发布日期为 2023-11-02，发布机构为工业和信息化部科技司。",
+    "source": {
+      "org": "工业和信息化部",
+      "title": "工业和信息化部关于印发《人形机器人创新发展指导意见》的通知",
+      "url": "https://www.miit.gov.cn/jgsj/kjs/wjfb/art/2023/art_50316f76a9b1454b898c7bb2a5846b79.html",
+      "date": "2023-11-02",
+      "quote": "发文字号：工信部科〔2023〕193号；成文日期： 2023-10-20；发布日期： 2023-11-02；发布机构：科技司"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 108,
+    "instruction": "《人形机器人创新发展指导意见》提出的 2025 年发展目标是什么？",
+    "input": "",
+    "output": "到 2025 年，人形机器人创新体系初步建立，“大脑、小脑、肢体”等一批关键技术取得突破，确保核心部组件安全有效供给。",
+    "source": {
+      "org": "工业和信息化部（《人形机器人创新发展指导意见》解读）",
+      "title": "《人形机器人创新发展指导意见》解读",
+      "url": "https://www.miit.gov.cn/jgsj/kjs/gzdt/art/2023/art_7f54847cabfa4ed28f472a15a27f2965.html",
+      "date": "2023-11-02",
+      "quote": "到2025年，人形机器人创新体系初步建立，“大脑、小脑、肢体”等一批关键技术取得突破，确保核心部组件安全有效供给。"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 109,
+    "instruction": "《人形机器人创新发展指导意见》提出要培育多少家生态型企业、打造多少个产业集聚区？",
+    "input": "",
+    "output": "培育 2-3 家有全球影响力的生态型企业和一批专精特新中小企业，打造 2-3 个产业发展集聚区，孕育开拓一批新业务、新模式、新业态。",
+    "source": {
+      "org": "工业和信息化部（《人形机器人创新发展指导意见》解读）",
+      "title": "《人形机器人创新发展指导意见》解读",
+      "url": "https://www.miit.gov.cn/jgsj/kjs/gzdt/art/2023/art_7f54847cabfa4ed28f472a15a27f2965.html",
+      "date": "2023-11-02",
+      "quote": "培育2-3家有全球影响力的生态型企业和一批专精特新中小企业，打造2-3个产业发展集聚区，孕育开拓一批新业务、新模式、新业态。"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 110,
+    "instruction": "《人形机器人创新发展指导意见》提出的 2027 年发展目标是什么？",
+    "input": "",
+    "output": "到 2027 年，人形机器人技术创新能力显著提升，形成安全可靠的产业链供应链体系，构建具有国际竞争力的产业生态，综合实力达到世界先进水平。",
+    "source": {
+      "org": "工业和信息化部（《人形机器人创新发展指导意见》解读）",
+      "title": "《人形机器人创新发展指导意见》解读",
+      "url": "https://www.miit.gov.cn/jgsj/kjs/gzdt/art/2023/art_7f54847cabfa4ed28f472a15a27f2965.html",
+      "date": "2023-11-02",
+      "quote": "到2027年，人形机器人技术创新能力显著提升，形成安全可靠的产业链供应链体系，构建具有国际竞争力的产业生态，综合实力达到世界先进水平。"
+    },
+    "category": "行业标准与政策"
+  },
+  {
+    "id": 111,
+    "instruction": "《人形机器人创新发展指导意见》在关键技术突破方面部署了什么任务？",
+    "input": "",
+    "output": "在关键技术突破方面，打造人形机器人“大脑”和“小脑”、突破“肢体”关键技术、健全技术创新体系。",
+    "source": {
+      "org": "工业和信息化部（《人形机器人创新发展指导意见》解读）",
+      "title": "《人形机器人创新发展指导意见》解读",
+      "url": "https://www.miit.gov.cn/jgsj/kjs/gzdt/art/2023/art_7f54847cabfa4ed28f472a15a27f2965.html",
+      "date": "2023-11-02",
+      "quote": "在关键技术突破方面，打造人形机器人“大脑”和“小脑”、突破“肢体”关键技术、健全技术创新体系。"
+    },
+    "category": "行业标准与政策"
+  }
+]

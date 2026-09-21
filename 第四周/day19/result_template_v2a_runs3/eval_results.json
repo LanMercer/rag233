@@ -1,0 +1,1011 @@
+[
+ {
+  "id": 1,
+  "type": "in_material",
+  "question": "GMR 的英文全称是什么？",
+  "note": "摘要第 2 段直接给出全称；答案可能混英文，判定放宽：含 General 或 重定向 即算命中",
+  "top_ids": [
+   36,
+   76,
+   69,
+   35,
+   75,
+   70,
+   72,
+   100
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "GMR = Human mimic。[37§2]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Human mimic。[37§2]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Human mimic [37]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "GMR = Human mimic [37]。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 的英文全称是什么？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "GMR = Human mimic。[37§2]",
+  "citation_bad": [],
+  "citation_n": 0
+ },
+ {
+  "id": 2,
+  "type": "in_material",
+  "question": "这篇论文主要解决什么问题？",
+  "note": "摘要与引言开头均提到 embodiment gap；答案说清'人类运动数据难以直接用于人形机器人'即可",
+  "top_ids": [
+   14,
+   22,
+   1,
+   9,
+   3,
+   25,
+   13,
+   55
+  ],
+  "source_chunk": [
+   0,
+   5
+  ],
+  "answer": "艺术化动作捕捉到机器人动作：① 艺术化动作捕捉数据质量差且不一致; ② 动作捕捉与机器人运动学差异导致滑动、脚趾穿入和滑行等伪影;③ 置信度低、鲁棒性差。[22]-[25]; [3]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "艺术化动作捕捉到机器人动作：① 艺术化动作捕捉数据质量差且不一致; ② 动作捕捉与机器人运动学差异导致滑动、脚趾穿入和滑行等伪影;③ 置信度低、鲁棒性差。[22]-[25]; [3]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "艺术化动作捕捉到机器人动作：① 艺术化动作捕捉与机器人动作不一致导致政策鲁棒性降低；② 置信度高且接近基线的方法实现参考轨迹跟踪性能和源动作风格保持。[25]-[13]-[39]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "艺术化动作捕捉到机器人姿态：① 艺术化动作捕捉与机器人姿态映射不一致导致滑动、穿插和物理不可行性等错误；② 置信度低且动态或长序列性能差。 [13]"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "这篇论文主要解决什么问题？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "艺术化动作捕捉到机器人动作：① 艺术化动作捕捉数据质量差且不一致; ② 动作捕捉与机器人运动学差异导致滑动、脚趾穿入和滑行等伪影;③ 置信度低、鲁棒性差。[22]-[25]; [3]",
+  "citation_bad": [],
+  "citation_n": 3
+ },
+ {
+  "id": 3,
+  "type": "in_material",
+  "question": "GMR 论文的作者来自哪所大学？",
+  "note": "作者单位标注 Stanford University；关键词二选一命中即对",
+  "top_ids": [
+   100,
+   36,
+   103,
+   97,
+   101,
+   6,
+   98,
+   91
+  ],
+  "source_chunk": [
+   0,
+   6
+  ],
+  "answer": "[资料§36] University of Tokyo; Keio University; Tohoku University; Osaka University; Kyoto University; Sophia University; Tokyo Institute of Technology; National Tsing Hua University; Shanghai Jiao Tong University; Beijing Normal University; Nanjing University of Posts and Telecommunications; Tianjin University of Science and Technology; Shenzhen University; Sun Yat-sen University; Hong Kong Baptist University; City University of Hong Kong; Macquarie University; University of Sydney; University of Melbourne; University of Queensland; University of Adelaide; University of Auckland; University of Cambridge; Imperial College London; University of Oxford; ETH Zurich; TU Berlin; RWTH Aachen University; Karlsruhe Institute of Technology (KIT); Technical University of Munich (TUM); University of Stuttgart; University of Freiburg; University of Edinburgh; University of Glasgow; University of Sheffield; University of Birmingham; University of Manchester; University of Southampton; University of Liverpool; University of Nottingham; University of Bristol; University of Warwick; University of Cape Town; University of Johannesburg; University of Pretoria; University of Stellenbosch; University of Western Australia; Australian National University; Monash University; Flinders University; Curtin University; Deakin University; Griffith University; James Cook University; QUT; University of New South Wales; University of Canberra; University of Tasmania; University of Waikato; Massey University; Victoria University of Wellington; University of Otago; University of Canterbury; University of Newcastle; University of Wollongong; University of Ballarat; University of South Australia; University of West Australia; University at Buffalo; Stony Brook University; Columbia University; Cornell University; University Pennsylvania; Brown University; Harvard University; MIT; UC Berkeley; UCSF; University of California Los Angeles (UCLA); University of Washington; University of Illinois Urbana-Champaign; Georgia Tech; Carnegie Mellon University; University Texas Austin; University Florida; University Michigan; University Wisconsin Madison; University Minnesota Twin Cities; University Pittsburgh; University Cincinnati; University Iowa; University North Carolina Chapel Hill; University Virginia; University Maryland Baltimore County; University Delaware; University Arizona; University Colorado Boulder; University Utah; University Nevada Reno; University Houston; University Texas Rio Grande Valley; University Oklahoma; University Kansas; University Missouri; University Iowa: University Chicago; Northwestern University; Duke University; Vanderbilt University; University Rochester; University Boston; University Connecticut; University Vermont; University Massachusetts Amherst; University Wisconsin Milwaukee; University Idaho; University Nebraska Lincoln; University Wyoming; University Alaska Fair",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "[资料§36] University of Tokyo; Keio University; Tohoku University; Osaka University; Kyoto University; Sophia University; Tokyo Institute of Technology; National Tsing Hua University; Shanghai Jiao Tong University; Beijing Normal University; Nanjing University of Posts and Telecommunications; Tianjin University of Science and Technology; Shenzhen University; Sun Yat-sen University; Hong Kong Baptist University; City University of Hong Kong; Macquarie University; University of Sydney; University of Melbourne; University of Queensland; University of Adelaide; University of Auckland; University of Cambridge; Imperial College London; University of Oxford; ETH Zurich; TU Berlin; RWTH Aachen University; Karlsruhe Institute of Technology (KIT); Technical University of Munich (TUM); University of Stuttgart; University of Freiburg; University of Edinburgh; University of Glasgow; University of Sheffield; University of Birmingham; University of Manchester; University of Southampton; University of Liverpool; University of Nottingham; University of Bristol; University of Warwick; University of Cape Town; University of Johannesburg; University of Pretoria; University of Stellenbosch; University of Western Australia; Australian National University; Monash University; Flinders University; Curtin University; Deakin University; Griffith University; James Cook University; QUT; University of New South Wales; University of Canberra; University of Tasmania; University of Waikato; Massey University; Victoria University of Wellington; University of Otago; University of Canterbury; University of Newcastle; University of Wollongong; University of Ballarat; University of South Australia; University of West Australia; University at Buffalo; Stony Brook University; Columbia University; Cornell University; University Pennsylvania; Brown University; Harvard University; MIT; UC Berkeley; UCSF; University of California Los Angeles (UCLA); University of Washington; University of Illinois Urbana-Champaign; Georgia Tech; Carnegie Mellon University; University Texas Austin; University Florida; University Michigan; University Wisconsin Madison; University Minnesota Twin Cities; University Pittsburgh; University Cincinnati; University Iowa; University North Carolina Chapel Hill; University Virginia; University Maryland Baltimore County; University Delaware; University Arizona; University Colorado Boulder; University Utah; University Nevada Reno; University Houston; University Texas Rio Grande Valley; University Oklahoma; University Kansas; University Missouri; University Iowa: University Chicago; Northwestern University; Duke University; Vanderbilt University; University Rochester; University Boston; University Connecticut; University Vermont; University Massachusetts Amherst; University Wisconsin Milwaukee; University Idaho; University Nebraska Lincoln; University Wyoming; University Alaska Fair"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "[资料§36] University of Tokyo; Keio University; Tohoku University; Sophia University; Kyoto University; National Institute of Advanced Industrial Science and Technology; Kochi Prefectural Medical College; Kobe University; Osaka University; Nagoya University; Hokkaido University; Kyushu University; Hiroshima University; Shizuoka University; Gunma University; Tokushima University; Yamagata University; Saga University; Ochanomizu University; Kitakyushu University."
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：斯坦福、Stanford",
+    "answer": "GMR 的作者来自斯坦福大学：1Jo˜ão Pedro Ara´ ujo, Yanie Ze, Peix Xu, Jijjajun Wu, and CKaren Liu are with Department of Compuer Science, School o fEngineering, Stanford University,35 3Jane Stanford Way, Stanfor d, CA  94 305 , United States [101]-[10]。"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 论文的作者来自哪所大学？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[资料§36] University of Tokyo; Keio University; Tohoku University; Osaka University; Kyoto University; Sophia University; Tokyo Institute of Technology; National Tsing Hua University; Shanghai Jiao Tong University; Beijing Normal University; Nanjing University of Posts and Telecommunications; Tianjin University of Science and Technology; Shenzhen University; Sun Yat-sen University; Hong Kong Baptist University; City University of Hong Kong; Macquarie University; University of Sydney; University of Melbourne; University of Queensland; University of Adelaide; University of Auckland; University of Cambridge; Imperial College London; University of Oxford; ETH Zurich; TU Berlin; RWTH Aachen University; Karlsruhe Institute of Technology (KIT); Technical University of Munich (TUM); University of Stuttgart; University of Freiburg; University of Edinburgh; University of Glasgow; University of Sheffield; University of Birmingham; University of Manchester; University of Southampton; University of Liverpool; University of Nottingham; University of Bristol; University of Warwick; University of Cape Town; University of Johannesburg; University of Pretoria; University of Stellenbosch; University of Western Australia; Australian National University; Monash University; Flinders University; Curtin University; Deakin University; Griffith University; James Cook University; QUT; University of New South Wales; University of Canberra; University of Tasmania; University of Waikato; Massey University; Victoria University of Wellington; University of Otago; University of Canterbury; University of Newcastle; University of Wollongong; University of Ballarat; University of South Australia; University of West Australia; University at Buffalo; Stony Brook University; Columbia University; Cornell University; University Pennsylvania; Brown University; Harvard University; MIT; UC Berkeley; UCSF; University of California Los Angeles (UCLA); University of Washington; University of Illinois Urbana-Champaign; Georgia Tech; Carnegie Mellon University; University Texas Austin; University Florida; University Michigan; University Wisconsin Madison; University Minnesota Twin Cities; University Pittsburgh; University Cincinnati; University Iowa; University North Carolina Chapel Hill; University Virginia; University Maryland Baltimore County; University Delaware; University Arizona; University Colorado Boulder; University Utah; University Nevada Reno; University Houston; University Texas Rio Grande Valley; University Oklahoma; University Kansas; University Missouri; University Iowa: University Chicago; Northwestern University; Duke University; Vanderbilt University; University Rochester; University Boston; University Connecticut; University Vermont; University Massachusetts Amherst; University Wisconsin Milwaukee; University Idaho; University Nebraska Lincoln; University Wyoming; University Alaska Fair",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 4,
+  "type": "in_material",
+  "question": "论文中 GMR 与哪些方法进行了对比？",
+  "note": "原文：evaluate GMR alongside two open-source retargeters, PHC and ProtoMotions, and a closed-source dataset from Unitree；命中任一关键词即对",
+  "top_ids": [
+   36,
+   76,
+   18,
+   75,
+   4,
+   72,
+   69,
+   95
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "GMR 与 PHC、ProtoMotions 进行了对比。[18]; [36] §3; [69]",
+  "refused": false,
+  "correct": true,
+  "detail": "命中关键词：PHC、ProtoMotions",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC、ProtoMotions",
+    "answer": "GMR 与 PHC、ProtoMotions 进行了对比。[18]; [36] §3; [69]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC、ProtoMotions",
+    "answer": "GMR 与 PHC、ProtoMotions 进行了对比。 [18]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：PHC、ProtoMotions",
+    "answer": "GMR 与 PHC、ProtoMotions 进行了对比。[36]-§36"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "论文中 GMR 与哪些方法进行了对比？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "GMR 与 PHC、ProtoMotions 进行了对比。[18]; [36] §3; [69]",
+  "citation_bad": [],
+  "citation_n": 3
+ },
+ {
+  "id": 5,
+  "type": "in_material",
+  "question": "论文的实验在哪个数据集上进行？",
+  "note": "原文：a diverse subset of the LAFAN1 dataset；直接事实抽取题",
+  "top_ids": [
+   103,
+   4,
+   25,
+   3,
+   36,
+   52,
+   37,
+   19
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "[资料§41] LAFAN2 数据集：从简单的步行和转身到动态复杂的武术动作、踢腿和舞蹈。",
+  "refused": false,
+  "correct": true,
+  "detail": "命中关键词：LAFAN",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：LAFAN",
+    "answer": "[资料§41] LAFAN2 数据集：从简单的步行和转身到动态复杂的武术动作、踢腿和舞蹈。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：LAFAN",
+    "answer": "[资料§41] LAFAN１数据集：从简单的步行和转身到动态复杂的武术动作、踢腿和舞蹈。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：LAFAN",
+    "answer": "[资料§42] LAFAN１数据集：从简单的步行和转向到动态复杂的武术动作、踢腿和舞蹈。"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": false,
+  "retrieval_query": "论文的实验在哪个数据集上进行？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "LAFAN2 数据集：从简单的步行和转身到动态复杂的武术动作、踢腿和舞蹈。",
+  "citation_bad": [
+   41
+  ],
+  "citation_n": 1
+ },
+ {
+  "id": 6,
+  "type": "in_material",
+  "question": "论文用什么方法进行策略训练？",
+  "note": "原文：Using BeyondMimic for policy training；直接事实抽取题",
+  "top_ids": [
+   1,
+   16,
+   78,
+   80,
+   75,
+   52,
+   17,
+   14
+  ],
+  "source_chunk": [
+   2
+  ],
+  "answer": "manoid embodiments然后训练强化学习政策模仿参考轨迹[R1]。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments然后训练强化学习政策模仿参考轨迹[R1]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments and然后训练强化学习（RL）政策模仿这些参考轨迹。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "manoid embodiments and然后训练强化学习（RL）政策模仿这些参考轨迹。"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "论文用什么方法进行策略训练？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "manoid embodiments然后训练强化学习政策模仿参考轨迹[R1]。",
+  "citation_bad": [],
+  "citation_n": 0
+ },
+ {
+  "id": 7,
+  "type": "in_material",
+  "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+  "note": "原文：artifacts introduced during retargeting, such as foot sliding, self-penetration, and physically infeasible motion；命中任一即对",
+  "top_ids": [
+   20,
+   104,
+   95,
+   19,
+   36,
+   61,
+   52,
+   48
+  ],
+  "source_chunk": [
+   1
+  ],
+  "answer": "① 踢步内收伪影：[2] §52；② 高度伪影：最小高度减去全局平移固定高度 [52]；③ 浮动或地面穿入伪影：前向运动学获取机器人各身体部位随时间的高度，最低点减去全球平移固定 [48]。",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "① 踢步内收伪影：[2] §52；② 高度伪影：最小高度减去全局平移固定高度 [52]；③ 浮动或地面穿入伪影：前向运动学获取机器人各身体部位随时间的高度，最低点减去全球平移固定 [48]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "① 踢步内收伪影：[2];② 翻转伪影：③ 最小高度减去全局平移固定高度误差：[52]-[53]。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "[资料§52] Most artifacts found in other retarget methods are introduced when scaling; [资料§48] Step 3: human data non-uniform local scaling."
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "重定向数据中可能引入哪些伪影（artifacts）？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "① 踢步内收伪影： §52；② 高度伪影：最小高度减去全局平移固定高度 [52]；③ 浮动或地面穿入伪影：前向运动学获取机器人各身体部位随时间的高度，最低点减去全球平移固定 [48]。",
+  "citation_bad": [
+   2
+  ],
+  "citation_n": 3
+ },
+ {
+  "id": 8,
+  "type": "in_material",
+  "question": "GMR 的实验结论是什么？",
+  "note": "综合理解题：需跨 chunk 拼信息——GMR 在跟踪性能与忠实度上优于开源方法、接近闭源基线；答案含'优于开源/接近闭源'方向即算对",
+  "top_ids": [
+   36,
+   76,
+   4,
+   97,
+   18,
+   100,
+   64,
+   68
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "① 高成功率：walk 1 s 10% → walk 2 s 1% → walk × 2 s > 99%；② 跟真动作相似度高：> 99%，< 5°；③ 动作长度 < 10 ms。 [36]",
+  "refused": false,
+  "correct": false,
+  "detail": "未命中任何期望关键词",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：接近",
+    "answer": "① 高成功率：walk 1 s/phc gmr pm u walk 2 s/phc m r p u; ② 跟真动作接近：min/mean/max phc g mr pm u /phc g mr p m u ; ③ 见图 4 。"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "① 高成功率：walk 1 s 10% → walk 2 s 1% → walk × 2 s > 99%；② 跟真动作相似度高：> 99%，< 5°；③ 动作长度 < 10 ms。 [36]"
+   },
+   {
+    "correct": false,
+    "detail": "未命中任何期望关键词",
+    "answer": "① 高成功率：walk 1 s/phc gmr pm u walk 2 s/phc m r p m u；② 跟真动高：phc g mr pm u；③ 动作精度低：min/max phc g mr p m u。 [资料§68]"
+   }
+  ],
+  "retrieval_hit_strict": false,
+  "retrieval_hit_loose": false,
+  "retrieval_hit": false,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 的实验结论是什么？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "① 高成功率：walk 1 s 10% → walk 2 s 1% → walk × 2 s > 99%；② 跟真动作相似度高：> 99%，< 5°；③ 动作长度 < 10 ms。 [36]",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 9,
+  "type": "in_material",
+  "question": "论文的代码可以在哪里获取？",
+  "note": "原文：Code: github.com/YanjieZe/GMR；命中 github 即对",
+  "top_ids": [
+   103,
+   52,
+   25,
+   3,
+   4,
+   50,
+   37,
+   19
+  ],
+  "source_chunk": [
+   3
+  ],
+  "answer": "[4] GitHub：github.com/Yanjieweizheng/GMR。",
+  "refused": false,
+  "correct": false,
+  "detail": "答的是 ProtoMotions 的仓库（NVLabs/ProtoMotions），不是 GMR 论文代码（YanjieZe/GMR），github 关键词碰巧命中，人工改判错",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "[4] GitHub：github.com/Yanjieweizheng/GMR。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "[4] GitHub：github.com/Yanjieweizheng/GMR。"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：github、GitHub",
+    "answer": "[4] GitHub：github.com/Yanjieweizheng/GMR。"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": true,
+  "retrieval_query": "论文的代码可以在哪里获取？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[4] GitHub：github.com/Yanjieweizheng/GMR。",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 10,
+  "type": "in_material",
+  "question": "论文中的 embodiment gap 具体指什么？",
+  "note": "原文：differences in bone length, joint range of motion, kinematic structure, body shape, mass distribution, and actuation mechanisms；难度分层用（需要理解+复述），命中任一即对",
+  "top_ids": [
+   7,
+   1,
+   9,
+   74,
+   5,
+   18,
+   64,
+   22
+  ],
+  "source_chunk": [
+   5
+  ],
+  "answer": "embodiment gap: 等长、关节活动范围、结构、体型、质量分布和驱动机制等存在显著差异。[5]",
+  "refused": false,
+  "correct": true,
+  "detail": "命中关键词：关节",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "命中关键词：关节",
+    "answer": "embodiment gap: 等长、关节活动范围、结构、体型、质量分布和驱动机制等存在显著差异。[5]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：关节",
+    "answer": "embodiment gap: 等长、关节范围、结构、形状、质量分布和驱动机制等存在显著差异。[5]"
+   },
+   {
+    "correct": true,
+    "detail": "命中关键词：关节",
+    "answer": "embodiment gap: 等长、关节范围、结构、形状、质量分布和驱动机制等存在显著差异。[5]"
+   }
+  ],
+  "retrieval_hit_strict": true,
+  "retrieval_hit_loose": true,
+  "retrieval_hit": true,
+  "manual_fixed": false,
+  "retrieval_query": "论文中的 embodiment gap 具体指什么？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "embodiment gap: 等长、关节活动范围、结构、体型、质量分布和驱动机制等存在显著差异。[5]",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 11,
+  "type": "out_of_material",
+  "question": "GMR 方法的缺点有哪些？",
+  "note": "day10 实测该题触发防幻觉；论文无'缺点'总结段落，资料内确实没有",
+  "top_ids": [
+   36,
+   18,
+   76,
+   9,
+   35,
+   17,
+   48,
+   46
+  ],
+  "source_chunk": [],
+  "answer": "GMR 确定源运动量缩放方式：其他方法存在偏差、脚滑移、穿地和自交越。 [36]",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 确定源运动量缩放方式：其他方法存在偏差、脚滑移、穿地和自交越。 [36]"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 离参考运动较忠实，但存在高跟踪误差：[18]; 跟踪错误较高：[48]-[46]; 政策成功率较低：[17]-[48];"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 离参考运动较忠实但存在脚滑、地面穿透和自相交等艺术化问题。[36§3]"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 方法的缺点有哪些？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "GMR 确定源运动量缩放方式：其他方法存在偏差、脚滑移、穿地和自交越。 [36]",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 12,
+  "type": "out_of_material",
+  "question": "GMR 模型训练用了多少张 GPU？",
+  "note": "论文未披露训练资源，资料内没有",
+  "top_ids": [
+   36,
+   100,
+   104,
+   4,
+   95,
+   94,
+   33,
+   103
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 模型训练用了多少张 GPU？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "资料中没有提及。",
+  "citation_bad": [],
+  "citation_n": 0
+ },
+ {
+  "id": 13,
+  "type": "out_of_material",
+  "question": "这篇论文发表在哪个期刊上？",
+  "note": "预印本论文，材料中无期刊信息；若模型答'arxiv'可放宽算对（常识可接受），但严格判定为资料中没有提到",
+  "top_ids": [
+   103,
+   100,
+   101,
+   91,
+   97,
+   95,
+   25,
+   22
+  ],
+  "source_chunk": [],
+  "answer": "[资料§101]: ACM Trans. Graphics [Proc. SIG- GRAPH Asia], vol. 14, no． 6, p.248：1 - 24 8：16, oct. 2 015.",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§101]: ACM Trans. Graphics [Proc. SIG- GRAPH Asia], vol. 14, no． 6, p.248：1 - 24 8：16, oct. 2 015."
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§100]: IEEE, 机器人与自动化国际会议, 2.0 [资料§18]: Motion Adaptation Based on Physically-Based Motion Transformation, 计算机视觉国际会议, -1.0 [参考资料缺失]"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§100]: IEEE, 机器人与自动化国际会议, 2.0 [资料§18]: Motion Adaptation Based on Physically-Based Motion Retargeting, 计算机视觉和模式识别国际会议, [资料§97]: 20.0 [参考资料]：IEEE, 机器人和自动化国际会议; 计算图像处理和计算机视觉国际会议, -1.0 [参考文献]：IEEE; 计图CVPR国际会议, [-1]"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "这篇论文发表在哪个期刊上？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[资料§101]: ACM Trans. Graphics [Proc. SIG- GRAPH Asia], vol. 14, no． 6, p.248：1 - 24 8：16, oct. 2 015.",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 14,
+  "type": "out_of_material",
+  "question": "GMR 的奖励函数设计有哪些细节？",
+  "note": "反事实题：论文特意'抑制奖励调参'（excessive reward tuning is suppressed），资料中没有奖励函数细节",
+  "top_ids": [
+   76,
+   36,
+   77,
+   69,
+   17,
+   68,
+   73,
+   49
+  ],
+  "source_chunk": [],
+  "answer": "[资料§36] 这是通过两阶段优化找到机器人运动。",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§36] 这是通过两阶段优化找到机器人运动。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "GMR 主要差如何处理源运动态缩放：通过两阶段优化找到机器人动作。 [资料§76]"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§36] 这是通过两阶段优化找到机器人运动。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 的奖励函数设计有哪些细节？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[资料§36] 这是通过两阶段优化找到机器人运动。",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 15,
+  "type": "out_of_material",
+  "question": "GMR 模型的参数量是多少？",
+  "note": "论文未给参数量（方法非单模型，是重定向算法）；资料内没有",
+  "top_ids": [
+   36,
+   76,
+   100,
+   99,
+   64,
+   68,
+   95,
+   31
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及 [36]",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及 [36]"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及 [36]"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及 [36]"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 模型的参数量是多少？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "资料中没有提及 [36]",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 16,
+  "type": "out_of_material",
+  "question": "华为的人形机器人是否采用了 GMR 方法？",
+  "note": "反事实题：论文完全未涉及华为；模型若编造'是/否'均判错，答'没有提到'才对",
+  "top_ids": [
+   36,
+   99,
+   4,
+   21,
+   104,
+   98,
+   32,
+   47
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "华为的人形机器人是否采用了 GMR 方法？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "资料中没有提及。",
+  "citation_bad": [],
+  "citation_n": 0
+ },
+ {
+  "id": 17,
+  "type": "out_of_material",
+  "question": "GMR 与 DeepMind 的机器人策略相比结果如何？",
+  "note": "反事实题：论文只对比 PHC/ProtoMotions/Unitree，无 DeepMind 相关内容",
+  "top_ids": [
+   36,
+   4,
+   83,
+   21,
+   35,
+   11,
+   84,
+   89
+  ],
+  "source_chunk": [],
+  "answer": "[资料§36] The main difference from the prior two methoDs is how ithandles source motion scaling, which wefound to be thecause for many of themotion artifacts.",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§36] The main difference from the prior two methoDs is how ithandles source motion scaling, which wefound to be thecause for many of themotion artifacts."
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§36] The main difference from the prior two methoDs is how ithandles source motion scaling, which wefound to be the cauSes for many of thE.artiCs."
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[资料§36] The main difference from the prior two methoDs is how ithandles source motion scaling, which wefound to be thecause for manyof the artifacts."
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 与 DeepMind 的机器人策略相比结果如何？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[资料§36] The main difference from the prior two methoDs is how ithandles source motion scaling, which wefound to be thecause for many of themotion artifacts.",
+  "citation_bad": [],
+  "citation_n": 1
+ },
+ {
+  "id": 18,
+  "type": "out_of_material",
+  "question": "论文作者的总被引次数是多少？",
+  "note": "资料内无引用统计信息",
+  "top_ids": [
+   100,
+   103,
+   84,
+   101,
+   75,
+   91,
+   74,
+   25
+  ],
+  "source_chunk": [],
+  "answer": "[36][37] A. 王××等 ××× [IEEE, 2×××]、[ACM Trans.Gr., 2×xx] ××× ×××。",
+  "refused": false,
+  "correct": false,
+  "detail": "先编造一串引用统计数字（425/679/248 等），末尾才补「资料中没有提到」——拒答词命中但内容已编造，属规则漏网，人工改判错",
+  "runs": 3,
+  "consistency": 0.667,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[36][37] A. 王××等 ××× [IEEE, 2×××]、[ACM Trans.Gr., 2×xx] ××× ×××。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "[18]: 118; [36]: 100; [41]: 12; [42]: 14; [43]: 13; [84]: 19; 资料中没有提到。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[36][37] A. 王 2; [100][36] 100。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": true,
+  "retrieval_query": "论文作者的总被引次数是多少？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "A. 王××等 ××× [IEEE, 2×××]、[ACM Trans.Gr., 2×xx] ××× ×××。",
+  "citation_bad": [
+   36,
+   37
+  ],
+  "citation_n": 2
+ },
+ {
+  "id": 19,
+  "type": "out_of_material",
+  "question": "GMR 能否直接用于工业机械臂的轨迹规划？",
+  "note": "反事实题：论文针对人形机器人运动跟踪（humanoid motion tracking），未涉及工业机械臂；模型若引申讨论则判错",
+  "top_ids": [
+   36,
+   32,
+   98,
+   47,
+   99,
+   100,
+   83,
+   4
+  ],
+  "source_chunk": [],
+  "answer": "资料中没有提及。",
+  "refused": true,
+  "correct": true,
+  "detail": "如实拒答「资料中没有提到」",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   },
+   {
+    "correct": true,
+    "detail": "如实拒答「资料中没有提到」",
+    "answer": "资料中没有提及。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 能否直接用于工业机械臂的轨迹规划？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "资料中没有提及。",
+  "citation_bad": [],
+  "citation_n": 0
+ },
+ {
+  "id": 20,
+  "type": "out_of_material",
+  "question": "GMR 在仿真器中跑了多少步仿真？",
+  "note": "论文未披露仿真步数等实验细节，资料内没有",
+  "top_ids": [
+   36,
+   65,
+   62,
+   32,
+   24,
+   66,
+   95,
+   104
+  ],
+  "source_chunk": [],
+  "answer": "[32]*: GMR 跑了 11 步仿真。",
+  "refused": false,
+  "correct": false,
+  "detail": "疑似幻觉：未拒答、自行编造或臆测",
+  "runs": 3,
+  "consistency": 1.0,
+  "per_run": [
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[32]*: GMR 跑了 11 步仿真。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[32]*: GMR 理论上可以达到 10 万步仿真。"
+   },
+   {
+    "correct": false,
+    "detail": "疑似幻觉：未拒答、自行编造或臆测",
+    "answer": "[32]*: GMR 跑了 1 步仿真。"
+   }
+  ],
+  "retrieval_hit_strict": null,
+  "retrieval_hit_loose": null,
+  "retrieval_hit": null,
+  "manual_fixed": false,
+  "retrieval_query": "GMR 在仿真器中跑了多少步仿真？",
+  "rewrite_used": false,
+  "answer_citation_cleaned": "[32]*: GMR 跑了 11 步仿真。",
+  "citation_bad": [],
+  "citation_n": 1
+ }
+]

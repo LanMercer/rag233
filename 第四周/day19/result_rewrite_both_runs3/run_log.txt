@@ -1,0 +1,203 @@
+[改写] 已加载 queries_rewritten.json（档位=both）｜模型=Qwen2.5-3B-Instruct-LoRA
+[改写] 缓存元信息：time=2026-09-20 19:24:44｜prompt_version=day19-v1｜modes=['term', 'hyde', 'both']
+========================================================================
+RAG 评测 v2.1 开始｜profile=lora｜TOP_K=8｜temp=0.2｜runs=3｜template=v1
+query instruction：off（查询侧不加前缀）｜判据补丁：已应用判据校准补丁：Q5（Q5 关键词 LAFAN1 -> LAFAN1/LAFAN）
+查询改写：on（检索用 both 档改写；生成仍用原中文问题）
+评测题 20 条（本次运行）｜输出目录：result_rewrite_both_runs3
+本轮改动：O1-R4 改写 both 档（术语+假设答案）
+========================================================================
+服务检查通过：Qwen2.5-3B-Instruct-LoRA 已就绪，且与 profile 一致 ✅
+[OK] 加载向量库：D:\Lan\研究生\技术学习\大模型算法\第三周\day13\chroma_db
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|##########| 71/71 [00:00<00:00, 4583.87it/s]
+------------------------------------------------------------------------
+[ 1/20] id= 1 in_material｜GMR 的英文全称是什么？
+   检索查询: GMR: Generalized Mean Regression, generalized mean regression | GMR stands for Ground Motion Reconstructions Project.可能出现的表述：GMR = Ground Motion ReconSTRUCTIONS Project.
+   Top-K: [36, 76, 18, 8, 2, 81, 17, 14]
+   检索  : strict=✅  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: GMR = General Motion Rettargeting [14]。
+------------------------------------------------------------------------
+[ 2/20] id= 2 in_material｜这篇论文主要解决什么问题？
+   检索查询: paper: what problem does this paper mainly address? | 本文研究解决了目标检测中尺度不变性的问题。
+   Top-K: [74, 25, 14, 59, 9, 3, 28, 18]
+   检索  : strict=❌  loose=❌
+   一致率: 0.67（3 次生成）
+   引文  : 1 处｜⚠ 非法 [2]（不在本轮 Top-K 内）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: 这篇论文研究了运动捕捉数据在机器人上的应用：①评估不同方法对跟踪性能和源动作风格保持的影响；②分析参考动作质量对人类形体追踪政策性能的影响。[资料§2]
+------------------------------------------------------------------------
+[ 3/20] id= 3 in_material｜GMR 论文的作者来自哪所大学？
+   检索查询: GMR, authors, university | The authors are from University of Science and Technology of China.可能出现的表述：The authors are affiliated with University of Science &amp; Technology of China (USTC).
+   Top-K: [6, 36, 18, 1, 22, 4, 86, 84]
+   检索  : strict=✅  loose=✅
+   一致率: 0.67（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：Stanford
+   A: [6]* Jo˜ao Pedro Ar´ ujo, Yanji Ze, Peix Xu, Jiamjun Wu, C. Karen Liú. Stanford University.
+------------------------------------------------------------------------
+[ 4/20] id= 4 in_material｜论文中 GMR 与哪些方法进行了对比？
+   检索查询: GMR comparative study, methods, approaches, techniques, literature review | We compare our method with several state-of-the-art methods: GMR, DGM, and MCMC.
+   Top-K: [36, 18, 30, 19, 1, 22, 79, 91]
+   检索  : strict=❌  loose=✅
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 命中关键词：PHC
+   A: GMR 与 PHC 方法进行对比：[36§36]; GMR 与其他方法相比精度更高：[37§18]; GMR 精度高于其他方法：[38§18]。
+------------------------------------------------------------------------
+[ 5/20] id= 5 in_material｜论文的实验在哪个数据集上进行？
+   检索查询: data set, experiment, dataset | We evaluate on LAFAN-1 dataset.
+   Top-K: [37, 3, 13, 82, 63, 48, 52, 38]
+   检索  : strict=✅  loose=✅
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 命中关键词：LAFAN
+   A: 论文的实[test§A]验在LAFAN数据集上：从简单动作（如行走和转身）到动态复杂动作（如武术、踢腿和舞蹈）。
+------------------------------------------------------------------------
+[ 6/20] id= 6 in_material｜论文用什么方法进行策略训练？
+   检索查询: paper: 方法, 策略训练, 方法研究 | We train policies using a policy gradient method with baseline correction and entropy regularization.
+   Top-K: [1, 29, 80, 16, 13, 15, 78, 8]
+   检索  : strict=❌  loose=❌
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：BeyondMimic
+   A: 文献使用 BeyondMimic 管道进行策略训练 [1]。
+------------------------------------------------------------------------
+[ 7/20] id= 7 in_material｜重定向数据中可能引入哪些伪影（artifacts）？
+   检索查询: redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测 | Appearance of artifacts in redirected data: We evaluate on the FERET and CASIA datasets.
+   Top-K: [3, 52, 13, 19, 8, 82, 37, 20]
+   检索  : strict=❌  loose=✅
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：脚滑动
+   A: ① 脚滑动、地穿透和由于自穿刺导致的物理不可能动作等;② 网址：jaraujo99.github.io/Retargeting Matters. [3];③ 资料中没有提到。
+------------------------------------------------------------------------
+[ 8/20] id= 8 in_material｜GMR 的实验结论是什么？
+   检索查询: GMR 结论 实验 数据:实验结论 | We evaluate on a new benchmark, LAFAN-1, and show that GMR outperforms other methods by 4% in terms of F-measure.
+   Top-K: [36, 76, 63, 2, 13, 18, 12, 3]
+   检索  : strict=✅  loose=❌
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ✅ ｜ 命中关键词：优于、开源、接近、闭源
+   A: ① GMR 始终保持高跟踪性能和接近闭源基线的感知保真度;② GMR 在追踪性能和对源运动态忠实性方面优于现有开源方法;③ GMR 达到与闭源基准相当的感知保真的政策成功率 [18]。
+------------------------------------------------------------------------
+[ 9/20] id= 9 in_material｜论文的代码可以在哪里获取？
+   检索查询: code: available: where | The code is available at https://github.com/username/reponame.可能出现的表述
+   Top-K: [48, 3, 25, 46, 49, 40, 51, 38]
+   检索  : strict=✅  loose=✅
+   一致率: 0.67（3 次生成）
+   引文  : 3 处（全部合法）
+   判定  : ❌ ｜ 答的是 ProtoMotions 的仓库（NVLabs/ProtoMotions），不是 GMR 论文代码（YanjieZe/GMR），github 关键词碰巧命中，人工改判错
+   A: [25] 参考实现可在PHC代码库中找到，我们在此文中将其称为PHC重定向方法。网站：jaraujo99.github.io/Retargeting Matters。代码：[25][资料§25]
+------------------------------------------------------------------------
+[10/20] id=10 in_material｜论文中的 embodiment gap 具体指什么？
+   检索查询: embodiment gap, definition, literature review | Embodiment gap: The difference between human and robot performance in a task.
+   Top-K: [7, 5, 18, 83, 84, 28, 22, 11]
+   检索  : strict=✅  loose=✅
+   一致率: 0.67（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 未命中任何期望关键词
+   A: embodiment gap: 等同于资料§5 中的 "significant differences still exist". [资料§5]
+------------------------------------------------------------------------
+[11/20] id=11 out_of_material｜GMR 方法的缺点有哪些？
+   检索查询: GMR method disadvantages,benefits,Gains,losses,Costs,benefits,tradeoffs,issues | It is not clear whether GMR methods are affected by outliers or noise in data.可能出现的表述。
+   Top-K: [36, 81, 13, 17, 76, 29, 2, 18]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[12/20] id=12 out_of_material｜GMR 模型训练用了多少张 GPU？
+   检索查询: GMR, GPU: number of GPUs used for training | We train GMR model using 8 GPUs.
+   Top-K: [36, 20, 76, 47, 12, 4, 41, 59]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[13/20] id=13 out_of_material｜这篇论文发表在哪个期刊上？
+   检索查询: paper:journal,publication venue | It is published in IEEE Transactions on Image Processing.
+   Top-K: [104, 95, 97, 100, 91, 98, 6, 99]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: [95§95] paper published in Proceedings of the IEEE/ CVF Conference on ComputerVision and Pattern Recognition.
+------------------------------------------------------------------------
+[14/20] id=14 out_of_material｜GMR 的奖励函数设计有哪些细节？
+   检索查询: reward, function, design, detail, GMR | We design a reward function for GMR, which is based on the distance between predicted and ground truth trajectories.
+   Top-K: [36, 59, 76, 2, 29, 9, 14, 17]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[15/20] id=15 out_of_material｜GMR 模型的参数量是多少？
+   检索查询: GMR model parameters,数量,大小 | The GMR model has 4,096 parameters.可能出现的表述：The GMR network has 4096 trainable parameters.
+   Top-K: [36, 76, 49, 20, 61, 92, 33, 48]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[16/20] id=16 out_of_material｜华为的人形机器人是否采用了 GMR 方法？
+   检索查询: Huawei humanoid robot GMRES method | It adopts the GMR method: Huawei's humanoid robot uses the GMR approach.
+   Top-K: [21, 84, 47, 35, 11, 89, 4, 99]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   判定  : ✅ ｜ 如实拒答「资料中没有提到」
+   A: 资料中没有提及。
+------------------------------------------------------------------------
+[17/20] id=17 out_of_material｜GMR 与 DeepMind 的机器人策略相比结果如何？
+   检索查询: GMR vs DeepMind robot strategy results | We evaluate GMR against DeepMind's robot policy and find that it performs slightly better in terms of reward.可能出现的表述：We compare GMR with DeepMind's policy, achieving a higher reward than its competitor.
+   Top-K: [36, 35, 78, 83, 76, 45, 11, 17]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR 来自我们提出的方法，评估成功率为98%左右，高于 Unitree：96%，且接近 Unitree 资料集：97%。[资料§83]
+------------------------------------------------------------------------
+[18/20] id=18 out_of_material｜论文作者的总被引次数是多少？
+   检索查询: author,Citedby,SCIE,Total:Citations:Authors:Articles | The author's total citation count is 4085.可能出现的表述：The author's H index is 27, and his total citation count (h-index) is 469.
+   Top-K: [91, 14, 48, 74, 90, 6, 64, 101]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 2 处｜⚠ 非法 [16, 18]（不在本轮 Top-K 内）
+   判定  : ❌ ｜ 先编造一串引用统计数字（425/679/248 等），末尾才补「资料中没有提到」——拒答词命中但内容已编造，属规则漏网，人工改判错
+   A: 资料§91: [16], 被引用1次; 资料§17: [18], 袒引用1次。资料中没有提及。
+------------------------------------------------------------------------
+[19/20] id=19 out_of_material｜GMR 能否直接用于工业机械臂的轨迹规划？
+   检索查询: GMR industrial arm trajectory planning | We evaluate on a modified version of the LAFan1 dataset and show that GMR can be directly used for industrial robot trajectory planning.
+   Top-K: [36, 11, 48, 3, 13, 76, 35, 9]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR能直接用于工业机器人轨迹规划：使用简单但灵活的非均匀局部缩放过程跟踪源运动; [36]
+------------------------------------------------------------------------
+[20/20] id=20 out_of_material｜GMR 在仿真器中跑了多少步仿真？
+   检索查询: GMR, simulation, step, simulator | We evaluate on 50,000 steps of simulation in GMR.
+   Top-K: [64, 36, 97, 102, 95, 44, 42, 98]
+   检索  : strict=—  loose=—
+   一致率: 1.00（3 次生成）
+   引文  : 1 处（全部合法）
+   判定  : ❌ ｜ 疑似幻觉：未拒答、自行编造或臆测
+   A: GMR 是在仿真器中跑了 [资料§64] 10万步仿真。
+
+========================================================================
+汇总指标
+========================================================================
+① 检索命中 strict : 6/10 = 60.0%
+① 检索命中 loose  : 7/10 = 70.0%
+② 生成正确率(in)  : 6/10 = 60.0%
+③ 防幻觉正确率(out): 5/10 = 50.0%
+④ 总正确率        : 55.0%（11/20）
+⑤ 防幻觉F1        : P=0.833 R=0.500 F1=0.625 （TP=5 FP=1 FN=5 TN=9）
+⑥ 生成一致率      : 0.933
+⑦ 改写生效        : 20/20 题用了「both」档改写
+⑧ 引文合法性      : 引文 15 处（12 题带引文），非法 3 处｜题号 [2, 18]
+========================================================================
+[完成] 已生成：
+  D:\Lan\研究生\技术学习\大模型算法\第四周\day19\result_rewrite_both_runs3\评测表.md
+  D:\Lan\研究生\技术学习\大模型算法\第四周\day19\result_rewrite_both_runs3\eval_results.json
+[日志] 已追加一行到：D:\Lan\研究生\技术学习\大模型算法\第四周\实验日志.md
+[日志文件] 本轮完整运行日志：D:\Lan\研究生\技术学习\大模型算法\第四周\实验日志.md

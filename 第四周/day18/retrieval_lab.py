@@ -33,8 +33,21 @@ r"""
     python retrieval_lab.py --show-q 3 --top-k 8              # 单题钻取：看它到底召回什么
     python retrieval_lab.py --json                            # 落盘 retrieval_lab.json（报告可引用）
 
+    # Day19 新增（O1-R4 真实现）：用【模型自动改写】的查询复筛
+    python retrieval_lab.py --top-k 8 --query-mode file --rewrite-mode term --json
+    python retrieval_lab.py --top-k 8 --query-mode file --rewrite-mode term --retrievers hybrid --rrf-k 10
+
 依赖：langchain_chroma / langchain_huggingface（读第三周 day15 config.json 的库与模型）；
       BM25 为**手写实现**（不依赖 rank_bm25），只用标准库。
+
+Day19 相对 Day18 的改动（只加"查询来源"这一档，**plain / hyde 的行为与数字一字不变**）：
+    ① 【新增】--query-mode file：从 day19\queries_rewritten.json 读**真实改写结果**当查询。
+       为什么要有它：plain 看的是"现状"、hyde 看的是"人类手写理想查询（上界）"，
+       两者之间那个**真实现**（模型自动改写）才是能写进报告的数字 → 筛查与正式评测必须用同一批查询。
+    ② 【新增】--rewrite-cache / --rewrite-mode（默认 term）。
+    ③ 【修复】--json 的落盘名带模式：原先无论哪种 query-mode 都写 retrieval_lab.json，
+       跑一次 hyde/file 就会**覆盖 day18 的 plain 证据**。现改为
+       plain -> retrieval_lab.json（不改名，兼容历史）；其它模式 -> retrieval_lab_<mode>.json。
 """
 
 import argparse
@@ -61,9 +74,24 @@ CONFIG_PATH = os.path.join(REPO_DIR, "第三周", "day15", "config.json")
 CHUNKS_JSON = os.path.join(REPO_DIR, "第三周", "day13", "chunks.json")
 QUESTIONS_JSON = os.path.join(REPO_DIR, "第三周", "day13", "eval_questions.json")
 
+# Day19 新增：--query-mode file 的默认缓存路径（day19 的改写产物）
+DEFAULT_REWRITE_CACHE = os.path.join(REPO_DIR, "第四周", "day19", "queries_rewritten.json")
+
 # 判据校准补丁（与 day17\eval_v2.py 的 KEYWORD_PATCH 一字不差）
 KEYWORD_PATCH = {
     5: {"expected_keywords": ["LAFAN1", "LAFAN"]},
+}
+
+# query-mode 的显示标签（只影响打印，不影响任何计算）
+MODE_LABEL = {
+    "plain": "",
+    "hyde": "（理想查询/HyDE·上界）",
+    "file": "（真实改写·模型自动生成）",
+}
+MODE_SUFFIX = {
+    "plain": "",
+    "hyde": "+hyde(上界)",
+    "file": "+rw(真实现)",
 }
 
 # ---------------------------------------------------------------------------
@@ -255,6 +283,25 @@ def run(args):
         store = build_vector_store()
         print()
 
+    # ---- Day19 新增：--query-mode file 时，从改写缓存读"真实改写结果" ----
+    # 为什么不复用 eval_v2.py 的缓存读取逻辑：本脚本不 import eval_v2（那会把 langchain/service 一整套拖进来），
+    # 干脆就地读一遍——只有 10 行，且两个脚本读的是同一份文件，数字天然可比。
+    rewrite_cache = {}
+    rw_missing = []
+    if args.query_mode == "file":
+        if not os.path.exists(args.rewrite_cache):
+            print(f"❌ 找不到改写缓存：{args.rewrite_cache}")
+            print("   → 先在 day19 目录跑 rewrite_queries.py 生成（或改 --rewrite-cache 指向正确路径）")
+            sys.exit(1)
+        with open(args.rewrite_cache, encoding="utf-8") as f:
+            rewrite_cache = json.load(f)
+        rw_meta = rewrite_cache.get("_meta", {}) or {}
+        print(f"[改写] 已加载 {args.rewrite_cache}（档位={args.rewrite_mode}）"
+              f"｜模型={rw_meta.get('model', '?')}")
+        print(f"[改写] 缓存元信息：time={rw_meta.get('time', '?')} ｜ "
+              f"prompt_version={rw_meta.get('prompt_version', '?')}")
+        print()
+
     bm25 = BM25([tokenize(t) for t in texts])
     results = {}
 
@@ -264,7 +311,14 @@ def run(args):
             if q["type"] != "in_material":
                 continue
             query = q["question"]
-            if args.query_mode == "hyde":
+            if args.query_mode == "file":
+                rec = rewrite_cache.get(str(q["id"])) or {}
+                rq = (rec.get(args.rewrite_mode) or "").strip()
+                if rq:
+                    query = rq
+                else:
+                    rw_missing.append(q["id"])      # 该档缺失 → 回落原问题（必须记账，否则会误读成"改写没用"）
+            elif args.query_mode == "hyde":
                 query = HYDE_QUERIES.get(q["id"], query)
 
             if retriever == "vector":
@@ -286,7 +340,7 @@ def run(args):
 
         sn = sum(1 for r in rows if r["strict"])
         ln = sum(1 for r in rows if r["loose"])
-        label = f"{retriever}" + ("（理想查询/HyDE）" if args.query_mode == "hyde" else "")
+        label = f"{retriever}" + MODE_LABEL[args.query_mode]
         print(f"【{label}】strict {sn}/{len(rows)} = {100*sn/len(rows):.1f}% ｜ "
               f"loose {ln}/{len(rows)} = {100*ln/len(rows):.1f}%")
         for r in rows:
@@ -301,7 +355,7 @@ def run(args):
     print(f"{'通道':<28} | {'strict':>10} | {'loose':>10}")
     print("-" * 96)
     for retriever, rows in results.items():
-        label = retriever + ("+hyde" if args.query_mode == "hyde" else "")
+        label = retriever + MODE_SUFFIX[args.query_mode]
         sn = sum(1 for r in rows if r["strict"])
         ln = sum(1 for r in rows if r["loose"])
         print(f"{label:<28} | {sn:>3}/{len(rows)}={100*sn/len(rows):>4.1f}% | {ln:>3}/{len(rows)}={100*ln/len(rows):>4.1f}%")
@@ -309,6 +363,12 @@ def run(args):
     print("判读：strict 涨 = 真把期望段落拉进窗口；loose 涨 = 关键词（英文）出现在上下文里。")
     print("      BM25 只吃 ASCII token，**中文问句对它几乎没有信号** → 专名题（LAFAN1/PHC/github）才是它的主场；")
     print("      hyde 模式把查询换成英文术语，BM25 与向量同时受益，可用来验证『中英语义错位』这个假设。")
+    if args.query_mode == "file":
+        print(f"      file 模式 = **模型自动改写**的真实查询（{args.rewrite_mode} 档）→ 这是可写进报告的『真实现』；")
+        print("      hyde 是**人类手写理想查询**，只能当上界对照，别把两者混着说。")
+        if rw_missing:
+            print(f"      ⚠ 未取到改写的题号：{sorted(set(rw_missing))}（缓存里该档缺失/为空 → 已回落原问题）")
+            print("        → 这几题的 strict 若变了，不能归因给改写（它们根本没被改写）。")
 
     if args.show_q:
         print("\n" + "=" * 96)
@@ -320,7 +380,9 @@ def run(args):
         print("=" * 96)
 
     if args.json:
-        out = os.path.join(SCRIPT_DIR, "retrieval_lab.json")
+        # Day19 修复：落盘名带模式，避免"跑一次 hyde/file 就把 day18 的 plain 证据覆盖掉"
+        out_name = "retrieval_lab.json" if args.query_mode == "plain" else f"retrieval_lab_{args.query_mode}.json"
+        out = os.path.join(SCRIPT_DIR, out_name)
         with open(out, "w", encoding="utf-8") as f:
             json.dump({"args": vars(args), "results": results}, f, ensure_ascii=False, indent=2)
         print(f"\n[OK] 明细已落盘：{out}")
@@ -335,10 +397,15 @@ def main():
     parser.add_argument("--top-k", type=int, default=8, help="最终取前 K 条（默认 8 = day17 的默认配置）")
     parser.add_argument("--pool", type=int, default=20, help="每路候选池大小（RRF 融合前，默认 20）")
     parser.add_argument("--rrf-k", type=int, default=60, help="RRF 常数（默认 60）")
-    parser.add_argument("--query-mode", default="plain", choices=["plain", "hyde"],
-                        help="plain=原题；hyde=用手工英文理想查询（O1-R4 冒烟）")
+    parser.add_argument("--query-mode", default="plain", choices=["plain", "hyde", "file"],
+                        help="plain=原题；hyde=手工理想查询（上界）；file=读 day19 的真实改写缓存")
+    parser.add_argument("--rewrite-cache", default=DEFAULT_REWRITE_CACHE,
+                        help="改写缓存路径（query-mode=file 时用；默认 day19\\queries_rewritten.json）")
+    parser.add_argument("--rewrite-mode", default="term", choices=["plain", "term", "hyde", "both"],
+                        help="用缓存里的哪一档当查询（默认 term；plain 档=原题，可用于接线自检）")
     parser.add_argument("--show-q", type=int, default=None, help="单题钻取（如 --show-q 3）")
-    parser.add_argument("--json", action="store_true", help="落盘 retrieval_lab.json")
+    parser.add_argument("--json", action="store_true",
+                        help="落盘明细 json（plain -> retrieval_lab.json；其它模式 -> retrieval_lab_<mode>.json）")
     args = parser.parse_args()
     args.retrievers = [x.strip() for x in args.retrievers.split(",") if x.strip()]
     run(args)

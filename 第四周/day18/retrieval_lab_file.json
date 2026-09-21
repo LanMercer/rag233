@@ -1,0 +1,923 @@
+{
+  "args": {
+    "retrievers": [
+      "vector",
+      "bm25",
+      "hybrid"
+    ],
+    "top_k": 8,
+    "pool": 20,
+    "rrf_k": 60,
+    "query_mode": "file",
+    "rewrite_cache": "D:\\Lan\\研究生\\技术学习\\大模型算法\\第四周\\day19\\queries_rewritten.json",
+    "rewrite_mode": "term",
+    "show_q": null,
+    "json": true
+  },
+  "results": {
+    "vector": [
+      {
+        "id": 1,
+        "question": "GMR 的英文全称是什么？",
+        "query": "GMR: Generalized Mean Regression, generalized mean regression",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          36,
+          76,
+          79,
+          2,
+          8,
+          81,
+          17,
+          69
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "36": 0.6761,
+          "76": 0.6707,
+          "79": 0.6634,
+          "2": 0.6628,
+          "8": 0.6619,
+          "81": 0.659,
+          "17": 0.6557,
+          "69": 0.6466
+        }
+      },
+      {
+        "id": 2,
+        "question": "这篇论文主要解决什么问题？",
+        "query": "paper: what problem does this paper mainly address?",
+        "expected": [
+          0,
+          5
+        ],
+        "top_ids": [
+          25,
+          29,
+          14,
+          9,
+          22,
+          13,
+          18,
+          15
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "25": 0.7147,
+          "29": 0.7012,
+          "14": 0.6702,
+          "9": 0.6665,
+          "22": 0.6642,
+          "13": 0.66,
+          "18": 0.6551,
+          "15": 0.6549
+        }
+      },
+      {
+        "id": 3,
+        "question": "GMR 论文的作者来自哪所大学？",
+        "query": "GMR, authors, university",
+        "expected": [
+          0,
+          6
+        ],
+        "top_ids": [
+          6,
+          36,
+          99,
+          100,
+          97,
+          91,
+          101,
+          94
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "6": 0.6557,
+          "36": 0.5883,
+          "99": 0.5881,
+          "100": 0.5832,
+          "97": 0.5818,
+          "91": 0.5803,
+          "101": 0.5764,
+          "94": 0.5752
+        }
+      },
+      {
+        "id": 4,
+        "question": "论文中 GMR 与哪些方法进行了对比？",
+        "query": "GMR comparative study, methods, approaches, techniques, literature review",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          36,
+          18,
+          84,
+          19,
+          1,
+          22,
+          4,
+          6
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "36": 0.7399,
+          "18": 0.7369,
+          "84": 0.7322,
+          "19": 0.7233,
+          "1": 0.7185,
+          "22": 0.7144,
+          "4": 0.711,
+          "6": 0.7104
+        }
+      },
+      {
+        "id": 5,
+        "question": "论文的实验在哪个数据集上进行？",
+        "query": "data set, experiment, dataset",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          3,
+          37,
+          82,
+          13,
+          48,
+          49,
+          74,
+          76
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "3": 0.7023,
+          "37": 0.6909,
+          "82": 0.6402,
+          "13": 0.6319,
+          "48": 0.631,
+          "49": 0.6307,
+          "74": 0.6246,
+          "76": 0.6239
+        }
+      },
+      {
+        "id": 6,
+        "question": "论文用什么方法进行策略训练？",
+        "query": "paper: 方法, 策略训练, 方法研究",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          1,
+          78,
+          16,
+          22,
+          80,
+          29,
+          14,
+          7
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "1": 0.6666,
+          "78": 0.6459,
+          "16": 0.6383,
+          "22": 0.6242,
+          "80": 0.6239,
+          "29": 0.6232,
+          "14": 0.6177,
+          "7": 0.6081
+        }
+      },
+      {
+        "id": 7,
+        "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+        "query": "redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测",
+        "expected": [
+          1
+        ],
+        "top_ids": [
+          3,
+          52,
+          19,
+          20,
+          8,
+          4,
+          13,
+          16
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "3": 0.6745,
+          "52": 0.6637,
+          "19": 0.6538,
+          "20": 0.6464,
+          "8": 0.645,
+          "4": 0.6339,
+          "13": 0.6326,
+          "16": 0.6322
+        }
+      },
+      {
+        "id": 8,
+        "question": "GMR 的实验结论是什么？",
+        "query": "GMR 结论 实验 数据:实验结论",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          36,
+          76,
+          68,
+          18,
+          64,
+          97,
+          74,
+          100
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "36": 0.5726,
+          "76": 0.5335,
+          "68": 0.5123,
+          "18": 0.5074,
+          "64": 0.5033,
+          "97": 0.4979,
+          "74": 0.4842,
+          "100": 0.4837
+        }
+      },
+      {
+        "id": 9,
+        "question": "论文的代码可以在哪里获取？",
+        "query": "code: available: where",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          37,
+          3,
+          82,
+          48,
+          46,
+          49,
+          25,
+          34
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "37": 0.6107,
+          "3": 0.6091,
+          "82": 0.6079,
+          "48": 0.6058,
+          "46": 0.5979,
+          "49": 0.5905,
+          "25": 0.5857,
+          "34": 0.5797
+        }
+      },
+      {
+        "id": 10,
+        "question": "论文中的 embodiment gap 具体指什么？",
+        "query": "embodiment gap, definition, literature review",
+        "expected": [
+          5
+        ],
+        "top_ids": [
+          7,
+          18,
+          9,
+          91,
+          14,
+          97,
+          101,
+          2
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "7": 0.7279,
+          "18": 0.6653,
+          "9": 0.6616,
+          "91": 0.6565,
+          "14": 0.6527,
+          "97": 0.6492,
+          "101": 0.6468,
+          "2": 0.6455
+        }
+      }
+    ],
+    "bm25": [
+      {
+        "id": 1,
+        "question": "GMR 的英文全称是什么？",
+        "query": "GMR: Generalized Mean Regression, generalized mean regression",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          68,
+          41,
+          54,
+          27,
+          58,
+          76,
+          35,
+          64
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "68": 8.1308,
+          "41": 7.5258,
+          "54": 7.1045,
+          "27": 6.9328,
+          "58": 6.2529,
+          "76": 2.4229,
+          "35": 2.3916,
+          "64": 2.295
+        }
+      },
+      {
+        "id": 2,
+        "question": "这篇论文主要解决什么问题？",
+        "query": "paper: what problem does this paper mainly address?",
+        "expected": [
+          0,
+          5
+        ],
+        "top_ids": [
+          28,
+          25,
+          9,
+          1,
+          22,
+          78,
+          0,
+          57
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "28": 13.6358,
+          "25": 12.5213,
+          "9": 7.5558,
+          "1": 7.2128,
+          "22": 7.0353,
+          "78": 6.7052,
+          "0": 4.9384,
+          "57": 4.7095
+        }
+      },
+      {
+        "id": 3,
+        "question": "GMR 论文的作者来自哪所大学？",
+        "query": "GMR, authors, university",
+        "expected": [
+          0,
+          6
+        ],
+        "top_ids": [
+          0,
+          6,
+          76,
+          35,
+          64,
+          2,
+          68,
+          47
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "0": 4.0018,
+          "6": 3.8315,
+          "76": 2.4229,
+          "35": 2.3916,
+          "64": 2.295,
+          "2": 2.1538,
+          "68": 2.1421,
+          "47": 2.0988
+        }
+      },
+      {
+        "id": 4,
+        "question": "论文中 GMR 与哪些方法进行了对比？",
+        "query": "GMR comparative study, methods, approaches, techniques, literature review",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          20,
+          19,
+          75,
+          18,
+          80,
+          48,
+          22,
+          30
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "20": 12.8366,
+          "19": 10.2851,
+          "75": 6.2018,
+          "18": 5.4295,
+          "80": 5.0799,
+          "48": 4.9004,
+          "22": 4.4975,
+          "30": 4.4507
+        }
+      },
+      {
+        "id": 5,
+        "question": "论文的实验在哪个数据集上进行？",
+        "query": "data set, experiment, dataset",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          79,
+          82,
+          3,
+          37,
+          29,
+          13,
+          60,
+          74
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "79": 4.8764,
+          "82": 4.8068,
+          "3": 3.9336,
+          "37": 3.748,
+          "29": 3.6616,
+          "13": 3.2988,
+          "60": 3.0109,
+          "74": 2.8913
+        }
+      },
+      {
+        "id": 6,
+        "question": "论文用什么方法进行策略训练？",
+        "query": "paper: 方法, 策略训练, 方法研究",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          1,
+          9,
+          22,
+          28,
+          78,
+          25
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "1": 2.9625,
+          "9": 2.8896,
+          "22": 2.8896,
+          "28": 2.8545,
+          "78": 2.7541,
+          "25": 2.738
+        }
+      },
+      {
+        "id": 7,
+        "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+        "query": "redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测",
+        "expected": [
+          1
+        ],
+        "top_ids": [
+          8,
+          3,
+          22,
+          52,
+          71,
+          70,
+          16,
+          72
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "8": 4.4136,
+          "3": 3.1398,
+          "22": 3.1205,
+          "52": 2.9917,
+          "71": 2.9917,
+          "70": 2.8094,
+          "16": 2.2791,
+          "72": 2.2021
+        }
+      },
+      {
+        "id": 8,
+        "question": "GMR 的实验结论是什么？",
+        "query": "GMR 结论 实验 数据:实验结论",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          76,
+          35,
+          64,
+          2,
+          68,
+          47,
+          49,
+          69
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "76": 2.4229,
+          "35": 2.3916,
+          "64": 2.295,
+          "2": 2.1538,
+          "68": 2.1421,
+          "47": 2.0988,
+          "49": 2.0899,
+          "69": 2.0811
+        }
+      },
+      {
+        "id": 9,
+        "question": "论文的代码可以在哪里获取？",
+        "query": "code: available: where",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          82,
+          16,
+          11,
+          103,
+          3,
+          48,
+          40,
+          25
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "82": 6.6373,
+          "16": 3.5522,
+          "11": 3.5304,
+          "103": 3.425,
+          "3": 3.2905,
+          "48": 3.2689,
+          "40": 3.1352,
+          "25": 3.0987
+        }
+      },
+      {
+        "id": 10,
+        "question": "论文中的 embodiment gap 具体指什么？",
+        "query": "embodiment gap, definition, literature review",
+        "expected": [
+          5
+        ],
+        "top_ids": [
+          0,
+          5,
+          7,
+          20,
+          13,
+          6
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "0": 8.4784,
+          "5": 7.2465,
+          "7": 6.6373,
+          "20": 4.6356,
+          "13": 4.2505,
+          "6": 3.2305
+        }
+      }
+    ],
+    "hybrid": [
+      {
+        "id": 1,
+        "question": "GMR 的英文全称是什么？",
+        "query": "GMR: Generalized Mean Regression, generalized mean regression",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          76,
+          2,
+          81,
+          69,
+          49,
+          18,
+          36,
+          68
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "76": 0.0313,
+          "2": 0.0301,
+          "81": 0.0289,
+          "69": 0.0286,
+          "49": 0.028,
+          "18": 0.0271,
+          "36": 0.0164,
+          "68": 0.0164
+        }
+      },
+      {
+        "id": 2,
+        "question": "这篇论文主要解决什么问题？",
+        "query": "paper: what problem does this paper mainly address?",
+        "expected": [
+          0,
+          5
+        ],
+        "top_ids": [
+          25,
+          9,
+          22,
+          28,
+          29,
+          1,
+          2,
+          14
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "25": 0.0325,
+          "9": 0.0315,
+          "22": 0.0308,
+          "28": 0.0301,
+          "29": 0.0298,
+          "1": 0.029,
+          "2": 0.026,
+          "14": 0.0159
+        }
+      },
+      {
+        "id": 3,
+        "question": "GMR 论文的作者来自哪所大学？",
+        "query": "GMR, authors, university",
+        "expected": [
+          0,
+          6
+        ],
+        "top_ids": [
+          6,
+          0,
+          36,
+          99,
+          76,
+          100,
+          35,
+          97
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "6": 0.0325,
+          "0": 0.0309,
+          "36": 0.0161,
+          "99": 0.0159,
+          "76": 0.0159,
+          "100": 0.0156,
+          "35": 0.0156,
+          "97": 0.0154
+        }
+      },
+      {
+        "id": 4,
+        "question": "论文中 GMR 与哪些方法进行了对比？",
+        "query": "GMR comparative study, methods, approaches, techniques, literature review",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          18,
+          19,
+          22,
+          80,
+          36,
+          75,
+          91,
+          30
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "18": 0.0318,
+          "19": 0.0318,
+          "22": 0.0301,
+          "80": 0.0295,
+          "36": 0.0289,
+          "75": 0.0287,
+          "91": 0.028,
+          "30": 0.0279
+        }
+      },
+      {
+        "id": 5,
+        "question": "论文的实验在哪个数据集上进行？",
+        "query": "data set, experiment, dataset",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          3,
+          82,
+          37,
+          13,
+          29,
+          74,
+          20,
+          4
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "3": 0.0323,
+          "82": 0.032,
+          "37": 0.0318,
+          "13": 0.0308,
+          "29": 0.0297,
+          "74": 0.0296,
+          "20": 0.027,
+          "4": 0.0267
+        }
+      },
+      {
+        "id": 6,
+        "question": "论文用什么方法进行策略训练？",
+        "query": "paper: 方法, 策略训练, 方法研究",
+        "expected": [
+          2
+        ],
+        "top_ids": [
+          1,
+          78,
+          22,
+          28,
+          9,
+          16,
+          80,
+          29
+        ],
+        "strict": false,
+        "loose": false,
+        "scores": {
+          "1": 0.0328,
+          "78": 0.0315,
+          "22": 0.0315,
+          "28": 0.0288,
+          "9": 0.0161,
+          "16": 0.0159,
+          "80": 0.0154,
+          "29": 0.0152
+        }
+      },
+      {
+        "id": 7,
+        "question": "重定向数据中可能引入哪些伪影（artifacts）？",
+        "query": "redirected% data, artifacts, 引入, 分析, 研究, 特点, 影响, 检测",
+        "expected": [
+          1
+        ],
+        "top_ids": [
+          3,
+          8,
+          52,
+          19,
+          16,
+          4,
+          20,
+          9
+        ],
+        "strict": false,
+        "loose": true,
+        "scores": {
+          "3": 0.0325,
+          "8": 0.0318,
+          "52": 0.0318,
+          "19": 0.0304,
+          "16": 0.0296,
+          "4": 0.0292,
+          "20": 0.0284,
+          "9": 0.0277
+        }
+      },
+      {
+        "id": 8,
+        "question": "GMR 的实验结论是什么？",
+        "query": "GMR 结论 实验 数据:实验结论",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          76,
+          68,
+          64,
+          18,
+          49,
+          4,
+          3,
+          48
+        ],
+        "strict": true,
+        "loose": false,
+        "scores": {
+          "76": 0.0325,
+          "68": 0.0313,
+          "64": 0.0313,
+          "18": 0.0291,
+          "49": 0.0286,
+          "4": 0.0278,
+          "3": 0.0276,
+          "48": 0.027
+        }
+      },
+      {
+        "id": 9,
+        "question": "论文的代码可以在哪里获取？",
+        "query": "code: available: where",
+        "expected": [
+          3
+        ],
+        "top_ids": [
+          82,
+          3,
+          48,
+          25,
+          40,
+          37,
+          16,
+          11
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "82": 0.0323,
+          "3": 0.0315,
+          "48": 0.0308,
+          "25": 0.0296,
+          "40": 0.0279,
+          "37": 0.0164,
+          "16": 0.0161,
+          "11": 0.0159
+        }
+      },
+      {
+        "id": 10,
+        "question": "论文中的 embodiment gap 具体指什么？",
+        "query": "embodiment gap, definition, literature review",
+        "expected": [
+          5
+        ],
+        "top_ids": [
+          7,
+          0,
+          5,
+          13,
+          6,
+          18,
+          9,
+          91
+        ],
+        "strict": true,
+        "loose": true,
+        "scores": {
+          "7": 0.0323,
+          "0": 0.0307,
+          "5": 0.0306,
+          "13": 0.0287,
+          "6": 0.0287,
+          "18": 0.0161,
+          "9": 0.0159,
+          "91": 0.0156
+        }
+      }
+    ]
+  }
+}

@@ -12,3 +12,7 @@ __pycache__/
 
 # LoRA 微调适配器权重（Day12 训练产物，可重新训练生成，不进 git）
 第三周/day12/lora_adapter/
+
+# LoRA 微调适配器权重 v2（Day19 训练产物，可重新训练生成，不进 git）
+第四周/day19/lora_adapter_v2/
+第四周/day19/train_logs_v2/
