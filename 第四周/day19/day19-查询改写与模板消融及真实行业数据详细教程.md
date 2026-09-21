@@ -2214,11 +2214,34 @@ def max_sub_array_greedy(nums):
 git check-ignore -v 第三周\day13\chroma_db
 git check-ignore -v 第三周\day12\lora_adapter
 git check-ignore -v download
-git check-ignore -v 第四周\day19\lora_adapter_v2      # ← 今天新增：必须被忽略（20~30MB 权重）
+git check-ignore -v 第四周\day19\lora_adapter_v2      # ← 今天新增：必须被忽略（实测 57MB 权重）
 ```
 
-> **今天必须新增检查** `lora_adapter_v2`。若它**没有输出**（= 没被忽略）→ 立刻加进 `.gitignore`（如 `第四周/day19/lora_adapter_v2/`、`第四周/day19/train_logs_v2/`），**别把权重推上去**。
+> **今天必须新增检查** `lora_adapter_v2`。若它**没有输出**（= 没被忽略）→ 立刻加进 `.gitignore`（`第四周/day19/lora_adapter_v2/`、`第四周/day19/train_logs_v2/`），**别把权重推上去**。
 > **要进 git 的**：`rewrite_queries.py` / `queries_rewritten.json` / `eval_v2.py` / `build_real_qa.py` / `sft_data_real.json` / `train_lora_v2.py` / `local_api_lora_v2.py` / `优化成果报告.md` / 各结果目录 / 教程 / 汇报——**都是纯文本、很小**。
+
+#### ⚠ 实测记录：这条检查**真的没过**（9/21 收尾，已修好）
+
+**发生了什么**：收尾时 `git add .` 一把梭，**`lora_adapter_v2/` 连权重一起进了提交**——`adapter_model.safetensors` **57.16 MB** + `tokenizer.json` **10.89 MB**。再跑 `check-ignore` 时它**没有任何输出**（❌），因为**已跟踪的文件无法被忽略**：`.gitignore` 只对"未跟踪文件"生效，**已经在索引里的文件加规则也拦不住**。
+
+**为什么没被更早发现**：`git status` 里它**不显示为未跟踪**（因为已经提交了），看起来"很干净"——**这正是陷阱**：`.gitignore` 写对 ≠ 生效，**必须用 `check-ignore` 主动问一句**。
+
+**修的过程（两个关键判断）**：
+
+| 步骤 | 命令 | 为什么这么选 |
+|---|---|---|
+| ① 先看能不能安全改 | `git status -sb` → `## main...origin/main [ahead 17]` | **17 个提交全没 push** → 改历史不会影响远端，代价最小 |
+| ② 加规则（防下次） | 在 `.gitignore` 加 `第四周/day19/lora_adapter_v2/`、`train_logs_v2/` | 光删索引不够，**规则不加、下次 `git add .` 还会进去** |
+| ③ 移出索引（保磁盘） | `git rm -r --cached 第四周/day19/lora_adapter_v2` | **`--cached` 是关键**：只从 git 索引移除，**磁盘上的权重原样保留**（服务还能起） |
+| ④ 从历史里抹掉 | `git reset --soft HEAD~1` → 重新 `git commit` | `--soft` 只动 HEAD、**工作区与索引都不动**，等于"重新写一次这个提交" |
+| ⑤ 验证 | `git rev-list --objects main \| Select-String "adapter_model"` → **空** | 证明它**从 main 不可达** → 以后 `git push` 不会再传这 68 MB |
+
+**⚠ 两个必须知道的边界**：
+
+1. **`git rm --cached` 单独用是"不够"的**：它只让**未来**的提交不再包含这些文件，**旧提交里的 68 MB 仍然在历史里**、还会被 push 上去。**要么改写那个提交（本例），要么接受它永远在历史里**。
+2. **改写只对"没 push 的提交"安全**：一旦 push 过，改写就必须 `push --force`，会打乱任何克隆。**所以"提交前先跑 `check-ignore`"不是形式主义——它决定了你有得选还是没得选。**
+3. **磁盘与远端是两件事**：改写后 68 MB 变成"不可达对象"，**push 不会带它**；但**本地 `.git` 的 pack 要到 `git reflog expire --expire=now --all` + `git gc --prune=now` 才真正回收**。只想省远端流量的话，**不做也行**。
+4. **本项目 `.git/lfs/objects` 还躺着 5.9 GB**（两个陈旧 LFS 对象：3.78 GB + 2.10 GB，**不在 pack 里、不影响 push**）。想清可以 `git lfs prune --dry-run` 先看一眼再决定——**本项目并没有 `.gitattributes`、权重没走 LFS**，这些是老早 `git lfs pull` 的残留。
 
 ### 7.3 提交今天的产出
 
@@ -2346,9 +2369,9 @@ curl http://127.0.0.1:8000/v1/models
 **收尾：**
 
 - [ ] `第四周\实验日志.md` 新增 R4/R5/F3 行 + Day19 诊断结论 + 新失败尝试
-- [ ] `git check-ignore` 四条有输出（**含今天新增的** `lora_adapter_v2`）
-- [ ] 训练/服务进程已停干净（`:8000` 已释放，看端口不看 taskkill 输出）
-- [ ] Day19 全部产出 git commit 成功（commit 信息含数字）
+- [x] `git check-ignore` 四条有输出（含 `lora_adapter_v2`）—— **首次检查没过**（权重已进提交），已按 §7.2「实测记录」修复：加规则 + `rm --cached` + 改写未 push 的提交 → 四条全绿 ✅
+- [x] 训练/服务进程已停干净（`:8000` 已释放 ✅；训练结束后显存回落到无占用）
+- [x] Day19 全部产出 git commit 成功（**两个提交**：`0faea36` 主体 + `06dc641` 收尾，commit 信息均含数字；`main` 仍 ahead、未 push）
 - [ ] 零散时间三项**有产物才打勾**（力扣提交 / 笔记 / 错题一行），没有就如实留空
 
 **全部打勾 = Day19 完成：把 day18 的"上界"兑现成了"成绩"（查询改写真实现）、把生成层的稳定靶子做成了可归因的模板消融、把"真实数据"从论文扩到行业并做了真实 vs 合成对照——HR 三条意见里的"优化成果"与"真实数据"今天都有了硬证据。**
