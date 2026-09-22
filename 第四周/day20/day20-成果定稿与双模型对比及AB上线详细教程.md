@@ -2241,7 +2241,7 @@ def maxProduct(nums):
 | `实验日志.md` 追加 F3v3 / F4o 两行 | `第四周\实验日志.md` | [x] ✅ 两行已追加且**结论列已补**（0.429 / 0.947，含自检信号与边界） |
 | 🆕 博客交接包 `对接说明.md` | `第四周\发布包\对接说明.md` | [x] ✅ **已产出**（8 件必知 + 命令 + 验收 + 回填清单 + 免责边界） |
 | 🆕 根目录 `README.md`（仓库门面） | `README.md` | [x] ✅ **已建**（成果表 / 在线 Demo / **7 条负结果** / 快速开始 / 仓库结构 / 四个隐性坑 / 诚实性声明） |
-| 🆕 GitHub 同步到 `rag233` | `https://github.com/LanMercer/rag233` | [ ] 待 commit + push（本项目侧文档已就绪） |
+| 🆕 GitHub 同步到 `rag233` | `https://github.com/LanMercer/rag233` | [x] ✅ **已同步**（2026-09-23 凌晨）：主体 `4a895f7` + 收尾 **`c3e1f04`**（remote 改名 + 复盘日四份 week4 汇总），push 后 `git status -sb` **无 ahead/behind**，且**"This repository moved" 提示消失**（remote 已是新名） |
 
 ### 9.2 确认大文件不进 git（30 秒）
 
@@ -2253,8 +2253,7 @@ git check-ignore -v "第四周/day20/lora_adapter_v3/" "第四周/day20/train_lo
 
 ### 9.3 提交今天的产出
 
-> ⚠️ **本节命令已被第 8 步 §8.3 取代**（要先把 remote 改名到 `rag233` 再推）。
-> 最短路径：`git remote set-url origin https://github.com/LanMercer/rag233.git` → 然后照 **第 8 步 §8.3** 的 ②③ 走。
+> ✅ **remote 改名已完成（2026-09-23 凌晨）**：`git remote set-url origin https://github.com/LanMercer/rag233.git`（`git remote -v` 两行均为新名）→ 然后照 **第 8 步 §8.3** 的 ②③ 走。已实测推送成功（`4a895f7..c3e1f04`），**不再出现 "This repository moved"**。
 
 ```powershell
 git add . && git commit -m "Day20: 定稿+上线+周汇总" && git push

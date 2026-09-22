@@ -214,7 +214,7 @@
 - **Day19**：`0faea36`（R4 三档 + 模板 v2 消融 + 引文白名单 + F2 111 条 + F3 对照 + 报告初稿；adapter v2 移出版本管理）→ `06dc641` / `26b0426` / `57ba482` / `de5e153` / `1a59755`（四张表回填、`--date` 占位根治、check-ignore 实测记录、F3 配比口径修正、git push 三层坑）
 - **Day19 汇报**：`16460d4`（第三次受控实验全记录，含 20 条踩坑与三条负结果机制归因）
 - **Day20**：`4a895f7`（**定稿：F3v3/F4o 回填 + 博客交接包 + 周汇总 + 根 README + space_demo 内置语料 + 诊断脚本 + 两张图 + 教程**，**48 files changed / +15778 / −104**，push 1.36 MiB 成功）
-- **本周汇总**：week4 四份文件 + 本周全部产出 commit 存档（本批）。
+- **本周汇总**：week4 四份文件 + 本周全部产出 commit 存档（本批 **`c3e1f04`**，`6 files changed, 1930 insertions(+), 1 deletion(-)`；push 后无 ahead/behind）。
 
 ---
 
