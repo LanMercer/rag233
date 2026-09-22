@@ -1,0 +1,825 @@
+[executionStep begins at 2026-09-22 18:49:17]
+[Runner Group Info]:
+>> RunnerGroupId   : YPTNYsawbbYml2wF
+>> RunnerGroupName : 创空间构建-香港-linux/amd64
+[Runner Info]:
+>> ID          : 13d4713d35ad47358df9f053740b7f68
+>> Tenant      : be-hhjprvihpiv6ykmrn1gr5gw1
+>> Server      : https://devops-build-new.aliyuncs.com
+>> Version     : v0.3.4
+>> CommitId    : cc402c2
+>> BuildTime   : 20251027215346
+>> Workspace   : /root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner
+>> InstanceId  : i-j6ca8u9mdvhn4amh6s3r
+[Build Machine Info]:
+>> OS            : linux
+>> Arch          : amd64
+>> Hostname      : iZj6ca8u9mdvhn4amh6s3rZ
+>> CPU           : 1 package(s), 4 core(s), 8 hardware thread(s)
+>> Memory        : 64GB physical, 62GB usable
+[Build Job Info]:
+>> ID         : d34ad187-9b85-4b7c-842e-fb4e13d8eec1
+>> ParentID   : 99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976
+>> Namespace  : be-hhjprvihpiv6ykmrn1gr5gw1
+>> Executor   : Node
+[Flow Step]:
+>> Start downloading flow steps: CloneRepoList_production@v1.5.5, AcrLoginStep@v1.0.32
+>> [CloneRepoList_production@v1.5.5] Step already exists, skip download
+>> [AcrLoginStep@v1.0.32] Step already exists, skip download
+[executionStep begins at 2026-09-22 18:49:18]
+#############################################################
+# name        : CloneRepoList
+# version     : v1.5.5
+# description : git clone step
+# help url    : https://atomgit.com/flow-step/CloneRepoList.git
+# build id    : d34ad187-9b85-4b7c-842e-fb4e13d8eec1
+#############################################################
+2026-09-22 18:49:18 [INFO] Going to execute git clone step
+2026-09-22 18:49:18 [INFO] git clone with clone depth
+2026-09-22 18:49:18 [INFO] 正克隆到 '/root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace/repo_0'...
+2026-09-22 18:49:18 [INFO] RECORD REPOSITORY INFO /root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace/repo_0
+2026-09-22 18:49:18 [INFO] The last commitId was not fetched
+2026-09-22 18:49:18 [INFO] '###commitId###:7156f26ae2025a0796a51697a8f98ff08e4c4fe6###commitTime###:Tue Sep 22 10:49:12 2026 +0000###commitAuthor###:Administrator <yuanfu.yf@alibaba-inc.com>###commitMsg###:add build dockerfile'
+2026-09-22 18:49:18 [INFO] Get git log success
+2026-09-22 18:49:18 [INFO] {"commitId": "7156f26ae2025a0796a51697a8f98ff08e4c4fe6", "commitMsg": "add%20build%20dockerfile", "commitTime": "Tue Sep 22 10:49:12 2026 +0000", "commitAuthor": "Administrator%20%3Cyuanfu.yf%40alibaba-inc.com%3E"}
+2026-09-22 18:49:18 [INFO] Complete collecting commit info
+2026-09-22 18:49:18 [INFO] 
+2026-09-22 18:49:18 [INFO] ----------------------------------------------
+2026-09-22 18:49:18 [INFO] 
+2026-09-22 18:49:18 [INFO] Clone all sources successfully!
+[executionStep begins at 2026-09-22 18:49:19]
+#############################################################
+# name        : AcrLoginStep
+# version     : v1.0.32
+# description : 镜像构建并推送至ACR（企业版），在 push 前自动重新登录刷新凭证
+# help url    : https://gitlab.alibaba-inc.com/Ali-MaaS/yunxiao-flow-step-docker-build-push
+# build id    : d34ad187-9b85-4b7c-842e-fb4e13d8eec1
+#############################################################
+2026-09-22 18:49:19 [INFO] PIPELINE_ID=5293692
+2026-09-22 18:49:19 [INFO] PIPELINE_NAME=366128/LanMercer/rag233
+2026-09-22 18:49:19 [INFO] BUILD_NUMBER=3
+2026-09-22 18:49:19 [INFO] WORK_SPACE=/root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace
+2026-09-22 18:49:19 [INFO] PROJECT_DIR=/root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace/repo_0
+2026-09-22 18:49:19 [INFO] BUILD_JOB_ID=553790608
+2026-09-22 18:49:19 [INFO] STEP_ID=stage_0-job_0-step_0
+2026-09-22 18:49:19 [INFO] region=cn-zhangjiakou
+2026-09-22 18:49:19 [INFO] instance=mshub
+2026-09-22 18:49:19 [INFO] namespace=modelscope-repo
+2026-09-22 18:49:19 [INFO] dockerRegistry=independent-service
+2026-09-22 18:49:19 [INFO] dockerTag=366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:49:19 [INFO] dockerfilePath=Dockerfile
+2026-09-22 18:49:19 [INFO] contextPath=
+2026-09-22 18:49:19 [INFO] cacheType=
+2026-09-22 18:49:19 [INFO] cacheImageId=
+2026-09-22 18:49:19 [INFO] options=
+2026-09-22 18:49:19 [INFO] Docker client is installed: Docker version 26.1.3, build b72abbb
+2026-09-22 18:49:19 [INFO] Docker daemon is ready
+2026-09-22 18:49:19 [INFO] Docker buildx builder is installed
+2026-09-22 18:49:19 [INFO] docker login to mshub-registry.cn-zhangjiakou.cr.aliyuncs.com
+2026-09-22 18:49:20 [INFO] contextPath is set to: /root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace/repo_0
+2026-09-22 18:49:20 [INFO] -----------Dockerfile Content----------
+FROM modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py312-torch2.10.0-1.37.1 AS deps
+COPY . /src
+RUN mkdir -p /deps && (cp /src/packages.txt /deps/ 2>/dev/null || true) && (cp /src/requirements.txt /deps/ 2>/dev/null || true)
+FROM modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py312-torch2.10.0-1.37.1
+ADD https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/studio-launcher/0.1.0/studio-launcher /usr/local/bin/studio-launcher
+RUN chmod +x /usr/local/bin/studio-launcher
+WORKDIR /home/studio/PROJECT
+COPY --from=deps /deps/ /tmp/deps/
+RUN if [ -f /tmp/deps/packages.txt ]; then apt-get update && sed -e 's/#.*//' /tmp/deps/packages.txt | DEBIAN_FRONTEND=noninteractive xargs -r apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*; fi
+RUN pip install --no-cache-dir 'https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/gradio-3/gradio-4.44.0-py3-none-any.whl' && pip install --no-cache-dir 'gradio[mcp,oauth]'
+RUN if [ -f /tmp/deps/requirements.txt ]; then pip install --no-cache-dir -r /tmp/deps/requirements.txt; fi
+COPY . .
+ENV STUDIO_SDK_TYPE=gradio STUDIO_ENTRY_FILE=app.py STUDIO_PROJECT_DIR=/home/studio/PROJECT
+EXPOSE 7860
+ENTRYPOINT ["/usr/local/bin/studio-launcher"]
+-----------Dockerfile Content----------
+2026-09-22 18:49:20 [INFO] docker image is set to: mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:49:20 [INFO] docker vpc image is set to: mshub-registry-vpc.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:49:20 [INFO] ready to execute: docker buildx build --progress=plain -t mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15 -f Dockerfile /root/yunxiao/be-hhjprvihpiv6ykmrn1gr5gw1/runner/__flow_work/__flow_builds/99bf8c3f-c53a-4fc2-9cfc-815bdd7d7976/workspace/repo_0 --load
+2026-09-22 18:49:20 [INFO] #0 building with "flow-build-container" instance using docker-container driver
+2026-09-22 18:49:20 [INFO] 
+2026-09-22 18:49:20 [INFO] #1 [internal] load build definition from Dockerfile
+2026-09-22 18:49:20 [INFO] #1 transferring dockerfile: 1.34kB done
+2026-09-22 18:49:20 [INFO] #1 DONE 0.0s
+2026-09-22 18:49:20 [INFO] 
+2026-09-22 18:49:20 [INFO] #2 [internal] load metadata for modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py312-torch2.10.0-1.37.1
+2026-09-22 18:49:20 [INFO] #2 DONE 0.4s
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #3 [internal] load .dockerignore
+2026-09-22 18:49:21 [INFO] #3 transferring context: 2B done
+2026-09-22 18:49:21 [INFO] #3 DONE 0.0s
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #4 [internal] load build context
+2026-09-22 18:49:21 [INFO] #4 transferring context: 60.18kB done
+2026-09-22 18:49:21 [INFO] #4 DONE 0.0s
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #5 [stage-1 1/9] FROM modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py312-torch2.10.0-1.37.1@sha256:b8a1f3039daf209844dd4a42c9f5eb77810be1d8a641a861a8776d230f53f744
+2026-09-22 18:49:21 [INFO] #5 resolve modelscope-registry.cn-hangzhou.cr.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py312-torch2.10.0-1.37.1@sha256:b8a1f3039daf209844dd4a42c9f5eb77810be1d8a641a861a8776d230f53f744 done
+2026-09-22 18:49:21 [INFO] #5 CACHED
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #6 [deps 2/3] COPY . /src
+2026-09-22 18:49:21 [INFO] #6 DONE 0.0s
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #7 [stage-1 2/9] ADD https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/studio-launcher/0.1.0/studio-launcher /usr/local/bin/studio-launcher
+2026-09-22 18:49:21 [INFO] #7 DONE 0.3s
+2026-09-22 18:49:21 [INFO] 
+2026-09-22 18:49:21 [INFO] #8 [deps 3/3] RUN mkdir -p /deps && (cp /src/packages.txt /deps/ 2>/dev/null || true) && (cp /src/requirements.txt /deps/ 2>/dev/null || true)
+2026-09-22 18:49:21 [INFO] #8 DONE 0.1s
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #9 [stage-1 3/9] RUN chmod +x /usr/local/bin/studio-launcher
+2026-09-22 18:49:23 [INFO] #9 CACHED
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #10 [stage-1 2/9] ADD https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/studio-launcher/0.1.0/studio-launcher /usr/local/bin/studio-launcher
+2026-09-22 18:49:23 [INFO] #10 CACHED
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #11 [stage-1 4/9] WORKDIR /home/studio/PROJECT
+2026-09-22 18:49:23 [INFO] #11 CACHED
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #12 [stage-1 5/9] COPY --from=deps /deps/ /tmp/deps/
+2026-09-22 18:49:23 [INFO] #12 DONE 0.0s
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #13 [stage-1 6/9] RUN if [ -f /tmp/deps/packages.txt ]; then apt-get update && sed -e 's/#.*//' /tmp/deps/packages.txt | DEBIAN_FRONTEND=noninteractive xargs -r apt-get install -y --no-install-recommends && rm -rf /var/lib/apt/lists/*; fi
+2026-09-22 18:49:23 [INFO] #13 DONE 0.1s
+2026-09-22 18:49:23 [INFO] 
+2026-09-22 18:49:23 [INFO] #14 [stage-1 7/9] RUN pip install --no-cache-dir 'https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/gradio-3/gradio-4.44.0-py3-none-any.whl' && pip install --no-cache-dir 'gradio[mcp,oauth]'
+2026-09-22 18:49:24 [INFO] #14 1.089 Looking in indexes: https://mirrors.aliyun.com/pypi/simple
+2026-09-22 18:49:24 [INFO] #14 1.108 Collecting gradio==4.44.0
+2026-09-22 18:49:24 [INFO] #14 1.427   Downloading https://modelscope-studios.oss-cn-zhangjiakou.aliyuncs.com/SDK/gradio-3/gradio-4.44.0-py3-none-any.whl (28.0 MB)
+2026-09-22 18:49:26 [INFO] #14 2.834      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 28.0/28.0 MB 15.9 MB/s eta 0:00:00
+2026-09-22 18:49:26 [INFO] #14 3.116 Collecting aiofiles<24.0,>=22.0 (from gradio==4.44.0)
+2026-09-22 18:49:26 [INFO] #14 3.122   Downloading https://mirrors.aliyun.com/pypi/packages/c5/19/5af6804c4cc0fed83f47bff6e413a98a36618e7d40185cd36e69737f3b0e/aiofiles-23.2.1-py3-none-any.whl (15 kB)
+2026-09-22 18:49:26 [INFO] #14 3.124 Requirement already satisfied: anyio<5.0,>=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (4.13.0)
+2026-09-22 18:49:26 [INFO] #14 3.126 Requirement already satisfied: fastapi<1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.135.3)
+2026-09-22 18:49:26 [INFO] #14 3.127 Requirement already satisfied: ffmpy in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (1.0.0)
+2026-09-22 18:49:26 [INFO] #14 3.175 Collecting gradio-client==1.3.0 (from gradio==4.44.0)
+2026-09-22 18:49:26 [INFO] #14 3.182   Downloading https://mirrors.aliyun.com/pypi/packages/de/fe/7e9cb4d0e6aa74268fa31089189e4855882a0f2a36c45d359336946d4ae1/gradio_client-1.3.0-py3-none-any.whl (318 kB)
+2026-09-22 18:49:26 [INFO] #14 3.191      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 318.7/318.7 kB 46.2 MB/s eta 0:00:00
+2026-09-22 18:49:26 [INFO] #14 3.193 Requirement already satisfied: httpx>=0.24.1 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.28.1)
+2026-09-22 18:49:26 [INFO] #14 3.195 Requirement already satisfied: huggingface-hub>=0.19.3 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (1.15.0)
+2026-09-22 18:49:26 [INFO] #14 3.444 Collecting importlib-resources<7.0,>=1.3 (from gradio==4.44.0)
+2026-09-22 18:49:26 [INFO] #14 3.450   Downloading https://mirrors.aliyun.com/pypi/packages/a4/ed/1f1afb2e9e7f38a545d628f864d562a5ae64fe6f7a10e28ffb9b185b4e89/importlib_resources-6.5.2-py3-none-any.whl (37 kB)
+2026-09-22 18:49:26 [INFO] #14 3.452 Requirement already satisfied: jinja2<4.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (3.1.6)
+2026-09-22 18:49:26 [INFO] #14 3.531 Collecting markupsafe~=2.0 (from gradio==4.44.0)
+2026-09-22 18:49:26 [INFO] #14 3.536   Downloading https://mirrors.aliyun.com/pypi/packages/0a/0d/2454f072fae3b5a137c119abf15465d1771319dfe9e4acbb31722a0fff91/MarkupSafe-2.1.5-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (28 kB)
+2026-09-22 18:49:26 [INFO] #14 3.543 Requirement already satisfied: matplotlib~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (3.10.8)
+2026-09-22 18:49:26 [INFO] #14 3.549 Requirement already satisfied: numpy<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (1.26.4)
+2026-09-22 18:49:26 [INFO] #14 3.551 Requirement already satisfied: orjson~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (3.11.9)
+2026-09-22 18:49:26 [INFO] #14 3.552 Requirement already satisfied: packaging in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (26.0)
+2026-09-22 18:49:26 [INFO] #14 3.560 Requirement already satisfied: pandas<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (2.3.3)
+2026-09-22 18:49:27 [INFO] #14 3.854 Collecting pillow<11.0,>=8.0 (from gradio==4.44.0)
+2026-09-22 18:49:27 [INFO] #14 3.862   Downloading https://mirrors.aliyun.com/pypi/packages/55/77/40daddf677897a923d5d33329acd52a2144d54a9644f2a5422c028c6bf2d/pillow-10.4.0-cp312-cp312-manylinux_2_28_x86_64.whl (4.5 MB)
+2026-09-22 18:49:30 [INFO] #14 6.692      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 1.6 MB/s eta 0:00:00
+2026-09-22 18:49:30 [INFO] #14 6.702 Requirement already satisfied: pydantic>=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (2.12.3)
+2026-09-22 18:49:30 [INFO] #14 6.703 Requirement already satisfied: pydub in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.25.1)
+2026-09-22 18:49:30 [INFO] #14 6.704 Requirement already satisfied: python-multipart>=0.0.9 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.0.29)
+2026-09-22 18:49:30 [INFO] #14 6.705 Requirement already satisfied: pyyaml<7.0,>=5.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (6.0.3)
+2026-09-22 18:49:30 [INFO] #14 6.708 Requirement already satisfied: ruff>=0.2.2 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.15.13)
+2026-09-22 18:49:30 [INFO] #14 6.710 Requirement already satisfied: semantic-version~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (2.10.0)
+2026-09-22 18:49:30 [INFO] #14 6.951 Collecting tomlkit==0.12.0 (from gradio==4.44.0)
+2026-09-22 18:49:30 [INFO] #14 6.957   Downloading https://mirrors.aliyun.com/pypi/packages/68/4f/12207897848a653d03ebbf6775a29d949408ded5f99b2d87198bc5c93508/tomlkit-0.12.0-py3-none-any.whl (37 kB)
+2026-09-22 18:49:30 [INFO] #14 6.960 Requirement already satisfied: typer<1.0,>=0.12 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.23.1)
+2026-09-22 18:49:30 [INFO] #14 6.962 Requirement already satisfied: typing-extensions~=4.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (4.15.0)
+2026-09-22 18:49:30 [INFO] #14 6.963 Requirement already satisfied: urllib3~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (2.6.3)
+2026-09-22 18:49:30 [INFO] #14 6.965 Requirement already satisfied: uvicorn>=0.14.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0) (0.44.0)
+2026-09-22 18:49:30 [INFO] #14 6.970 Requirement already satisfied: fsspec in /usr/local/lib/python3.12/site-packages (from gradio-client==1.3.0->gradio==4.44.0) (2026.2.0)
+2026-09-22 18:49:30 [INFO] #14 7.152 Collecting websockets<13.0,>=10.0 (from gradio-client==1.3.0->gradio==4.44.0)
+2026-09-22 18:49:30 [INFO] #14 7.162   Downloading https://mirrors.aliyun.com/pypi/packages/f1/00/d6f01ca2b191f8b0808e4132ccd2e7691f0453cbd7d0f72330eb97453c3a/websockets-12.0-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (131 kB)
+2026-09-22 18:49:30 [INFO] #14 7.164      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.2/131.2 kB 344.5 MB/s eta 0:00:00
+2026-09-22 18:49:30 [INFO] #14 7.173 Requirement already satisfied: idna>=2.8 in /usr/local/lib/python3.12/site-packages (from anyio<5.0,>=3.0->gradio==4.44.0) (3.11)
+2026-09-22 18:49:30 [INFO] #14 7.216 Requirement already satisfied: starlette>=0.46.0 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio==4.44.0) (0.52.1)
+2026-09-22 18:49:30 [INFO] #14 7.219 Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio==4.44.0) (0.4.2)
+2026-09-22 18:49:30 [INFO] #14 7.220 Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio==4.44.0) (0.0.4)
+2026-09-22 18:49:30 [INFO] #14 7.230 Requirement already satisfied: certifi in /usr/local/lib/python3.12/site-packages (from httpx>=0.24.1->gradio==4.44.0) (2026.2.25)
+2026-09-22 18:49:30 [INFO] #14 7.232 Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/site-packages (from httpx>=0.24.1->gradio==4.44.0) (1.0.9)
+2026-09-22 18:49:30 [INFO] #14 7.239 Requirement already satisfied: h11>=0.16 in /usr/local/lib/python3.12/site-packages (from httpcore==1.*->httpx>=0.24.1->gradio==4.44.0) (0.16.0)
+2026-09-22 18:49:30 [INFO] #14 7.311 Requirement already satisfied: filelock>=3.10.0 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio==4.44.0) (3.28.0)
+2026-09-22 18:49:30 [INFO] #14 7.314 Requirement already satisfied: hf-xet<2.0.0,>=1.4.3 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio==4.44.0) (1.4.3)
+2026-09-22 18:49:30 [INFO] #14 7.318 Requirement already satisfied: tqdm>=4.42.1 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio==4.44.0) (4.67.3)
+2026-09-22 18:49:30 [INFO] #14 7.351 Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (1.3.3)
+2026-09-22 18:49:30 [INFO] #14 7.352 Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (0.12.1)
+2026-09-22 18:49:30 [INFO] #14 7.356 Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (4.62.1)
+2026-09-22 18:49:30 [INFO] #14 7.358 Requirement already satisfied: kiwisolver>=1.3.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (1.5.0)
+2026-09-22 18:49:30 [INFO] #14 7.363 Requirement already satisfied: pyparsing>=3 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (3.3.2)
+2026-09-22 18:49:30 [INFO] #14 7.364 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0) (2.9.0.post0)
+2026-09-22 18:49:30 [INFO] #14 7.442 Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio==4.44.0) (2026.2)
+2026-09-22 18:49:30 [INFO] #14 7.443 Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio==4.44.0) (2026.2)
+2026-09-22 18:49:30 [INFO] #14 7.470 Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.12/site-packages (from pydantic>=2.0->gradio==4.44.0) (0.7.0)
+2026-09-22 18:49:30 [INFO] #14 7.471 Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/site-packages (from pydantic>=2.0->gradio==4.44.0) (2.41.4)
+2026-09-22 18:49:30 [INFO] #14 7.503 Requirement already satisfied: click>=8.0.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio==4.44.0) (8.1.8)
+2026-09-22 18:49:30 [INFO] #14 7.504 Requirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio==4.44.0) (1.5.4)
+2026-09-22 18:49:30 [INFO] #14 7.506 Requirement already satisfied: rich>=10.11.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio==4.44.0) (15.0.0)
+2026-09-22 18:49:30 [INFO] #14 7.701 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib~=3.0->gradio==4.44.0) (1.17.0)
+2026-09-22 18:49:31 [INFO] #14 7.715 Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->typer<1.0,>=0.12->gradio==4.44.0) (4.0.0)
+2026-09-22 18:49:31 [INFO] #14 7.716 Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->typer<1.0,>=0.12->gradio==4.44.0) (2.20.0)
+2026-09-22 18:49:31 [INFO] #14 7.787 Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->typer<1.0,>=0.12->gradio==4.44.0) (0.1.2)
+2026-09-22 18:49:33 [INFO] #14 10.53 Installing collected packages: websockets, tomlkit, pillow, markupsafe, importlib-resources, aiofiles, gradio-client, gradio
+2026-09-22 18:49:33 [INFO] #14 10.53   Attempting uninstall: websockets
+2026-09-22 18:49:33 [INFO] #14 10.57     Found existing installation: websockets 15.0.1
+2026-09-22 18:49:33 [INFO] #14 10.57     Uninstalling websockets-15.0.1:
+2026-09-22 18:49:33 [INFO] #14 10.61       Successfully uninstalled websockets-15.0.1
+2026-09-22 18:49:33 [INFO] #14 10.67   Attempting uninstall: tomlkit
+2026-09-22 18:49:34 [INFO] #14 10.69     Found existing installation: tomlkit 0.13.3
+2026-09-22 18:49:34 [INFO] #14 10.69     Uninstalling tomlkit-0.13.3:
+2026-09-22 18:49:34 [INFO] #14 10.70       Successfully uninstalled tomlkit-0.13.3
+2026-09-22 18:49:34 [INFO] #14 10.75   Attempting uninstall: pillow
+2026-09-22 18:49:34 [INFO] #14 10.80     Found existing installation: pillow 11.3.0
+2026-09-22 18:49:34 [INFO] #14 10.80     Uninstalling pillow-11.3.0:
+2026-09-22 18:49:34 [INFO] #14 10.89       Successfully uninstalled pillow-11.3.0
+2026-09-22 18:49:34 [INFO] #14 11.17   Attempting uninstall: markupsafe
+2026-09-22 18:49:34 [INFO] #14 11.30     Found existing installation: MarkupSafe 3.0.3
+2026-09-22 18:49:34 [INFO] #14 11.30     Uninstalling MarkupSafe-3.0.3:
+2026-09-22 18:49:34 [INFO] #14 11.30       Successfully uninstalled MarkupSafe-3.0.3
+2026-09-22 18:49:34 [INFO] #14 11.34   Attempting uninstall: aiofiles
+2026-09-22 18:49:34 [INFO] #14 11.37     Found existing installation: aiofiles 24.1.0
+2026-09-22 18:49:34 [INFO] #14 11.38     Uninstalling aiofiles-24.1.0:
+2026-09-22 18:49:34 [INFO] #14 11.38       Successfully uninstalled aiofiles-24.1.0
+2026-09-22 18:49:34 [INFO] #14 11.39   Attempting uninstall: gradio-client
+2026-09-22 18:49:34 [INFO] #14 11.44     Found existing installation: gradio_client 1.14.0
+2026-09-22 18:49:34 [INFO] #14 11.44     Uninstalling gradio_client-1.14.0:
+2026-09-22 18:49:34 [INFO] #14 11.45       Successfully uninstalled gradio_client-1.14.0
+2026-09-22 18:49:34 [INFO] #14 11.51   Attempting uninstall: gradio
+2026-09-22 18:49:34 [INFO] #14 11.55     Found existing installation: gradio 5.50.0
+2026-09-22 18:49:35 [INFO] #14 11.65     Uninstalling gradio-5.50.0:
+2026-09-22 18:49:36 [INFO] #14 13.22       Successfully uninstalled gradio-5.50.0
+2026-09-22 18:49:37 [INFO] #14 14.09 ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-09-22 18:49:37 [INFO] #14 14.09 ms-agent 1.6.0 requires edge_tts, which is not installed.
+2026-09-22 18:49:37 [INFO] #14 14.09 ms-agent 1.6.0 requires faiss-cpu, which is not installed.
+2026-09-22 18:49:37 [INFO] #14 14.09 ms-agent 1.6.0 requires mcp, which is not installed.
+2026-09-22 18:49:37 [INFO] #14 14.09 ms-agent 1.6.0 requires moviepy, which is not installed.
+2026-09-22 18:49:37 [INFO] #14 14.09 google-genai 2.5.0 requires websockets<17.0,>=13.0.0, but you have websockets 12.0 which is incompatible.
+2026-09-22 18:49:37 [INFO] #14 14.09 Successfully installed aiofiles-23.2.1 gradio-4.44.0 gradio-client-1.3.0 importlib-resources-6.5.2 markupsafe-2.1.5 pillow-10.4.0 tomlkit-0.12.0 websockets-12.0
+2026-09-22 18:49:37 [INFO] #14 14.09 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2026-09-22 18:49:37 [INFO] #14 14.49 
+2026-09-22 18:49:37 [INFO] #14 14.49 [notice] A new release of pip is available: 23.3.2 -> 26.2.1
+2026-09-22 18:49:37 [INFO] #14 14.49 [notice] To update, run: pip install --upgrade pip
+2026-09-22 18:49:38 [INFO] #14 15.20 Looking in indexes: https://mirrors.aliyun.com/pypi/simple
+2026-09-22 18:49:38 [INFO] #14 15.20 Requirement already satisfied: gradio[mcp,oauth] in /usr/local/lib/python3.12/site-packages (4.44.0)
+2026-09-22 18:49:38 [INFO] #14 15.20 WARNING: gradio 4.44.0 does not provide the extra 'mcp'
+2026-09-22 18:49:38 [INFO] #14 15.23 Requirement already satisfied: aiofiles<24.0,>=22.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (23.2.1)
+2026-09-22 18:49:38 [INFO] #14 15.23 Requirement already satisfied: anyio<5.0,>=3.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (4.13.0)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: fastapi<1.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.135.3)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: ffmpy in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (1.0.0)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: gradio-client==1.3.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (1.3.0)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: httpx>=0.24.1 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.28.1)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: huggingface-hub>=0.19.3 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (1.15.0)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: importlib-resources<7.0,>=1.3 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (6.5.2)
+2026-09-22 18:49:38 [INFO] #14 15.24 Requirement already satisfied: jinja2<4.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (3.1.6)
+2026-09-22 18:49:38 [INFO] #14 15.25 Requirement already satisfied: markupsafe~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (2.1.5)
+2026-09-22 18:49:38 [INFO] #14 15.25 Requirement already satisfied: matplotlib~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (3.10.8)
+2026-09-22 18:49:38 [INFO] #14 15.26 Requirement already satisfied: numpy<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (1.26.4)
+2026-09-22 18:49:38 [INFO] #14 15.26 Requirement already satisfied: orjson~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (3.11.9)
+2026-09-22 18:49:38 [INFO] #14 15.26 Requirement already satisfied: packaging in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (26.0)
+2026-09-22 18:49:38 [INFO] #14 15.27 Requirement already satisfied: pandas<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (2.3.3)
+2026-09-22 18:49:38 [INFO] #14 15.27 Requirement already satisfied: pillow<11.0,>=8.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (10.4.0)
+2026-09-22 18:49:38 [INFO] #14 15.27 Requirement already satisfied: pydantic>=2.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (2.12.3)
+2026-09-22 18:49:38 [INFO] #14 15.27 Requirement already satisfied: pydub in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.25.1)
+2026-09-22 18:49:38 [INFO] #14 15.27 Requirement already satisfied: python-multipart>=0.0.9 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.0.29)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: pyyaml<7.0,>=5.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (6.0.3)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: ruff>=0.2.2 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.15.13)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: semantic-version~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (2.10.0)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: tomlkit==0.12.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.12.0)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: typer<1.0,>=0.12 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.23.1)
+2026-09-22 18:49:38 [INFO] #14 15.28 Requirement already satisfied: typing-extensions~=4.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (4.15.0)
+2026-09-22 18:49:38 [INFO] #14 15.29 Requirement already satisfied: urllib3~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (2.6.3)
+2026-09-22 18:49:38 [INFO] #14 15.29 Requirement already satisfied: uvicorn>=0.14.0 in /usr/local/lib/python3.12/site-packages (from gradio[mcp,oauth]) (0.44.0)
+2026-09-22 18:49:38 [INFO] #14 15.54 Collecting authlib (from gradio[mcp,oauth])
+2026-09-22 18:49:38 [INFO] #14 15.54   Downloading https://mirrors.aliyun.com/pypi/packages/b8/c6/6f124bcfbbfb20fba22c939b4e43a06dccfc0e1ca20e5634ca573cb1e271/authlib-1.8.0-py2.py3-none-any.whl (260 kB)
+2026-09-22 18:49:38 [INFO] #14 15.55      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 260.8/260.8 kB 43.1 MB/s eta 0:00:00
+2026-09-22 18:49:39 [INFO] #14 15.77 Collecting itsdangerous (from gradio[mcp,oauth])
+2026-09-22 18:49:39 [INFO] #14 15.78   Downloading https://mirrors.aliyun.com/pypi/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2026-09-22 18:49:39 [INFO] #14 15.79 Requirement already satisfied: fsspec in /usr/local/lib/python3.12/site-packages (from gradio-client==1.3.0->gradio[mcp,oauth]) (2026.2.0)
+2026-09-22 18:49:39 [INFO] #14 15.79 Requirement already satisfied: websockets<13.0,>=10.0 in /usr/local/lib/python3.12/site-packages (from gradio-client==1.3.0->gradio[mcp,oauth]) (12.0)
+2026-09-22 18:49:39 [INFO] #14 15.80 Requirement already satisfied: idna>=2.8 in /usr/local/lib/python3.12/site-packages (from anyio<5.0,>=3.0->gradio[mcp,oauth]) (3.11)
+2026-09-22 18:49:39 [INFO] #14 15.82 Requirement already satisfied: starlette>=0.46.0 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio[mcp,oauth]) (0.52.1)
+2026-09-22 18:49:39 [INFO] #14 15.82 Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio[mcp,oauth]) (0.4.2)
+2026-09-22 18:49:39 [INFO] #14 15.83 Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio[mcp,oauth]) (0.0.4)
+2026-09-22 18:49:39 [INFO] #14 15.84 Requirement already satisfied: certifi in /usr/local/lib/python3.12/site-packages (from httpx>=0.24.1->gradio[mcp,oauth]) (2026.2.25)
+2026-09-22 18:49:39 [INFO] #14 15.84 Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/site-packages (from httpx>=0.24.1->gradio[mcp,oauth]) (1.0.9)
+2026-09-22 18:49:39 [INFO] #14 15.84 Requirement already satisfied: h11>=0.16 in /usr/local/lib/python3.12/site-packages (from httpcore==1.*->httpx>=0.24.1->gradio[mcp,oauth]) (0.16.0)
+2026-09-22 18:49:39 [INFO] #14 15.91 Requirement already satisfied: filelock>=3.10.0 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio[mcp,oauth]) (3.28.0)
+2026-09-22 18:49:39 [INFO] #14 15.92 Requirement already satisfied: hf-xet<2.0.0,>=1.4.3 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio[mcp,oauth]) (1.4.3)
+2026-09-22 18:49:39 [INFO] #14 15.92 Requirement already satisfied: tqdm>=4.42.1 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio[mcp,oauth]) (4.67.3)
+2026-09-22 18:49:39 [INFO] #14 15.95 Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (1.3.3)
+2026-09-22 18:49:39 [INFO] #14 15.95 Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (0.12.1)
+2026-09-22 18:49:39 [INFO] #14 15.96 Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (4.62.1)
+2026-09-22 18:49:39 [INFO] #14 15.96 Requirement already satisfied: kiwisolver>=1.3.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (1.5.0)
+2026-09-22 18:49:39 [INFO] #14 15.96 Requirement already satisfied: pyparsing>=3 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (3.3.2)
+2026-09-22 18:49:39 [INFO] #14 15.97 Requirement already satisfied: python-dateutil>=2.7 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio[mcp,oauth]) (2.9.0.post0)
+2026-09-22 18:49:39 [INFO] #14 16.04 Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio[mcp,oauth]) (2026.2)
+2026-09-22 18:49:39 [INFO] #14 16.04 Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio[mcp,oauth]) (2026.2)
+2026-09-22 18:49:39 [INFO] #14 16.07 Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.12/site-packages (from pydantic>=2.0->gradio[mcp,oauth]) (0.7.0)
+2026-09-22 18:49:39 [INFO] #14 16.07 Requirement already satisfied: pydantic-core==2.41.4 in /usr/local/lib/python3.12/site-packages (from pydantic>=2.0->gradio[mcp,oauth]) (2.41.4)
+2026-09-22 18:49:39 [INFO] #14 16.10 Requirement already satisfied: click>=8.0.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio[mcp,oauth]) (8.1.8)
+2026-09-22 18:49:39 [INFO] #14 16.10 Requirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio[mcp,oauth]) (1.5.4)
+2026-09-22 18:49:39 [INFO] #14 16.11 Requirement already satisfied: rich>=10.11.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio[mcp,oauth]) (15.0.0)
+2026-09-22 18:49:39 [INFO] #14 16.14 Requirement already satisfied: cryptography>=45.0.1 in /usr/local/lib/python3.12/site-packages (from authlib->gradio[mcp,oauth]) (46.0.7)
+2026-09-22 18:49:39 [INFO] #14 16.36 Collecting joserfc>=1.6.1 (from authlib->gradio[mcp,oauth])
+2026-09-22 18:49:39 [INFO] #14 16.41   Downloading https://mirrors.aliyun.com/pypi/packages/67/c5/82addfd375e5ee6520644e0553e4aadde92d668c4fc99cc716d337fe7bb3/joserfc-1.7.5-py3-none-any.whl (71 kB)
+2026-09-22 18:49:39 [INFO] #14 16.41      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.3/71.3 kB 356.7 MB/s eta 0:00:00
+2026-09-22 18:49:39 [INFO] #14 16.53 Requirement already satisfied: cffi>=2.0.0 in /usr/local/lib/python3.12/site-packages (from cryptography>=45.0.1->authlib->gradio[mcp,oauth]) (2.0.0)
+2026-09-22 18:49:39 [INFO] #14 16.68 Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.12/site-packages (from python-dateutil>=2.7->matplotlib~=3.0->gradio[mcp,oauth]) (1.17.0)
+2026-09-22 18:49:40 [INFO] #14 16.70 Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->typer<1.0,>=0.12->gradio[mcp,oauth]) (4.0.0)
+2026-09-22 18:49:40 [INFO] #14 16.70 Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->typer<1.0,>=0.12->gradio[mcp,oauth]) (2.20.0)
+2026-09-22 18:49:40 [INFO] #14 16.77 Requirement already satisfied: pycparser in /usr/local/lib/python3.12/site-packages (from cffi>=2.0.0->cryptography>=45.0.1->authlib->gradio[mcp,oauth]) (3.0)
+2026-09-22 18:49:40 [INFO] #14 16.79 Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->typer<1.0,>=0.12->gradio[mcp,oauth]) (0.1.2)
+2026-09-22 18:49:42 [INFO] #14 19.50 Installing collected packages: itsdangerous, joserfc, authlib
+2026-09-22 18:49:42 [INFO] #14 19.74 Successfully installed authlib-1.8.0 itsdangerous-2.2.0 joserfc-1.7.5
+2026-09-22 18:49:43 [INFO] #14 19.74 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2026-09-22 18:49:43 [INFO] #14 20.14 
+2026-09-22 18:49:43 [INFO] #14 20.14 [notice] A new release of pip is available: 23.3.2 -> 26.2.1
+2026-09-22 18:49:43 [INFO] #14 20.14 [notice] To update, run: pip install --upgrade pip
+2026-09-22 18:49:43 [INFO] #14 DONE 20.3s
+2026-09-22 18:49:43 [INFO] 
+2026-09-22 18:49:43 [INFO] #15 [stage-1 8/9] RUN if [ -f /tmp/deps/requirements.txt ]; then pip install --no-cache-dir -r /tmp/deps/requirements.txt; fi
+2026-09-22 18:49:44 [INFO] #15 0.698 Looking in indexes: https://mirrors.aliyun.com/pypi/simple
+2026-09-22 18:49:44 [INFO] #15 0.700 Requirement already satisfied: gradio==4.44.0 in /usr/local/lib/python3.12/site-packages (from -r /tmp/deps/requirements.txt (line 33)) (4.44.0)
+2026-09-22 18:49:44 [INFO] #15 0.916 Collecting pydantic==2.10.6 (from -r /tmp/deps/requirements.txt (line 34))
+2026-09-22 18:49:44 [INFO] #15 0.923   Downloading https://mirrors.aliyun.com/pypi/packages/f4/3c/8cc1cc84deffa6e25d2d0c688ebb80635dfdbf1dbea3e30c541c8cf4d860/pydantic-2.10.6-py3-none-any.whl (431 kB)
+2026-09-22 18:49:44 [INFO] #15 1.127      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 431.7/431.7 kB 2.1 MB/s eta 0:00:00
+2026-09-22 18:49:44 [INFO] #15 1.187 Collecting starlette==0.46.2 (from -r /tmp/deps/requirements.txt (line 35))
+2026-09-22 18:49:44 [INFO] #15 1.194   Downloading https://mirrors.aliyun.com/pypi/packages/8b/0c/9d30a4ebeb6db2b25a841afbb80f6ef9a854fc3b41be131d249a977b4959/starlette-0.46.2-py3-none-any.whl (72 kB)
+2026-09-22 18:49:44 [INFO] #15 1.196      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.0/72.0 kB 355.1 MB/s eta 0:00:00
+2026-09-22 18:49:44 [INFO] #15 1.393 Collecting langchain==0.3.7 (from -r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:49:45 [INFO] #15 1.400   Downloading https://mirrors.aliyun.com/pypi/packages/49/09/72630413a7ded27684e33392a0ff52ff1c8ea6749fee641319e75f82072b/langchain-0.3.7-py3-none-any.whl (1.0 MB)
+2026-09-22 18:49:46 [INFO] #15 2.207      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 1.2 MB/s eta 0:00:00
+2026-09-22 18:49:46 [INFO] #15 2.264 Collecting langchain-community==0.3.5 (from -r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:49:46 [INFO] #15 2.270   Downloading https://mirrors.aliyun.com/pypi/packages/82/c7/b6d7cb286e93f85b4882088ce530cc7d55a5683c9390d7fc1c0dbde846e2/langchain_community-0.3.5-py3-none-any.whl (2.4 MB)
+2026-09-22 18:49:48 [INFO] #15 4.280      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 1.2 MB/s eta 0:00:00
+2026-09-22 18:49:48 [INFO] #15 4.506 Collecting langchain-chroma==0.1.4 (from -r /tmp/deps/requirements.txt (line 40))
+2026-09-22 18:49:48 [INFO] #15 4.711   Downloading https://mirrors.aliyun.com/pypi/packages/bc/8c/ef0a589e523e72373a79a64cd1184682155113b865f889d815a9f264a755/langchain_chroma-0.1.4-py3-none-any.whl (10 kB)
+2026-09-22 18:49:48 [INFO] #15 4.929 Collecting langchain-huggingface==0.1.2 (from -r /tmp/deps/requirements.txt (line 41))
+2026-09-22 18:49:48 [INFO] #15 4.935   Downloading https://mirrors.aliyun.com/pypi/packages/9d/f8/77a303ddc492f6eed8bf0979f2bc6db4fa6eb1089c5e9f0f977dd87bc9c2/langchain_huggingface-0.1.2-py3-none-any.whl (21 kB)
+2026-09-22 18:49:48 [INFO] #15 5.156 Collecting langchain-text-splitters==0.3.2 (from -r /tmp/deps/requirements.txt (line 42))
+2026-09-22 18:49:49 [INFO] #15 5.163   Downloading https://mirrors.aliyun.com/pypi/packages/ee/c6/5ba25c8bad647e92a92b3066177ab10d78efbd16c0b9919948cdcd18b027/langchain_text_splitters-0.3.2-py3-none-any.whl (25 kB)
+2026-09-22 18:49:49 [INFO] #15 5.231 Collecting chromadb==0.5.15 (from -r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:49:49 [INFO] #15 5.245   Downloading https://mirrors.aliyun.com/pypi/packages/89/43/7295465181c22b0e84162c6b647859f691c69bde5bd8a8f30b320ccc2e3c/chromadb-0.5.15-py3-none-any.whl (607 kB)
+2026-09-22 18:49:49 [INFO] #15 5.648      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 607.0/607.0 kB 1.5 MB/s eta 0:00:00
+2026-09-22 18:49:49 [INFO] #15 5.880 Collecting sentence-transformers==3.2.1 (from -r /tmp/deps/requirements.txt (line 44))
+2026-09-22 18:49:49 [INFO] #15 5.886   Downloading https://mirrors.aliyun.com/pypi/packages/45/18/1ec591befcbdb2c97192a40fbe7c43a8b8a8b3c89b1fa101d3eeed4d79a4/sentence_transformers-3.2.1-py3-none-any.whl (255 kB)
+2026-09-22 18:49:49 [INFO] #15 5.888      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 255.8/255.8 kB 261.8 MB/s eta 0:00:00
+2026-09-22 18:49:49 [INFO] #15 5.935 Collecting pypdf==5.1.0 (from -r /tmp/deps/requirements.txt (line 47))
+2026-09-22 18:49:49 [INFO] #15 5.945   Downloading https://mirrors.aliyun.com/pypi/packages/04/fc/6f52588ac1cb4400a7804ef88d0d4e00cfe57a7ac6793ec3b00de5a8758b/pypdf-5.1.0-py3-none-any.whl (297 kB)
+2026-09-22 18:49:49 [INFO] #15 5.947      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 298.0/298.0 kB 422.3 MB/s eta 0:00:00
+2026-09-22 18:49:49 [INFO] #15 5.991 Collecting requests==2.32.3 (from -r /tmp/deps/requirements.txt (line 48))
+2026-09-22 18:49:49 [INFO] #15 5.997   Downloading https://mirrors.aliyun.com/pypi/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl (64 kB)
+2026-09-22 18:49:49 [INFO] #15 5.999      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.9/64.9 kB 305.4 MB/s eta 0:00:00
+2026-09-22 18:49:49 [INFO] #15 6.020 Requirement already satisfied: aiofiles<24.0,>=22.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (23.2.1)
+2026-09-22 18:49:49 [INFO] #15 6.021 Requirement already satisfied: anyio<5.0,>=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (4.13.0)
+2026-09-22 18:49:49 [INFO] #15 6.023 Requirement already satisfied: fastapi<1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.135.3)
+2026-09-22 18:49:49 [INFO] #15 6.024 Requirement already satisfied: ffmpy in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.0.0)
+2026-09-22 18:49:49 [INFO] #15 6.025 Requirement already satisfied: gradio-client==1.3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.3.0)
+2026-09-22 18:49:49 [INFO] #15 6.026 Requirement already satisfied: httpx>=0.24.1 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.28.1)
+2026-09-22 18:49:49 [INFO] #15 6.028 Requirement already satisfied: huggingface-hub>=0.19.3 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.15.0)
+2026-09-22 18:49:49 [INFO] #15 6.030 Requirement already satisfied: importlib-resources<7.0,>=1.3 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (6.5.2)
+2026-09-22 18:49:49 [INFO] #15 6.031 Requirement already satisfied: jinja2<4.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (3.1.6)
+2026-09-22 18:49:49 [INFO] #15 6.032 Requirement already satisfied: markupsafe~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2.1.5)
+2026-09-22 18:49:49 [INFO] #15 6.037 Requirement already satisfied: matplotlib~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (3.10.8)
+2026-09-22 18:49:49 [INFO] #15 6.043 Requirement already satisfied: numpy<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.26.4)
+2026-09-22 18:49:49 [INFO] #15 6.046 Requirement already satisfied: orjson~=3.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (3.11.9)
+2026-09-22 18:49:49 [INFO] #15 6.047 Requirement already satisfied: packaging in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (26.0)
+2026-09-22 18:49:49 [INFO] #15 6.055 Requirement already satisfied: pandas<3.0,>=1.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2.3.3)
+2026-09-22 18:49:49 [INFO] #15 6.056 Requirement already satisfied: pillow<11.0,>=8.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (10.4.0)
+2026-09-22 18:49:49 [INFO] #15 6.069 Requirement already satisfied: pydub in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.25.1)
+2026-09-22 18:49:49 [INFO] #15 6.070 Requirement already satisfied: python-multipart>=0.0.9 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.0.29)
+2026-09-22 18:49:49 [INFO] #15 6.071 Requirement already satisfied: pyyaml<7.0,>=5.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (6.0.3)
+2026-09-22 18:49:49 [INFO] #15 6.074 Requirement already satisfied: ruff>=0.2.2 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.15.13)
+2026-09-22 18:49:49 [INFO] #15 6.075 Requirement already satisfied: semantic-version~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2.10.0)
+2026-09-22 18:49:49 [INFO] #15 6.077 Requirement already satisfied: tomlkit==0.12.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.12.0)
+2026-09-22 18:49:49 [INFO] #15 6.079 Requirement already satisfied: typer<1.0,>=0.12 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.23.1)
+2026-09-22 18:49:49 [INFO] #15 6.080 Requirement already satisfied: typing-extensions~=4.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (4.15.0)
+2026-09-22 18:49:49 [INFO] #15 6.081 Requirement already satisfied: urllib3~=2.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2.6.3)
+2026-09-22 18:49:49 [INFO] #15 6.083 Requirement already satisfied: uvicorn>=0.14.0 in /usr/local/lib/python3.12/site-packages (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.44.0)
+2026-09-22 18:49:49 [INFO] #15 6.089 Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.12/site-packages (from pydantic==2.10.6->-r /tmp/deps/requirements.txt (line 34)) (0.7.0)
+2026-09-22 18:49:51 [INFO] #15 8.238 Collecting pydantic-core==2.27.2 (from pydantic==2.10.6->-r /tmp/deps/requirements.txt (line 34))
+2026-09-22 18:49:52 [INFO] #15 8.245   Downloading https://mirrors.aliyun.com/pypi/packages/8d/f0/49129b27c43396581a635d8710dae54a791b17dfc50c70164866bbf865e3/pydantic_core-2.27.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+2026-09-22 18:49:53 [INFO] #15 10.05      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 1.1 MB/s eta 0:00:00
+2026-09-22 18:49:54 [INFO] #15 10.97 Collecting SQLAlchemy<3,>=1.4 (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:49:54 [INFO] #15 10.97   Downloading https://mirrors.aliyun.com/pypi/packages/d9/93/34fdc4a4faced77037a6b3ba1db1acd92e9bd12c21e229b327edd1d3e881/sqlalchemy-2.0.54-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.5 MB)
+2026-09-22 18:49:57 [INFO] #15 13.38      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 1.4 MB/s eta 0:00:00
+2026-09-22 18:49:57 [INFO] #15 13.39 Requirement already satisfied: aiohttp<4.0.0,>=3.8.3 in /usr/local/lib/python3.12/site-packages (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (3.13.5)
+2026-09-22 18:49:57 [INFO] #15 13.52 Collecting langchain-core<0.4.0,>=0.3.15 (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:49:57 [INFO] #15 13.53   Downloading https://mirrors.aliyun.com/pypi/packages/0c/93/ba19ca54701c6118e68f8785949b6c0eab1df3a5cfa5310508cc86877994/langchain_core-0.3.86-py3-none-any.whl (461 kB)
+2026-09-22 18:49:57 [INFO] #15 13.73      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 461.3/461.3 kB 2.2 MB/s eta 0:00:00
+2026-09-22 18:49:57 [INFO] #15 13.94 Collecting langsmith<0.2.0,>=0.1.17 (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:49:57 [INFO] #15 13.94   Downloading https://mirrors.aliyun.com/pypi/packages/de/f0/63b06b99b730b9954f8709f6f7d9b8d076fa0a973e472efe278089bde42b/langsmith-0.1.147-py3-none-any.whl (311 kB)
+2026-09-22 18:49:57 [INFO] #15 13.94      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 311.8/311.8 kB 433.1 MB/s eta 0:00:00
+2026-09-22 18:49:57 [INFO] #15 13.98 Requirement already satisfied: tenacity!=8.4.0,<10,>=8.1.0 in /usr/local/lib/python3.12/site-packages (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (9.1.4)
+2026-09-22 18:49:57 [INFO] #15 14.06 Collecting SQLAlchemy<3,>=1.4 (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:49:57 [INFO] #15 14.06   Downloading https://mirrors.aliyun.com/pypi/packages/6e/36/59830dafe40dda592304debd4cd86e583f63472f3a62c9e2695a5795e786/SQLAlchemy-2.0.35-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+2026-09-22 18:50:00 [INFO] #15 16.55      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 1.3 MB/s eta 0:00:00
+2026-09-22 18:50:00 [INFO] #15 16.80 Collecting dataclasses-json<0.7,>=0.5.7 (from langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:00 [INFO] #15 16.80   Downloading https://mirrors.aliyun.com/pypi/packages/c3/be/d0d44e092656fe7a06b55e6103cbce807cdbdee17884a5367c68c9860853/dataclasses_json-0.6.7-py3-none-any.whl (28 kB)
+2026-09-22 18:50:00 [INFO] #15 17.02 Collecting httpx-sse<0.5.0,>=0.4.0 (from langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:00 [INFO] #15 17.23   Downloading https://mirrors.aliyun.com/pypi/packages/d2/fd/6668e5aec43ab844de6fc74927e155a3b37bf40d7c3790e49fc0406b6578/httpx_sse-0.4.3-py3-none-any.whl (9.0 kB)
+2026-09-22 18:50:01 [INFO] #15 17.54 Collecting pydantic-settings<3.0.0,>=2.4.0 (from langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:01 [INFO] #15 17.54   Downloading https://mirrors.aliyun.com/pypi/packages/30/a4/2bffa9f8e804325a09867f0e9d30795c80ea9f8d62560bd1b6ad6220eb2f/pydantic_settings-2.15.0-py3-none-any.whl (69 kB)
+2026-09-22 18:50:01 [INFO] #15 17.55      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.4/69.4 kB 328.4 MB/s eta 0:00:00
+2026-09-22 18:50:01 [INFO] #15 17.61 Requirement already satisfied: tokenizers>=0.19.1 in /usr/local/lib/python3.12/site-packages (from langchain-huggingface==0.1.2->-r /tmp/deps/requirements.txt (line 41)) (0.22.2)
+2026-09-22 18:50:01 [INFO] #15 17.61 Requirement already satisfied: transformers>=4.39.0 in /usr/local/lib/python3.12/site-packages (from langchain-huggingface==0.1.2->-r /tmp/deps/requirements.txt (line 41)) (5.8.1)
+2026-09-22 18:50:01 [INFO] #15 17.86 Collecting build>=1.0.3 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:01 [INFO] #15 17.87   Downloading https://mirrors.aliyun.com/pypi/packages/ad/9b/9fb3585dabcd73a1b2a6267f63f62649347c9e6d072c9fde365b105abb2c/build-1.6.1-py3-none-any.whl (31 kB)
+2026-09-22 18:50:01 [INFO] #15 17.92 Collecting chroma-hnswlib==0.7.6 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:01 [INFO] #15 17.93   Downloading https://mirrors.aliyun.com/pypi/packages/74/1e/80a033ea4466338824974a34f418e7b034a7748bf906f56466f5caa434b0/chroma_hnswlib-0.7.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.4 MB)
+2026-09-22 18:50:03 [INFO] #15 20.15      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 1.1 MB/s eta 0:00:00
+2026-09-22 18:50:03 [INFO] #15 20.27 Collecting posthog>=2.4.0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:04 [INFO] #15 20.28   Downloading https://mirrors.aliyun.com/pypi/packages/24/60/997629e929e96641d297f7bf67543026eeaf5f8a3de66363f1cbe366c0ee/posthog-7.58.0-py3-none-any.whl (781 kB)
+2026-09-22 18:50:04 [INFO] #15 20.48      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 781.6/781.6 kB 3.8 MB/s eta 0:00:00
+2026-09-22 18:50:04 [INFO] #15 20.58 Collecting onnxruntime>=1.14.1 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:04 [INFO] #15 20.59   Downloading https://mirrors.aliyun.com/pypi/packages/34/35/e7f862dbacbc99fadd9b14a614e49c99bf0f35fd9927a82f096e3de33531/onnxruntime-1.30.0-cp312-cp312-manylinux_2_28_x86_64.whl (23.6 MB)
+2026-09-22 18:50:19 [INFO] #15 35.49      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 23.6/23.6 MB 1.6 MB/s eta 0:00:00
+2026-09-22 18:50:19 [INFO] #15 35.76 Collecting opentelemetry-api>=1.2.0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:19 [INFO] #15 35.77   Downloading https://mirrors.aliyun.com/pypi/packages/ca/6f/a04e900f465ff3221ccc395522503e2d10e79fa21f2723c8e177aae1e0d1/opentelemetry_api-1.44.0-py3-none-any.whl (60 kB)
+2026-09-22 18:50:19 [INFO] #15 35.77      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.0/60.0 kB 279.3 MB/s eta 0:00:00
+2026-09-22 18:50:19 [INFO] #15 36.01 Collecting opentelemetry-exporter-otlp-proto-grpc>=1.2.0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:19 [INFO] #15 36.02   Downloading https://mirrors.aliyun.com/pypi/packages/54/29/6ae42ba32b153ae0a44ae125f0caff2188bbe62d99c82d1768da30864e72/opentelemetry_exporter_otlp_proto_grpc-1.44.0-py3-none-any.whl (19 kB)
+2026-09-22 18:50:19 [INFO] #15 36.25 Collecting opentelemetry-instrumentation-fastapi>=0.41b0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:20 [INFO] #15 36.46   Downloading https://mirrors.aliyun.com/pypi/packages/fa/b0/c9b0300d33349ecc3dfd2362516eaffc44877e90970e6a52178ff953fec3/opentelemetry_instrumentation_fastapi-0.65b0-py3-none-any.whl (13 kB)
+2026-09-22 18:50:20 [INFO] #15 36.70 Collecting opentelemetry-sdk>=1.2.0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:20 [INFO] #15 36.70   Downloading https://mirrors.aliyun.com/pypi/packages/e7/23/ff077e61886ee020a17ce9c8b6fa11c601c8d8345b09ea24f605445df62a/opentelemetry_sdk-1.44.0-py3-none-any.whl (137 kB)
+2026-09-22 18:50:20 [INFO] #15 36.71      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.2/137.2 kB 366.9 MB/s eta 0:00:00
+2026-09-22 18:50:20 [INFO] #15 36.74 Collecting pypika>=0.48.9 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:20 [INFO] #15 36.75   Downloading https://mirrors.aliyun.com/pypi/packages/57/83/c77dfeed04022e8930b08eedca2b6e5efed256ab3321396fde90066efb65/pypika-0.51.1-py2.py3-none-any.whl (60 kB)
+2026-09-22 18:50:20 [INFO] #15 36.75      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.6/60.6 kB 316.2 MB/s eta 0:00:00
+2026-09-22 18:50:20 [INFO] #15 36.75 Requirement already satisfied: tqdm>=4.65.0 in /usr/local/lib/python3.12/site-packages (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (4.67.3)
+2026-09-22 18:50:20 [INFO] #15 36.75 Requirement already satisfied: overrides>=7.3.1 in /usr/local/lib/python3.12/site-packages (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (7.7.0)
+2026-09-22 18:50:20 [INFO] #15 36.76 Requirement already satisfied: grpcio>=1.58.0 in /usr/local/lib/python3.12/site-packages (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (1.80.0)
+2026-09-22 18:50:20 [INFO] #15 36.82 Collecting bcrypt>=4.0.1 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:20 [INFO] #15 36.82   Downloading https://mirrors.aliyun.com/pypi/packages/d4/8d/5e43d9584b3b3591a6f9b68f755a4da879a59712981ef5ad2a0ac1379f7a/bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+2026-09-22 18:50:20 [INFO] #15 36.83      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 278.2/278.2 kB 440.2 MB/s eta 0:00:00
+2026-09-22 18:50:20 [INFO] #15 36.87 Collecting kubernetes>=28.1.0 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:20 [INFO] #15 36.87   Downloading https://mirrors.aliyun.com/pypi/packages/5b/30/a96d47df739689ac0001ade0afefc16e3b477fc2fb426b568515fdc8afce/kubernetes-36.0.3-py2.py3-none-any.whl (4.6 MB)
+2026-09-22 18:50:23 [INFO] #15 39.69      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 1.6 MB/s eta 0:00:00
+2026-09-22 18:50:23 [INFO] #15 39.79 Collecting mmh3>=4.0.1 (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:23 [INFO] #15 39.79   Downloading https://mirrors.aliyun.com/pypi/packages/af/a6/5012e363699c598166fb955f7267975284dd51eadc0383771a1a593d4ac2/mmh3-5.3.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (103 kB)
+2026-09-22 18:50:23 [INFO] #15 39.80      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.2/103.2 kB 378.6 MB/s eta 0:00:00
+2026-09-22 18:50:23 [INFO] #15 39.80 Requirement already satisfied: rich>=10.11.0 in /usr/local/lib/python3.12/site-packages (from chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (15.0.0)
+2026-09-22 18:50:23 [INFO] #15 39.91 Collecting transformers>=4.39.0 (from langchain-huggingface==0.1.2->-r /tmp/deps/requirements.txt (line 41))
+2026-09-22 18:50:23 [INFO] #15 39.92   Downloading https://mirrors.aliyun.com/pypi/packages/03/b8/e484ef633af3887baeeb4b6ad12743363af7cce68ae51e938e00aaa0529d/transformers-4.57.6-py3-none-any.whl (12.0 MB)
+2026-09-22 18:50:31 [INFO] #15 47.77      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 1.5 MB/s eta 0:00:00
+2026-09-22 18:50:31 [INFO] #15 47.80 Requirement already satisfied: torch>=1.11.0 in /usr/local/lib/python3.12/site-packages (from sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (2.10.0+cpu)
+2026-09-22 18:50:31 [INFO] #15 47.80 Requirement already satisfied: scikit-learn in /usr/local/lib/python3.12/site-packages (from sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (1.8.0)
+2026-09-22 18:50:31 [INFO] #15 47.81 Requirement already satisfied: scipy in /usr/local/lib/python3.12/site-packages (from sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (1.12.0)
+2026-09-22 18:50:31 [INFO] #15 47.83 Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.12/site-packages (from requests==2.32.3->-r /tmp/deps/requirements.txt (line 48)) (3.4.7)
+2026-09-22 18:50:31 [INFO] #15 47.83 Requirement already satisfied: idna<4,>=2.5 in /usr/local/lib/python3.12/site-packages (from requests==2.32.3->-r /tmp/deps/requirements.txt (line 48)) (3.11)
+2026-09-22 18:50:31 [INFO] #15 47.83 Requirement already satisfied: certifi>=2017.4.17 in /usr/local/lib/python3.12/site-packages (from requests==2.32.3->-r /tmp/deps/requirements.txt (line 48)) (2026.2.25)
+2026-09-22 18:50:31 [INFO] #15 47.85 Requirement already satisfied: fsspec in /usr/local/lib/python3.12/site-packages (from gradio-client==1.3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2026.2.0)
+2026-09-22 18:50:31 [INFO] #15 47.85 Requirement already satisfied: websockets<13.0,>=10.0 in /usr/local/lib/python3.12/site-packages (from gradio-client==1.3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (12.0)
+2026-09-22 18:50:31 [INFO] #15 47.87 Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (2.6.1)
+2026-09-22 18:50:31 [INFO] #15 47.87 Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (1.4.0)
+2026-09-22 18:50:31 [INFO] #15 47.88 Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (26.1.0)
+2026-09-22 18:50:31 [INFO] #15 47.88 Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (1.8.0)
+2026-09-22 18:50:31 [INFO] #15 47.88 Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (6.7.1)
+2026-09-22 18:50:31 [INFO] #15 47.88 Requirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (0.4.1)
+2026-09-22 18:50:31 [INFO] #15 47.88 Requirement already satisfied: yarl<2.0,>=1.17.0 in /usr/local/lib/python3.12/site-packages (from aiohttp<4.0.0,>=3.8.3->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (1.23.0)
+2026-09-22 18:50:31 [INFO] #15 48.12 Collecting pyproject_hooks (from build>=1.0.3->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:31 [INFO] #15 48.33   Downloading https://mirrors.aliyun.com/pypi/packages/85/11/044d1ae1b4ec0d7af88ee5bc91e081be1022533032b906a7bdabdbb60977/pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+2026-09-22 18:50:32 [INFO] #15 48.41 Collecting marshmallow<4.0.0,>=3.18.0 (from dataclasses-json<0.7,>=0.5.7->langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:32 [INFO] #15 48.42   Downloading https://mirrors.aliyun.com/pypi/packages/be/2f/5108cb3ee4ba6501748c4908b908e55f42a5b66245b4cfe0c99326e1ef6e/marshmallow-3.26.2-py3-none-any.whl (50 kB)
+2026-09-22 18:50:32 [INFO] #15 48.42      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.0/51.0 kB 307.7 MB/s eta 0:00:00
+2026-09-22 18:50:32 [INFO] #15 48.64 Collecting typing-inspect<1,>=0.4.0 (from dataclasses-json<0.7,>=0.5.7->langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:32 [INFO] #15 48.85   Downloading https://mirrors.aliyun.com/pypi/packages/65/f3/107a22063bf27bdccf2024833d3445f4eea42b2e598abfbd46f6a63b6cb0/typing_inspect-0.9.0-py3-none-any.whl (8.8 kB)
+2026-09-22 18:50:32 [INFO] #15 48.90 Requirement already satisfied: typing-inspection>=0.4.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.4.2)
+2026-09-22 18:50:32 [INFO] #15 48.90 Requirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.12/site-packages (from fastapi<1.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.0.4)
+2026-09-22 18:50:32 [INFO] #15 48.92 Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.12/site-packages (from httpx>=0.24.1->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.0.9)
+2026-09-22 18:50:32 [INFO] #15 48.93 Requirement already satisfied: h11>=0.16 in /usr/local/lib/python3.12/site-packages (from httpcore==1.*->httpx>=0.24.1->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.16.0)
+2026-09-22 18:50:32 [INFO] #15 49.00 Requirement already satisfied: filelock>=3.10.0 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (3.28.0)
+2026-09-22 18:50:32 [INFO] #15 49.01 Requirement already satisfied: hf-xet<2.0.0,>=1.4.3 in /usr/local/lib/python3.12/site-packages (from huggingface-hub>=0.19.3->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.4.3)
+2026-09-22 18:50:32 [INFO] #15 49.05 Requirement already satisfied: six>=1.9.0 in /usr/local/lib/python3.12/site-packages (from kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (1.17.0)
+2026-09-22 18:50:32 [INFO] #15 49.06 Requirement already satisfied: python-dateutil>=2.5.3 in /usr/local/lib/python3.12/site-packages (from kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (2.9.0.post0)
+2026-09-22 18:50:32 [INFO] #15 49.30 Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:33 [INFO] #15 49.30   Downloading https://mirrors.aliyun.com/pypi/packages/d5/d2/cc4dc1271e464942db7ee278baae2daa99ee77cb2af744025c04da585a3e/websocket_client-1.9.2-py3-none-any.whl (95 kB)
+2026-09-22 18:50:33 [INFO] #15 49.30      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.8/95.8 kB 369.9 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 49.52 Collecting requests-oauthlib (from kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:33 [INFO] #15 49.54   Downloading https://mirrors.aliyun.com/pypi/packages/3b/5d/63d4ae3b9daea098d5d6f5da83984853c1bbacd5dc826764b249fe119d24/requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+2026-09-22 18:50:33 [INFO] #15 49.81 Collecting durationpy>=0.7 (from kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:33 [INFO] #15 50.01   Downloading https://mirrors.aliyun.com/pypi/packages/e6/c4/ebdf7837bc4ef6fd98cfb013c28855bb358467bf86c1af011bbc21e21df0/durationpy-0.11-py3-none-any.whl (4.1 kB)
+2026-09-22 18:50:33 [INFO] #15 50.08 INFO: pip is looking at multiple versions of langchain-core to determine which version is compatible with other requirements. This could take a while.
+2026-09-22 18:50:33 [INFO] #15 50.08 Collecting langchain-core<0.4.0,>=0.3.15 (from langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:50:33 [INFO] #15 50.11   Downloading https://mirrors.aliyun.com/pypi/packages/b1/71/cadea475bda84fd4cc6fe46b347fd643be8b323fc8c413f4ccbbe2717db6/langchain_core-0.3.85-py3-none-any.whl (460 kB)
+2026-09-22 18:50:33 [INFO] #15 50.11      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 460.2/460.2 kB 442.5 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.13   Downloading https://mirrors.aliyun.com/pypi/packages/8d/5b/ba75d5b80bd1f60ae799c8cbda5477eb7489fb21d40c967ec509bbd51933/langchain_core-0.3.84-py3-none-any.whl (459 kB)
+2026-09-22 18:50:33 [INFO] #15 50.13      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 459.1/459.1 kB 411.5 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.18   Downloading https://mirrors.aliyun.com/pypi/packages/5a/db/d71b80d3bd6193812485acea4001cdf86cf95a44bbf942f7a240120ff762/langchain_core-0.3.83-py3-none-any.whl (458 kB)
+2026-09-22 18:50:33 [INFO] #15 50.18      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 458.9/458.9 kB 444.7 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.22   Downloading https://mirrors.aliyun.com/pypi/packages/59/20/27d6e138913bddbb35491ca9940b5bd48a83c0a082af288a140d3b15ed9e/langchain_core-0.3.82-py3-none-any.whl (457 kB)
+2026-09-22 18:50:33 [INFO] #15 50.23      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 457.9/457.9 kB 281.8 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.24   Downloading https://mirrors.aliyun.com/pypi/packages/b8/29/60802a71c4a0b573c0e9ecda1846404b04bdbc9bc805732b39261be4c376/langchain_core-0.3.81-py3-none-any.whl (457 kB)
+2026-09-22 18:50:33 [INFO] #15 50.25      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 457.2/457.2 kB 412.0 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.26   Downloading https://mirrors.aliyun.com/pypi/packages/da/e8/e7a090ebe37f2b071c64e81b99fb1273b3151ae932f560bb94c22f191cde/langchain_core-0.3.80-py3-none-any.whl (450 kB)
+2026-09-22 18:50:33 [INFO] #15 50.26      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 450.8/450.8 kB 415.0 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.28   Downloading https://mirrors.aliyun.com/pypi/packages/fc/71/46b0efaf3fc6ad2c2bd600aef500f1cb2b7038a4042f58905805630dd29d/langchain_core-0.3.79-py3-none-any.whl (449 kB)
+2026-09-22 18:50:33 [INFO] #15 50.28      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 449.8/449.8 kB 425.8 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.29 INFO: pip is still looking at multiple versions of langchain-core to determine which version is compatible with other requirements. This could take a while.
+2026-09-22 18:50:33 [INFO] #15 50.30   Downloading https://mirrors.aliyun.com/pypi/packages/9c/a7/ff35c108c4863c1bb99724a4253ff2324aea5789d689dd59424c07df1199/langchain_core-0.3.78-py3-none-any.whl (449 kB)
+2026-09-22 18:50:33 [INFO] #15 50.30      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 449.6/449.6 kB 456.4 MB/s eta 0:00:00
+2026-09-22 18:50:33 [INFO] #15 50.33   Downloading https://mirrors.aliyun.com/pypi/packages/64/18/e7462ae0ce57caa9f6d5d975dca861e9a751e5ca253d60a809e0d833eac3/langchain_core-0.3.77-py3-none-any.whl (449 kB)
+2026-09-22 18:50:34 [INFO] #15 50.33      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 449.5/449.5 kB 415.4 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.35   Downloading https://mirrors.aliyun.com/pypi/packages/77/b5/501c0ffcb09c734457ceaa86bc7b1dd37b6a261147bd653add03b838aacb/langchain_core-0.3.76-py3-none-any.whl (447 kB)
+2026-09-22 18:50:34 [INFO] #15 50.35      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 447.5/447.5 kB 434.8 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.47   Downloading https://mirrors.aliyun.com/pypi/packages/fb/42/0d0221cce6f168f644d7d96cb6c87c4e42fc55d2941da7a36e970e3ab8ab/langchain_core-0.3.75-py3-none-any.whl (443 kB)
+2026-09-22 18:50:34 [INFO] #15 50.47      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 444.0/444.0 kB 438.7 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.49   Downloading https://mirrors.aliyun.com/pypi/packages/4d/26/545283681ac0379d31c7ad0bac5f195e1982092d76c65ca048db9e3cec0e/langchain_core-0.3.74-py3-none-any.whl (443 kB)
+2026-09-22 18:50:34 [INFO] #15 50.49      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.5/443.5 kB 436.4 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.50 INFO: This is taking longer than usual. You might need to provide the dependency resolver with stricter constraints to reduce runtime. See https://pip.pypa.io/warnings/backtracking for guidance. If you want to abort this run, press Ctrl + C.
+2026-09-22 18:50:34 [INFO] #15 50.53   Downloading https://mirrors.aliyun.com/pypi/packages/b3/f6/f36b5ea5d32137337a3fff84c3d3d164735d2de552b7057d3cdfe25adafa/langchain_core-0.3.73-py3-none-any.whl (443 kB)
+2026-09-22 18:50:34 [INFO] #15 50.53      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.3/443.3 kB 432.9 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.55   Downloading https://mirrors.aliyun.com/pypi/packages/6e/7d/9f75023c478e3b854d67da31d721e39f0eb30ae969ec6e755430cb1c0fb5/langchain_core-0.3.72-py3-none-any.whl (442 kB)
+2026-09-22 18:50:34 [INFO] #15 50.55      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.8/442.8 kB 444.3 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.57   Downloading https://mirrors.aliyun.com/pypi/packages/32/1b/e9af4aac9623d63596c499f619082fa48c4b995696b6d2e8e98e53423809/langchain_core-0.3.71-py3-none-any.whl (442 kB)
+2026-09-22 18:50:34 [INFO] #15 50.58      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.8/442.8 kB 446.4 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.60   Downloading https://mirrors.aliyun.com/pypi/packages/25/73/910b809b5f8dfe2738bbb065580364b9751425a404b8ee87479a75b37e95/langchain_core-0.3.70-py3-none-any.whl (442 kB)
+2026-09-22 18:50:34 [INFO] #15 50.60      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 442.3/442.3 kB 441.6 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.64   Downloading https://mirrors.aliyun.com/pypi/packages/51/7b/bb7b088440ff9cc55e9e6eba94162cbdcd3b1693c194e1ad4764acba29b9/langchain_core-0.3.69-py3-none-any.whl (441 kB)
+2026-09-22 18:50:34 [INFO] #15 50.64      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 441.6/441.6 kB 442.6 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.65   Downloading https://mirrors.aliyun.com/pypi/packages/f9/da/c89be0a272993bfcb762b2a356b9f55de507784c2755ad63caec25d183bf/langchain_core-0.3.68-py3-none-any.whl (441 kB)
+2026-09-22 18:50:34 [INFO] #15 50.66      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 441.4/441.4 kB 412.5 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.67   Downloading https://mirrors.aliyun.com/pypi/packages/9f/2b/a0d283089c6d08c12d47dca39a55029ff714e939ec04f4560420426ab613/langchain_core-0.3.67-py3-none-any.whl (440 kB)
+2026-09-22 18:50:34 [INFO] #15 50.68      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 440.2/440.2 kB 432.6 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.70   Downloading https://mirrors.aliyun.com/pypi/packages/c0/c3/8080431fd7567a340d3a42e36c0bb3970a8d00d5e27bf3ca2103b3b55996/langchain_core-0.3.66-py3-none-any.whl (438 kB)
+2026-09-22 18:50:34 [INFO] #15 50.70      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 438.9/438.9 kB 303.0 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.73   Downloading https://mirrors.aliyun.com/pypi/packages/54/f0/31db18b7b8213266aed926ce89b5bdd84ccde7ee2edf4cab14e3dd2bfcf1/langchain_core-0.3.65-py3-none-any.whl (438 kB)
+2026-09-22 18:50:34 [INFO] #15 50.73      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 438.1/438.1 kB 445.4 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.80   Downloading https://mirrors.aliyun.com/pypi/packages/c3/43/94b486eeb778443887e4eb76326e704ee0c6244f5fab6a46686e09968e9a/langchain_core-0.3.64-py3-none-any.whl (438 kB)
+2026-09-22 18:50:34 [INFO] #15 50.80      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 438.1/438.1 kB 430.6 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 50.83   Downloading https://mirrors.aliyun.com/pypi/packages/5c/71/a748861e6a69ab6ef50ab8e65120422a1f36245c71a0dd0f02de49c208e1/langchain_core-0.3.63-py3-none-any.whl (438 kB)
+2026-09-22 18:50:34 [INFO] #15 50.83      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 438.5/438.5 kB 412.1 MB/s eta 0:00:00
+2026-09-22 18:50:34 [INFO] #15 51.11 Collecting jsonpatch<2.0,>=1.33 (from langchain-core<0.4.0,>=0.3.15->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:50:34 [INFO] #15 51.32   Downloading https://mirrors.aliyun.com/pypi/packages/73/07/02e16ed01e04a374e644b575638ec7987ae846d25ad97bcc9945a3ee4b0e/jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+2026-09-22 18:50:35 [INFO] #15 51.55 Collecting packaging (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33))
+2026-09-22 18:50:35 [INFO] #15 51.55   Downloading https://mirrors.aliyun.com/pypi/packages/88/ef/eb23f262cca3c0c4eb7ab1933c3b1f03d021f2c48f54763065b6f0e321be/packaging-24.2-py3-none-any.whl (65 kB)
+2026-09-22 18:50:35 [INFO] #15 51.56      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.5/65.5 kB 330.3 MB/s eta 0:00:00
+2026-09-22 18:50:35 [INFO] #15 51.79 Collecting requests-toolbelt<2.0.0,>=1.0.0 (from langsmith<0.2.0,>=0.1.17->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:50:35 [INFO] #15 51.80   Downloading https://mirrors.aliyun.com/pypi/packages/3f/51/d4db610ef29373b879047326cbf6fa98b6c1969d6f6dc423279de2b1be2c/requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2026-09-22 18:50:35 [INFO] #15 51.80      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 289.9 MB/s eta 0:00:00
+2026-09-22 18:50:35 [INFO] #15 51.82 Requirement already satisfied: contourpy>=1.0.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.3.3)
+2026-09-22 18:50:35 [INFO] #15 51.83 Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (0.12.1)
+2026-09-22 18:50:35 [INFO] #15 51.83 Requirement already satisfied: fonttools>=4.22.0 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (4.62.1)
+2026-09-22 18:50:35 [INFO] #15 51.83 Requirement already satisfied: kiwisolver>=1.3.1 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.5.0)
+2026-09-22 18:50:35 [INFO] #15 51.84 Requirement already satisfied: pyparsing>=3 in /usr/local/lib/python3.12/site-packages (from matplotlib~=3.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (3.3.2)
+2026-09-22 18:50:35 [INFO] #15 52.10 Collecting flatbuffers (from onnxruntime>=1.14.1->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:35 [INFO] #15 52.10   Downloading https://mirrors.aliyun.com/pypi/packages/e8/2d/d2a548598be01649e2d46231d151a6c56d10b964d94043a335ae56ea2d92/flatbuffers-25.12.19-py2.py3-none-any.whl (26 kB)
+2026-09-22 18:50:35 [INFO] #15 52.11 Requirement already satisfied: protobuf>=4.25.8 in /usr/local/lib/python3.12/site-packages (from onnxruntime>=1.14.1->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (7.34.1)
+2026-09-22 18:50:35 [INFO] #15 52.37 Collecting googleapis-common-protos~=1.57 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:36 [INFO] #15 52.37   Downloading https://mirrors.aliyun.com/pypi/packages/1a/7a/7d79170c6ce6f12e109df2b3879d6b934010cf4f99aea8de8b7e5408c174/googleapis_common_protos-1.75.3-py3-none-any.whl (306 kB)
+2026-09-22 18:50:36 [INFO] #15 52.37      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 307.0/307.0 kB 429.3 MB/s eta 0:00:00
+2026-09-22 18:50:36 [INFO] #15 52.61 Collecting opentelemetry-exporter-otlp-proto-common==1.44.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:36 [INFO] #15 52.61   Downloading https://mirrors.aliyun.com/pypi/packages/5e/71/65fd9d54c10b860f87c045ccee1264cab7011268895d3528818a29c1172a/opentelemetry_exporter_otlp_proto_common-1.44.0-py3-none-any.whl (17 kB)
+2026-09-22 18:50:36 [INFO] #15 52.85 Collecting opentelemetry-proto==1.44.0 (from opentelemetry-exporter-otlp-proto-grpc>=1.2.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:36 [INFO] #15 52.86   Downloading https://mirrors.aliyun.com/pypi/packages/d1/7c/8be563d68e93bbefa5c8affb82ddcff91b3ad858ce49957ba7b16fd3e0ab/opentelemetry_proto-1.44.0-py3-none-any.whl (72 kB)
+2026-09-22 18:50:36 [INFO] #15 52.86      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.5/72.5 kB 339.4 MB/s eta 0:00:00
+2026-09-22 18:50:36 [INFO] #15 53.15 Collecting opentelemetry-instrumentation-asgi==0.65b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:36 [INFO] #15 53.15   Downloading https://mirrors.aliyun.com/pypi/packages/0b/9c/376962840b619d2d55fe8ee2285f8c70971c090e5fff614516fc654a6f3a/opentelemetry_instrumentation_asgi-0.65b0-py3-none-any.whl (15 kB)
+2026-09-22 18:50:36 [INFO] #15 53.39 Collecting opentelemetry-instrumentation==0.65b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:37 [INFO] #15 53.40   Downloading https://mirrors.aliyun.com/pypi/packages/40/7b/85eab1215f72adf0e68d3dc4a679b9bff993fa679ff34cd8dd378e2659fd/opentelemetry_instrumentation-0.65b0-py3-none-any.whl (36 kB)
+2026-09-22 18:50:37 [INFO] #15 53.63 Collecting opentelemetry-semantic-conventions==0.65b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:37 [INFO] #15 53.64   Downloading https://mirrors.aliyun.com/pypi/packages/a6/0e/49df70d9b81fb5cbae4bbf2a49d865b09bcbcbc4eb53f5851b1027738d78/opentelemetry_semantic_conventions-0.65b0-py3-none-any.whl (204 kB)
+2026-09-22 18:50:37 [INFO] #15 53.64      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 204.6/204.6 kB 401.3 MB/s eta 0:00:00
+2026-09-22 18:50:37 [INFO] #15 53.87 Collecting opentelemetry-util-http==0.65b0 (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:37 [INFO] #15 54.08   Downloading https://mirrors.aliyun.com/pypi/packages/23/3f/ab8d29df207ce5f470a07fa96ebb48af4e95b7fab7e7635311b9a32f2fab/opentelemetry_util_http-0.65b0-py3-none-any.whl (8.2 kB)
+2026-09-22 18:50:38 [INFO] #15 54.82 Collecting wrapt<3.0.0,>=1.0.0 (from opentelemetry-instrumentation==0.65b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:38 [INFO] #15 54.83   Downloading https://mirrors.aliyun.com/pypi/packages/a3/4f/17a89a580cb0082e61b8375074d5c9e5d38e4aa83ee19b6174ee472d17c2/wrapt-2.4.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (236 kB)
+2026-09-22 18:50:38 [INFO] #15 54.83      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 236.3/236.3 kB 415.4 MB/s eta 0:00:00
+2026-09-22 18:50:38 [INFO] #15 55.08 Collecting asgiref~=3.0 (from opentelemetry-instrumentation-asgi==0.65b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:38 [INFO] #15 55.08   Downloading https://mirrors.aliyun.com/pypi/packages/c0/1b/54f4ad77cd8a584fa70746c47df988e002cf1ee1eba43364d46f87803647/asgiref-3.12.1-py3-none-any.whl (25 kB)
+2026-09-22 18:50:38 [INFO] #15 55.22 Requirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2026.2)
+2026-09-22 18:50:38 [INFO] #15 55.22 Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.12/site-packages (from pandas<3.0,>=1.0->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (2026.2)
+2026-09-22 18:50:39 [INFO] #15 55.53 Collecting backoff>=1.10.0 (from posthog>=2.4.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:39 [INFO] #15 55.73   Downloading https://mirrors.aliyun.com/pypi/packages/df/73/b6e24bd22e6720ca8ee9a85a0c4a2971af8497d8f3193fa05390cbd46e09/backoff-2.2.1-py3-none-any.whl (15 kB)
+2026-09-22 18:50:39 [INFO] #15 55.73 Requirement already satisfied: distro>=1.5.0 in /usr/local/lib/python3.12/site-packages (from posthog>=2.4.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (1.9.0)
+2026-09-22 18:50:39 [INFO] #15 55.77 Requirement already satisfied: python-dotenv>=0.21.0 in /usr/local/lib/python3.12/site-packages (from pydantic-settings<3.0.0,>=2.4.0->langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39)) (1.2.2)
+2026-09-22 18:50:39 [INFO] #15 55.81 Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (4.0.0)
+2026-09-22 18:50:39 [INFO] #15 55.81 Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.12/site-packages (from rich>=10.11.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (2.20.0)
+2026-09-22 18:50:39 [INFO] #15 55.88 Requirement already satisfied: greenlet!=0.4.17 in /usr/local/lib/python3.12/site-packages (from SQLAlchemy<3,>=1.4->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38)) (3.4.0)
+2026-09-22 18:50:39 [INFO] #15 55.93 Requirement already satisfied: setuptools in /usr/local/lib/python3.12/site-packages (from torch>=1.11.0->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (75.8.2)
+2026-09-22 18:50:39 [INFO] #15 55.94 Requirement already satisfied: sympy>=1.13.3 in /usr/local/lib/python3.12/site-packages (from torch>=1.11.0->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (1.14.0)
+2026-09-22 18:50:39 [INFO] #15 55.94 Requirement already satisfied: networkx>=2.5.1 in /usr/local/lib/python3.12/site-packages (from torch>=1.11.0->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (3.6.1)
+2026-09-22 18:50:39 [INFO] #15 56.36 Collecting huggingface-hub>=0.19.3 (from gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33))
+2026-09-22 18:50:40 [INFO] #15 56.36   Downloading https://mirrors.aliyun.com/pypi/packages/a8/af/48ac8483240de756d2438c380746e7130d1c6f75802ef22f3c6d49982787/huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+2026-09-22 18:50:40 [INFO] #15 56.57      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 2.8 MB/s eta 0:00:00
+2026-09-22 18:50:40 [INFO] #15 56.58 Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.12/site-packages (from transformers>=4.39.0->langchain-huggingface==0.1.2->-r /tmp/deps/requirements.txt (line 41)) (2026.4.4)
+2026-09-22 18:50:40 [INFO] #15 56.58 Requirement already satisfied: safetensors>=0.4.3 in /usr/local/lib/python3.12/site-packages (from transformers>=4.39.0->langchain-huggingface==0.1.2->-r /tmp/deps/requirements.txt (line 41)) (0.8.0rc0)
+2026-09-22 18:50:40 [INFO] #15 56.77 Requirement already satisfied: click>=8.0.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (8.1.8)
+2026-09-22 18:50:40 [INFO] #15 56.77 Requirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.12/site-packages (from typer<1.0,>=0.12->gradio==4.44.0->-r /tmp/deps/requirements.txt (line 33)) (1.5.4)
+2026-09-22 18:50:40 [INFO] #15 56.90 Collecting httptools>=0.6.3 (from uvicorn[standard]>=0.18.3->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:40 [INFO] #15 56.90   Downloading https://mirrors.aliyun.com/pypi/packages/e3/a6/febbb8b8db0f58b38e44ad6cb946e6a255ae49b55f2e8543408fb7501ccd/httptools-0.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (523 kB)
+2026-09-22 18:50:40 [INFO] #15 57.11      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 523.9/523.9 kB 2.6 MB/s eta 0:00:00
+2026-09-22 18:50:40 [INFO] #15 57.17 Collecting uvloop>=0.15.1 (from uvicorn[standard]>=0.18.3->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:40 [INFO] #15 57.18   Downloading https://mirrors.aliyun.com/pypi/packages/5f/6f/e62b4dfc7ad6518e7eff2516f680d02a0f6eb62c0c212e152ca708a0085e/uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+2026-09-22 18:50:43 [INFO] #15 60.20      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 1.5 MB/s eta 0:00:00
+2026-09-22 18:50:43 [INFO] #15 60.32 Collecting watchfiles>=0.20 (from uvicorn[standard]>=0.18.3->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:44 [INFO] #15 60.33   Downloading https://mirrors.aliyun.com/pypi/packages/22/24/ed72f68cbc1333ca9b9f2200aa048bb6658ae41709bc1caad4310f4bdffd/watchfiles-1.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+2026-09-22 18:50:44 [INFO] #15 60.53      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 456.4/456.4 kB 2.2 MB/s eta 0:00:00
+2026-09-22 18:50:44 [INFO] #15 60.61 Requirement already satisfied: joblib>=1.3.0 in /usr/local/lib/python3.12/site-packages (from scikit-learn->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (1.5.3)
+2026-09-22 18:50:44 [INFO] #15 60.62 Requirement already satisfied: threadpoolctl>=3.2.0 in /usr/local/lib/python3.12/site-packages (from scikit-learn->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (3.6.0)
+2026-09-22 18:50:44 [INFO] #15 61.26 Collecting jsonpointer>=1.9 (from jsonpatch<2.0,>=1.33->langchain-core<0.4.0,>=0.3.15->langchain==0.3.7->-r /tmp/deps/requirements.txt (line 38))
+2026-09-22 18:50:45 [INFO] #15 61.48   Downloading https://mirrors.aliyun.com/pypi/packages/9e/6a/a83720e953b1682d2d109d3c2dbb0bc9bf28cc1cbc205be4ef4be5da709d/jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)
+2026-09-22 18:50:45 [INFO] #15 61.53 Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43)) (0.1.2)
+2026-09-22 18:50:45 [INFO] #15 61.87 Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.12/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers==3.2.1->-r /tmp/deps/requirements.txt (line 44)) (1.3.0)
+2026-09-22 18:50:45 [INFO] #15 62.11 Collecting mypy-extensions>=0.3.0 (from typing-inspect<1,>=0.4.0->dataclasses-json<0.7,>=0.5.7->langchain-community==0.3.5->-r /tmp/deps/requirements.txt (line 39))
+2026-09-22 18:50:45 [INFO] #15 62.32   Downloading https://mirrors.aliyun.com/pypi/packages/79/7b/2c79738432f5c924bef5071f933bcc9efd0473bac3b4aa584a6f7c1c8df8/mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2026-09-22 18:50:46 [INFO] #15 62.76 Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes>=28.1.0->chromadb==0.5.15->-r /tmp/deps/requirements.txt (line 43))
+2026-09-22 18:50:46 [INFO] #15 62.76   Downloading https://mirrors.aliyun.com/pypi/packages/be/9c/92789c596b8df838baa98fa71844d84283302f7604ed565dafe5a6b5041a/oauthlib-3.3.1-py3-none-any.whl (160 kB)
+2026-09-22 18:50:46 [INFO] #15 62.76      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 401.8 MB/s eta 0:00:00
+2026-09-22 18:50:49 [INFO] #15 66.24 Installing collected packages: pypika, flatbuffers, durationpy, wrapt, websocket-client, uvloop, SQLAlchemy, requests, pyproject_hooks, pypdf, pydantic-core, packaging, opentelemetry-util-http, opentelemetry-proto, opentelemetry-api, oauthlib, mypy-extensions, mmh3, jsonpointer, httpx-sse, httptools, googleapis-common-protos, chroma-hnswlib, bcrypt, backoff, asgiref, watchfiles, typing-inspect, starlette, requests-toolbelt, requests-oauthlib, pydantic, posthog, opentelemetry-semantic-conventions, opentelemetry-exporter-otlp-proto-common, onnxruntime, marshmallow, jsonpatch, huggingface-hub, build, pydantic-settings, opentelemetry-sdk, opentelemetry-instrumentation, langsmith, kubernetes, dataclasses-json, transformers, opentelemetry-instrumentation-asgi, opentelemetry-exporter-otlp-proto-grpc, langchain-core, sentence-transformers, opentelemetry-instrumentation-fastapi, langchain-text-splitters, langchain-huggingface, langchain, chromadb, langchain-community, langchain-chroma
+2026-09-22 18:50:51 [INFO] #15 67.50   Attempting uninstall: requests
+2026-09-22 18:50:51 [INFO] #15 67.62     Found existing installation: requests 2.33.1
+2026-09-22 18:50:51 [INFO] #15 67.63     Uninstalling requests-2.33.1:
+2026-09-22 18:50:51 [INFO] #15 67.64       Successfully uninstalled requests-2.33.1
+2026-09-22 18:50:51 [INFO] #15 67.87   Attempting uninstall: pydantic-core
+2026-09-22 18:50:51 [INFO] #15 67.92     Found existing installation: pydantic_core 2.41.4
+2026-09-22 18:50:51 [INFO] #15 67.92     Uninstalling pydantic_core-2.41.4:
+2026-09-22 18:50:51 [INFO] #15 67.93       Successfully uninstalled pydantic_core-2.41.4
+2026-09-22 18:50:51 [INFO] #15 67.98   Attempting uninstall: packaging
+2026-09-22 18:50:51 [INFO] #15 68.11     Found existing installation: packaging 26.0
+2026-09-22 18:50:51 [INFO] #15 68.11     Uninstalling packaging-26.0:
+2026-09-22 18:50:51 [INFO] #15 68.12       Successfully uninstalled packaging-26.0
+2026-09-22 18:50:52 [INFO] #15 68.48   Attempting uninstall: starlette
+2026-09-22 18:50:52 [INFO] #15 68.50     Found existing installation: starlette 0.52.1
+2026-09-22 18:50:52 [INFO] #15 68.50     Uninstalling starlette-0.52.1:
+2026-09-22 18:50:52 [INFO] #15 68.52       Successfully uninstalled starlette-0.52.1
+2026-09-22 18:50:52 [INFO] #15 68.63   Attempting uninstall: pydantic
+2026-09-22 18:50:52 [INFO] #15 68.66     Found existing installation: pydantic 2.12.3
+2026-09-22 18:50:52 [INFO] #15 68.67     Uninstalling pydantic-2.12.3:
+2026-09-22 18:50:52 [INFO] #15 68.74       Successfully uninstalled pydantic-2.12.3
+2026-09-22 18:50:54 [INFO] #15 70.61   Attempting uninstall: huggingface-hub
+2026-09-22 18:50:54 [INFO] #15 70.63     Found existing installation: huggingface_hub 1.15.0
+2026-09-22 18:50:54 [INFO] #15 70.64     Uninstalling huggingface_hub-1.15.0:
+2026-09-22 18:50:54 [INFO] #15 70.75       Successfully uninstalled huggingface_hub-1.15.0
+2026-09-22 18:50:57 [INFO] #15 74.26   Attempting uninstall: transformers
+2026-09-22 18:50:58 [INFO] #15 74.29     Found existing installation: transformers 5.8.1
+2026-09-22 18:50:58 [INFO] #15 74.47     Uninstalling transformers-5.8.1:
+2026-09-22 18:50:59 [INFO] #15 76.06       Successfully uninstalled transformers-5.8.1
+2026-09-22 18:51:06 [INFO] #15 82.99   Attempting uninstall: sentence-transformers
+2026-09-22 18:51:06 [INFO] #15 83.04     Found existing installation: sentence-transformers 5.5.1
+2026-09-22 18:51:06 [INFO] #15 83.05     Uninstalling sentence-transformers-5.5.1:
+2026-09-22 18:51:06 [INFO] #15 83.16       Successfully uninstalled sentence-transformers-5.5.1
+2026-09-22 18:51:10 [INFO] #15 86.40 ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+2026-09-22 18:51:10 [INFO] #15 86.40 ms-agent 1.6.0 requires edge_tts, which is not installed.
+2026-09-22 18:51:10 [INFO] #15 86.40 ms-agent 1.6.0 requires faiss-cpu, which is not installed.
+2026-09-22 18:51:10 [INFO] #15 86.40 ms-agent 1.6.0 requires mcp, which is not installed.
+2026-09-22 18:51:10 [INFO] #15 86.40 ms-agent 1.6.0 requires moviepy, which is not installed.
+2026-09-22 18:51:10 [INFO] #15 86.40 google-genai 2.5.0 requires websockets<17.0,>=13.0.0, but you have websockets 12.0 which is incompatible.
+2026-09-22 18:51:10 [INFO] #15 86.40 sse-starlette 3.3.4 requires starlette>=0.49.1, but you have starlette 0.46.2 which is incompatible.
+2026-09-22 18:51:10 [INFO] #15 86.40 Successfully installed SQLAlchemy-2.0.35 asgiref-3.12.1 backoff-2.2.1 bcrypt-5.0.0 build-1.6.1 chroma-hnswlib-0.7.6 chromadb-0.5.15 dataclasses-json-0.6.7 durationpy-0.11 flatbuffers-25.12.19 googleapis-common-protos-1.75.3 httptools-0.8.0 httpx-sse-0.4.3 huggingface-hub-0.36.2 jsonpatch-1.33 jsonpointer-3.1.1 kubernetes-36.0.3 langchain-0.3.7 langchain-chroma-0.1.4 langchain-community-0.3.5 langchain-core-0.3.63 langchain-huggingface-0.1.2 langchain-text-splitters-0.3.2 langsmith-0.1.147 marshmallow-3.26.2 mmh3-5.3.0 mypy-extensions-1.1.0 oauthlib-3.3.1 onnxruntime-1.30.0 opentelemetry-api-1.44.0 opentelemetry-exporter-otlp-proto-common-1.44.0 opentelemetry-exporter-otlp-proto-grpc-1.44.0 opentelemetry-instrumentation-0.65b0 opentelemetry-instrumentation-asgi-0.65b0 opentelemetry-instrumentation-fastapi-0.65b0 opentelemetry-proto-1.44.0 opentelemetry-sdk-1.44.0 opentelemetry-semantic-conventions-0.65b0 opentelemetry-util-http-0.65b0 packaging-24.2 posthog-7.58.0 pydantic-2.10.6 pydantic-core-2.27.2 pydantic-settings-2.15.0 pypdf-5.1.0 pypika-0.51.1 pyproject_hooks-1.3.3 requests-2.32.3 requests-oauthlib-2.0.0 requests-toolbelt-1.0.0 sentence-transformers-3.2.1 starlette-0.46.2 transformers-4.57.6 typing-inspect-0.9.0 uvloop-0.22.1 watchfiles-1.2.0 websocket-client-1.9.2 wrapt-2.4.1
+2026-09-22 18:51:10 [INFO] #15 86.40 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+2026-09-22 18:51:10 [INFO] #15 86.86 
+2026-09-22 18:51:10 [INFO] #15 86.86 [notice] A new release of pip is available: 23.3.2 -> 26.2.1
+2026-09-22 18:51:10 [INFO] #15 86.86 [notice] To update, run: pip install --upgrade pip
+2026-09-22 18:51:11 [INFO] #15 DONE 87.9s
+2026-09-22 18:51:11 [INFO] 
+2026-09-22 18:51:11 [INFO] #16 [stage-1 9/9] COPY . .
+2026-09-22 18:51:11 [INFO] #16 DONE 0.1s
+2026-09-22 18:51:11 [INFO] 
+2026-09-22 18:51:11 [INFO] #17 exporting to docker image format
+2026-09-22 18:51:11 [INFO] #17 exporting layers
+2026-09-22 18:51:21 [INFO] #17 exporting layers 10.3s done
+2026-09-22 18:51:22 [INFO] #17 exporting manifest sha256:3235fc20a70770dfa80908b35ae9ee4db548bb9b26c21559a7e66069833424a0 done
+2026-09-22 18:51:22 [INFO] #17 exporting config sha256:eedc4a8d4fc1d1a49724c9d3f0055da05aad24d437af0a79940936fbdc334eb2 done
+2026-09-22 18:51:22 [INFO] #17 sending tarball
+2026-09-22 18:51:47 [INFO] #17 ...
+2026-09-22 18:51:47 [INFO] 
+2026-09-22 18:51:47 [INFO] #18 importing to docker
+2026-09-22 18:51:47 [INFO] #18 loading layer 75041bc0d663 1.78kB / 1.78kB
+2026-09-22 18:51:48 [INFO] #18 loading layer 5f70bf18a086 32B / 32B
+2026-09-22 18:51:48 [INFO] #18 loading layer 8d6231dc9cc8 360.45kB / 35.26MB
+2026-09-22 18:51:49 [INFO] #18 loading layer b397c445ba39 557.06kB / 98.11MB
+2026-09-22 18:51:51 [INFO] #18 loading layer b397c445ba39 56.82MB / 98.11MB 2.0s
+2026-09-22 18:51:53 [INFO] #18 loading layer 452837d481c3 30.81kB / 30.81kB
+2026-09-22 18:51:54 [INFO] #18 loading layer 75041bc0d663 1.78kB / 1.78kB 6.8s done
+2026-09-22 18:51:54 [INFO] #18 loading layer 5f70bf18a086 32B / 32B 5.5s done
+2026-09-22 18:51:54 [INFO] #18 loading layer 8d6231dc9cc8 360.45kB / 35.26MB 5.4s done
+2026-09-22 18:51:54 [INFO] #18 loading layer b397c445ba39 56.82MB / 98.11MB 4.6s done
+2026-09-22 18:51:54 [INFO] #18 loading layer 452837d481c3 30.81kB / 30.81kB 0.7s done
+2026-09-22 18:51:54 [INFO] #18 DONE 6.8s
+2026-09-22 18:51:54 [INFO] 
+2026-09-22 18:51:54 [INFO] #17 exporting to docker image format
+2026-09-22 18:51:54 [INFO] #17 sending tarball 32.2s done
+2026-09-22 18:51:54 [INFO] #17 DONE 42.5s
+2026-09-22 18:51:54 [INFO] docker login to mshub-registry.cn-zhangjiakou.cr.aliyuncs.com
+2026-09-22 18:51:54 [INFO] re-login success, credentials refreshed
+2026-09-22 18:51:54 [INFO] pushing image: mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:51:54 [INFO] The push refers to repository [mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service]
+2026-09-22 18:51:55 [INFO] 452837d481c3: Preparing
+2026-09-22 18:51:55 [INFO] b397c445ba39: Preparing
+2026-09-22 18:51:55 [INFO] 8d6231dc9cc8: Preparing
+2026-09-22 18:51:55 [INFO] 5f70bf18a086: Preparing
+2026-09-22 18:51:55 [INFO] 75041bc0d663: Preparing
+2026-09-22 18:51:55 [INFO] b52398dd8517: Preparing
+2026-09-22 18:51:55 [INFO] 517e36a8506c: Preparing
+2026-09-22 18:51:55 [INFO] e223ecabdd3a: Preparing
+2026-09-22 18:51:55 [INFO] aa5800483549: Preparing
+2026-09-22 18:51:55 [INFO] 3dfbdb1d69c2: Preparing
+2026-09-22 18:51:55 [INFO] f987e092edcc: Preparing
+2026-09-22 18:51:55 [INFO] f184faa8ab64: Preparing
+2026-09-22 18:51:55 [INFO] 5f70bf18a086: Preparing
+2026-09-22 18:51:55 [INFO] 18d0e3c567e8: Preparing
+2026-09-22 18:51:55 [INFO] cbe29e123d3e: Preparing
+2026-09-22 18:51:55 [INFO] 397fd959b47c: Preparing
+2026-09-22 18:51:55 [INFO] 7afda11773b1: Preparing
+2026-09-22 18:51:55 [INFO] c706bdd5a73b: Preparing
+2026-09-22 18:51:55 [INFO] 5f70bf18a086: Preparing
+2026-09-22 18:51:55 [INFO] c7af52d1974c: Preparing
+2026-09-22 18:51:55 [INFO] 55e6112536c5: Preparing
+2026-09-22 18:51:55 [INFO] 5b20a9a0d4e7: Preparing
+2026-09-22 18:51:55 [INFO] cd1d5ac5841f: Preparing
+2026-09-22 18:51:55 [INFO] deeee25b276d: Preparing
+2026-09-22 18:51:55 [INFO] b52398dd8517: Waiting
+2026-09-22 18:51:55 [INFO] 517e36a8506c: Waiting
+2026-09-22 18:51:55 [INFO] c88064f9e842: Preparing
+2026-09-22 18:51:55 [INFO] e223ecabdd3a: Waiting
+2026-09-22 18:51:55 [INFO] bba6ec8e156e: Preparing
+2026-09-22 18:51:55 [INFO] aa5800483549: Waiting
+2026-09-22 18:51:55 [INFO] 3dfbdb1d69c2: Waiting
+2026-09-22 18:51:55 [INFO] b71afbfc6f22: Preparing
+2026-09-22 18:51:55 [INFO] f987e092edcc: Waiting
+2026-09-22 18:51:55 [INFO] f73947d6312e: Preparing
+2026-09-22 18:51:55 [INFO] f184faa8ab64: Waiting
+2026-09-22 18:51:55 [INFO] acbc0d2ed199: Preparing
+2026-09-22 18:51:55 [INFO] 18d0e3c567e8: Waiting
+2026-09-22 18:51:55 [INFO] 7215ae9b9700: Preparing
+2026-09-22 18:51:55 [INFO] cbe29e123d3e: Waiting
+2026-09-22 18:51:55 [INFO] 9bb0510c7b4b: Preparing
+2026-09-22 18:51:55 [INFO] 397fd959b47c: Waiting
+2026-09-22 18:51:55 [INFO] 7afda11773b1: Waiting
+2026-09-22 18:51:55 [INFO] 70a158f70e37: Preparing
+2026-09-22 18:51:55 [INFO] c706bdd5a73b: Waiting
+2026-09-22 18:51:55 [INFO] c7af52d1974c: Waiting
+2026-09-22 18:51:55 [INFO] cb395f276e98: Preparing
+2026-09-22 18:51:55 [INFO] 55e6112536c5: Waiting
+2026-09-22 18:51:55 [INFO] eb0143fcce68: Preparing
+2026-09-22 18:51:55 [INFO] 5b20a9a0d4e7: Waiting
+2026-09-22 18:51:55 [INFO] 6020d84069cf: Preparing
+2026-09-22 18:51:55 [INFO] cd1d5ac5841f: Waiting
+2026-09-22 18:51:55 [INFO] 583f1d6040fc: Preparing
+2026-09-22 18:51:55 [INFO] deeee25b276d: Waiting
+2026-09-22 18:51:55 [INFO] c88064f9e842: Waiting
+2026-09-22 18:51:55 [INFO] 981a144d9fa2: Preparing
+2026-09-22 18:51:55 [INFO] bba6ec8e156e: Waiting
+2026-09-22 18:51:55 [INFO] b71afbfc6f22: Waiting
+2026-09-22 18:51:55 [INFO] fb456a9e7760: Preparing
+2026-09-22 18:51:55 [INFO] 270a1170e7e3: Preparing
+2026-09-22 18:51:55 [INFO] f73947d6312e: Waiting
+2026-09-22 18:51:55 [INFO] acbc0d2ed199: Waiting
+2026-09-22 18:51:55 [INFO] cb395f276e98: Waiting
+2026-09-22 18:51:55 [INFO] 7215ae9b9700: Waiting
+2026-09-22 18:51:55 [INFO] eb0143fcce68: Waiting
+2026-09-22 18:51:55 [INFO] 9bb0510c7b4b: Waiting
+2026-09-22 18:51:55 [INFO] 6020d84069cf: Waiting
+2026-09-22 18:51:55 [INFO] 583f1d6040fc: Waiting
+2026-09-22 18:51:55 [INFO] 70a158f70e37: Waiting
+2026-09-22 18:51:55 [INFO] 981a144d9fa2: Waiting
+2026-09-22 18:51:55 [INFO] fb456a9e7760: Waiting
+2026-09-22 18:51:55 [INFO] 270a1170e7e3: Waiting
+2026-09-22 18:51:55 [INFO] 5f70bf18a086: Layer already exists
+2026-09-22 18:51:56 [INFO] b52398dd8517: Layer already exists
+2026-09-22 18:51:56 [INFO] 517e36a8506c: Layer already exists
+2026-09-22 18:51:56 [INFO] e223ecabdd3a: Layer already exists
+2026-09-22 18:51:56 [INFO] 75041bc0d663: Pushed
+2026-09-22 18:51:56 [INFO] aa5800483549: Layer already exists
+2026-09-22 18:51:56 [INFO] 452837d481c3: Pushed
+2026-09-22 18:51:57 [INFO] 3dfbdb1d69c2: Layer already exists
+2026-09-22 18:51:57 [INFO] f987e092edcc: Layer already exists
+2026-09-22 18:51:57 [INFO] f184faa8ab64: Layer already exists
+2026-09-22 18:51:57 [INFO] 18d0e3c567e8: Layer already exists
+2026-09-22 18:51:57 [INFO] cbe29e123d3e: Layer already exists
+2026-09-22 18:51:57 [INFO] 397fd959b47c: Layer already exists
+2026-09-22 18:51:57 [INFO] c706bdd5a73b: Layer already exists
+2026-09-22 18:51:57 [INFO] 7afda11773b1: Layer already exists
+2026-09-22 18:51:57 [INFO] c7af52d1974c: Layer already exists
+2026-09-22 18:51:57 [INFO] 55e6112536c5: Layer already exists
+2026-09-22 18:51:57 [INFO] 5b20a9a0d4e7: Layer already exists
+2026-09-22 18:51:58 [INFO] cd1d5ac5841f: Layer already exists
+2026-09-22 18:51:58 [INFO] deeee25b276d: Layer already exists
+2026-09-22 18:51:58 [INFO] c88064f9e842: Layer already exists
+2026-09-22 18:51:58 [INFO] bba6ec8e156e: Layer already exists
+2026-09-22 18:51:58 [INFO] b71afbfc6f22: Layer already exists
+2026-09-22 18:51:58 [INFO] f73947d6312e: Layer already exists
+2026-09-22 18:51:58 [INFO] acbc0d2ed199: Layer already exists
+2026-09-22 18:51:58 [INFO] 7215ae9b9700: Layer already exists
+2026-09-22 18:51:58 [INFO] 9bb0510c7b4b: Layer already exists
+2026-09-22 18:51:58 [INFO] 70a158f70e37: Layer already exists
+2026-09-22 18:51:58 [INFO] cb395f276e98: Layer already exists
+2026-09-22 18:51:59 [INFO] 6020d84069cf: Layer already exists
+2026-09-22 18:51:59 [INFO] eb0143fcce68: Layer already exists
+2026-09-22 18:51:59 [INFO] 981a144d9fa2: Layer already exists
+2026-09-22 18:51:59 [INFO] 583f1d6040fc: Layer already exists
+2026-09-22 18:51:59 [INFO] fb456a9e7760: Layer already exists
+2026-09-22 18:51:59 [INFO] 270a1170e7e3: Layer already exists
+2026-09-22 18:52:03 [INFO] 8d6231dc9cc8: Pushed
+2026-09-22 18:52:09 [INFO] b397c445ba39: Pushed
+2026-09-22 18:52:13 [INFO] 366128-7156f26a-2026-09-22-18-49-15: digest: sha256:8f1007aaad1cbacefd27442cc5cd084186076a23ed66ac9064f29438d5cb016e size: 8507
+2026-09-22 18:52:13 [INFO] docker rmi mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:52:13 [INFO] Untagged: mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:52:13 [INFO] Untagged: mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service@sha256:8f1007aaad1cbacefd27442cc5cd084186076a23ed66ac9064f29438d5cb016e
+2026-09-22 18:52:13 [INFO] Deleted: sha256:eedc4a8d4fc1d1a49724c9d3f0055da05aad24d437af0a79940936fbdc334eb2
+2026-09-22 18:52:13 [INFO] Deleted: sha256:973fa9f611bb6a9c1af4e5d994b9be576127ba98395a7e3fdd23ef2655e26986
+2026-09-22 18:52:13 [INFO] Deleted: sha256:93648d299ba6aa34bdfffc227ac6aed11b8246f91c727cb5cbf511cd89010407
+2026-09-22 18:52:13 [INFO] Deleted: sha256:5f85a2e3d937ecc7d819b36d63d4961779c577a0f388427f96104ed60edd03f9
+2026-09-22 18:52:13 [INFO] Deleted: sha256:fa4a5108c1664b603f00cede51d4154f2601b5c3515ffa499b8f1346276c4d9c
+2026-09-22 18:52:13 [INFO] Deleted: sha256:a9e20f9a36de482970dbe355719fa489ce8812799f9723b5e48a19a223386aa9
+2026-09-22 18:52:13 [INFO] 镜像产物信息：
+2026-09-22 18:52:13 [INFO] 镜像公网地址：mshub-registry.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+2026-09-22 18:52:13 [INFO] 镜像VPC地址：mshub-registry-vpc.cn-zhangjiakou.cr.aliyuncs.com/modelscope-repo/independent-service:366128-7156f26a-2026-09-22-18-49-15
+[32m2026-09-22 18:52:13 [SUCCESS] run step successfully![39m
+

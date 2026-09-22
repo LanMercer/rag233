@@ -31,6 +31,14 @@
       "top_k": 8,
       "temperature": 0.2,
       "service_note": "需启动 第四周/day19/local_api_lora_v2.py（务必先停 v1 服务：6G 显存一次只能装一个 3B）"
+    },
+    "lora_v3": {
+      "label": "微调模型 v3（真实 201 + 合成 99 = 300 配比版 adapter，第四周 Day20 拆变量轮）",
+      "api_url": "http://127.0.0.1:8000/v1/chat/completions",
+      "model_name": "Qwen2.5-3B-Instruct-LoRA-v3",
+      "top_k": 8,
+      "temperature": 0.2,
+      "service_note": "需启动 第四周/day20/local_api_lora_v3.py（务必先停 v1/v2 服务：6G 显存一次只能装一个 3B）"
     }
   }
 }

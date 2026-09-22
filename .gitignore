@@ -16,3 +16,18 @@ __pycache__/
 # LoRA 微调适配器权重 v2（Day19 训练产物，可重新训练生成，不进 git）
 第四周/day19/lora_adapter_v2/
 第四周/day19/train_logs_v2/
+
+# LoRA 微调适配器权重 v3（Day20 拆变量轮产物：真实 201 + 合成 99 = 300，不进 git）
+# ⚠ 教训（Day19 踩坑 #8）：.gitignore 只管"未跟踪文件"——一旦文件已经进过提交，
+#    再加规则也拦不住，且 git status 里**不显示**（"看起来很干净"是假象）。
+#    → 所以**训练前**就把这条规则加上；验收判据：
+#      git check-ignore -v 第四周/day20/lora_adapter_v3/adapter_model.safetensors
+第四周/day20/lora_adapter_v3/
+第四周/day20/train_logs_v3/
+
+# 训练/评测时的终端输出留档（过程文件，关键数字已抄进 第四周/实验日志.md 与定稿数字表，不进 git）
+第四周/day20/train_v3_console.log
+
+# 发布包里的临时文件与发布前检查脚本（`_tmp*` 一律不进仓库；check_release.py 是常驻工具，保留）
+第四周/发布包/_tmp*
+第四周/发布包/**/_tmp*

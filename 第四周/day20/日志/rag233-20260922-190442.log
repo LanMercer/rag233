@@ -1,0 +1,54 @@
+[2026-9-22 18:57:18] Running on local URL:  http://0.0.0.0:7860To create a public link, set `share=True` in `launch()`.
+[2026-9-22 18:57:17] FC Invoke End RequestId: 1-6ab25f05-13ef71d2-564bc0d38d45
+[2026-9-22 18:57:17] FC Invoke End RequestId: 1-6ab25f05-13550993-6ec2b6c90521
+[2026-9-22 18:57:17] FC Invoke Start RequestId: 1-6ab25f05-13ef71d2-564bc0d38d45
+[2026-9-22 18:57:17] FC Invoke Start RequestId: 1-6ab25f05-13550993-6ec2b6c90521
+[2026-9-22 18:57:17] Running on local URL:  http://0.0.0.0:7860To create a public link, set `share=True` in `launch()`.
+[2026-9-22 18:57:11] [studio-launcher] 2026/09/22 18:57:11 sdk=gradio entry=app.py dir=/home/studio/PROJECT heartbeat=false[studio-launcher] 2026/09/22 18:57:11 [heartbeat] disabled, skip[studio-launcher] 2026/09/22 18:57:11 [launcher] starting gradio: python3 app.py
+[2026-9-22 18:57:11] [studio-launcher] 2026/09/22 18:57:11 sdk=gradio entry=app.py dir=/home/studio/PROJECT heartbeat=false[studio-launcher] 2026/09/22 18:57:11 [heartbeat] disabled, skip[studio-launcher] 2026/09/22 18:57:11 [launcher] starting gradio: python3 app.py
+[2026-9-22 19:03:37] FC Invoke End RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:37] FC Invoke Start RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:37] FC Invoke End RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:37] FC Invoke Start RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:37] FC Invoke End RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:37] FC Invoke End RequestId: 26fb2827-8bbe-403e-8956-a0d7285f0aa9
+[2026-9-22 19:03:37] FC Invoke Start RequestId: 26fb2827-8bbe-403e-8956-a0d7285f0aa9
+[2026-9-22 19:03:36] FC Invoke Start RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c -> cfdce8d9-95ce-4e94-84d6-8e7b08e29f66
+[2026-9-22 19:03:36] FC Invoke End RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c
+[2026-9-22 19:03:36] FC Invoke Start RequestId: 66a2d2b3-b019-45f9-895e-e121e902a25c
+[2026-9-22 19:03:23] FC Invoke End RequestId: e7aa5adf-ad57-4e2f-9b50-9c4418ec5787
+[2026-9-22 19:03:23] FC Invoke Start RequestId: e7aa5adf-ad57-4e2f-9b50-9c4418ec5787
+[2026-9-22 19:03:23] FC Invoke End RequestId: 77413cb1-544f-4d02-a701-dee1992606d0
+[2026-9-22 19:03:23] FC Invoke Start RequestId: 77413cb1-544f-4d02-a701-dee1992606d0
+[2026-9-22 19:03:22] FC Invoke End RequestId: 09949437-7367-4e0a-abf8-d8c03e8a7c4e
+[2026-9-22 19:03:22] FC Invoke Start RequestId: 09949437-7367-4e0a-abf8-d8c03e8a7c4e
+[2026-9-22 19:04:22] FC Invoke End RequestId: 053a7730-451a-4631-98eb-4cfd461b450a
+[2026-9-22 19:04:22] FC Invoke Start RequestId: 053a7730-451a-4631-98eb-4cfd461b450a
+[2026-9-22 19:04:22] FC Invoke End RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke Start RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke End RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke Start RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke End RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke Start RequestId: 1e50130c-4464-473c-b250-741c86e071c8 -> 68ebf64c-b0d3-4c65-8b62-3d49f8b0b0f2
+[2026-9-22 19:04:22] FC Invoke End RequestId: 1e50130c-4464-473c-b250-741c86e071c8
+[2026-9-22 19:04:22] FC Invoke Start RequestId: 1e50130c-4464-473c-b250-741c86e071c8
+[2026-9-22 19:04:18] FC Invoke End RequestId: cb485e8a-0cad-4b24-9f8c-5a643fbc4a2a
+[2026-9-22 19:04:18] FC Invoke Start RequestId: cb485e8a-0cad-4b24-9f8c-5a643fbc4a2a
+[2026-9-22 19:04:18] FC Invoke End RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke Start RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke End RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke Start RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke End RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke Start RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10 -> 4c6faf6d-ead7-475c-94e1-c33c59fb1e89
+[2026-9-22 19:04:18] FC Invoke End RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10
+[2026-9-22 19:04:18] FC Invoke Start RequestId: 7ea59c65-fc70-43cb-8a39-bc6f3bc7ab10
+[2026-9-22 19:03:52] FC Invoke End RequestId: 6a361db2-ab4d-4c17-835a-eb1e53c2b7b3
+[2026-9-22 19:03:52] FC Invoke Start RequestId: 6a361db2-ab4d-4c17-835a-eb1e53c2b7b3
+[2026-9-22 19:03:52] FC Invoke End RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke Start RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke End RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke Start RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke End RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke Start RequestId: 714d01c4-6343-481f-a879-6e6848816b71 -> 070570ca-216c-4ae5-a44d-0e6d32abde92
+[2026-9-22 19:03:52] FC Invoke End RequestId: 714d01c4-6343-481f-a879-6e6848816b71
+[2026-9-22 19:03:52] FC Invoke Start RequestId: 714d01c4-6343-481f-a879-6e6848816b71
